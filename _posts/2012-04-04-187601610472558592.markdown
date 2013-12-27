@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea The NYT article claims they have model...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1703
+wordpress_url: http://twitter-187601610472558592
+date: 2012-04-04 14:04:44.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea The NYT article claims they have models that work there, but yeah, the lack of pictures worries me.

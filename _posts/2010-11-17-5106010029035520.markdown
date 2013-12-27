@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh Probably heading to a friend''s party on t...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1007
+wordpress_url: http://twitter-5106010029035520
+date: 2010-11-17 23:52:22.000000000 +01:00
+categories: []
+tags: []
+---
+@therosh Probably heading to a friend's party on the Cape

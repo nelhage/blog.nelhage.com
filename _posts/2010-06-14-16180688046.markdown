@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Awesome. Linux's CONFIG_DYNAMIC_PRINTK_DEBUG uses...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 720
+wordpress_url: http://twitter-16180688046
+date: 2010-06-14 18:31:25.000000000 +02:00
+categories: []
+tags: []
+---
+Awesome. Linux's CONFIG_DYNAMIC_PRINTK_DEBUG uses a bloom filter to fast-path the common case of debugging being disabled for most modules.

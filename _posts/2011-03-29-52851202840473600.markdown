@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 @juldea Ugh. Studies appear to be _not at...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1225
+wordpress_url: http://twitter-52851202840473600
+date: 2011-03-29 17:54:43.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 @juldea Ugh. Studies appear to be _not at all_ clear on that point, and citing bogus studies like that just makes us look bad.

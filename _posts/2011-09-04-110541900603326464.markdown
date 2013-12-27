@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'I''m torn. On one hand, I''d love to share my #drago...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1399
+wordpress_url: http://twitter-110541900603326464
+date: 2011-09-04 22:36:57.000000000 +02:00
+categories: []
+tags: []
+---
+I'm torn. On one hand, I'd love to share my #dragoncon tweets with a restricted circle. On the other, I'd likely be missing others' snark.

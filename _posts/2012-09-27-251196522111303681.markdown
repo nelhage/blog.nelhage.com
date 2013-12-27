@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I've already tried powertop. Still getting >14W...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1839
+wordpress_url: http://twitter-251196522111303681
+date: 2012-09-27 01:48:12.000000000 +02:00
+categories: []
+tags: []
+---
+I've already tried powertop. Still getting >14W draw. Mostly wondering about other kernel frobs or even patches. 3.6-rc 7 didn't help.

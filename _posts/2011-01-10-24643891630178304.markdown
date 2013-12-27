@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: _Really_ hating on Racket Scheme right now. All I...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1101
+wordpress_url: http://twitter-24643891630178304
+date: 2011-01-10 21:48:56.000000000 +01:00
+categories: []
+tags: []
+---
+_Really_ hating on Racket Scheme right now. All I want is mutable cons cells and a (filter) and (foldr) that works on them.

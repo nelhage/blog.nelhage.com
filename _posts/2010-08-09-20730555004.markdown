@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@geofft "&hellip;".split() is often a reasonable approxim...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 809
+wordpress_url: http://twitter-20730555004
+date: 2010-08-09 15:15:15.000000000 +02:00
+categories: []
+tags: []
+---
+@geofft "&hellip;".split() is often a reasonable approximation of qw(). As for =>, there's dict(foo="bar", baz="quux")

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Although one wonders how exactly @OccupyBoston is...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1492
+wordpress_url: http://twitter-132636407788343296
+date: 2011-11-04 21:52:38.000000000 +01:00
+categories: []
+tags: []
+---
+Although one wonders how exactly @OccupyBoston is posting tweets from an account they have allegedly lost control of.

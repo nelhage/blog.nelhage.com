@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '''ntp'', why are you so useless? On most machines I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 595
+wordpress_url: http://twitter-11485357616
+date: 2010-04-02 11:20:26.000000000 +02:00
+categories: []
+tags: []
+---
+'ntp', why are you so useless? On most machines I have it installed
+on, it just sits there, silently watching my clock drift.

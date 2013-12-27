@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea I haven''t read libpurple code since it...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1822
+wordpress_url: http://twitter-240106097833279489
+date: 2012-08-27 11:18:49.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea I haven't read libpurple code since it was libfaim (yes, with an f), but I'm "glad" to hear it hasn't changed much.

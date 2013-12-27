@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb git log -S; the doc keyword you want is the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1835
+wordpress_url: http://twitter-248618408596353027
+date: 2012-09-19 23:03:42.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb git log -S; the doc keyword you want is the "pickaxe"

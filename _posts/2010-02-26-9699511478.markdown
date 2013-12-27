@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Finally nuked my C-t binding in XMonad, which had...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 506
+wordpress_url: http://twitter-9699511478
+date: 2010-02-26 18:23:15.000000000 +01:00
+categories: []
+tags: []
+---
+Finally nuked my C-t binding in XMonad, which had followed me across
+four tiling window managers starting with ratpoison.

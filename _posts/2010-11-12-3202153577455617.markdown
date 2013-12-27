@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Boarded. Flying BOS -> LAX -> SYD. This'll b...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1002
+wordpress_url: http://twitter-3202153577455617
+date: 2010-11-12 17:47:07.000000000 +01:00
+categories: []
+tags: []
+---
+Boarded. Flying BOS -> LAX -> SYD. This'll be my first trans-pacific trip.

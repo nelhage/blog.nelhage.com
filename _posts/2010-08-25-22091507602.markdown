@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Can I get gdb to load symbol values from a System....
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 847
+wordpress_url: http://twitter-22091507602
+date: 2010-08-25 10:12:48.000000000 +02:00
+categories: []
+tags: []
+---
+Can I get gdb to load symbol values from a System.map (possibly after some transformation)? I don't have a vmlinux with debug symbols.

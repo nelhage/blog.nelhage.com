@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ChristineSpang Of course, being in San Francisco...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1484
+wordpress_url: http://twitter-130448103835844608
+date: 2011-10-29 20:57:06.000000000 +02:00
+categories: []
+tags: []
+---
+@ChristineSpang Of course, being in San Francisco while Boston decides to have a freak early start of winter is also pretty satisfying :)

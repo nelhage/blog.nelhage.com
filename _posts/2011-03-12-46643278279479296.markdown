@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb On a different note, oracle of either of th...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1193
+wordpress_url: http://twitter-46643278279479296
+date: 2011-03-12 14:46:38.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb On a different note, oracle of either of those leaks space in Haskell; I think because it keeps deferring the (g x).

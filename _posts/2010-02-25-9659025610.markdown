@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Reading a hexdump of a coredump of my IM client pr...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 508
+wordpress_url: http://twitter-9659025610
+date: 2010-02-25 23:19:07.000000000 +01:00
+categories: []
+tags: []
+---
+Reading a hexdump of a coredump of my IM client produces an
+entertaining random sampling of messages.

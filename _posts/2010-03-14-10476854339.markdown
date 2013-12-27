@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder I do kinda suspect my USB drive is shitty...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 561
+wordpress_url: http://twitter-10476854339
+date: 2010-03-14 13:25:51.000000000 +01:00
+categories: []
+tags: []
+---
+@ebroder I do kinda suspect my USB drive is shitty and may be silently
+corrupting data, so that may be to blame.

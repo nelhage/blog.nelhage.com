@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@tibbetts Unfortunately, I fear Java and Javascrip...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1729
+wordpress_url: http://twitter-196689393317183488
+date: 2012-04-29 15:56:20.000000000 +02:00
+categories: []
+tags: []
+---
+@tibbetts Unfortunately, I fear Java and Javascript have doomed us to continue dealing with this bullshit for years.

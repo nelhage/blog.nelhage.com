@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zhov Although as I discovered this morning, I can...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 670
+wordpress_url: http://twitter-14379049815
+date: 2010-05-20 14:46:41.000000000 +02:00
+categories: []
+tags: []
+---
+@zhov Although as I discovered this morning, I can rig up ghetto tethering with ConnectBot and 'adb forward'.

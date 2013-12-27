@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit non-Intel SSD (Intel one was backordered)...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1517
+wordpress_url: http://twitter-137022284719337472
+date: 2011-11-17 00:20:33.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit non-Intel SSD (Intel one was backordered). Single-boot Ubuntu Linux, haven't put any effort into wear-leveling.

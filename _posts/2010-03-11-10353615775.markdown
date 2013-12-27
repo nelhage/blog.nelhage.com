@@ -1,0 +1,19 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'We badly need better APIs for async disk IO.
+
+  http:...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 554
+wordpress_url: http://twitter-10353615775
+date: 2010-03-11 23:12:07.000000000 +01:00
+categories: []
+tags: []
+---
+We badly need better APIs for async disk IO.
+http:&#47;&#47;git.debian.org&#47;?p=dpkg&#47;dpkg.git;a=commitdiff;h=8e31b0f0

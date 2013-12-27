@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Set Gwibber up with Twitter, since Lucid insists o...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 839
+wordpress_url: http://twitter-21712498288
+date: 2010-08-20 21:58:54.000000000 +02:00
+categories: []
+tags: []
+---
+Set Gwibber up with Twitter, since Lucid insists on putting it in my menubar, anyways. Getting desktop notifications for @-replies. Weird.

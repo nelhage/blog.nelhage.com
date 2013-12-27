@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Is there wa way to force Wordpress to stop doing \...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 737
+wordpress_url: http://twitter-16878346678
+date: 2010-06-23 17:27:13.000000000 +02:00
+categories: []
+tags: []
+---
+Is there wa way to force Wordpress to stop doing \n -> <br> translation? As someone who edits post in emacs, it's a real pain.

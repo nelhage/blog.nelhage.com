@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@Brian_Sniffen That''s one obvious problem, yeah. T...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1641
+wordpress_url: http://twitter-171983277584957440
+date: 2012-02-21 11:43:03.000000000 +01:00
+categories: []
+tags: []
+---
+@Brian_Sniffen That's one obvious problem, yeah. They do provide a Chrome app that can help mitigate that risk.

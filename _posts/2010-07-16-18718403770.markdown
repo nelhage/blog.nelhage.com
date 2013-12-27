@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Unexpected side effects of acquiring timbuk2 bag:...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 777
+wordpress_url: http://twitter-18718403770
+date: 2010-07-16 17:57:25.000000000 +02:00
+categories: []
+tags: []
+---
+Unexpected side effects of acquiring timbuk2 bag: I feel compelled to bike more, because why clearly that must be why I own a messenger bag.

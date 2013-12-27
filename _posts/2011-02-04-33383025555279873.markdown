@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett If they had a consistent interpretation,...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1150
+wordpress_url: http://twitter-33383025555279873
+date: 2011-02-04 00:35:08.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett If they had a consistent interpretation, rather than one based on heuristics they made up, I'd be more OK with it.

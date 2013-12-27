@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: When you delete a Google Plus account, google asks...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1643
+wordpress_url: http://twitter-172097591478206465
+date: 2012-02-21 19:17:17.000000000 +01:00
+categories: []
+tags: []
+---
+When you delete a Google Plus account, google asks for an optional 500-character "why?" text box ... and your gender. wat?

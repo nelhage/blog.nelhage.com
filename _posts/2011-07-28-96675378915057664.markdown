@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I was lead to believe that laptops with Intel vide...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1340
+wordpress_url: http://twitter-96675378915057664
+date: 2011-07-28 16:16:21.000000000 +02:00
+categories: []
+tags: []
+---
+I was lead to believe that laptops with Intel video cards worked with Linux these days. This was apparently a goddamned lie.

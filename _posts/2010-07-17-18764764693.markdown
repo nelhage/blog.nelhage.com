@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: What's the recommended password-generation tool th...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 778
+wordpress_url: http://twitter-18764764693
+date: 2010-07-17 09:07:12.000000000 +02:00
+categories: []
+tags: []
+---
+What's the recommended password-generation tool these days? I mostly use apg, but I don't love it.

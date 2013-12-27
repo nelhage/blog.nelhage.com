@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ChristineSpang I have &#47;home on an encrypted parti...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1061
+wordpress_url: http://twitter-12703674929250304
+date: 2010-12-08 23:02:46.000000000 +01:00
+categories: []
+tags: []
+---
+@ChristineSpang I have &#47;home on an encrypted partition on my netbook. startup is a bit slower, but otherwise I haven't really noticed.

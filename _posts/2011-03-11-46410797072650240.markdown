@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb All the cool kids write their event-based...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1191
+wordpress_url: http://twitter-46410797072650240
+date: 2011-03-11 23:22:50.000000000 +01:00
+categories: []
+tags: []
+---
+@thegdb All the cool kids write their event-based applications in node.js, anyways.

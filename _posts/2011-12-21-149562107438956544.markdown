@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@KenJennings Obviously I''d kill Watson to save hum...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1561
+wordpress_url: http://twitter-149562107438956544
+date: 2011-12-21 14:49:19.000000000 +01:00
+categories: []
+tags: []
+---
+@KenJennings Obviously I'd kill Watson to save humanity, but I'm pretty torn between you and Brad on the other two.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@sartak Yeah, it''s basically just perl with fewer...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1295
+wordpress_url: http://twitter-81814594531753984
+date: 2011-06-17 16:04:54.000000000 +02:00
+categories: []
+tags: []
+---
+@sartak Yeah, it's basically just perl with fewer Segmentation Fault (core dumped).

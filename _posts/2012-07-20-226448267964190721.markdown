@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I find myself wanting "tweet this workout" in @run...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1780
+wordpress_url: http://twitter-226448267964190721
+date: 2012-07-20 18:47:28.000000000 +02:00
+categories: []
+tags: []
+---
+I find myself wanting "tweet this workout" in @runkeeper. I usually hate tweets from random apps, but it seems a decent way to celebrate PRs

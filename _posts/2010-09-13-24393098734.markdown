@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Suppose you wrote an evil Twitter app. Would you s...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 889
+wordpress_url: http://twitter-24393098734
+date: 2010-09-13 11:39:19.000000000 +02:00
+categories: []
+tags: []
+---
+Suppose you wrote an evil Twitter app. Would you steal some random app's OAuth key, or Twitter's? Which is Twitter more likely to disable?

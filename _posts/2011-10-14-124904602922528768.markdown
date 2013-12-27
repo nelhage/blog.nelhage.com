@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: This Ubuntu&#47;Gnome locking-down-customization thing...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1458
+wordpress_url: http://twitter-124904602922528768
+date: 2011-10-14 13:49:12.000000000 +02:00
+categories: []
+tags: []
+---
+This Ubuntu&#47;Gnome locking-down-customization thing is getting on my nerves. Soon running XMonad on Ubuntu will be as hard as on OS X.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I am informed that gnome-panel is still configurab...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1460
+wordpress_url: http://twitter-124906172489809920
+date: 2011-10-14 13:55:26.000000000 +02:00
+categories: []
+tags: []
+---
+I am informed that gnome-panel is still configurable, I just have to *alt*-right-click, these days. Of course! How did I not know that??

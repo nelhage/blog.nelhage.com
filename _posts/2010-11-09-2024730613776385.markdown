@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Computers are so damn *slow* sometimes.
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 995
+wordpress_url: http://twitter-2024730613776385
+date: 2010-11-09 11:48:28.000000000 +01:00
+categories: []
+tags: []
+---
+Computers are so damn *slow* sometimes.

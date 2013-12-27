@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@DavidAndGoliath ftr I had nothing to with the tim...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1050
+wordpress_url: http://twitter-10839754220244992
+date: 2010-12-03 19:36:13.000000000 +01:00
+categories: []
+tags: []
+---
+@DavidAndGoliath ftr I had nothing to with the timing of the AF_ECONET announcements. I reported the bugs privately weeks before.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett I hate argparse. It is full of arbitrary...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1148
+wordpress_url: http://twitter-33380336050110464
+date: 2011-02-04 00:24:26.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett I hate argparse. It is full of arbitrary heuristics and misunderstandings about option parsing. http:&#47;&#47;t.co&#47;dz93PU0

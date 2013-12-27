@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon Hey. Sorry for bringing you into this, but...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 890
+wordpress_url: http://twitter-24400908959
+date: 2010-09-13 13:22:12.000000000 +02:00
+categories: []
+tags: []
+---
+@zigdon Hey. Sorry for bringing you into this, but the rot13 was absurd enough I had to share :)

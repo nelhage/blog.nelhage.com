@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: And all the extra chrome in the Android app just w...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1540
+wordpress_url: http://twitter-144855689909637120
+date: 2011-12-08 15:07:42.000000000 +01:00
+categories: []
+tags: []
+---
+And all the extra chrome in the Android app just wastes screen space, and the UI feels quie laggy on my N1. #NewNewTwitter

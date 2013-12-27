@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit I actually often prefer it over nano if I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 905
+wordpress_url: http://twitter-25041782425
+date: 2010-09-20 12:58:42.000000000 +02:00
+categories: []
+tags: []
+---
+@emilsit I actually often prefer it over nano if I'm on a minimal system and those are my only options.

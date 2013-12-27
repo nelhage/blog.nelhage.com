@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kevinriggle At least that''s often easier to debug...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 512
+wordpress_url: http://twitter-9541192926
+date: 2010-02-23 16:25:52.000000000 +01:00
+categories: []
+tags: []
+---
+@kevinriggle At least that's often easier to debug than people who don't free
+memory they do allocate?

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea No, and GCC will warn on -Wall. You ca...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1537
+wordpress_url: http://twitter-142437201714757632
+date: 2011-12-01 22:57:29.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea No, and GCC will warn on -Wall. You can still use if((foo = bar)) if you really mean it.

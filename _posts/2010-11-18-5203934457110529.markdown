@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@natfriedman Well, obviously that''s just because t...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1008
+wordpress_url: http://twitter-5203934457110529
+date: 2010-11-18 06:21:29.000000000 +01:00
+categories: []
+tags: []
+---
+@natfriedman Well, obviously that's just because the government's been doing such a good job. We need more of the same!

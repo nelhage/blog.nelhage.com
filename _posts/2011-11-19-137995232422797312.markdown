@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: All I want is an interface for booking complicated...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1521
+wordpress_url: http://twitter-137995232422797312
+date: 2011-11-19 16:46:41.000000000 +01:00
+categories: []
+tags: []
+---
+All I want is an interface for booking complicated international flights that doesn't feel like solving a crazy logic puzzle.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@sartak I''ll be there'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1159
+wordpress_url: http://twitter-35776189947846656
+date: 2011-02-10 15:04:43.000000000 +01:00
+categories: []
+tags: []
+---
+@sartak I'll be there

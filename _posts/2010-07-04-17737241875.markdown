@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Just install a SEGV handler and emulate the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 758
+wordpress_url: http://twitter-17737241875
+date: 2010-07-04 14:30:02.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb Just install a SEGV handler and emulate the accesses!

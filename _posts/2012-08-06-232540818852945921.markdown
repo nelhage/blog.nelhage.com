@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor It''s possible they were thinking of e...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1801
+wordpress_url: http://twitter-232540818852945921
+date: 2012-08-06 14:17:06.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor It's possible they were thinking of epoll on an inotify fd, which should work file.

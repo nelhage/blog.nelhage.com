@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Or do we have to fall back to valloc() or s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1715
+wordpress_url: http://twitter-190159974985510912
+date: 2012-04-11 15:30:45.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb Or do we have to fall back to valloc() or something? I think mosh already has a portable wrapper for aligned heap allocations.

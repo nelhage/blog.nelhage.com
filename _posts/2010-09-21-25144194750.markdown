@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Tracked a deadlock on one of my machines to some c...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 918
+wordpress_url: http://twitter-25144194750
+date: 2010-09-21 15:12:00.000000000 +02:00
+categories: []
+tags: []
+---
+Tracked a deadlock on one of my machines to some caller (as yet unidentified) in ext3 not using GFP_NOFS. Let's see if it's fixed upstream.

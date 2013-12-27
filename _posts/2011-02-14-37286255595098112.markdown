@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'At the #IBMWatson on #Jeopardy party at MIT. It''s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1167
+wordpress_url: http://twitter-37286255595098112
+date: 2011-02-14 19:05:10.000000000 +01:00
+categories: []
+tags: []
+---
+At the #IBMWatson on #Jeopardy party at MIT. It's over capacity already.

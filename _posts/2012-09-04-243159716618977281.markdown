@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea Try -U_FORTIY_SOURCE, maybe?'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1824
+wordpress_url: http://twitter-243159716618977281
+date: 2012-09-04 21:32:48.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea Try -U_FORTIY_SOURCE, maybe?

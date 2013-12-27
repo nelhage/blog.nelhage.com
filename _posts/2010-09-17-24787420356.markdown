@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon Fortunately, I think most of my users shar...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 894
+wordpress_url: http://twitter-24787420356
+date: 2010-09-17 15:55:04.000000000 +02:00
+categories: []
+tags: []
+---
+@zigdon Fortunately, I think most of my users share my opinions about embedded media, so I can probably ignore it for a while :)

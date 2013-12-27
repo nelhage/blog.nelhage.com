@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Is it OK to release an exploit for a vuln as soon...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1052
+wordpress_url: http://twitter-10838813047783425
+date: 2010-12-03 19:32:29.000000000 +01:00
+categories: []
+tags: []
+---
+Is it OK to release an exploit for a vuln as soon as a patch is available? Is it more responsible to give people time to patch? How long?

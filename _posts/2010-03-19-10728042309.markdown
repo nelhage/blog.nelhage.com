@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@natfriedman Please do. I rarely bother to listen...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 573
+wordpress_url: http://twitter-10728042309
+date: 2010-03-19 11:40:08.000000000 +01:00
+categories: []
+tags: []
+---
+@natfriedman Please do. I rarely bother to listen to podcasts, but I'll skim
+transcripts.

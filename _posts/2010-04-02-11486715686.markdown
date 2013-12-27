@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kevinriggle I use C-z.  I ~never background anyth...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 597
+wordpress_url: http://twitter-11486715686
+date: 2010-04-02 11:46:55.000000000 +02:00
+categories: []
+tags: []
+---
+@kevinriggle I use C-z.  I ~never background anything if I'm in screen, because I
+can just make a new window.

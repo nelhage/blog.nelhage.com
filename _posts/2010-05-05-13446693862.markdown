@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Whoa, my google searches just grew a sidebar on th...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 649
+wordpress_url: http://twitter-13446693862
+date: 2010-05-05 16:52:04.000000000 +02:00
+categories: []
+tags: []
+---
+Whoa, my google searches just grew a sidebar on the left. I don't think I like it.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea That program was a response to a frien...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1535
+wordpress_url: http://twitter-142069220098838528
+date: 2011-11-30 22:35:16.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea That program was a response to a friend's challenge, "What's the most you can do in a C program with no stdlib or asm()?"

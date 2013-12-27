@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@APStylebook http:&#47;&#47;t.co&#47;c10HHULd'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1630
+wordpress_url: http://twitter-169143566365507584
+date: 2012-02-13 15:39:03.000000000 +01:00
+categories: []
+tags: []
+---
+@APStylebook http:&#47;&#47;t.co&#47;c10HHULd

@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@clarebayley Because I have a strict policy agains...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 603
+wordpress_url: http://twitter-11650366840
+date: 2010-04-05 13:04:10.000000000 +02:00
+categories: []
+tags: []
+---
+@clarebayley Because I have a strict policy against entering any contest
+advertised with the use of "u" in place of "you".

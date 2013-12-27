@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Google maps on my #n1 picked up a "show me all ope...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 792
+wordpress_url: http://twitter-19691138569
+date: 2010-07-27 18:32:44.000000000 +02:00
+categories: []
+tags: []
+---
+Google maps on my #n1 picked up a "show me all open coffee shops in the area" button. I've wanted this forever,  so I'm pretty thrilled.

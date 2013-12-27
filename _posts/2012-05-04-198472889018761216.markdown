@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@semifor Oh, I agree with you entirely. I''ve been...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1732
+wordpress_url: http://twitter-198472889018761216
+date: 2012-05-04 14:03:18.000000000 +02:00
+categories: []
+tags: []
+---
+@semifor Oh, I agree with you entirely. I've been ranting about this for some time now: http:&#47;&#47;t.co&#47;imV8Jxkw

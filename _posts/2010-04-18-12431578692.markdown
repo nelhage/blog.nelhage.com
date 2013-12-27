@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Nurse thinks I probably have mono. Waiting on bloo...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 621
+wordpress_url: http://twitter-12431578692
+date: 2010-04-18 22:09:42.000000000 +02:00
+categories: []
+tags: []
+---
+Nurse thinks I probably have mono. Waiting on blood tests. Hoo-fucking-ray.

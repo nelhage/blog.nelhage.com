@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: hg is what you would get if you try to rewrite git...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1452
+wordpress_url: http://twitter-124557272499228672
+date: 2011-10-13 14:49:02.000000000 +02:00
+categories: []
+tags: []
+---
+hg is what you would get if you try to rewrite git so that it would make sense for subversion users.

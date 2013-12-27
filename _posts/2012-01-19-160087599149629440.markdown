@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@Manayachel What range and target size, man? Your...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1603
+wordpress_url: http://twitter-160087599149629440
+date: 2012-01-19 15:53:52.000000000 +01:00
+categories: []
+tags: []
+---
+@Manayachel What range and target size, man? Your score is meaningless without context :-)

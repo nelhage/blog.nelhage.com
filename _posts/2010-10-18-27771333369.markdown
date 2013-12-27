@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Quite impressed by @taviso's glibc find. I obvious...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 959
+wordpress_url: http://twitter-27771333369
+date: 2010-10-18 17:35:19.000000000 +02:00
+categories: []
+tags: []
+---
+Quite impressed by @taviso's glibc find. I obviously have no fear of the kernel, but I find glibc remarkably difficult to read.

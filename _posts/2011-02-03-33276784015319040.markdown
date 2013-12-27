@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb And it won''t be in a few months, either. #...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1145
+wordpress_url: http://twitter-33276784015319040
+date: 2011-02-03 17:32:58.000000000 +01:00
+categories: []
+tags: []
+---
+@thegdb And it won't be in a few months, either. #yodawgiheardyoulikenat

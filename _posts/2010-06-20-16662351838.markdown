@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I feel like it reveals something fascinating about...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 727
+wordpress_url: http://twitter-16662351838
+date: 2010-06-20 22:36:17.000000000 +02:00
+categories: []
+tags: []
+---
+I feel like it reveals something fascinating about my brain that I can think "git checkout HEAD^" but type "cd ..", without realizing it.

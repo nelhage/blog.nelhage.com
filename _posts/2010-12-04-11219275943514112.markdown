@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Stumbled upon <http:&#47;&#47;lwn.net&#47;Articles&#47;14303&#47;&g...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1053
+wordpress_url: http://twitter-11219275943514112
+date: 2010-12-04 20:44:18.000000000 +01:00
+categories: []
+tags: []
+---
+Stumbled upon <http:&#47;&#47;lwn.net&#47;Articles&#47;14303&#47;>. "LIBC_ENABLE_SECURE_HACK" -- how did fscaps ever seem like a good idea?

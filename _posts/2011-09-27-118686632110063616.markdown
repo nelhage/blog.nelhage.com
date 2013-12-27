@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb pffft, :perl is *for* evil :)'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1429
+wordpress_url: http://twitter-118686632110063616
+date: 2011-09-27 10:01:12.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb pffft, :perl is *for* evil :)

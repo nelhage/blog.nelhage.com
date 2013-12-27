@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: There's an excellent (subscribers-only for now) wr...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1207
+wordpress_url: http://twitter-49593882865967105
+date: 2011-03-20 18:11:17.000000000 +01:00
+categories: []
+tags: []
+---
+There's an excellent (subscribers-only for now) writeup on @LWNnet debunking the recent Bionic FUD. Short version: They're totally wrong.

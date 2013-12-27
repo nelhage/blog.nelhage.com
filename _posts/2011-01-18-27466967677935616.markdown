@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: e.g. You are not allowed to display notifications...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1108
+wordpress_url: http://twitter-27466967677935616
+date: 2011-01-18 16:46:50.000000000 +01:00
+categories: []
+tags: []
+---
+e.g. You are not allowed to display notifications for follow or unfollow events, because Twitter doesn't do so. http:&#47;&#47;bit.ly&#47;hFVjGM &sect;II.4.B

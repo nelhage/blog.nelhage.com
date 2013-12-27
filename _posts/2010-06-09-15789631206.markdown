@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Wow, it's been beautiful out all this week.
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 710
+wordpress_url: http://twitter-15789631206
+date: 2010-06-09 12:56:05.000000000 +02:00
+categories: []
+tags: []
+---
+Wow, it's been beautiful out all this week.

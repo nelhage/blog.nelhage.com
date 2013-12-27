@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cstross Dude, you had by far one of the highest r...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1764
+wordpress_url: http://twitter-219836980236791809
+date: 2012-07-02 12:56:35.000000000 +02:00
+categories: []
+tags: []
+---
+@cstross Dude, you had by far one of the highest ratios of answered questions of IAmA's I've seen. Good job, now give your wrists a break.

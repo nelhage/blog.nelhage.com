@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder Let''s be honest, it was past time to put...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1158
+wordpress_url: http://twitter-35470842741653504
+date: 2011-02-09 18:51:22.000000000 +01:00
+categories: []
+tags: []
+---
+@ebroder Let's be honest, it was past time to put the poor thing out of its misery.

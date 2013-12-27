@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh I''ve enjoyed it when I''ve been there, but...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 914
+wordpress_url: http://twitter-25137764659
+date: 2010-09-21 13:33:12.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh I've enjoyed it when I've been there, but for some reason it's never made my list of places I hit up regularly.

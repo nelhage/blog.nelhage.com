@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I believe @obra has a script that maps Twit...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 954
+wordpress_url: http://twitter-27383280762
+date: 2010-10-14 18:42:26.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb I believe @obra has a script that maps Twitters to a mailbox with correct In-Reply-To, and reads Twitter in mutt.

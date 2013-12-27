@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon Good to know. I''ve been using them for don...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 898
+wordpress_url: http://twitter-24794503384
+date: 2010-09-17 17:50:08.000000000 +02:00
+categories: []
+tags: []
+---
+@zigdon Good to know. I've been using them for donations for <http:&#47;&#47;iron-blogger.mit.edu&#47;>, but I keep hearing stories that worry me.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett Man, there''s a handle I haven''t seen in...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1446
+wordpress_url: http://twitter-122811975955779584
+date: 2011-10-08 19:13:51.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett Man, there's a handle I haven't seen in years.

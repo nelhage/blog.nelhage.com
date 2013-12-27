@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@juldea The case of long trail really makes that s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1297
+wordpress_url: http://twitter-82171805732843520
+date: 2011-06-18 15:44:19.000000000 +02:00
+categories: []
+tags: []
+---
+@juldea The case of long trail really makes that shot.

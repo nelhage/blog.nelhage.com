@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@wdaher Yes! You put your cursor on a word and the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 908
+wordpress_url: http://twitter-25051621160
+date: 2010-09-20 15:29:28.000000000 +02:00
+categories: []
+tags: []
+---
+@wdaher Yes! You put your cursor on a word and the translation appears at the bottom.

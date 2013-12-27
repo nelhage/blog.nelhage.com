@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@adamfblahblah At a guess, make sure they''re using...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1084
+wordpress_url: http://twitter-19844704623394816
+date: 2010-12-28 15:58:40.000000000 +01:00
+categories: []
+tags: []
+---
+@adamfblahblah At a guess, make sure they're using the same padding algo? I think openssl uses PKCS#5, but I'm not positive.

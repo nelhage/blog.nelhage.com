@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm all for more trains, but I wonder how many pol...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1211
+wordpress_url: http://twitter-49977417640574977
+date: 2011-03-21 19:35:19.000000000 +01:00
+categories: []
+tags: []
+---
+I'm all for more trains, but I wonder how many poll respondents who support high-speed rail would be just as happy if the TSA just went away

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@djrbliss Yeah, sizeof(struct sock_bcm)=688 on my...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 983
+wordpress_url: http://twitter-29498261058
+date: 2010-11-02 15:23:49.000000000 +01:00
+categories: []
+tags: []
+---
+@djrbliss Yeah, sizeof(struct sock_bcm)=688 on my system, so SLAB or SLUB'll give you 1024 bytes, and there's no actual overwrite.

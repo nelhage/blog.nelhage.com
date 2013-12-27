@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@bitexploder I think the right answer is actually...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1319
+wordpress_url: http://twitter-91193398635143169
+date: 2011-07-13 13:12:55.000000000 +02:00
+categories: []
+tags: []
+---
+@bitexploder I think the right answer is actually to unchain the VGA memory and do double-buffering that way. But that's a pain.

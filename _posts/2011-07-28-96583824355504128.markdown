@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 The thing is, he totally would.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1338
+wordpress_url: http://twitter-96583824355504128
+date: 2011-07-28 10:12:32.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 The thing is, he totally would.

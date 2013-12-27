@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm embarassed that I've only just started using "...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 984
+wordpress_url: http://twitter-29633430689
+date: 2010-11-03 22:48:37.000000000 +01:00
+categories: []
+tags: []
+---
+I'm embarassed that I've only just started using "kvm -kernel bzImage", instead of installing kernels into a loop-mounted disk image.

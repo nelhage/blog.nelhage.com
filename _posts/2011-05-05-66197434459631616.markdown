@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Just stumbled upon my second patch file where patc...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1256
+wordpress_url: http://twitter-66197434459631616
+date: 2011-05-05 13:47:52.000000000 +02:00
+categories: []
+tags: []
+---
+Just stumbled upon my second patch file where patch(1) and "git apply" both apply it cleanly -- in totally different ways. FML.

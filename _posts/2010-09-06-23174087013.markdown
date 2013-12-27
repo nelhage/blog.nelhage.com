@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@Catfish_Man People do awesome stuff with steampun...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 878
+wordpress_url: http://twitter-23174087013
+date: 2010-09-06 16:13:51.000000000 +02:00
+categories: []
+tags: []
+---
+@Catfish_Man People do awesome stuff with steampunk, but when the con has two "steam punk TF2" groups running around, you've crossed a line.

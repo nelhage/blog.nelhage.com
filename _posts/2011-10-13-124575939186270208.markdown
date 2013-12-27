@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Also, the default semantics of 'git pull' and 'git...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1453
+wordpress_url: http://twitter-124575939186270208
+date: 2011-10-13 16:03:13.000000000 +02:00
+categories: []
+tags: []
+---
+Also, the default semantics of 'git pull' and 'git push' are deliberately designed to be as confusing as possible. #weasels

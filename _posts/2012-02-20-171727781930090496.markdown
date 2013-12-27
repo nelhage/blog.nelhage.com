@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Spending a day making some tool I use regularly 10...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1638
+wordpress_url: http://twitter-171727781930090496
+date: 2012-02-20 18:47:48.000000000 +01:00
+categories: []
+tags: []
+---
+Spending a day making some tool I use regularly 10x or 100x faster is definitely one of the most satisfying things ever.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jduck1337 Galaxy Nexus. Didn''t know there was a s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1788
+wordpress_url: http://twitter-226730473391538176
+date: 2012-07-21 13:28:51.000000000 +02:00
+categories: []
+tags: []
+---
+@jduck1337 Galaxy Nexus. Didn't know there was a setting. I can turn off wifi, but then I always forget to turn it on when I want it later

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor Linux does not in fact support async...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1805
+wordpress_url: http://twitter-232541945761779713
+date: 2012-08-06 14:21:34.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor Linux does not in fact support async io via epoll on (most?) normal files. It's really meant for sockets and their ilk.

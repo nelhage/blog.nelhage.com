@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Geeze, @github is hiring like mad these days. Cong...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1160
+wordpress_url: http://twitter-35792607414067200
+date: 2011-02-10 16:09:57.000000000 +01:00
+categories: []
+tags: []
+---
+Geeze, @github is hiring like mad these days. Congrats to all the new hires.

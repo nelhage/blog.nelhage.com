@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jonoberheide In his "defense", he didn''t make it...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1139
+wordpress_url: http://twitter-32540905332285440
+date: 2011-02-01 16:48:51.000000000 +01:00
+categories: []
+tags: []
+---
+@jonoberheide In his "defense", he didn't make it up -- he just copied some other hopelessly confused reporter: http:&#47;&#47;t.co&#47;O4czTDI

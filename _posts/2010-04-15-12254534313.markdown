@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: What the FUCK, Apple. How can people continue to s...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 615
+wordpress_url: http://twitter-12254534313
+date: 2010-04-15 20:51:52.000000000 +02:00
+categories: []
+tags: []
+---
+What the FUCK, Apple. How can people continue to support this
+platform? http:&#47;&#47;bit.ly&#47;drj9aq

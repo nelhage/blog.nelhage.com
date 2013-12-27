@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Finally! A Doctor Who question at @NerdPubTrivia!...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1411
+wordpress_url: http://twitter-111605998959067136
+date: 2011-09-07 21:05:18.000000000 +02:00
+categories: []
+tags: []
+---
+Finally! A Doctor Who question at @NerdPubTrivia! And it could be the one Shatnerion needs to carry the day...

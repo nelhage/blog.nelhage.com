@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Discovered about half a dozen obscure bugs in KVM'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1239
+wordpress_url: http://twitter-57954530062635008
+date: 2011-04-12 19:53:31.000000000 +02:00
+categories: []
+tags: []
+---
+Discovered about half a dozen obscure bugs in KVM's x86 emulation trying to get my toy OS booting under it. This is disheartening.

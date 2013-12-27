@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Today's @OkCupid blog post reads like self-parody....
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1244
+wordpress_url: http://twitter-60484798447222784
+date: 2011-04-19 19:27:54.000000000 +02:00
+categories: []
+tags: []
+---
+Today's @OkCupid blog post reads like self-parody. No attempt at insightful analysis, just a bunch of meaningless correlation and sex jokes.

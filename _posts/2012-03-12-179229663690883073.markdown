@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Blogged my thoughts on why node.js is worth caring...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1672
+wordpress_url: http://twitter-179229663690883073
+date: 2012-03-12 11:37:36.000000000 +01:00
+categories: []
+tags: []
+---
+Blogged my thoughts on why node.js is worth caring about -- and it has nothing to do with performance. http:&#47;&#47;t.co&#47;J5AEZrf3

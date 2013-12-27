@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@geofft It''s pretty standard industry jargon. Admi...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1198
+wordpress_url: http://twitter-48516270047510529
+date: 2011-03-17 18:49:14.000000000 +01:00
+categories: []
+tags: []
+---
+@geofft It's pretty standard industry jargon. Admittedly, that's not really a comment on whether it's dumb or not.

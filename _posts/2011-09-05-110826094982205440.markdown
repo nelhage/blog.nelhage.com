@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Looks like we'll be on our way shortly. That wasn'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1401
+wordpress_url: http://twitter-110826094982205440
+date: 2011-09-05 17:26:14.000000000 +02:00
+categories: []
+tags: []
+---
+Looks like we'll be on our way shortly. That wasn't too terrible.

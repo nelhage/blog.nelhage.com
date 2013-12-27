@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Despite getjar.com's best efforts to suck irrecove...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 955
+wordpress_url: http://twitter-27442784133
+date: 2010-10-15 09:52:44.000000000 +02:00
+categories: []
+tags: []
+---
+Despite getjar.com's best efforts to suck irrecoverably, I have successfully obtained Angry Birds for Android. Goodbye, productivity.

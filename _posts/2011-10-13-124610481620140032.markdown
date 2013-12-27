@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea Sure, if nothing else you can use an e...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1455
+wordpress_url: http://twitter-124610481620140032
+date: 2011-10-13 18:20:28.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea Sure, if nothing else you can use an explicit stack data structure to maintain state.

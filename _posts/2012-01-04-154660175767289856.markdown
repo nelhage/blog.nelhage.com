@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea I''m often on both (more often on freen...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1574
+wordpress_url: http://twitter-154660175767289856
+date: 2012-01-04 16:27:14.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea I'm often on both (more often on freenode), although I'm not particularly active anywhere.

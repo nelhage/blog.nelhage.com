@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Playing with MongoDB. This looks promising, and I'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 612
+wordpress_url: http://twitter-12080499383
+date: 2010-04-12 22:18:42.000000000 +02:00
+categories: []
+tags: []
+---
+Playing with MongoDB. This looks promising, and I'm reasonably
+impressed so far.

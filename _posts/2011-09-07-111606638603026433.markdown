@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: But no, Bigger On The Inside got it too, leaving S...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1412
+wordpress_url: http://twitter-111606638603026433
+date: 2011-09-07 21:07:50.000000000 +02:00
+categories: []
+tags: []
+---
+But no, Bigger On The Inside got it too, leaving Shatnerion with a solid but unsatisfying second place finish at @NerdPubTrivia

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: OH "This is amazing! It's like how Richard Stallma...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1621
+wordpress_url: http://twitter-165675410816905216
+date: 2012-02-04 01:57:50.000000000 +01:00
+categories: []
+tags: []
+---
+OH "This is amazing! It's like how Richard Stallman would interpret Unicode mixed with ANSI escape sequences."

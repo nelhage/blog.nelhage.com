@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit There''s lots of specifics; Better perform...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1510
+wordpress_url: http://twitter-135503966749458432
+date: 2011-11-12 19:47:17.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit There's lots of specifics; Better performance, concurrent IO without having to deal with Python's broken threads, come to mind.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Ordered food online. The desktop notification from...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1164
+wordpress_url: http://twitter-36915619450331136
+date: 2011-02-13 18:32:24.000000000 +01:00
+categories: []
+tags: []
+---
+Ordered food online. The desktop notification from gmail popped up even before the confirmation page finished loading. Welcome to realtime.

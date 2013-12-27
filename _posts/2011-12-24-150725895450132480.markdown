@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea Really, you probably only would have n...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1567
+wordpress_url: http://twitter-150725895450132480
+date: 2011-12-24 19:53:48.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea Really, you probably only would have needed two or three.

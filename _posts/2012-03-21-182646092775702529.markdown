@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea Oh, hey, I know a guy at the startup t...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1680
+wordpress_url: http://twitter-182646092775702529
+date: 2012-03-21 21:53:16.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea Oh, hey, I know a guy at the startup that makes those.

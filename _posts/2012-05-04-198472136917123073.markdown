@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@semifor Not that I would ever advocate for such a...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1733
+wordpress_url: http://twitter-198472136917123073
+date: 2012-05-04 14:00:19.000000000 +02:00
+categories: []
+tags: []
+---
+@semifor Not that I would ever advocate for such a thing. Of course.

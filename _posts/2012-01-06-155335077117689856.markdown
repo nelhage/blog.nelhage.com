@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I really want Twitter to show me a "tweets&#47;day" fi...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1584
+wordpress_url: http://twitter-155335077117689856
+date: 2012-01-06 13:09:03.000000000 +01:00
+categories: []
+tags: []
+---
+I really want Twitter to show me a "tweets&#47;day" figure for users when I'm deciding whether or not to follow them.

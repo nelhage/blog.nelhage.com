@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Attempting an experiment: For the next week, inste...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1254
+wordpress_url: http://twitter-65806214096891905
+date: 2011-05-04 11:53:18.000000000 +02:00
+categories: []
+tags: []
+---
+Attempting an experiment: For the next week, instead of reading @reddit or @newsycombinator when I'm punty, I'll read @nytimes.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon LAX -> AUS is like 15h. Leave Friday, a...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1003
+wordpress_url: http://twitter-3298952615043072
+date: 2010-11-13 00:11:46.000000000 +01:00
+categories: []
+tags: []
+---
+@zigdon LAX -> AUS is like 15h. Leave Friday, arrive Sunday, local time.

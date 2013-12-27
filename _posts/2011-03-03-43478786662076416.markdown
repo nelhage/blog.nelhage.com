@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Got item: Gingerbread on my #nexus1. Don''t love th...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1180
+wordpress_url: http://twitter-43478786662076416
+date: 2011-03-03 21:12:05.000000000 +01:00
+categories: []
+tags: []
+---
+Got item: Gingerbread on my #nexus1. Don't love the new look so far; No other comment yet.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Slides from my #DEFCON and #BlackHat talk are post...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1363
+wordpress_url: http://twitter-100729507622825984
+date: 2011-08-08 20:46:00.000000000 +02:00
+categories: []
+tags: []
+---
+Slides from my #DEFCON and #BlackHat talk are posted, code to follow: http:&#47;&#47;blog.nelhage.com&#47;2011&#47;08&#47;breaking-out-of-kvm&#47;

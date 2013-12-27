@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I desperately want to believe this is a joke, but...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 788
+wordpress_url: http://twitter-19355871209
+date: 2010-07-23 13:23:12.000000000 +02:00
+categories: []
+tags: []
+---
+I desperately want to believe this is a joke, but I don't think it is. Please don't do it, Ubuntu. Please. http:&#47;&#47;bit.ly&#47;94weRH

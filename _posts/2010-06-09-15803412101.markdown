@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I kinda wish I could drop everything and spend the...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 711
+wordpress_url: http://twitter-15803412101
+date: 2010-06-09 17:31:42.000000000 +02:00
+categories: []
+tags: []
+---
+I kinda wish I could drop everything and spend the next week helping port #lldb to Linux.

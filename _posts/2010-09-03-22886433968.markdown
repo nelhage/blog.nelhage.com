@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Landed ATL, heading over to #dragoncon. Still unde...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 866
+wordpress_url: http://twitter-22886433968
+date: 2010-09-03 09:23:48.000000000 +02:00
+categories: []
+tags: []
+---
+Landed ATL, heading over to #dragoncon. Still undecided whether the 7am flight was a good plan.

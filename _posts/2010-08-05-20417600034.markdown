@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Attempting to wean myself off of MIT zephyr and ra...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 804
+wordpress_url: http://twitter-20417600034
+date: 2010-08-05 18:44:30.000000000 +02:00
+categories: []
+tags: []
+---
+Attempting to wean myself off of MIT zephyr and random web browsing at work. These days I need every minute of productivity I can get.

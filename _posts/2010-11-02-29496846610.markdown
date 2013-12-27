@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@djrbliss can_proto_register calls proto_register...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 980
+wordpress_url: http://twitter-29496846610
+date: 2010-11-02 15:03:07.000000000 +01:00
+categories: []
+tags: []
+---
+@djrbliss can_proto_register calls proto_register with alloc_slab=0, so I think the socket actually just comes from a kmalloc().

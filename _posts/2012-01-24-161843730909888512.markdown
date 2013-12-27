@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'From Zephyr, proposed interview question: "Here''s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1611
+wordpress_url: http://twitter-161843730909888512
+date: 2012-01-24 12:12:07.000000000 +01:00
+categories: []
+tags: []
+---
+From Zephyr, proposed interview question: "Here's a diff. You have N minutes to understand it, and then write an appropriate commit message"

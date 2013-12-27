@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@bensonk42 Yeah, websockets (via socket.io, so it''...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1690
+wordpress_url: http://twitter-185172656486760451
+date: 2012-03-28 21:12:56.000000000 +02:00
+categories: []
+tags: []
+---
+@bensonk42 Yeah, websockets (via socket.io, so it'll fall back to longpoll on browsers that don't support them).

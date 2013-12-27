@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: So much for this being "the headline you won't rea...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1188
+wordpress_url: http://twitter-46294483050049538
+date: 2011-03-11 15:40:39.000000000 +01:00
+categories: []
+tags: []
+---
+So much for this being "the headline you won't read" -- "Japan&rsquo;s Strict Building Codes Saved Lives": http:&#47;&#47;t.co&#47;FDmixIa

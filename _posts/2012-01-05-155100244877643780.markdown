@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gwillen Hm. Yeah, the log scale plot is definitel...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1580
+wordpress_url: http://twitter-155100244877643780
+date: 2012-01-05 21:35:54.000000000 +01:00
+categories: []
+tags: []
+---
+@gwillen Hm. Yeah, the log scale plot is definitely much less interesting. Alright, I'll stay tuned.

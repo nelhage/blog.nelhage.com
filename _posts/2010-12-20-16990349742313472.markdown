@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Some days I really hate open-source software. My k...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1071
+wordpress_url: http://twitter-16990349742313472
+date: 2010-12-20 18:56:29.000000000 +01:00
+categories: []
+tags: []
+---
+Some days I really hate open-source software. My kingdom for a decent omnigraffle&#47;visio port or clone. Dia is shit.

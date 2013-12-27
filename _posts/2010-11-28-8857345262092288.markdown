@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Ugh. NRT to ORD flight was forced to return to NRT...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1026
+wordpress_url: http://twitter-8857345262092288
+date: 2010-11-28 08:18:50.000000000 +01:00
+categories: []
+tags: []
+---
+Ugh. NRT to ORD flight was forced to return to NRT by a failed generator. Going to miss the connection in ORD, may not be back til Monday.

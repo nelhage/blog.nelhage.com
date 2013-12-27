@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gwillen It was hovering around 2-4 for months, an...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1581
+wordpress_url: http://twitter-155098734823346177
+date: 2012-01-05 21:29:54.000000000 +01:00
+categories: []
+tags: []
+---
+@gwillen It was hovering around 2-4 for months, and just spiked in the last few days, so it looks like possibly a specific event.

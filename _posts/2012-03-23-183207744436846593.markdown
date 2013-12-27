@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea You can never have enough connectors.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1682
+wordpress_url: http://twitter-183207744436846593
+date: 2012-03-23 11:05:04.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea You can never have enough connectors.

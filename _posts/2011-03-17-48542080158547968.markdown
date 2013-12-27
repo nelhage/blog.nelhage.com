@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@patrickc I''ve found it to be good enough that I d...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1199
+wordpress_url: http://twitter-48542080158547968
+date: 2011-03-17 20:31:48.000000000 +01:00
+categories: []
+tags: []
+---
+@patrickc I've found it to be good enough that I don't play that game, but also bad enough I want to stab someone at google at least weekly.

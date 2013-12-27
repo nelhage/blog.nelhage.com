@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Right, it''s no worse than setuid, but they...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1054
+wordpress_url: http://twitter-11310279543492608
+date: 2010-12-05 02:45:55.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb Right, it's no worse than setuid, but they didn't have the excuse of "but we didn't know any better" this time.

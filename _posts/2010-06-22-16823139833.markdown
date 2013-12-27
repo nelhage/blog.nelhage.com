@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Reading about implementing varargs on amd64. va_ar...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 731
+wordpress_url: http://twitter-16823139833
+date: 2010-06-22 23:58:38.000000000 +02:00
+categories: []
+tags: []
+---
+Reading about implementing varargs on amd64. va_arg can potentially generate two branches and need to reconstruct a struct in a tmp area.

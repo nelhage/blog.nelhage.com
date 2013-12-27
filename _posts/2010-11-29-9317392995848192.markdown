@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: First day back in the office after a two week vaca...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1033
+wordpress_url: http://twitter-9317392995848192
+date: 2010-11-29 14:46:54.000000000 +01:00
+categories: []
+tags: []
+---
+First day back in the office after a two week vacation. Utterly swamped already.

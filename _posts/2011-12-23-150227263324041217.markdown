@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm beginning to doubt that the AOSP actually buil...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1565
+wordpress_url: http://twitter-150227263324041217
+date: 2011-12-23 10:52:25.000000000 +01:00
+categories: []
+tags: []
+---
+I'm beginning to doubt that the AOSP actually builds at all. I've tried three or four times, get inscrutable failures every time.

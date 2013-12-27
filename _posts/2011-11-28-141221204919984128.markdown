@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I am skeptical that this is in any way a reasonabl...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1528
+wordpress_url: http://twitter-141221204919984128
+date: 2011-11-28 14:25:33.000000000 +01:00
+categories: []
+tags: []
+---
+I am skeptical that this is in any way a reasonable idea, but I think we can all agree that it is Awesome.

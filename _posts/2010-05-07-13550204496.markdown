@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Tried scribd's new HTML5 viewer. Still far shitter...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 650
+wordpress_url: http://twitter-13550204496
+date: 2010-05-07 10:01:16.000000000 +02:00
+categories: []
+tags: []
+---
+Tried scribd's new HTML5 viewer. Still far shitter than a native PDF viewer. Mousewheel and selecting text don't work at all (Chrome beta).

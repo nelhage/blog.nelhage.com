@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Watching @RealTimeWWII continues to be fascinating...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1494
+wordpress_url: http://twitter-132868153851125760
+date: 2011-11-05 13:13:31.000000000 +01:00
+categories: []
+tags: []
+---
+Watching @RealTimeWWII continues to be fascinating. I wonder if we could productively teach history using something like this.

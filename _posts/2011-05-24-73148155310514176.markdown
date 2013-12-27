@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kees_cook I''m more excited about SMEP. Although R...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1272
+wordpress_url: http://twitter-73148155310514176
+date: 2011-05-24 18:07:33.000000000 +02:00
+categories: []
+tags: []
+---
+@kees_cook I'm more excited about SMEP. Although RDRAND will be appreciated.

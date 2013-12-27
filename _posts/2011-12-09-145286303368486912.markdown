@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Excited for this trip, but the timing is a little...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1552
+wordpress_url: http://twitter-145286303368486912
+date: 2011-12-09 19:38:48.000000000 +01:00
+categories: []
+tags: []
+---
+Excited for this trip, but the timing is a little unfortunate -- I'd probably be out supporting @Occupy_Boston otherwise.

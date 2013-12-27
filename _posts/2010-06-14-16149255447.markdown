@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Did a do-release-upgrade to Lucid on my desktop ov...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 718
+wordpress_url: http://twitter-16149255447
+date: 2010-06-14 09:59:34.000000000 +02:00
+categories: []
+tags: []
+---
+Did a do-release-upgrade to Lucid on my desktop over the weekend. So far, nothing seems to be broken.

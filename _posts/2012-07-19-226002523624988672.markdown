@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@maccman But i bet Google maps does. Practically w...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1778
+wordpress_url: http://twitter-226002523624988672
+date: 2012-07-19 13:16:15.000000000 +02:00
+categories: []
+tags: []
+---
+@maccman But i bet Google maps does. Practically worthless.

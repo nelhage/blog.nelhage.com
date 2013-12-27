@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: How the hell do I have to wait on holds for five m...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1425
+wordpress_url: http://twitter-117833211647754240
+date: 2011-09-25 01:30:01.000000000 +02:00
+categories: []
+tags: []
+---
+How the hell do I have to wait on holds for five minutes to call a cab? How long until we have @uber in Boston?

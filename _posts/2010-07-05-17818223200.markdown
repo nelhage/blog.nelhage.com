@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@geofft @jessicamckellar Apparently, but why would...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 761
+wordpress_url: http://twitter-17818223200
+date: 2010-07-05 17:28:25.000000000 +02:00
+categories: []
+tags: []
+---
+@geofft @jessicamckellar Apparently, but why would that seem like a good idea? Besides, it'd be more fun to hexedit the fs image directly!

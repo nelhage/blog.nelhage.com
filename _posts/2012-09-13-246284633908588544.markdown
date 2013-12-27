@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor @ebroder&nbsp; seems to like IRCCloud well...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1832
+wordpress_url: http://twitter-246284633908588544
+date: 2012-09-13 12:30:07.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor @ebroder&nbsp; seems to like IRCCloud well enough; I haven't tried it myself.

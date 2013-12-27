@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: The Rio looks like it's going to be a much better...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1356
+wordpress_url: http://twitter-99266987137581057
+date: 2011-08-04 19:54:28.000000000 +02:00
+categories: []
+tags: []
+---
+The Rio looks like it's going to be a much better space for #defcon, though -- much more space.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Just watched Doctor Who. I think it is time to rew...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1282
+wordpress_url: http://twitter-77174434628243457
+date: 2011-06-04 20:46:33.000000000 +02:00
+categories: []
+tags: []
+---
+Just watched Doctor Who. I think it is time to rewatch some River Song episodes.

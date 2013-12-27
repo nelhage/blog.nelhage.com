@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gwillen I use ptrace to make the target fork a du...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1123
+wordpress_url: http://twitter-28940228685209601
+date: 2011-01-22 18:21:02.000000000 +01:00
+categories: []
+tags: []
+---
+@gwillen I use ptrace to make the target fork a dummy child and call setpgid on the child and itself, after which it can setsid again.

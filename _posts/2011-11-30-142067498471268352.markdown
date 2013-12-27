@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea I see no inline assembly here.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1531
+wordpress_url: http://twitter-142067498471268352
+date: 2011-11-30 22:28:25.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea I see no inline assembly here.

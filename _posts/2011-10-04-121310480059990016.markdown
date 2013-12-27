@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mjg59 gpointer is basically my favoritest useless...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1439
+wordpress_url: http://twitter-121310480059990016
+date: 2011-10-04 15:47:26.000000000 +02:00
+categories: []
+tags: []
+---
+@mjg59 gpointer is basically my favoritest useless typedef ever. Or maybe gconstpointer, for extra WTF.

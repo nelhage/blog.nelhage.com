@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Google, decide whether or not my GAFYD account is...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1314
+wordpress_url: http://twitter-85815956445741056
+date: 2011-06-28 17:04:53.000000000 +02:00
+categories: []
+tags: []
+---
+Google, decide whether or not my GAFYD account is a second-class citizen. I made it my main account, but now I can't use it for Google+.

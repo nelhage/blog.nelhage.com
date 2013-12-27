@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit Honestly, I think I''m more inclined to gi...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 829
+wordpress_url: http://twitter-21327670317
+date: 2010-08-16 12:28:29.000000000 +02:00
+categories: []
+tags: []
+---
+@emilsit Honestly, I think I'm more inclined to give if they just ask. It feels less like a bizarre ploy to subtly guilt me.

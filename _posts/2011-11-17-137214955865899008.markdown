@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@semenko It''s slightly larger and heavier, althoug...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1520
+wordpress_url: http://twitter-137214955865899008
+date: 2011-11-17 13:06:09.000000000 +01:00
+categories: []
+tags: []
+---
+@semenko It's slightly larger and heavier, although that probably wouldn't bug me if I hadn't just spent a month with the mini one.

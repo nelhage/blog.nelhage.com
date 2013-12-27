@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@muliby I had N threads, each repeatedly new[]ing...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1648
+wordpress_url: http://twitter-173786846197846016
+date: 2012-02-26 11:09:47.000000000 +01:00
+categories: []
+tags: []
+---
+@muliby I had N threads, each repeatedly new[]ing and delete[]ing 64M tmp buffers. Switched to long-lived per-thread allocations to fix it.

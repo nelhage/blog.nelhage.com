@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ChristineSpang As I understand it, app using xAut...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1265
+wordpress_url: http://twitter-71262212966199296
+date: 2011-05-19 13:13:30.000000000 +02:00
+categories: []
+tags: []
+---
+@ChristineSpang As I understand it, app using xAuth (e.g. barnowl) will no longer be able to access direct messages.

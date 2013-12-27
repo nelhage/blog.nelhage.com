@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I recommend consulting [Mogul 1996] as a st...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1677
+wordpress_url: http://twitter-179962178324021249
+date: 2012-03-14 12:08:21.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb I recommend consulting [Mogul 1996] as a starting point.

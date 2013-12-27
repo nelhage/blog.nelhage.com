@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gnprice Yeah, I actually just stumbled on that fo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1324
+wordpress_url: http://twitter-93357227297079296
+date: 2011-07-19 12:31:12.000000000 +02:00
+categories: []
+tags: []
+---
+@gnprice Yeah, I actually just stumbled on that for the News of the World scandal, and it's the closest I've found to what I want.

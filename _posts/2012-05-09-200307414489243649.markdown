@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb I am trying to see how many problems I can...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1735
+wordpress_url: http://twitter-200307414489243649
+date: 2012-05-09 15:33:03.000000000 +02:00
+categories: []
+tags: []
+---
+@thegdb I am trying to see how many problems I can come up with with that plan, without checking any documentation.

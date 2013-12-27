@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@seldo 0xabad1dea Technically, I was wondering why...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1443
+wordpress_url: http://twitter-121777129380782081
+date: 2011-10-05 22:41:44.000000000 +02:00
+categories: []
+tags: []
+---
+@seldo 0xabad1dea Technically, I was wondering why the hell everyone was tweeting U+F8FF PRIVATE USE, but I'm weird.

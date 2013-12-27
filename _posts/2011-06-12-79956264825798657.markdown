@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@divyekapoor Thanks for the suggestion -- I''ll loo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1288
+wordpress_url: http://twitter-79956264825798657
+date: 2011-06-12 13:00:33.000000000 +02:00
+categories: []
+tags: []
+---
+@divyekapoor Thanks for the suggestion -- I'll look into doing that this week.

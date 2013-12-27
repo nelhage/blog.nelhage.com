@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett I pirated the new WoT for the plane beca...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1020
+wordpress_url: http://twitter-6616005778345984
+date: 2010-11-22 03:52:33.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett I pirated the new WoT for the plane because the ebook won't be released until 2011. Would have happily paid hardcover price.

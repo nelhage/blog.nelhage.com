@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@juldea That''s what redeyes are for. Of course, th...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 683
+wordpress_url: http://twitter-14626867200
+date: 2010-05-24 10:35:26.000000000 +02:00
+categories: []
+tags: []
+---
+@juldea That's what redeyes are for. Of course, that does require being able to sleep on planes and&#47;or function on a night of shitty sleep.

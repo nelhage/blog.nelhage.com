@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Random observation of the day: You can do an end-r...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1156
+wordpress_url: http://twitter-35462728013324288
+date: 2011-02-09 18:19:07.000000000 +01:00
+categories: []
+tags: []
+---
+Random observation of the day: You can do an end-run around RLIMIT_NOFILE by storing fd's in unix sockets and monitoring them with epoll.

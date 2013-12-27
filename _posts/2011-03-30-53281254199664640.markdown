@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett Change it and break everyone using the o...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1228
+wordpress_url: http://twitter-53281254199664640
+date: 2011-03-30 22:23:35.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett Change it and break everyone using the official Twitter app on Android? They _only just_ disabled basic auth on Android this week.

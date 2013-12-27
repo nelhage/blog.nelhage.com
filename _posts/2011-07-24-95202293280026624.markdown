@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett Well, you have all the primitives to do...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1333
+wordpress_url: http://twitter-95202293280026624
+date: 2011-07-24 14:42:50.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett Well, you have all the primitives to do a recursive copy yourself. Have you checked hackage to see if anyone's written it already?

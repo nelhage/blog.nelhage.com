@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: So, when does the @github octocat get its own unic...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 976
+wordpress_url: http://twitter-29118204518
+date: 2010-10-29 15:56:58.000000000 +02:00
+categories: []
+tags: []
+---
+So, when does the @github octocat get its own unicode code point?

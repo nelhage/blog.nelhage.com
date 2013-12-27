@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Poll for you, Twitter: (a) Irrational hatred of lo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1185
+wordpress_url: http://twitter-45530307465711617
+date: 2011-03-09 13:04:05.000000000 +01:00
+categories: []
+tags: []
+---
+Poll for you, Twitter: (a) Irrational hatred of long variable names. (The Second Option) Irrational hatred of short variable names.

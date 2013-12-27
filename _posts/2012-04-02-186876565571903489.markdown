@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I love watching munin graphs in realtime during a...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1697
+wordpress_url: http://twitter-186876565571903489
+date: 2012-04-02 14:03:39.000000000 +02:00
+categories: []
+tags: []
+---
+I love watching munin graphs in realtime during a slashdotting or when I'm doing well on proggit.

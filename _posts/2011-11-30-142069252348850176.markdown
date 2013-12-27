@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea She declared I was cheating, too.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1534
+wordpress_url: http://twitter-142069252348850176
+date: 2011-11-30 22:35:23.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea She declared I was cheating, too.

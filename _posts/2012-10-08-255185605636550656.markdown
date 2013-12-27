@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: FTR, t\.co is 199.59.148.12 and 199.59.150.44, if...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1858
+wordpress_url: http://twitter-255185605636550656
+date: 2012-10-08 01:59:24.000000000 +02:00
+categories: []
+tags: []
+---
+FTR, t\.co is 199.59.148.12 and 199.59.150.44, if you can't wait for Twitter to get their act back together before browsing tweets.

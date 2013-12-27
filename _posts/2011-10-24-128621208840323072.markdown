@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb Sounds like about what happened with me. I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1475
+wordpress_url: http://twitter-128621208840323072
+date: 2011-10-24 19:57:40.000000000 +02:00
+categories: []
+tags: []
+---
+@thegdb Sounds like about what happened with me. I still haven't finished working out all the problems it introduced.

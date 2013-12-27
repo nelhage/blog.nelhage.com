@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I''ve got 5 million objects over here. Perfo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1500
+wordpress_url: http://twitter-133991737755582464
+date: 2011-11-08 15:38:14.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb I've got 5 million objects over here. Performance is still totally fine, although keeping it on an SSD helps.

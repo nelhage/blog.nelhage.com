@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: It's been an exciting time to work at a Linux secu...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 901
+wordpress_url: http://twitter-24817179781
+date: 2010-09-17 23:22:40.000000000 +02:00
+categories: []
+tags: []
+---
+It's been an exciting time to work at a Linux security company these last few weeks.

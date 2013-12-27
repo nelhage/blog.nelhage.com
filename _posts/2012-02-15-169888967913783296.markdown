@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra "Gin"'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1634
+wordpress_url: http://twitter-169888967913783296
+date: 2012-02-15 17:01:00.000000000 +01:00
+categories: []
+tags: []
+---
+@obra "Gin"

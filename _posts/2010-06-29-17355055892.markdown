@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Really excited about @github's new Organizations....
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 753
+wordpress_url: http://twitter-17355055892
+date: 2010-06-29 14:45:48.000000000 +02:00
+categories: []
+tags: []
+---
+Really excited about @github's new Organizations. I've wanted this for barnowl for a long time.

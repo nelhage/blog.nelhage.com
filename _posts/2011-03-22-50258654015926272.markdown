@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Ok, unfollowing @IBMWatson. Don't really need this...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1215
+wordpress_url: http://twitter-50258654015926272
+date: 2011-03-22 14:12:51.000000000 +01:00
+categories: []
+tags: []
+---
+Ok, unfollowing @IBMWatson. Don't really need this live-tweeting spam periodically.

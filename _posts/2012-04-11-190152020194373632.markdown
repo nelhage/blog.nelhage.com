@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I think that''s actually from https:&#47;&#47;t.co&#47;h...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1711
+wordpress_url: http://twitter-190152020194373632
+date: 2012-04-11 14:59:09.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb I think that's actually from https:&#47;&#47;t.co&#47;h47KbCqO and may mean your compiler doesn't properly handle __attribute__((aligned(...))).

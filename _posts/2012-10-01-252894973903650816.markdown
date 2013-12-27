@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ezyang Of course Python''s syntax favors mutation....'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1848
+wordpress_url: http://twitter-252894973903650816
+date: 2012-10-01 18:17:14.000000000 +02:00
+categories: []
+tags: []
+---
+@ezyang Of course Python's syntax favors mutation. It's designed to be easy to use. (not-sure-if-trolling).

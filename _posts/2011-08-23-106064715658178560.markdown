@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I think that is the first time I've actually felt...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1384
+wordpress_url: http://twitter-106064715658178560
+date: 2011-08-23 14:06:13.000000000 +02:00
+categories: []
+tags: []
+---
+I think that is the first time I've actually felt an earthquake. Didn't really think that happened on this coast.

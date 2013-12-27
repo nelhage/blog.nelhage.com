@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Gave my talk on breaking out of #KVM at #BlackHat....'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1354
+wordpress_url: http://twitter-99185272641695744
+date: 2011-08-04 14:29:46.000000000 +02:00
+categories: []
+tags: []
+---
+Gave my talk on breaking out of #KVM at #BlackHat. Pretty happy with how it went; I'll be releasing code and updated slides soon.

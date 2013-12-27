@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I continue to desperately want the ability to down...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 998
+wordpress_url: http://twitter-2145651223691265
+date: 2010-11-09 19:48:57.000000000 +01:00
+categories: []
+tags: []
+---
+I continue to desperately want the ability to downvote questions on Quora.

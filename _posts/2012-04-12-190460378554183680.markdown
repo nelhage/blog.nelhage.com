@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kees_cook You probably support the seccomp stuff,...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1717
+wordpress_url: http://twitter-190460378554183680
+date: 2012-04-12 11:24:27.000000000 +02:00
+categories: []
+tags: []
+---
+@kees_cook You probably support the seccomp stuff, too! Don't you know that SELinux is the only principled way to sandbox applications?

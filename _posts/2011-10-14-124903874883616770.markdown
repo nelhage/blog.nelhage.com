@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea It''s a feature of their new login mana...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1459
+wordpress_url: http://twitter-124903874883616770
+date: 2011-10-14 13:46:19.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea It's a feature of their new login manager. I guess default-enable may be the only way the average user will know it's an option.

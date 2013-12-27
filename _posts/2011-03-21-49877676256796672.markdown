@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: This matrix is a &#47;remarkably&#47; compelling argument...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1210
+wordpress_url: http://twitter-49877676256796672
+date: 2011-03-21 12:58:59.000000000 +01:00
+categories: []
+tags: []
+---
+This matrix is a &#47;remarkably&#47; compelling argument for using the BSD or MIT license, if you ask me: http:&#47;&#47;t.co&#47;JpnOU1c

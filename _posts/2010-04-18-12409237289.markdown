@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm trying to watch Patent Absurdity, but the vide...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 618
+wordpress_url: http://twitter-12409237289
+date: 2010-04-18 13:48:54.000000000 +02:00
+categories: []
+tags: []
+---
+I'm trying to watch Patent Absurdity, but the video keeps crapping out on me. I'm all for open formats ... but only if they work.

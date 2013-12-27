@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: On a few more listens, it's no "In Our Bedroom Aft...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 724
+wordpress_url: http://twitter-16411907112
+date: 2010-06-17 15:33:42.000000000 +02:00
+categories: []
+tags: []
+---
+On a few more listens, it's no "In Our Bedroom After The War" or "Set Yourself on Fire", but "The Five Ghosts" is still solid.

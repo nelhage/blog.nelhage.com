@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gregkh Ah-ha, makes sense. And of course, thinkin...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1368
+wordpress_url: http://twitter-101748799642415104
+date: 2011-08-11 16:16:18.000000000 +02:00
+categories: []
+tags: []
+---
+@gregkh Ah-ha, makes sense. And of course, thinking about it, I do the same.

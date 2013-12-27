@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea That was what made me ditch the native...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1608
+wordpress_url: http://twitter-161642054181597186
+date: 2012-01-23 22:50:43.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea That was what made me ditch the native Twitter Android app for @Seesmic again. I barely know the "real name" of half my feed.

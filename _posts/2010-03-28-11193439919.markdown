@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 There''s a tool called DVDbackup that''s su...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 589
+wordpress_url: http://twitter-11193439919
+date: 2010-03-28 09:06:07.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 There's a tool called DVDbackup that's supposed to be reasonable? I
+haven't tried to rip a DVD in ages.

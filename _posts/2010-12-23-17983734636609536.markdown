@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I see. I need to download a random .tgz from a ran...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1074
+wordpress_url: http://twitter-17983734636609536
+date: 2010-12-23 12:43:51.000000000 +01:00
+categories: []
+tags: []
+---
+I see. I need to download a random .tgz from a random forum post (http:&#47;&#47;bit.ly&#47;gDxT28) and untar it into ~&#47;. Way to go, @dropbox.

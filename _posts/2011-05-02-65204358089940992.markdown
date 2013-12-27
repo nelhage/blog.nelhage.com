@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@uberpreeya Or maybe that was just the sleep dep s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1253
+wordpress_url: http://twitter-65204358089940992
+date: 2011-05-02 20:01:45.000000000 +02:00
+categories: []
+tags: []
+---
+@uberpreeya Or maybe that was just the sleep dep speaking.

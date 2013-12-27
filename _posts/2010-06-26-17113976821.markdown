@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Damnit Timbuk2, when did your bags get dumb? I'd l...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 748
+wordpress_url: http://twitter-17113976821
+date: 2010-06-26 15:52:03.000000000 +02:00
+categories: []
+tags: []
+---
+Damnit Timbuk2, when did your bags get dumb? I'd like to buy a laptop bag without either a racing stripe or excessive bright trim, please.

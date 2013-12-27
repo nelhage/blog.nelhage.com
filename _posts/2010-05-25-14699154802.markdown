@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Fuck: git: error: failed to read object <sha1&g...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 687
+wordpress_url: http://twitter-14699154802
+date: 2010-05-25 11:15:27.000000000 +02:00
+categories: []
+tags: []
+---
+Fuck: git: error: failed to read object <sha1> at offset 70076186 from .git&#47;objects&#47;pack&#47;pack-<sha1>.pack fatal: object <sha1> is corrupted

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh Also, where are you sitting? I''m ~6th row...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1720
+wordpress_url: http://twitter-192341162156228609
+date: 2012-04-17 15:58:01.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh Also, where are you sitting? I'm ~6th row, near the right of the center section.

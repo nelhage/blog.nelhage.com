@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I think dropping the physical "next-page" button w...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1518
+wordpress_url: http://twitter-137212065751384065
+date: 2011-11-17 12:54:40.000000000 +01:00
+categories: []
+tags: []
+---
+I think dropping the physical "next-page" button was probably a terrible decision.

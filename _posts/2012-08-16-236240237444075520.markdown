@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I fully intend to continue pretending to be...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1818
+wordpress_url: http://twitter-236240237444075520
+date: 2012-08-16 19:17:16.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb I fully intend to continue pretending to be Twitter for Android for as long as I can.

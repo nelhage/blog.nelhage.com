@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb git gc --downright-confrontational'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1501
+wordpress_url: http://twitter-133996802679648256
+date: 2011-11-08 15:58:21.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb git gc --downright-confrontational

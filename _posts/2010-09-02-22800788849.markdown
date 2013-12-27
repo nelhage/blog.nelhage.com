@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@taviso Don''t you love how much code in Linux has...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 857
+wordpress_url: http://twitter-22800788849
+date: 2010-09-02 10:06:57.000000000 +02:00
+categories: []
+tags: []
+---
+@taviso Don't you love how much code in Linux has clearly never been tested ~at all outside of the one case the developer tried first?

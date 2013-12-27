@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: http:&#47;&#47;bit.ly&#47;dj2fxK claims "We don't &hellip; prioritise...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 887
+wordpress_url: http://twitter-24253969387
+date: 2010-09-12 00:19:22.000000000 +02:00
+categories: []
+tags: []
+---
+http:&#47;&#47;bit.ly&#47;dj2fxK claims "We don't &hellip; prioritise anyone on the API, even ourselves" -- I guess ?source=twitterandroid doesn't count?

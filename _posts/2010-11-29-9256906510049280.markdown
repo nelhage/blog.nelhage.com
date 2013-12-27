@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jonoberheide My PoC exploit also uses restart_blo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1032
+wordpress_url: http://twitter-9256906510049280
+date: 2010-11-29 10:46:33.000000000 +01:00
+categories: []
+tags: []
+---
+@jonoberheide My PoC exploit also uses restart_block.fn, but another fun target is addr_limit, and then any func that does copy_from_user.

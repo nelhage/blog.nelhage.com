@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: The sky started falling while I was out for lunch....
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 767
+wordpress_url: http://twitter-18367111029
+date: 2010-07-12 12:42:44.000000000 +02:00
+categories: []
+tags: []
+---
+The sky started falling while I was out for lunch. Guess I'm stuck here until it lets up.

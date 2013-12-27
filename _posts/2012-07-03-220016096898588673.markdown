@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Ugh. Hate: The recent Kindle update removes "Turn...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1768
+wordpress_url: http://twitter-220016096898588673
+date: 2012-07-03 00:48:19.000000000 +02:00
+categories: []
+tags: []
+---
+Ugh. Hate: The recent Kindle update removes "Turn Wireless off" from the main menu, relegates it to the "Settings" page.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Arrived LAX. Not thrilled about the prospect of th...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1004
+wordpress_url: http://twitter-3298412137029632
+date: 2010-11-13 00:09:37.000000000 +01:00
+categories: []
+tags: []
+---
+Arrived LAX. Not thrilled about the prospect of the next flight being even longer ...

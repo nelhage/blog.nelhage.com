@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zhov I''ve actually done exactly that several time...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1504
+wordpress_url: http://twitter-134714328648646656
+date: 2011-11-10 15:29:33.000000000 +01:00
+categories: []
+tags: []
+---
+@zhov I've actually done exactly that several times. Works great.

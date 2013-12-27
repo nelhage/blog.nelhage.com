@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: A friend at ITA Software informs me it's official:...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 755
+wordpress_url: http://twitter-17516969711
+date: 2010-07-01 15:56:32.000000000 +02:00
+categories: []
+tags: []
+---
+A friend at ITA Software informs me it's official: They're being acquired by Google.

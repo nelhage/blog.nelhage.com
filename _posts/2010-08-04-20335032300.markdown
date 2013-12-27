@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Google is giving up on Wave. I'm a bit sad; I feel...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 802
+wordpress_url: http://twitter-20335032300
+date: 2010-08-04 17:36:20.000000000 +02:00
+categories: []
+tags: []
+---
+Google is giving up on Wave. I'm a bit sad; I feel like there was something there, they just hadn't figured out what. http:&#47;&#47;bit.ly&#47;akHmQU

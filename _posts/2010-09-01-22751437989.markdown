@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: AirTran just warned me Hurrican Earl might affect...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 856
+wordpress_url: http://twitter-22751437989
+date: 2010-09-01 19:44:25.000000000 +02:00
+categories: []
+tags: []
+---
+AirTran just warned me Hurrican Earl might affect my Friday-morning flight to #dragoncon. That would be the perfect end to a shitty week.

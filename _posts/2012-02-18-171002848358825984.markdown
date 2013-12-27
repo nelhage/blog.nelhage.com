@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Looks like it''s http:&#47;&#47;t.co&#47;dhpJMl6a ? Look...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1637
+wordpress_url: http://twitter-171002848358825984
+date: 2012-02-18 18:47:10.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb Looks like it's http:&#47;&#47;t.co&#47;dhpJMl6a ? Looks like I can still grab a copy via MIT affiliation.

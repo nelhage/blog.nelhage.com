@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm increasingly convinced that I want the thing t...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 713
+wordpress_url: http://twitter-15853608929
+date: 2010-06-10 10:25:03.000000000 +02:00
+categories: []
+tags: []
+---
+I'm increasingly convinced that I want the thing that Google Wave wants to be. It's an open question whether Google Wave will be that thing.

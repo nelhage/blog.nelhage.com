@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'The code from my #BlackHat&#47;#DEFCON talks on escapi...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1370
+wordpress_url: http://twitter-101814559865712640
+date: 2011-08-11 20:37:37.000000000 +02:00
+categories: []
+tags: []
+---
+The code from my #BlackHat&#47;#DEFCON talks on escaping KVM is now available: http:&#47;&#47;t.co&#47;UV7e0pB

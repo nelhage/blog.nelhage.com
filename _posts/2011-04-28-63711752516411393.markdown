@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mrtuttle I switched to another mirror as soon as...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1249
+wordpress_url: http://twitter-63711752516411393
+date: 2011-04-28 17:10:40.000000000 +02:00
+categories: []
+tags: []
+---
+@mrtuttle I switched to another mirror as soon as I realized, but seriously, you'd hope the default US mirror might be in the US.

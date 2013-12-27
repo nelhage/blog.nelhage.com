@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit Looks like "secret" just means "not pushe...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1595
+wordpress_url: http://twitter-156751198999945217
+date: 2012-01-10 10:56:12.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit Looks like "secret" just means "not pushed anywhere". I can see why this seemed like a good idea, but I doubt it will work well.

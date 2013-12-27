@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I''m thinking of ba6329e5, which was well be...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1712
+wordpress_url: http://twitter-190155889930551296
+date: 2012-04-11 15:14:31.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb I'm thinking of ba6329e5, which was well before.

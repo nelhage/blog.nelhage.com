@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ccpost Answer: Almost certainly "very yes".'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1284
+wordpress_url: http://twitter-77217761201369088
+date: 2011-06-04 23:38:43.000000000 +02:00
+categories: []
+tags: []
+---
+@ccpost Answer: Almost certainly "very yes".

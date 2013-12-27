@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea OOC, do you test on actual hardware, o...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1771
+wordpress_url: http://twitter-222114058122444802
+date: 2012-07-08 19:44:52.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea OOC, do you test on actual hardware, or just trust that emulators are accurate enough? I imagine they are, these days?

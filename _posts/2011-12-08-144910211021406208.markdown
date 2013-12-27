@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '.dashboard { float: right !important } .content-ma...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1544
+wordpress_url: http://twitter-144910211021406208
+date: 2011-12-08 18:44:21.000000000 +01:00
+categories: []
+tags: []
+---
+.dashboard { float: right !important } .content-main { float: left !important }

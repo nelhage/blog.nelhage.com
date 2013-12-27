@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh I think 1.5 to 2x, depending on trip leng...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1628
+wordpress_url: http://twitter-168776874871373824
+date: 2012-02-12 15:21:57.000000000 +01:00
+categories: []
+tags: []
+---
+@therosh I think 1.5 to 2x, depending on trip length and such.

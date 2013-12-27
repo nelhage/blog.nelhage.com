@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@raffir Yeah, I use a mix of a clipboard and org-m...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1236
+wordpress_url: http://twitter-57284201849958402
+date: 2011-04-10 23:29:52.000000000 +02:00
+categories: []
+tags: []
+---
+@raffir Yeah, I use a mix of a clipboard and org-mode. I don't have anythingh nice for integrating them. I print org-mode files sometimes.

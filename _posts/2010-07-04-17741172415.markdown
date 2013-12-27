@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Blogged: Implementing a declarative mini-language...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 759
+wordpress_url: http://twitter-17741172415
+date: 2010-07-04 15:54:56.000000000 +02:00
+categories: []
+tags: []
+---
+Blogged: Implementing a declarative mini-language in the C preprocessor http:&#47;&#47;blog.nelhage.com&#47;2010&#47;07&#47;implementing-an-edsl-in-cpp&#47;

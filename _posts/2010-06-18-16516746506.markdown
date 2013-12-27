@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: There has to be a better solution than AppArmor&#47;SE...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 726
+wordpress_url: http://twitter-16516746506
+date: 2010-06-18 22:56:28.000000000 +02:00
+categories: []
+tags: []
+---
+There has to be a better solution than AppArmor&#47;SELinux for desktop security. Making either work is an absurd games of whack-a-mole.

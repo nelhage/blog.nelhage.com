@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@wdaher @ccpost As I recall you can get it for les...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 900
+wordpress_url: http://twitter-24798970020
+date: 2010-09-17 19:00:36.000000000 +02:00
+categories: []
+tags: []
+---
+@wdaher @ccpost As I recall you can get it for less than infinity euros if you give some sketchy middleman your passport #, or something.

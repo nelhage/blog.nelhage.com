@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder Oh, if you''re trying to handle signals fr...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1738
+wordpress_url: http://twitter-200336001091121152
+date: 2012-05-09 17:26:39.000000000 +02:00
+categories: []
+tags: []
+---
+@ebroder Oh, if you're trying to handle signals from Python or Ruby, you're already double-boned. Give up now.

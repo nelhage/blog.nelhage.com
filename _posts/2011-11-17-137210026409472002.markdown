@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: After a few hours playing with the Kindle Touch, I...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1519
+wordpress_url: http://twitter-137210026409472002
+date: 2011-11-17 12:46:34.000000000 +01:00
+categories: []
+tags: []
+---
+After a few hours playing with the Kindle Touch, I am unconvinced it has anything to offer me over the mini Kindle, and several downsides.

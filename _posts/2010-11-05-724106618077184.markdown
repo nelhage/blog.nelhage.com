@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon Remember, @zigdon, thou art Mortal.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 992
+wordpress_url: http://twitter-724106618077184
+date: 2010-11-05 21:40:15.000000000 +01:00
+categories: []
+tags: []
+---
+@zigdon Remember, @zigdon, thou art Mortal.

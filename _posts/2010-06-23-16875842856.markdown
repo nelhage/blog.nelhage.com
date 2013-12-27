@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Dear @twitterapi, instead of dynamically adjusting...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 736
+wordpress_url: http://twitter-16875842856
+date: 2010-06-23 16:39:48.000000000 +02:00
+categories: []
+tags: []
+---
+Dear @twitterapi, instead of dynamically adjusting your rate limits, why don't you BUILD A GODDAMN PUSH INFRASTRUCTURE

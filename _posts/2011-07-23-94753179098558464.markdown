@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Ugh. On a train to NYC, and I discover that for so...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1328
+wordpress_url: http://twitter-94753179098558464
+date: 2011-07-23 08:58:12.000000000 +02:00
+categories: []
+tags: []
+---
+Ugh. On a train to NYC, and I discover that for some reason my phone won't connect to my laptop over USB anymore. Guess I'm not tethering.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb It''s pretty clearly EOL. I have a branch in...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1243
+wordpress_url: http://twitter-59827831596793856
+date: 2011-04-17 23:57:21.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb It's pretty clearly EOL. I have a branch in progress to port barnowl off of it.

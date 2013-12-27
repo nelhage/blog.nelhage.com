@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@Garand70 @_squarerootofpi Any interest in meeting...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1398
+wordpress_url: http://twitter-110538048588087297
+date: 2011-09-04 22:21:39.000000000 +02:00
+categories: []
+tags: []
+---
+@Garand70 @_squarerootofpi Any interest in meeting up in the Atrium overflow room? Our room party is loving your tweets.

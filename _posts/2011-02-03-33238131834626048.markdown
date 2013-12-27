@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb @ebroder Also, grubbing more &#47;8s is an exe...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1144
+wordpress_url: http://twitter-33238131834626048
+date: 2011-02-03 14:59:22.000000000 +01:00
+categories: []
+tags: []
+---
+@thegdb @ebroder Also, grubbing more &#47;8s is an exercise in futility at this point. You buy a few months, tops.

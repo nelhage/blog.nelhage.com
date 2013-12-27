@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 Dooooooooooooooo it'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1255
+wordpress_url: http://twitter-65849839522562048
+date: 2011-05-04 14:46:39.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 Dooooooooooooooo it

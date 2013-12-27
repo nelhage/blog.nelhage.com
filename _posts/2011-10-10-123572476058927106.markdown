@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@juldea Why is she climbing the mountain?'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1447
+wordpress_url: http://twitter-123572476058927106
+date: 2011-10-10 21:35:48.000000000 +02:00
+categories: []
+tags: []
+---
+@juldea Why is she climbing the mountain?

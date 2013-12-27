@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Since I actually ran into this on x86 with...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1710
+wordpress_url: http://twitter-190152760757452801
+date: 2012-04-11 15:02:05.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb Since I actually ran into this on x86 with clang and think I made Keith add the right alignment attributes everywhere.

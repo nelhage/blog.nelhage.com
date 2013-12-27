@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@adamfblahblah Looking for some external motivatio...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 522
+wordpress_url: http://twitter-9266878762
+date: 2010-02-17 23:44:33.000000000 +01:00
+categories: []
+tags: []
+---
+@adamfblahblah Looking for some external motivation to keep the blog going? Like
+beer? http:&#47;&#47;iron-blogger.mit.edu&#47;

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@christinespang It hasn''t bitten me yet on my desk...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 682
+wordpress_url: http://twitter-14598838227
+date: 2010-05-23 23:29:42.000000000 +02:00
+categories: []
+tags: []
+---
+@christinespang It hasn't bitten me yet on my desktop or my laptop.

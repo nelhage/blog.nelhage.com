@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'We found the source for #Dropbox''s authentication...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1301
+wordpress_url: http://twitter-83360875645370369
+date: 2011-06-21 22:29:16.000000000 +02:00
+categories: []
+tags: []
+---
+We found the source for #Dropbox's authentication woes: http:&#47;&#47;t.co&#47;gLrWwdh

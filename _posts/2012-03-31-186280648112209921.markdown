@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@radian Mostly a "because-I-can" thing, given the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1696
+wordpress_url: http://twitter-186280648112209921
+date: 2012-03-31 22:35:42.000000000 +02:00
+categories: []
+tags: []
+---
+@radian Mostly a "because-I-can" thing, given the data structures. Good for a few party tricks, probably not many real-world uses.

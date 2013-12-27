@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor You should also read the @quora answe...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1806
+wordpress_url: http://twitter-232566509707345920
+date: 2012-08-06 15:59:11.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor You should also read the @quora answer where I explain how epoll works in the first place: http:&#47;&#47;t.co&#47;Nukttijw

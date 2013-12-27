@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Sweet Merciless Cthulhtu, GTK changed where I'm su...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1480
+wordpress_url: http://twitter-129252477139824640
+date: 2011-10-26 13:46:06.000000000 +02:00
+categories: []
+tags: []
+---
+Sweet Merciless Cthulhtu, GTK changed where I'm supposed to set Emacs keybindings *again*? And *again* failed to migrate the setting for me?

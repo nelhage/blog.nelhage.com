@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@csoandy Yeah, I was slightly concerned this one w...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1336
+wordpress_url: http://twitter-96042165804871680
+date: 2011-07-26 22:20:11.000000000 +02:00
+categories: []
+tags: []
+---
+@csoandy Yeah, I was slightly concerned this one would disappoint in some way, but Butcher came through in fine form. Really enjoyed it.

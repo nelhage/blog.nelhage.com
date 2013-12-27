@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@tifariewar Do you have a citation for that? It''s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1558
+wordpress_url: http://twitter-148561058343288832
+date: 2011-12-18 20:31:31.000000000 +01:00
+categories: []
+tags: []
+---
+@tifariewar Do you have a citation for that? It's terrible if true, but I've seen a lot of Twitter-related FUD go by that was just confusion

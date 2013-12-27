@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'A followup re: Java crypto: The crypt libs were ac...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1079
+wordpress_url: http://twitter-18398256966934528
+date: 2010-12-24 16:11:00.000000000 +01:00
+categories: []
+tags: []
+---
+A followup re: Java crypto: The crypt libs were actually the same, but SecureRandom was generating different keys from the same seed.

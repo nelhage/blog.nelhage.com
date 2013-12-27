@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea (You can skip mentioning the part wher...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1618
+wordpress_url: http://twitter-165177934053769216
+date: 2012-02-02 17:01:02.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea (You can skip mentioning the part where Oracle has the most boring business cards ever created)

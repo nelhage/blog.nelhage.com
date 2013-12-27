@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@davidad Yeah, I''m poking at it. Looks interesting...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 663
+wordpress_url: http://twitter-14174624435
+date: 2010-05-17 13:48:14.000000000 +02:00
+categories: []
+tags: []
+---
+@davidad Yeah, I'm poking at it. Looks interesting, but I'm not sure it solves my problem. Will keep reading, though.

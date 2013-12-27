@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gnprice I never followed those links before becau...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1323
+wordpress_url: http://twitter-93357855754821632
+date: 2011-07-19 12:33:41.000000000 +02:00
+categories: []
+tags: []
+---
+@gnprice I never followed those links before because I've been trained that links inside articles in online newspapers are always useless.

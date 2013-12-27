@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Working via my tethered N1 is actually reasonably...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 685
+wordpress_url: http://twitter-14659482882
+date: 2010-05-24 20:58:52.000000000 +02:00
+categories: []
+tags: []
+---
+Working via my tethered N1 is actually reasonably pleasant. Latency is a little slow, but it's usable for browsing the web and ssh.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I remain confused as to why the hell any of you al...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1566
+wordpress_url: http://twitter-150291538214256641
+date: 2011-12-23 15:07:49.000000000 +01:00
+categories: []
+tags: []
+---
+I remain confused as to why the hell any of you all were using @GoDaddy, anyways.

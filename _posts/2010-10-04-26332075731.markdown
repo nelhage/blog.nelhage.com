@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Finally saw The Prestige. That was quite fucked up...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 944
+wordpress_url: http://twitter-26332075731
+date: 2010-10-04 00:02:11.000000000 +02:00
+categories: []
+tags: []
+---
+Finally saw The Prestige. That was quite fucked up, but I enjoyed it and thought it was well done.

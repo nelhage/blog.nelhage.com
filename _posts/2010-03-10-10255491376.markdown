@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: SAT solvers are my new toy of the week. I have a w...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 548
+wordpress_url: http://twitter-10255491376
+date: 2010-03-10 00:15:08.000000000 +01:00
+categories: []
+tags: []
+---
+SAT solvers are my new toy of the week. I have a working Sudoku
+solver in 70 lines of code backending to minisat.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Read all of _Ready Player One_ this weekend. Tons...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1724
+wordpress_url: http://twitter-195660812902338560
+date: 2012-04-26 19:49:07.000000000 +02:00
+categories: []
+tags: []
+---
+Read all of _Ready Player One_ this weekend. Tons of fun, highly recommended.

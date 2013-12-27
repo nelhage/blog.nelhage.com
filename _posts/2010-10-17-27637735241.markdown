@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@raffir I''ve been pretty happy with Seesmic'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 958
+wordpress_url: http://twitter-27637735241
+date: 2010-10-17 09:39:42.000000000 +02:00
+categories: []
+tags: []
+---
+@raffir I've been pretty happy with Seesmic

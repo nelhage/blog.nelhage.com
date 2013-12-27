@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@maggied I always thought "Paddy''s".'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 572
+wordpress_url: http://twitter-10651322513
+date: 2010-03-17 22:16:10.000000000 +01:00
+categories: []
+tags: []
+---
+@maggied I always thought "Paddy's".

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Hm. Red Hat announced a new RHEL 4 kernel this mor...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 647
+wordpress_url: http://twitter-13440382217
+date: 2010-05-05 14:21:31.000000000 +02:00
+categories: []
+tags: []
+---
+Hm. Red Hat announced a new RHEL 4 kernel this morning, but the source download link is still dead. No packages on RHN, either.

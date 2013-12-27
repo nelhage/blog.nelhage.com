@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mjg59 I think ["outb"], in double quotes, works....'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1389
+wordpress_url: http://twitter-108597621001691136
+date: 2011-08-30 13:51:05.000000000 +02:00
+categories: []
+tags: []
+---
+@mjg59 I think ["outb"], in double quotes, works. That said, that somehow finds the Outback Steakhouse before the relevant results.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@defunkt Differential debugging, people!'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1709
+wordpress_url: http://twitter-190134903160061953
+date: 2012-04-11 13:51:08.000000000 +02:00
+categories: []
+tags: []
+---
+@defunkt Differential debugging, people!

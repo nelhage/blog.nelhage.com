@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Even though my case wasn't super urgent, it still...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 622
+wordpress_url: http://twitter-12432753837
+date: 2010-04-18 22:32:29.000000000 +02:00
+categories: []
+tags: []
+---
+Even though my case wasn't super urgent, it still seems broken every time I have to present an insurance card before being triaged.

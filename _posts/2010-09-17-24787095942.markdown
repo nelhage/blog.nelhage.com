@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'I still haven''t gotten #newtwitter yet. Honestly I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 896
+wordpress_url: http://twitter-24787095942
+date: 2010-09-17 15:49:49.000000000 +02:00
+categories: []
+tags: []
+---
+I still haven't gotten #newtwitter yet. Honestly I can't say I'm all that disappointed.

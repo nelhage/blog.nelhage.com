@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@juldea @laura47 @turtlefucker Goddammit you made...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1775
+wordpress_url: http://twitter-223604340735217664
+date: 2012-07-12 22:26:43.000000000 +02:00
+categories: []
+tags: []
+---
+@juldea @laura47 @turtlefucker Goddammit you made me laugh out loud and now my parents want me to explain the joke.

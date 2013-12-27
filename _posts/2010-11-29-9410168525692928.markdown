@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@acanthephyra And if sysadmins wanted to add other...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1038
+wordpress_url: http://twitter-9410168525692928
+date: 2010-11-29 20:55:33.000000000 +01:00
+categories: []
+tags: []
+---
+@acanthephyra And if sysadmins wanted to add other modules, it's on their own heads. They can already just do the 'modprobe' themselves.

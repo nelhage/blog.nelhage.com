@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@juldea It definitely smells like a scam from a di...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 835
+wordpress_url: http://twitter-21432190876
+date: 2010-08-17 16:52:41.000000000 +02:00
+categories: []
+tags: []
+---
+@juldea It definitely smells like a scam from a distance.

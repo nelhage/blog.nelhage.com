@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@adamfblahblah Are you on a 64-bit machine? Try wi...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 527
+wordpress_url: http://twitter-9856343910
+date: 2010-03-01 23:07:30.000000000 +01:00
+categories: []
+tags: []
+---
+@adamfblahblah Are you on a 64-bit machine? Try with -m32.

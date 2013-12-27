@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder @thegdb @ChristineSpang Yeah, that''s the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1305
+wordpress_url: http://twitter-84337790187356161
+date: 2011-06-24 15:11:10.000000000 +02:00
+categories: []
+tags: []
+---
+@ebroder @thegdb @ChristineSpang Yeah, that's the conclusion we've come to. It's also *way* faster.

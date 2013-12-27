@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@Uber_BOS Definitely the T closing way too damn ea...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1437
+wordpress_url: http://twitter-119453716066734080
+date: 2011-09-29 12:49:19.000000000 +02:00
+categories: []
+tags: []
+---
+@Uber_BOS Definitely the T closing way too damn early. I can work around the others more easily.

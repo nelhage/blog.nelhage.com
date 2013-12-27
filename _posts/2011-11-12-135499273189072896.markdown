@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Considering switching to node.js as my Get-Shit-Do...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1509
+wordpress_url: http://twitter-135499273189072896
+date: 2011-11-12 19:28:38.000000000 +01:00
+categories: []
+tags: []
+---
+Considering switching to node.js as my Get-Shit-Done platform over Python. I'm productive prototyping in Python, but I hate the language.

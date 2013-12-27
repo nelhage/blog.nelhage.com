@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor With write(2) and friends there are n...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1846
+wordpress_url: http://twitter-252554557115215872
+date: 2012-09-30 19:44:33.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor With write(2) and friends there are no in-process buffers to flush. You may want to fsync() or similar to hit disk, though.

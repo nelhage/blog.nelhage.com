@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Are there any ORMs that make profile-driven decisi...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 633
+wordpress_url: http://twitter-12897889621
+date: 2010-04-26 14:35:55.000000000 +02:00
+categories: []
+tags: []
+---
+Are there any ORMs that make profile-driven decisions about which foreign keys to JOIN when doing initial an initial SELECT of a collection?

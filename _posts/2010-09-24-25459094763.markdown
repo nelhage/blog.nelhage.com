@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'I''ve been on Twitter since 03 Jan 2008. My #first5...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 930
+wordpress_url: http://twitter-25459094763
+date: 2010-09-24 21:54:25.000000000 +02:00
+categories: []
+tags: []
+---
+I've been on Twitter since 03 Jan 2008. My #first5 followers were @glasser @asedeno @trs @tibbetts and @obra. http:&#47;&#47;bit.ly&#47;first5

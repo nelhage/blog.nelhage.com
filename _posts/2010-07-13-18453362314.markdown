@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: C&sup3;'s AC is out. 10% off on all iced drinks in resp...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 771
+wordpress_url: http://twitter-18453362314
+date: 2010-07-13 13:27:35.000000000 +02:00
+categories: []
+tags: []
+---
+C&sup3;'s AC is out. 10% off on all iced drinks in response.

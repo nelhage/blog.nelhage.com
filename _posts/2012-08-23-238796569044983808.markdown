@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra that just sounds like a way to make people l...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1820
+wordpress_url: http://twitter-238796569044983808
+date: 2012-08-23 20:35:13.000000000 +02:00
+categories: []
+tags: []
+---
+@obra that just sounds like a way to make people learn 'ed'. Fortunately, im already set.

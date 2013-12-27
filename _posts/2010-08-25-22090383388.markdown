@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Perhaps I will take solace in the fact that Linus...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 846
+wordpress_url: http://twitter-22090383388
+date: 2010-08-25 09:58:06.000000000 +02:00
+categories: []
+tags: []
+---
+Perhaps I will take solace in the fact that Linus Torvalds says I shouldn't have a kernel debugger, anyways.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra "Now we also randomly kill *your* EC2 instan...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1792
+wordpress_url: http://twitter-230004810601086976
+date: 2012-07-30 14:19:54.000000000 +02:00
+categories: []
+tags: []
+---
+@obra "Now we also randomly kill *your* EC2 instances for you!"

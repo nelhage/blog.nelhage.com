@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Arrived NYC. Let's see if I can remember how the s...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1287
+wordpress_url: http://twitter-79192486303645696
+date: 2011-06-10 10:25:34.000000000 +02:00
+categories: []
+tags: []
+---
+Arrived NYC. Let's see if I can remember how the subway works.

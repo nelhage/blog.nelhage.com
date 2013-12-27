@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jonoberheide Inded it does. I actually found CVE-...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1030
+wordpress_url: http://twitter-9256275640586240
+date: 2010-11-29 10:44:02.000000000 +01:00
+categories: []
+tags: []
+---
+@jonoberheide Inded it does. I actually found CVE-2010-3848 after I noticed and CVE-2010-3850, and wondered if I could do anything with it.

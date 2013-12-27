@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Whoops, nope, the line passes through the garage a...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 870
+wordpress_url: http://twitter-22894515397
+date: 2010-09-03 11:03:45.000000000 +02:00
+categories: []
+tags: []
+---
+Whoops, nope, the line passes through the garage and goes around the block some more. Signs claim 2h from this point. #dragoncon

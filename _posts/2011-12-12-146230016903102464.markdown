@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea http:&#47;&#47;t.co&#47;MLJS001K'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1555
+wordpress_url: http://twitter-146230016903102464
+date: 2011-12-12 10:08:47.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea http:&#47;&#47;t.co&#47;MLJS001K

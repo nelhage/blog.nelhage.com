@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@natfriedman On the other hand, compare Dropbox pr...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1223
+wordpress_url: http://twitter-52735493535830016
+date: 2011-03-29 10:14:56.000000000 +02:00
+categories: []
+tags: []
+---
+@natfriedman On the other hand, compare Dropbox prices: http:&#47;&#47;t.co&#47;zhRHkpt

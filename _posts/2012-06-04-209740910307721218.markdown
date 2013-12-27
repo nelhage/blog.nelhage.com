@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea For autoconfiguring the godawful proxy...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1751
+wordpress_url: http://twitter-209740910307721218
+date: 2012-06-04 16:18:24.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea For autoconfiguring the godawful proxy that is our only real internet access. Not that I will defend that as a "good" use.

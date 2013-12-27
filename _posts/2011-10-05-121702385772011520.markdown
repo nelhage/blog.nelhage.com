@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jonmasters Remember: The point of the codenames i...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1442
+wordpress_url: http://twitter-121702385772011520
+date: 2011-10-05 17:44:44.000000000 +02:00
+categories: []
+tags: []
+---
+@jonmasters Remember: The point of the codenames is to be so bad that people call releases by number instead of name, like Ubuntu wants.

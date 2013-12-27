@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@dmedvinsky And, fixed. That query is now sub-50ms...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1693
+wordpress_url: http://twitter-185365519791165441
+date: 2012-03-29 09:59:18.000000000 +02:00
+categories: []
+tags: []
+---
+@dmedvinsky And, fixed. That query is now sub-50ms, like it should be :)

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor There is POSIX aio and I think some L...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1803
+wordpress_url: http://twitter-232542207398252546
+date: 2012-08-06 14:22:37.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor There is POSIX aio and I think some Linux-specific APIs, but last heard they were all sorely lacking.

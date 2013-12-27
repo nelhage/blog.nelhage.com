@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@boredzo Yeah, that''s normal. I''m running the sock...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1701
+wordpress_url: http://twitter-187003471264878592
+date: 2012-04-02 22:27:56.000000000 +02:00
+categories: []
+tags: []
+---
+@boredzo Yeah, that's normal. I'm running the socket.io endpoint on a high port for dumb reasons.

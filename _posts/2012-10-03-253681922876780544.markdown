@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@maggied Having grown up in MA, I''m pretty confide...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1851
+wordpress_url: http://twitter-253681922876780544
+date: 2012-10-03 22:24:18.000000000 +02:00
+categories: []
+tags: []
+---
+@maggied Having grown up in MA, I'm pretty confident it's basically true, by ~all the national rankings. But it also predates Romney.

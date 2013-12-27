@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kees_cook The solution I came up with is a horrib...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1121
+wordpress_url: http://twitter-28662756605435904
+date: 2011-01-21 23:58:28.000000000 +01:00
+categories: []
+tags: []
+---
+@kees_cook The solution I came up with is a horrible hack. termios is such a mess.

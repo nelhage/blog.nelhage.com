@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh It''s still stopped where I am. Damn you,...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 768
+wordpress_url: http://twitter-18369924471
+date: 2010-07-12 13:28:26.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh It's still stopped where I am. Damn you, Boston. Your weather is so strange.

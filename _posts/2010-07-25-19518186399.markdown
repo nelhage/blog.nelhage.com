@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: That was a delicious, epic, brunch, but I kinda ju...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 789
+wordpress_url: http://twitter-19518186399
+date: 2010-07-25 16:03:48.000000000 +02:00
+categories: []
+tags: []
+---
+That was a delicious, epic, brunch, but I kinda just want to go fall down and sleep forever.

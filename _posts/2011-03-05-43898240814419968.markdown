@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Nothing like spending a Friday evening working on...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1183
+wordpress_url: http://twitter-43898240814419968
+date: 2011-03-05 00:58:50.000000000 +01:00
+categories: []
+tags: []
+---
+Nothing like spending a Friday evening working on someone else's problem set! Had a nifty breakthrough on a fun crypto problem.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra Working for me, but seems unusually slow'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1251
+wordpress_url: http://twitter-63753781145382912
+date: 2011-04-28 19:57:40.000000000 +02:00
+categories: []
+tags: []
+---
+@obra Working for me, but seems unusually slow

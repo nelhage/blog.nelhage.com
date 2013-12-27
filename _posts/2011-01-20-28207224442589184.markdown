@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@semifor "All the cool kids in Silicon Valley". I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1115
+wordpress_url: http://twitter-28207224442589184
+date: 2011-01-20 17:48:21.000000000 +01:00
+categories: []
+tags: []
+---
+@semifor "All the cool kids in Silicon Valley". I have an account. It's been getting a lot noisier and dumber as it goes viral.

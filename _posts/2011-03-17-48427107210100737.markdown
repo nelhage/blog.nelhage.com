@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@wdaher I could probably rig this up in your barno...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1196
+wordpress_url: http://twitter-48427107210100737
+date: 2011-03-17 12:54:56.000000000 +01:00
+categories: []
+tags: []
+---
+@wdaher I could probably rig this up in your barnowl, if you really want.

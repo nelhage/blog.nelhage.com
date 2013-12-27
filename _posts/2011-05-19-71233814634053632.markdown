@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: So, fellow developers, is it time for a mass exodu...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1264
+wordpress_url: http://twitter-71233814634053632
+date: 2011-05-19 11:20:39.000000000 +02:00
+categories: []
+tags: []
+---
+So, fellow developers, is it time for a mass exodus to identi.ca, yet? I hear they still want us.

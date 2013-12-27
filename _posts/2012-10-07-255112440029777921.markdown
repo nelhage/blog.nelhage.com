@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@durin42 @alex_gaynor I''d love to hear about a bet...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1857
+wordpress_url: http://twitter-255112440029777921
+date: 2012-10-07 21:08:40.000000000 +02:00
+categories: []
+tags: []
+---
+@durin42 @alex_gaynor I'd love to hear about a better way. I was on in-house Linux-only code, so I didn't look too hard.

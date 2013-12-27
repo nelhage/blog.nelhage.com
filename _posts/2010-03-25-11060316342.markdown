@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Wait, where did @spendergrsec go? Did Brad delete...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 584
+wordpress_url: http://twitter-11060316342
+date: 2010-03-25 19:52:10.000000000 +01:00
+categories: []
+tags: []
+---
+Wait, where did @spendergrsec go? Did Brad delete his account?

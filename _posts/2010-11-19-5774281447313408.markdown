@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Why the hell does the Android market app need back...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1009
+wordpress_url: http://twitter-5774281447313408
+date: 2010-11-19 20:07:50.000000000 +01:00
+categories: []
+tags: []
+---
+Why the hell does the Android market app need background data enabled in order to work at all?

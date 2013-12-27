@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb If you really care we may be able to set yo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1106
+wordpress_url: http://twitter-26488352068870145
+date: 2011-01-15 23:58:09.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb If you really care we may be able to set you up with someone who peers with ATHENA. I'm not sure the state of that these days.

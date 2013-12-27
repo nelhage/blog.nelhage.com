@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: No, I take that back. I &#47;actually&#47; have to use the...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1281
+wordpress_url: http://twitter-76489933203845120
+date: 2011-06-02 23:26:35.000000000 +02:00
+categories: []
+tags: []
+---
+No, I take that back. I &#47;actually&#47; have to use the "x-user-defined" hack, or it still fucks with my data.

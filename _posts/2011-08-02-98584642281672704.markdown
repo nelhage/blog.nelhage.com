@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Landed LAS. Wishing I was less dayshifted, but Veg...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1347
+wordpress_url: http://twitter-98584642281672704
+date: 2011-08-02 22:43:04.000000000 +02:00
+categories: []
+tags: []
+---
+Landed LAS. Wishing I was less dayshifted, but Vegas has a way of fixing that.

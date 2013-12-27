@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra I bought a prepaid sim from Telstra that wor...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1112
+wordpress_url: http://twitter-27774398672936960
+date: 2011-01-19 13:08:27.000000000 +01:00
+categories: []
+tags: []
+---
+@obra I bought a prepaid sim from Telstra that worked fine.

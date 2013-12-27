@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Intel no longer prints and ships these for free, s...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1811
+wordpress_url: http://twitter-233298058312548352
+date: 2012-08-08 16:26:06.000000000 +02:00
+categories: []
+tags: []
+---
+Intel no longer prints and ships these for free, so this is your chance to have a bookshelf that screams "x86 hacker"!

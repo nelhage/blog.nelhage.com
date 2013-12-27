@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Now I want to write a script to sort change...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1706
+wordpress_url: http://twitter-187933962289684480
+date: 2012-04-05 12:05:22.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb Now I want to write a script to sort changes by len(commit message)&#47;diffstat.

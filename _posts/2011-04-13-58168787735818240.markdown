@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@NerdPubTrivia Can we even dm you if you''re not fo...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1240
+wordpress_url: http://twitter-58168787735818240
+date: 2011-04-13 10:04:54.000000000 +02:00
+categories: []
+tags: []
+---
+@NerdPubTrivia Can we even dm you if you're not following us? I thought Twitter didn't allow that.

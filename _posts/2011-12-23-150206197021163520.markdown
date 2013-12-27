@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@maggied Although really, the right answer is char...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1564
+wordpress_url: http://twitter-150206197021163520
+date: 2011-12-23 09:28:42.000000000 +01:00
+categories: []
+tags: []
+---
+@maggied Although really, the right answer is charging for carry-on bags.

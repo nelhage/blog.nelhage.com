@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Can someone please write a good git-bzr yet so I c...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 892
+wordpress_url: http://twitter-24604535483
+date: 2010-09-15 17:21:23.000000000 +02:00
+categories: []
+tags: []
+---
+Can someone please write a good git-bzr yet so I can stop feeling like I should eventually learn bzr?

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Considering switching from screen to tmux on the b...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 977
+wordpress_url: http://twitter-29331676680
+date: 2010-10-31 21:48:43.000000000 +01:00
+categories: []
+tags: []
+---
+Considering switching from screen to tmux on the basis that it's not a GNU project.

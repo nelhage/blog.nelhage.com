@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@wdaher Yeah, supposedly the official apps will st...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1266
+wordpress_url: http://twitter-71264901783494657
+date: 2011-05-19 13:24:11.000000000 +02:00
+categories: []
+tags: []
+---
+@wdaher Yeah, supposedly the official apps will still be allowed. Not yet clear if it'll just be by consumer key or what.

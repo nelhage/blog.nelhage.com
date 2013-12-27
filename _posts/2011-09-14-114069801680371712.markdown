@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra Point. But it didn''t even believe that, eith...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1416
+wordpress_url: http://twitter-114069801680371712
+date: 2011-09-14 16:15:34.000000000 +02:00
+categories: []
+tags: []
+---
+@obra Point. But it didn't even believe that, either. Showed me an empty library.

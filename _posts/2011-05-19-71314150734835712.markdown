@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: This new Application Permission Model thing is suc...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1267
+wordpress_url: http://twitter-71314150734835712
+date: 2011-05-19 16:39:53.000000000 +02:00
+categories: []
+tags: []
+---
+This new Application Permission Model thing is such a joke. Is Twitter even trying here?

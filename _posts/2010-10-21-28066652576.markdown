@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb It does -- this is in fact a single command...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 961
+wordpress_url: http://twitter-28066652576
+date: 2010-10-21 18:33:40.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb It does -- this is in fact a single command :)

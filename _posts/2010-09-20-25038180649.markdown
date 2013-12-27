@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit My `ed` man page claims ^C aborts input m...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 904
+wordpress_url: http://twitter-25038180649
+date: 2010-09-20 12:11:35.000000000 +02:00
+categories: []
+tags: []
+---
+@emilsit My `ed` man page claims ^C aborts input mode and '.' ends it. That may not be the case for older `ed`s?

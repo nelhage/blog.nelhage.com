@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@natfriedman I get the impression that most people...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1146
+wordpress_url: http://twitter-33303748876963840
+date: 2011-02-03 19:20:07.000000000 +01:00
+categories: []
+tags: []
+---
+@natfriedman I get the impression that most people who actually think about it find it makes sense, but it sounds funny, so let's get him!

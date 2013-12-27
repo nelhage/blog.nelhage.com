@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Using ftrace for the first time to try to debug a...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1237
+wordpress_url: http://twitter-57440614488354816
+date: 2011-04-11 09:51:24.000000000 +02:00
+categories: []
+tags: []
+---
+Using ftrace for the first time to try to debug a KVM problem. I'm fairly impressed, on the whole.

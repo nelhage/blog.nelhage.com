@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Blogged: Using X forwarding with screen by proxyin...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 695
+wordpress_url: http://twitter-15073600851
+date: 2010-05-30 20:25:53.000000000 +02:00
+categories: []
+tags: []
+---
+Blogged: Using X forwarding with screen by proxying $DISPLAY http:&#47;&#47;blog.nelhage.com&#47;2010&#47;05&#47;using-x-forwarding-with-screen&#47;

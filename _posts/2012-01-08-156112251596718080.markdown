@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Really, you''ll be much happier just reading...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1589
+wordpress_url: http://twitter-156112251596718080
+date: 2012-01-08 16:37:15.000000000 +01:00
+categories: []
+tags: []
+---
+@xlerb Really, you'll be much happier just reading whatever commentary comes across your Twitter stream and assuming it's 100% accurate.

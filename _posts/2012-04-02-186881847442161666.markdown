@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: In retrospect, it appears that testing and provisi...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1699
+wordpress_url: http://twitter-186881847442161666
+date: 2012-04-02 14:24:39.000000000 +02:00
+categories: []
+tags: []
+---
+In retrospect, it appears that testing and provisioning for hundreds of queries&#47;second was ... not entirely necessary.

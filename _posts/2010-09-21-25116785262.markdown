@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Trying an experiment. Woke up early, biked to Bloc...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 913
+wordpress_url: http://twitter-25116785262
+date: 2010-09-21 09:11:04.000000000 +02:00
+categories: []
+tags: []
+---
+Trying an experiment. Woke up early, biked to Bloc 11 for breakfast and a latte over here before work.

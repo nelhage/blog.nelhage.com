@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: It turns out that leaving oprofile running on your...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 673
+wordpress_url: http://twitter-14446014707
+date: 2010-05-21 14:44:35.000000000 +02:00
+categories: []
+tags: []
+---
+It turns out that leaving oprofile running on your entire system for a few days is a great way to use up all available inodes on &#47;

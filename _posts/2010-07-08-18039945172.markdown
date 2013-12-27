@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Are there any brands of USB flash drives that won'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 764
+wordpress_url: http://twitter-18039945172
+date: 2010-07-08 10:54:42.000000000 +02:00
+categories: []
+tags: []
+---
+Are there any brands of USB flash drives that won't shit themselves and start eating data after about a month?

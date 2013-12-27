@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@trs Nah,  it drives me crazy,  too. Although not...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1227
+wordpress_url: http://twitter-53267966879465472
+date: 2011-03-30 21:30:47.000000000 +02:00
+categories: []
+tags: []
+---
+@trs Nah,  it drives me crazy,  too. Although not as badly as the lack of any "use strict" equivalent.

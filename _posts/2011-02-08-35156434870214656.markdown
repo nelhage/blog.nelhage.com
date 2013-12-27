@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb I''m reminded of some code I made you rewri...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1153
+wordpress_url: http://twitter-35156434870214656
+date: 2011-02-08 22:02:01.000000000 +01:00
+categories: []
+tags: []
+---
+@thegdb I'm reminded of some code I made you rewrite that took arbitrary types for each function and tried to lift into objects as needed.

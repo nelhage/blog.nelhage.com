@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Is there a good analyses of cryptocat's crypto use...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1639
+wordpress_url: http://twitter-171977000028868609
+date: 2012-02-21 11:18:06.000000000 +01:00
+categories: []
+tags: []
+---
+Is there a good analyses of cryptocat's crypto use and security properties by a reputable cryptographer anywhere?

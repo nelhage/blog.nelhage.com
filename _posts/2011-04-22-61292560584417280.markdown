@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Played the first three chapters of Portal 2. Enjoy...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1246
+wordpress_url: http://twitter-61292560584417280
+date: 2011-04-22 00:57:39.000000000 +02:00
+categories: []
+tags: []
+---
+Played the first three chapters of Portal 2. Enjoying the new mechanics, and I won't say more lest someone yell at me for spoilers :)

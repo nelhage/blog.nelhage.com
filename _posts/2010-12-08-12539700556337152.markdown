@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Hadn't realized RHEL defaulted to panic_on_oops=1....
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1058
+wordpress_url: http://twitter-12539700556337152
+date: 2010-12-08 12:11:12.000000000 +01:00
+categories: []
+tags: []
+---
+Hadn't realized RHEL defaulted to panic_on_oops=1. That does quite neatly close off the prospect of privesc from CVE-2010-4258.

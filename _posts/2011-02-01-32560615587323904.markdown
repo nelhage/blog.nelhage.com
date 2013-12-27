@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xorlgr I for one would love to hear how to use my...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1141
+wordpress_url: http://twitter-32560615587323904
+date: 2011-02-01 18:07:10.000000000 +01:00
+categories: []
+tags: []
+---
+@xorlgr I for one would love to hear how to use my bug to map the NULL page, short of maybe getting ring0 and going from there.

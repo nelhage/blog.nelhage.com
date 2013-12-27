@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Just implemented xAuth support for #BarnOwl''s twit...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 676
+wordpress_url: http://twitter-14521049330
+date: 2010-05-22 19:02:01.000000000 +02:00
+categories: []
+tags: []
+---
+Just implemented xAuth support for #BarnOwl's twitter module. Requires Net::Twitter::Lite 0.9, but can fall back to basic auth.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ChristineSpang Boldly facing down winter armed wi...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1485
+wordpress_url: http://twitter-130447017804697601
+date: 2011-10-29 20:52:47.000000000 +02:00
+categories: []
+tags: []
+---
+@ChristineSpang Boldly facing down winter armed with lots of appropriately warm&#47;waterproof gear is such a satisfying feeling.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit Certaintly every time I''ve tried to use h...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1551
+wordpress_url: http://twitter-144992961061593088
+date: 2011-12-09 00:13:10.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit Certaintly every time I've tried to use hg (briefly), the N different flavors of refs seriously confuses me.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mfukar I do definitely consider that bug one of m...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1660
+wordpress_url: http://twitter-176721459262140416
+date: 2012-03-05 13:30:53.000000000 +01:00
+categories: []
+tags: []
+---
+@mfukar I do definitely consider that bug one of multiprocessing's more egregious.

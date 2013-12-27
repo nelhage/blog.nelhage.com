@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Ugh. If anything, it got uglier out overnight. Goi...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 560
+wordpress_url: http://twitter-10475261083
+date: 2010-03-14 12:36:50.000000000 +01:00
+categories: []
+tags: []
+---
+Ugh. If anything, it got uglier out overnight. Going to try to avoid leaving the house today, I think.

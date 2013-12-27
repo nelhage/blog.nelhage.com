@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@collision Hard to say -- this implies that you''ll...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1776
+wordpress_url: http://twitter-225969872625082368
+date: 2012-07-19 11:06:30.000000000 +02:00
+categories: []
+tags: []
+---
+@collision Hard to say -- this implies that you'll need to deal with moving it *twice*.

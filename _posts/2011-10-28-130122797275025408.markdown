@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Really hate it when A ndroid apps randomly log me...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1481
+wordpress_url: http://twitter-130122797275025408
+date: 2011-10-28 23:24:27.000000000 +02:00
+categories: []
+tags: []
+---
+Really hate it when A ndroid apps randomly log me out. I keep passwords on my computer, so suddenly I can't use my app until I get home.

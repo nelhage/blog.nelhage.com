@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@episod What''s the benefit of a lookup table for t...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 702
+wordpress_url: http://twitter-15429014660
+date: 2010-06-04 12:54:11.000000000 +02:00
+categories: []
+tags: []
+---
+@episod What's the benefit of a lookup table for that instead of just code to do the transformation and a form somewhere?

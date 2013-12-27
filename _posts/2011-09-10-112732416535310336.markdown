@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Just watched this week's Doctor Who. Horrible is t...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1415
+wordpress_url: http://twitter-112732416535310336
+date: 2011-09-10 23:41:17.000000000 +02:00
+categories: []
+tags: []
+---
+Just watched this week's Doctor Who. Horrible is the only word I have for it. So miffed there's no more Moffat until the season finale.

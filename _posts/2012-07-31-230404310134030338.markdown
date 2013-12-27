@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra I am *almost* tempted to implement SPDY in b...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1794
+wordpress_url: http://twitter-230404310134030338
+date: 2012-07-31 16:47:22.000000000 +02:00
+categories: []
+tags: []
+---
+@obra I am *almost* tempted to implement SPDY in bash now, just because, but I think I have better things to do.

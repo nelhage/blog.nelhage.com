@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I want to love Chrome, but eating my profile and l...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 588
+wordpress_url: http://twitter-11165991077
+date: 2010-03-27 19:04:21.000000000 +01:00
+categories: []
+tags: []
+---
+I want to love Chrome, but eating my profile and losing all my
+history&#47;passwords&#47;etc every few weeks is getting _seriously_ old.

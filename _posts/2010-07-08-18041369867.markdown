@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh OOC, why the Nook over a Kindle or one of...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 765
+wordpress_url: http://twitter-18041369867
+date: 2010-07-08 11:14:41.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh OOC, why the Nook over a Kindle or one of the Sony readers?

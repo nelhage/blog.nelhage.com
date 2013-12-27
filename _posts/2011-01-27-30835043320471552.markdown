@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: reptyr now backgrounds processes in the old termin...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1135
+wordpress_url: http://twitter-30835043320471552
+date: 2011-01-27 23:50:21.000000000 +01:00
+categories: []
+tags: []
+---
+reptyr now backgrounds processes in the old terminal before attaching. Try it with 'less' -- it's basically magic.

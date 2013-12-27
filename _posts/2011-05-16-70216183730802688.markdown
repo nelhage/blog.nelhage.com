@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb It really seems like there should be a mar...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1260
+wordpress_url: http://twitter-70216183730802688
+date: 2011-05-16 15:56:57.000000000 +02:00
+categories: []
+tags: []
+---
+@thegdb It really seems like there should be a market in selling guaranteed seats at a caf&eacute; to regulars.

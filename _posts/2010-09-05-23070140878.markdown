@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: The Jim Butcher panel at Dragon*Con was definitely...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 874
+wordpress_url: http://twitter-23070140878
+date: 2010-09-05 12:07:30.000000000 +02:00
+categories: []
+tags: []
+---
+The Jim Butcher panel at Dragon*Con was definitely worth getting up at 10am for. Looking forward to Ghost Story and Side Jobs.

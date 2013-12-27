@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Anyone I know interested in buying a Kindle DX (US...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 806
+wordpress_url: http://twitter-20519805680
+date: 2010-08-06 22:51:20.000000000 +02:00
+categories: []
+tags: []
+---
+Anyone I know interested in buying a Kindle DX (US Wireless) + case off of me? Turns out I don't really want the large size.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb Also, the devs are in #mosh on freenode, in...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1716
+wordpress_url: http://twitter-190170139247915008
+date: 2012-04-11 16:11:09.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb Also, the devs are in #mosh on freenode, in case you want something better than Twitter.

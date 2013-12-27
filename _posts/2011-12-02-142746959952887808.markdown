@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Sweet Cthulhu, what have I done? I start coding in...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1538
+wordpress_url: http://twitter-142746959952887808
+date: 2011-12-02 19:28:22.000000000 +01:00
+categories: []
+tags: []
+---
+Sweet Cthulhu, what have I done? I start coding in C++, and a few weeks later I'm reporting C++ language-lawyer bugs to google projects.

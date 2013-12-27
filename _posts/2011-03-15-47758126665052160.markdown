@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Here's an actual analysis of where people are twee...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1195
+wordpress_url: http://twitter-47758126665052160
+date: 2011-03-15 16:36:39.000000000 +01:00
+categories: []
+tags: []
+---
+Here's an actual analysis of where people are tweeting from. Spoiler: much more than 10% comes from unofficial apps. http:&#47;&#47;t.co&#47;UC6USmx

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'The MIT crowd is pretty clearly rooting for #IBMWa...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1169
+wordpress_url: http://twitter-37308271811371008
+date: 2011-02-14 20:32:39.000000000 +01:00
+categories: []
+tags: []
+---
+The MIT crowd is pretty clearly rooting for #IBMWatson.

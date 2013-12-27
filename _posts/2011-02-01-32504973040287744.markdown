@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zigdon That''s why I only have socks in one color!'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1138
+wordpress_url: http://twitter-32504973040287744
+date: 2011-02-01 14:26:04.000000000 +01:00
+categories: []
+tags: []
+---
+@zigdon That's why I only have socks in one color!

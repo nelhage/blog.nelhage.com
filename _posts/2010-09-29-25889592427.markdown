@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh Yeah, totally. I feel like that''s about w...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 938
+wordpress_url: http://twitter-25889592427
+date: 2010-09-29 10:51:09.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh Yeah, totally. I feel like that's about what I'd expect.

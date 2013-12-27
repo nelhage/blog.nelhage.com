@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@patrickc Yeah, speed of light means it will alway...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1258
+wordpress_url: http://twitter-70134980352815104
+date: 2011-05-16 10:34:17.000000000 +02:00
+categories: []
+tags: []
+---
+@patrickc Yeah, speed of light means it will always be valuable to have nearby servers. Everything's easier without 100ms latency.

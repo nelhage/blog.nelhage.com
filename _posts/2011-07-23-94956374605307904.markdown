@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Unreasonably tired, {despite, because of, as evide...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1331
+wordpress_url: http://twitter-94956374605307904
+date: 2011-07-23 22:25:38.000000000 +02:00
+categories: []
+tags: []
+---
+Unreasonably tired, {despite, because of, as evidenced by} the four-hour nap I just accidentally took.

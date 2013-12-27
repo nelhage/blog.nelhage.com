@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Hm. Looks like I finally got #newtwitter. I can''t...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 949
+wordpress_url: http://twitter-26591382684
+date: 2010-10-06 18:36:31.000000000 +02:00
+categories: []
+tags: []
+---
+Hm. Looks like I finally got #newtwitter. I can't honestly bring myself to care all that much.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kevinriggle yeah, that''s what the iPhone had. But...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 644
+wordpress_url: http://twitter-13210128547
+date: 2010-05-01 17:50:40.000000000 +02:00
+categories: []
+tags: []
+---
+@kevinriggle yeah, that's what the iPhone had. But at least they're aware of the problem

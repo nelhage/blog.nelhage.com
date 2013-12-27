@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: If anyone's been meaning to sign up for @dropbox,...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 940
+wordpress_url: http://twitter-25948847282
+date: 2010-09-30 00:07:03.000000000 +02:00
+categories: []
+tags: []
+---
+If anyone's been meaning to sign up for @dropbox, let me know, and I can refer you for an extra 250M of storage for you.

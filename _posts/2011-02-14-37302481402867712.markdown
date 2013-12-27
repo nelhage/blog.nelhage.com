@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: We have a robotic hand that pushes the buzzer. It'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1168
+wordpress_url: http://twitter-37302481402867712
+date: 2011-02-14 20:09:39.000000000 +01:00
+categories: []
+tags: []
+---
+We have a robotic hand that pushes the buzzer. It's a solenoid. It's a very fast solenoid. #IBMWatson

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett I sorta get their side, but replacing "y...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1147
+wordpress_url: http://twitter-33382393637240832
+date: 2011-02-04 00:32:37.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett I sorta get their side, but replacing "years of consistent behavior" with "crappy heuristics" does not sit well with me.

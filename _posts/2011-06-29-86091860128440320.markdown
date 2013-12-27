@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Got a google+ invite on my @gmail.com account. Goo...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1311
+wordpress_url: http://twitter-86091860128440320
+date: 2011-06-29 11:21:13.000000000 +02:00
+categories: []
+tags: []
+---
+Got a google+ invite on my @gmail.com account. Google keeps randomly logging me out as I attempt to use that and use nelhage.com elsewhere.

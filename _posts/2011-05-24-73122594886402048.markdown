@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I've decided that lawyers are best modelled as an...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1270
+wordpress_url: http://twitter-73122594886402048
+date: 2011-05-24 16:25:59.000000000 +02:00
+categories: []
+tags: []
+---
+I've decided that lawyers are best modelled as an autoimmune disorder of society.

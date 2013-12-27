@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder Yeah, I think it''s pretty stock. I would...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 705
+wordpress_url: http://twitter-15586188198
+date: 2010-06-06 19:01:23.000000000 +02:00
+categories: []
+tags: []
+---
+@ebroder Yeah, I think it's pretty stock. I would hope whatever HTC has done is at least a good as stock, but that might be optimism.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Every config file format should include either or...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1466
+wordpress_url: http://twitter-125690069788008448
+date: 2011-10-16 17:50:22.000000000 +02:00
+categories: []
+tags: []
+---
+Every config file format should include either or both of a config.d directory or an 'include' cmd, if it makes any sense at all to do so.

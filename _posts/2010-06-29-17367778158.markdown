@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett There''s a bar around here known as "The...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 754
+wordpress_url: http://twitter-17367778158
+date: 2010-06-29 18:39:14.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett There's a bar around here known as "The Muddy", and for a second I was confused why you were suddenly in Cambridge.

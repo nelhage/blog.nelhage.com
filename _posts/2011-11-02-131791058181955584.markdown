@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Summary: Yes, apparently many people are seeing re...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1488
+wordpress_url: http://twitter-131791058181955584
+date: 2011-11-02 13:53:31.000000000 +01:00
+categories: []
+tags: []
+---
+Summary: Yes, apparently many people are seeing retweeted tweets getting duplicated. Interestingly, I don't see it happen in the webui.

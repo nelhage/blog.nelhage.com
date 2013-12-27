@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@adamfblahblah I just use ''C-a C-SPC C-e M-w''. I''m...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1179
+wordpress_url: http://twitter-43032337155497984
+date: 2011-03-02 15:38:03.000000000 +01:00
+categories: []
+tags: []
+---
+@adamfblahblah I just use 'C-a C-SPC C-e M-w'. I'm not sure if there's a built-in shortcut.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I am becoming increasingly convinced that libgit2'...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1482
+wordpress_url: http://twitter-130430645070610434
+date: 2011-10-29 19:47:43.000000000 +02:00
+categories: []
+tags: []
+---
+I am becoming increasingly convinced that libgit2's alleged thread-safety support is an utter lie.

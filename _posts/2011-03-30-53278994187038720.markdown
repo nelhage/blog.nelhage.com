@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett The idea being to get around their API k...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1229
+wordpress_url: http://twitter-53278994187038720
+date: 2011-03-30 22:14:36.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett The idea being to get around their API key bullshit? Just steal Twitter-for-Android's key :)

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Giving the meta-circular evaluator lecture tonight...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1604
+wordpress_url: http://twitter-160113511228387328
+date: 2012-01-19 17:36:50.000000000 +01:00
+categories: []
+tags: []
+---
+Giving the meta-circular evaluator lecture tonight for IAP-zombie-6.001! Excited but a little nervous -- there's a lot to try to live up to!

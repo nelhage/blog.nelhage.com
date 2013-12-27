@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@thegdb I *think* you can fix that with realtime s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1736
+wordpress_url: http://twitter-200308739578937344
+date: 2012-05-09 15:38:19.000000000 +02:00
+categories: []
+tags: []
+---
+@thegdb I *think* you can fix that with realtime signals (at least on Linux), but yes, you really shouldn't be using UNIX signals here :)

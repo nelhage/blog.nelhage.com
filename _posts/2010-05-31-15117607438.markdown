@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: It's one of those mornings where caffeinating unti...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 696
+wordpress_url: http://twitter-15117607438
+date: 2010-05-31 12:19:27.000000000 +02:00
+categories: []
+tags: []
+---
+It's one of those mornings where caffeinating until I start twitching really seems like a good idea for some reason.

@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit fyi, your last blog post links to Junio''s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 585
+wordpress_url: http://twitter-11065201176
+date: 2010-03-25 21:36:07.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit fyi, your last blog post links to Junio's LJ as
+"lovejornal.com", which is a domain squatter.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Has anyone benchmakred how much it hurts performan...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 948
+wordpress_url: http://twitter-26569273390
+date: 2010-10-06 13:07:46.000000000 +02:00
+categories: []
+tags: []
+---
+Has anyone benchmakred how much it hurts performance to just s&#47;__get_user&#47;get_user&#47;g and similar throughout the kernel?

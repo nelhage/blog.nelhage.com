@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ocelotspots Happy birthday!'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1373
+wordpress_url: http://twitter-103470338863669249
+date: 2011-08-16 10:17:05.000000000 +02:00
+categories: []
+tags: []
+---
+@ocelotspots Happy birthday!

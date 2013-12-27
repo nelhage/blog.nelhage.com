@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ternus Ditto. The problem is that I &#47;thought&#47; the...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1309
+wordpress_url: http://twitter-86092559255994368
+date: 2011-06-29 11:24:00.000000000 +02:00
+categories: []
+tags: []
+---
+@ternus Ditto. The problem is that I &#47;thought&#47; they had, and so I moved most of my google services to nelhage.com, and now I'm screwed.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea And maybe that''s cheating, although I...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1807
+wordpress_url: http://twitter-232972163035054080
+date: 2012-08-07 18:51:06.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea And maybe that's cheating, although I figure if you write the library also in asm, it's cool.

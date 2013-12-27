@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Heading home on a redeye after #defcon. Awesome we...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1361
+wordpress_url: http://twitter-100402425747345408
+date: 2011-08-07 23:06:18.000000000 +02:00
+categories: []
+tags: []
+---
+Heading home on a redeye after #defcon. Awesome weekend, but I've got a lot of sleep to catch up on.

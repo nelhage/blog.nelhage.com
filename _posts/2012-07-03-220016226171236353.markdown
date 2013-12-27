@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Allegedly this is for UI consistency, but it's obv...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1767
+wordpress_url: http://twitter-220016226171236353
+date: 2012-07-03 00:48:50.000000000 +02:00
+categories: []
+tags: []
+---
+Allegedly this is for UI consistency, but it's obviously a play to try to stop people from turning on the wifi only when they need it.

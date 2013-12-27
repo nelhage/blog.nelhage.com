@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Also, damnit, Twitter, I shorten my links with goo...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1212
+wordpress_url: http://twitter-50201287819661312
+date: 2011-03-22 10:24:54.000000000 +01:00
+categories: []
+tags: []
+---
+Also, damnit, Twitter, I shorten my links with goo.gl, why are you going and t.co'ing them on top of that?

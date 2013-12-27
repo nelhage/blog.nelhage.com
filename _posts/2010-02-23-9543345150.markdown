@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: This one is definitely less absurd than the leak I...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 510
+wordpress_url: http://twitter-9543345150
+date: 2010-02-23 17:25:42.000000000 +01:00
+categories: []
+tags: []
+---
+This one is definitely less absurd than the leak I found this way
+that resulted in 1.7GB of (pid,uid,gid) Python objects.

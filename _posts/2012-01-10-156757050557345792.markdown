@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@emilsit I know they have that as a social convent...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1598
+wordpress_url: http://twitter-156757050557345792
+date: 2012-01-10 11:19:27.000000000 +01:00
+categories: []
+tags: []
+---
+@emilsit I know they have that as a social convention. Dunno if there's any technical enforcement mechanism or not.

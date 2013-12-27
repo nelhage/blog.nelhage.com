@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@jessicamckellar Oof. It''s 2010, how do we still h...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1041
+wordpress_url: http://twitter-9439516867690496
+date: 2010-11-29 22:52:10.000000000 +01:00
+categories: []
+tags: []
+---
+@jessicamckellar Oof. It's 2010, how do we still have SQL injection attacks :&#47;

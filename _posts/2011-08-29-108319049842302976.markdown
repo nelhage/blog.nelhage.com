@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ocelotspots Two hours of class at a time is too m...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1387
+wordpress_url: http://twitter-108319049842302976
+date: 2011-08-29 19:24:08.000000000 +02:00
+categories: []
+tags: []
+---
+@ocelotspots Two hours of class at a time is too much class, no matter what your attention span.

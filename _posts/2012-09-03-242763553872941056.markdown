@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: On a plane to SF, where I guess I officially live...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1823
+wordpress_url: http://twitter-242763553872941056
+date: 2012-09-03 19:18:36.000000000 +02:00
+categories: []
+tags: []
+---
+On a plane to SF, where I guess I officially live now. Super-excited to start at @Stripe tomorrow.

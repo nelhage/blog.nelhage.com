@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett Ah, my experiences have been with privat...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1172
+wordpress_url: http://twitter-37584917412057088
+date: 2011-02-15 14:51:57.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett Ah, my experiences have been with private groups.

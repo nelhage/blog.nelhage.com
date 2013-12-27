@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@importantshock Erm, aren''t the two ''local'' ones u...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1468
+wordpress_url: http://twitter-126380727708286977
+date: 2011-10-18 15:34:48.000000000 +02:00
+categories: []
+tags: []
+---
+@importantshock Erm, aren't the two 'local' ones undefined? The 'nonlocal' ones should all be 0, as far as I know. Also, 'return 0;' :)

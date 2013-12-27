@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Upgrading to lucid seems to have broken my offline...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 719
+wordpress_url: http://twitter-16170601427
+date: 2010-06-14 15:26:01.000000000 +02:00
+categories: []
+tags: []
+---
+Upgrading to lucid seems to have broken my offlineimap setup somehow. This displeases me greatly.

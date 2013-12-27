@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Wow, we live in the future. USB tethering the N1 w...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 678
+wordpress_url: http://twitter-14558831089
+date: 2010-05-23 10:17:07.000000000 +02:00
+categories: []
+tags: []
+---
+Wow, we live in the future. USB tethering the N1 with froyo on Linux works magically with literally zero configuration on my laptop.

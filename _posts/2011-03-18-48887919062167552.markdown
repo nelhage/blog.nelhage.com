@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@quine Probably. The 2am close time is the more in...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1205
+wordpress_url: http://twitter-48887919062167552
+date: 2011-03-18 19:26:02.000000000 +01:00
+categories: []
+tags: []
+---
+@quine Probably. The 2am close time is the more interesting part. #bostonclosesat10

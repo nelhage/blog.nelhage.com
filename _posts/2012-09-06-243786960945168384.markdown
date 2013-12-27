@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@turzaak @obra Agreed. I bought one on an impulse...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1829
+wordpress_url: http://twitter-243786960945168384
+date: 2012-09-06 15:05:15.000000000 +02:00
+categories: []
+tags: []
+---
+@turzaak @obra Agreed. I bought one on an impulse not really knowing what I'd do with it, but I love it.

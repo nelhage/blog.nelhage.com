@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: What does the "collaborators" count mean on the va...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 770
+wordpress_url: http://twitter-18406572279
+date: 2010-07-12 23:25:23.000000000 +02:00
+categories: []
+tags: []
+---
+What does the "collaborators" count mean on the various @github plans? I've never been able to figure this out.

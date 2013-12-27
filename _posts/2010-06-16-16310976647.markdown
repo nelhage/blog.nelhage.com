@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I'm impressed by how friendly a project LLVM has b...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 722
+wordpress_url: http://twitter-16310976647
+date: 2010-06-16 10:40:59.000000000 +02:00
+categories: []
+tags: []
+---
+I'm impressed by how friendly a project LLVM has been to submit patches to. They're doing a great job of building an awesome community.

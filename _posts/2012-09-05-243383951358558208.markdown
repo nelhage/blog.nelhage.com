@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ninjudd That''s totally fine. Glad you find it hel...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1825
+wordpress_url: http://twitter-243383951358558208
+date: 2012-09-05 12:23:50.000000000 +02:00
+categories: []
+tags: []
+---
+@ninjudd That's totally fine. Glad you find it helpful.

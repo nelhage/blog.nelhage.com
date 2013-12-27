@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 srsly. I''m not sure I''ve ever not regrett...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1329
+wordpress_url: http://twitter-94764519200538625
+date: 2011-07-23 09:43:16.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 srsly. I'm not sure I've ever not regretted seeing a movie in 3D.

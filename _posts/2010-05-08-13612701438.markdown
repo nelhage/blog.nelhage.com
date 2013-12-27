@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I have a problem. This is the second time I've tho...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 653
+wordpress_url: http://twitter-13612701438
+date: 2010-05-08 11:03:29.000000000 +02:00
+categories: []
+tags: []
+---
+I have a problem. This is the second time I've thought "Gee, I wish I had a good way to maintain a pool of worker threads in a bash script"

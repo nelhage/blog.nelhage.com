@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Should I even be considering ecryptfs to encrypt m...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1016
+wordpress_url: http://twitter-6263341563510785
+date: 2010-11-21 04:31:11.000000000 +01:00
+categories: []
+tags: []
+---
+Should I even be considering ecryptfs to encrypt my homedir these days, or should I stick with an encrypted block device with cryptsetup?

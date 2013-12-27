@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Sorry, @mit100k, but that spew of retweets taking...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 651
+wordpress_url: http://twitter-13570640490
+date: 2010-05-07 17:31:57.000000000 +02:00
+categories: []
+tags: []
+---
+Sorry, @mit100k, but that spew of retweets taking over my twitter stream was the last straw. *un-follow'd*

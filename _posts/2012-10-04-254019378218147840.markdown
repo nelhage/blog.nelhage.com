@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Huh. Just noticed that emacs will happily let a fi...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1852
+wordpress_url: http://twitter-254019378218147840
+date: 2012-10-04 20:45:13.000000000 +02:00
+categories: []
+tags: []
+---
+Huh. Just noticed that emacs will happily let a file set the buffer-local value of `default-directory' to any path. That feels suspect.

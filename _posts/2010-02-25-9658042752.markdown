@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Wow, the weather outside is impressively ugly. I'm...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 509
+wordpress_url: http://twitter-9658042752
+date: 2010-02-25 22:57:07.000000000 +01:00
+categories: []
+tags: []
+---
+Wow, the weather outside is impressively ugly. I'm not convinced that
+Tosci's outing was not a mistake.

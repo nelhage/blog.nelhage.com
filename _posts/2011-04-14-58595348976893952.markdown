@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@NerdPubTrivia Which can also be spelled as "sums...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1242
+wordpress_url: http://twitter-58595348976893952
+date: 2011-04-14 14:19:54.000000000 +02:00
+categories: []
+tags: []
+---
+@NerdPubTrivia Which can also be spelled as "sums to 7", which is kinda underwhelming.

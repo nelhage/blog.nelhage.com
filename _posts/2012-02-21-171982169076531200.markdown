@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Skimming the crypto.cat source is not giving me mu...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1640
+wordpress_url: http://twitter-171982169076531200
+date: 2012-02-21 11:38:39.000000000 +01:00
+categories: []
+tags: []
+---
+Skimming the crypto.cat source is not giving me much confidence in its security properties. Unfortunate.

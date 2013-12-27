@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Current estimate: line is 3hr long. Has spilled ar...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 868
+wordpress_url: http://twitter-22891677255
+date: 2010-09-03 10:30:01.000000000 +02:00
+categories: []
+tags: []
+---
+Current estimate: line is 3hr long. Has spilled around multiple corners of the block. #dragoncon

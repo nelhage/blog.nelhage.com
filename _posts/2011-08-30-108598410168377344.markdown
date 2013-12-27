@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mjg59 Works for me. Google works in mysterious wa...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1388
+wordpress_url: http://twitter-108598410168377344
+date: 2011-08-30 13:54:13.000000000 +02:00
+categories: []
+tags: []
+---
+@mjg59 Works for me. Google works in mysterious ways, I guess.

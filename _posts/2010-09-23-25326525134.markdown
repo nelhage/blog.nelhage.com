@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb pinion.eu looks pretty sexy, but it''s trigg...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 925
+wordpress_url: http://twitter-25326525134
+date: 2010-09-23 13:26:08.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb pinion.eu looks pretty sexy, but it's triggering basically all my "too good to be true" filters. Hopefully I'm wrong.

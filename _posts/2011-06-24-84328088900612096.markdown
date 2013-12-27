@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ChristineSpang IIRC until Python 2.7(?) it was *i...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1304
+wordpress_url: http://twitter-84328088900612096
+date: 2011-06-24 14:32:37.000000000 +02:00
+categories: []
+tags: []
+---
+@ChristineSpang IIRC until Python 2.7(?) it was *impossible* to make urllib check certs without monkey-patching, so I'm not shocked.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett But, you know. Having ebooks might encou...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1021
+wordpress_url: http://twitter-6618193363730433
+date: 2010-11-22 04:01:14.000000000 +01:00
+categories: []
+tags: []
+---
+@cbarrett But, you know. Having ebooks might encourage people to pirate the book instead of buying it. Or something.

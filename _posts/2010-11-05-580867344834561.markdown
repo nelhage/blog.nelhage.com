@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kyle_bader Yeah, I''ve started using it on some of...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 990
+wordpress_url: http://twitter-580867344834561
+date: 2010-11-05 12:11:04.000000000 +01:00
+categories: []
+tags: []
+---
+@kyle_bader Yeah, I've started using it on some of my machines. Takes a bit of relearning after screen, but it looks awesome.

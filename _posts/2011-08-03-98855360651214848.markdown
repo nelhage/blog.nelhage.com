@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@patrickc Until Sunday, here for Blackhat and DEFC...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1353
+wordpress_url: http://twitter-98855360651214848
+date: 2011-08-03 16:38:49.000000000 +02:00
+categories: []
+tags: []
+---
+@patrickc Until Sunday, here for Blackhat and DEFCON

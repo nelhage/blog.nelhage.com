@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh I know, right? I love Lord Hobo. Worried...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1525
+wordpress_url: http://twitter-140848461754023936
+date: 2011-11-27 13:44:24.000000000 +01:00
+categories: []
+tags: []
+---
+@therosh I know, right? I love Lord Hobo. Worried that this just means it'll be mobbed, though.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kyle_bader Pretty sure 90% of CVE descriptions ar...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1404
+wordpress_url: http://twitter-111177398749364224
+date: 2011-09-06 16:42:12.000000000 +02:00
+categories: []
+tags: []
+---
+@kyle_bader Pretty sure 90% of CVE descriptions are written by glueing together sets of stock phrases without actually stopping to think.

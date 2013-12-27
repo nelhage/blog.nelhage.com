@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea The $TZ env variable is your friend.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1423
+wordpress_url: http://twitter-117395281414332416
+date: 2011-09-23 20:29:50.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea The $TZ env variable is your friend.

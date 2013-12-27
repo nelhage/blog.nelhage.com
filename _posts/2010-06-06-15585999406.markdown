@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@ebroder I think @wdaher''s been pleased with it in...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 706
+wordpress_url: http://twitter-15585999406
+date: 2010-06-06 18:57:59.000000000 +02:00
+categories: []
+tags: []
+---
+@ebroder I think @wdaher's been pleased with it in his Droid. I encourage you not to give in and reactivate the account.

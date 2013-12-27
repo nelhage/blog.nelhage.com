@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Why is -finstrument-functions surrounding _some_ c...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 692
+wordpress_url: http://twitter-14992897476
+date: 2010-05-29 15:06:44.000000000 +02:00
+categories: []
+tags: []
+---
+Why is -finstrument-functions surrounding _some_ calls to library functions with redundant __cyg_* calls for the current function?

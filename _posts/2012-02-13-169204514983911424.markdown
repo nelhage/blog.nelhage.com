@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea That you noticed.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1632
+wordpress_url: http://twitter-169204514983911424
+date: 2012-02-13 19:41:14.000000000 +01:00
+categories: []
+tags: []
+---
+@0xabad1dea That you noticed.

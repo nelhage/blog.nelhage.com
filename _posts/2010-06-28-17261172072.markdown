@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra You and approximately everyone else who was...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 750
+wordpress_url: http://twitter-17261172072
+date: 2010-06-28 11:59:16.000000000 +02:00
+categories: []
+tags: []
+---
+@obra You and approximately everyone else who was paying attention :&#47;

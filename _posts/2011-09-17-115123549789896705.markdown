@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Lost my phone in a couch at Jordan's furniture, bu...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1420
+wordpress_url: http://twitter-115123549789896705
+date: 2011-09-17 14:02:47.000000000 +02:00
+categories: []
+tags: []
+---
+Lost my phone in a couch at Jordan's furniture, but fortunately someone found it and delivered it to customer service.

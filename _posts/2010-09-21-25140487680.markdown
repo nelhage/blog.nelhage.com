@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh Does 1369 do breakfast? That''s an importa...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 916
+wordpress_url: http://twitter-25140487680
+date: 2010-09-21 14:13:57.000000000 +02:00
+categories: []
+tags: []
+---
+@therosh Does 1369 do breakfast? That's an important concern for a caf&eacute; for me :)

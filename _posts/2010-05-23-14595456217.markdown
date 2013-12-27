@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Looks like some kind of power outage in Kendall sq...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 681
+wordpress_url: http://twitter-14595456217
+date: 2010-05-23 22:31:23.000000000 +02:00
+categories: []
+tags: []
+---
+Looks like some kind of power outage in Kendall square -- all the street lights were out (inc. stop lights)

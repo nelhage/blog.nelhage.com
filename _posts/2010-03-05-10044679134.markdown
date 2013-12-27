@@ -1,0 +1,21 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Stupid shell trick of the day:
+
+  quote(){ echo -n "$...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 542
+wordpress_url: http://twitter-10044679134
+date: 2010-03-05 18:17:16.000000000 +01:00
+categories: []
+tags: []
+---
+Stupid shell trick of the day:
+quote(){ echo -n "$1"|sed "s,','\\\\'',g;1s,^,',;\$s,\$,',";}
+
+Of course, prefer idioms that don't need it.

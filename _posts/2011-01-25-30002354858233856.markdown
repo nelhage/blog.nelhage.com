@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'Just used reptyr to switch my IM clients from #scr...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1128
+wordpress_url: http://twitter-30002354858233856
+date: 2011-01-25 16:41:33.000000000 +01:00
+categories: []
+tags: []
+---
+Just used reptyr to switch my IM clients from #screen to #tmux without restarting any of them.

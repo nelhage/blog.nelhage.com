@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@segphault My previous take on this issue was: htt...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 859
+wordpress_url: http://twitter-22816144368
+date: 2010-09-02 13:22:16.000000000 +02:00
+categories: []
+tags: []
+---
+@segphault My previous take on this issue was: http:&#47;&#47;twitter.com&#47;nelhage&#47;status&#47;13577324611

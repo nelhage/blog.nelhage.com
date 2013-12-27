@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@therosh It''s not. I''m RT''ing because I find it so...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1622
+wordpress_url: http://twitter-167080325762134016
+date: 2012-02-07 23:00:28.000000000 +01:00
+categories: []
+tags: []
+---
+@therosh It's not. I'm RT'ing because I find it so mind boggling that I had to share.

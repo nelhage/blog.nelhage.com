@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@shDaniell Unfortunately, I don''t see much discuss...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1642
+wordpress_url: http://twitter-171994854212124672
+date: 2012-02-21 12:29:03.000000000 +01:00
+categories: []
+tags: []
+---
+@shDaniell Unfortunately, I don't see much discussion of the underlying crypto there.

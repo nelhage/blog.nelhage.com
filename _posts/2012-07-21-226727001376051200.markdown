@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I hate how Android gets tripped up by wireless net...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1787
+wordpress_url: http://twitter-226727001376051200
+date: 2012-07-21 13:15:04.000000000 +02:00
+categories: []
+tags: []
+---
+I hate how Android gets tripped up by wireless networks it can just barely see, insisting on trying to use them instead of strong 3G signal.

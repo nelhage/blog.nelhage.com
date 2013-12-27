@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: At Harvard for my sister's graduation. This is far...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1274
+wordpress_url: http://twitter-73730077086580737
+date: 2011-05-26 08:39:54.000000000 +02:00
+categories: []
+tags: []
+---
+At Harvard for my sister's graduation. This is far more chaotic than I recall MIT's being.

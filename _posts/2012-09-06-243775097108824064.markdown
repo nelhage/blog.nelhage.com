@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@obra Would it? It was a total disaster, IMO.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1828
+wordpress_url: http://twitter-243775097108824064
+date: 2012-09-06 14:18:06.000000000 +02:00
+categories: []
+tags: []
+---
+@obra Would it? It was a total disaster, IMO.

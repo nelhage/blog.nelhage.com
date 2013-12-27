@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@timb_machine I''m fine with the code sticking arou...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1036
+wordpress_url: http://twitter-9368903570432000
+date: 2010-11-29 18:11:35.000000000 +01:00
+categories: []
+tags: []
+---
+@timb_machine I'm fine with the code sticking around in case someone wants it. I'm not OK with vulns in it affecting me if I don't use it.

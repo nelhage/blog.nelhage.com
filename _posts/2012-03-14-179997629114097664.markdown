@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@mjg59 The same thing we do every night, Pinky.'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1678
+wordpress_url: http://twitter-179997629114097664
+date: 2012-03-14 14:29:13.000000000 +01:00
+categories: []
+tags: []
+---
+@mjg59 The same thing we do every night, Pinky.

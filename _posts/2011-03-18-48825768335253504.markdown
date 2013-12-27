@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gnprice By the way, your Twitter profile still cl...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1203
+wordpress_url: http://twitter-48825768335253504
+date: 2011-03-18 15:19:04.000000000 +01:00
+categories: []
+tags: []
+---
+@gnprice By the way, your Twitter profile still claims "moving soon to San Francisco." -- might want to update that :)

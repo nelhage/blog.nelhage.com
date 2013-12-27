@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: And now I bet that if they ever enable google+ for...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1310
+wordpress_url: http://twitter-86092000440496129
+date: 2011-06-29 11:21:47.000000000 +02:00
+categories: []
+tags: []
+---
+And now I bet that if they ever enable google+ for GAFYD, I will end up with two identities on google+ and no way to merge them.

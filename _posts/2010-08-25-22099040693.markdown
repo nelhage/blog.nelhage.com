@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@christinespang or @emilsit: What rainsuit(s) do y...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 848
+wordpress_url: http://twitter-22099040693
+date: 2010-08-25 11:51:02.000000000 +02:00
+categories: []
+tags: []
+---
+@christinespang or @emilsit: What rainsuit(s) do you recommend? I've been vaguely meaning to acquire one. My raincoat is shitty.

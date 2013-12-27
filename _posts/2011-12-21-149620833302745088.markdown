@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@zhov Probably any economist who stopped to think...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1562
+wordpress_url: http://twitter-149620833302745088
+date: 2011-12-21 18:42:41.000000000 +01:00
+categories: []
+tags: []
+---
+@zhov Probably any economist who stopped to think about it long enough?

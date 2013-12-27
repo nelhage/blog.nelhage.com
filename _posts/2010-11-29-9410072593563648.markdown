@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@acanthephyra So we''d be no worse off than we are...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1039
+wordpress_url: http://twitter-9410072593563648
+date: 2010-11-29 20:55:10.000000000 +01:00
+categories: []
+tags: []
+---
+@acanthephyra So we'd be no worse off than we are now, if the default whitelist was a subset of currently-autoloadable modules.

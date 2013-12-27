@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Oh, ffs. libgit2 secretly has just enough global s...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1506
+wordpress_url: http://twitter-134852258662842369
+date: 2011-11-11 00:37:38.000000000 +01:00
+categories: []
+tags: []
+---
+Oh, ffs. libgit2 secretly has just enough global state that I can't even use two different git_repository objects in different threads?

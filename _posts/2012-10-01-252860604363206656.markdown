@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@alex_gaynor Can you not ''raise'' from a Python sig...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1847
+wordpress_url: http://twitter-252860604363206656
+date: 2012-10-01 16:00:40.000000000 +02:00
+categories: []
+tags: []
+---
+@alex_gaynor Can you not 'raise' from a Python signal handler and have it DTRT? I'm pretty sure I've done this.

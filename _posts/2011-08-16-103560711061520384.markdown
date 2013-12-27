@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@xlerb I''d recommend freaking out. I''m sure @1990s...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1375
+wordpress_url: http://twitter-103560711061520384
+date: 2011-08-16 16:16:12.000000000 +02:00
+categories: []
+tags: []
+---
+@xlerb I'd recommend freaking out. I'm sure @1990slinuxuser will commiserate with you.

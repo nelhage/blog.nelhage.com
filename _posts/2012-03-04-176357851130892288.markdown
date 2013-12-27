@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@raxvulpine Now I am imagining rigging up a deadma...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1656
+wordpress_url: http://twitter-176357851130892288
+date: 2012-03-04 13:26:02.000000000 +01:00
+categories: []
+tags: []
+---
+@raxvulpine Now I am imagining rigging up a deadman's switch to Twitter. If you don't unlock the screen once&#47;hour, it tweets your death.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@0xabad1dea Because I can''t resist bad ideas (32-b...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1810
+wordpress_url: http://twitter-232978556995637248
+date: 2012-08-07 19:16:31.000000000 +02:00
+categories: []
+tags: []
+---
+@0xabad1dea Because I can't resist bad ideas (32-bit Linux only, dirty hack PoC): http:&#47;&#47;t.co&#47;MqCckoyg

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kevinriggle 1005PE'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 776
+wordpress_url: http://twitter-18559799961
+date: 2010-07-14 20:18:37.000000000 +02:00
+categories: []
+tags: []
+---
+@kevinriggle 1005PE

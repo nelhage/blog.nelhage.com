@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@gwillen I wrote http:&#47;&#47;bit.ly&#47;hX1CWj about a year...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1124
+wordpress_url: http://twitter-28942356304633856
+date: 2011-01-22 18:29:30.000000000 +01:00
+categories: []
+tags: []
+---
+@gwillen I wrote http:&#47;&#47;bit.ly&#47;hX1CWj about a year ago, covers some of that. I do plan on a post on how reptyr works in detail.

@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Caught an emacs SEGV in gdb. This has been biting...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 994
+wordpress_url: http://twitter-1854510389526528
+date: 2010-11-09 00:32:04.000000000 +01:00
+categories: []
+tags: []
+---
+Caught an emacs SEGV in gdb. This has been biting me for a while, maybe I can actually debug this.

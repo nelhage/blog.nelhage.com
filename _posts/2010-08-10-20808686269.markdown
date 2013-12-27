@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@halvarflake We can debate whether we all "should"...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 816
+wordpress_url: http://twitter-20808686269
+date: 2010-08-10 12:44:01.000000000 +02:00
+categories: []
+tags: []
+---
+@halvarflake We can debate whether we all "should" have to if we want, but, today, we &#47;do&#47; have to, so we should all learn to.

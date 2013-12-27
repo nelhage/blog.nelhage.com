@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@sartak I''ve been replaying Ocarina of Time lately...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1241
+wordpress_url: http://twitter-58322822212235264
+date: 2011-04-13 20:16:59.000000000 +02:00
+categories: []
+tags: []
+---
+@sartak I've been replaying Ocarina of Time lately. It, on the other hand, totally lives up to my memories.

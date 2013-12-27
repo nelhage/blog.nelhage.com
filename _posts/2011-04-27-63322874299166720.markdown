@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@cbarrett Were it not for the URL, I would serious...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1248
+wordpress_url: http://twitter-63322874299166720
+date: 2011-04-27 15:25:24.000000000 +02:00
+categories: []
+tags: []
+---
+@cbarrett Were it not for the URL, I would seriously have read that post as parody in every way.

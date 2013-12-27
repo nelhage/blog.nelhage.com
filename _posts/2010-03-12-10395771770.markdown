@@ -1,0 +1,17 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Updated permalink structure on blog.nelhage.com. H...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 556
+wordpress_url: http://twitter-10395771770
+date: 2010-03-12 19:37:54.000000000 +01:00
+categories: []
+tags: []
+---
+Updated permalink structure on blog.nelhage.com. Had to do some
+mod_rewrite hacking by hand to keep old links working.

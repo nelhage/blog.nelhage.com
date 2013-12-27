@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@kevinriggle What are you hacking in these days? D...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 738
+wordpress_url: http://twitter-16883822976
+date: 2010-06-23 19:03:54.000000000 +02:00
+categories: []
+tags: []
+---
+@kevinriggle What are you hacking in these days? Do they have you working on LISP?

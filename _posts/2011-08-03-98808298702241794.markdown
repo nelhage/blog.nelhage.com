@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'My reaction to the Microsoft #BlueHatPrize: If I c...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1350
+wordpress_url: http://twitter-98808298702241794
+date: 2011-08-03 13:31:48.000000000 +02:00
+categories: []
+tags: []
+---
+My reaction to the Microsoft #BlueHatPrize: If I could solve ROP, I have better things to do than give it to MSFT for a chance at $200k.

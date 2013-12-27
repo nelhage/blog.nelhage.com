@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 Are you into FfC yet?'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1278
+wordpress_url: http://twitter-75592284573405184
+date: 2011-05-31 11:59:39.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 Are you into FfC yet?

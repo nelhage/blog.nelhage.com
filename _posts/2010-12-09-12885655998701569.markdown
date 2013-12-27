@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: I would be much more likely to sign the @demandpro...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1063
+wordpress_url: http://twitter-12885655998701569
+date: 2010-12-09 11:05:54.000000000 +01:00
+categories: []
+tags: []
+---
+I would be much more likely to sign the @demandprogress petition if the page linked to any references for their assertions...

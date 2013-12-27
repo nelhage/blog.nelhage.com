@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! '@laura47 Yeah, I need some new high-quality geeky...'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1381
+wordpress_url: http://twitter-105675842604105728
+date: 2011-08-22 12:20:58.000000000 +02:00
+categories: []
+tags: []
+---
+@laura47 Yeah, I need some new high-quality geeky t-shirts. I feel like many of my old ones aren't making the cut any more.

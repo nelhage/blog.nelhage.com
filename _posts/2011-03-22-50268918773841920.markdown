@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: ! 'OH: "Just run adb lolcat to grab the logs"'
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1217
+wordpress_url: http://twitter-50268918773841920
+date: 2011-03-22 14:53:38.000000000 +01:00
+categories: []
+tags: []
+---
+OH: "Just run adb lolcat to grab the logs"

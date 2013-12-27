@@ -1,0 +1,16 @@
+---
+layout: aktt_tweet
+status: publish
+published: true
+title: Why can't I trivially buy people beers over the In...
+author: nelhage
+author_login: nelhage
+author_email: nelhage@mit.edu
+author_url: http://nelhage.com
+wordpress_id: 1524
+wordpress_url: http://twitter-140195015153557504
+date: 2011-11-25 18:27:50.000000000 +01:00
+categories: []
+tags: []
+---
+Why can't I trivially buy people beers over the Internet yet? I see a great need.
