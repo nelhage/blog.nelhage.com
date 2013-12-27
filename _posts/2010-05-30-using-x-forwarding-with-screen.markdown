@@ -71,8 +71,8 @@ And whenever you `ssh` into your remote machine and resume your screen
 sessions, you can run X programs and they'll magically pop up in your
 most recent X-forwarded connection.
 
-(The script, available on [github][x11-proxy], is currently a disgusting mess of shell that uses `socat` to do the actual proxying, and mucks around in `&#47;proc&#47;net` to find old instances of itself to kill. But it works wonderfully, so I haven't bothered to clean it up)
+(The script, available on [github][x11-proxy], is currently a disgusting mess of shell that uses `socat` to do the actual proxying, and mucks around in `/proc/net` to find old instances of itself to kill. But it works wonderfully, so I haven't bothered to clean it up)
 
-[screen]: http:&#47;&#47;www.gnu.org&#47;software&#47;screen&#47;
-[nx]: http:&#47;&#47;www.nomachine.com&#47;
-[x11-proxy]: http:&#47;&#47;github.com&#47;nelhage&#47;x11-proxy
+[screen]: http://www.gnu.org/software/screen/
+[nx]: http://www.nomachine.com/
+[x11-proxy]: http://github.com/nelhage/x11-proxy

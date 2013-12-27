@@ -32,7 +32,7 @@ text is key to using it well, and getting at symbols is a bit of a
 pain. Also, I've found that using it (or just using the phone heavily)
 with one hand (phone in palm, thumb on keys) is _horrible_ for my
 hand. Doing so for more than a very short time leaves the back of my
-hand and&#47;or thumb hurting for the rest of the day.
+hand and/or thumb hurting for the rest of the day.
 
 I haven't hacked the phone at all -- Firmare 1.1.2 patched the hole
 jailbreakme used to get in, and my attempts to downgrade the firmware

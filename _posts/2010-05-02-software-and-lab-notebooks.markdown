@@ -30,11 +30,11 @@ notes as they go, and document the steps they take in building a
 system. 6.005, MIT's new introductory software engineering class,
 attempted to require its students to keep lab notebooks for a few
 semesters, and was met with near-universal complaints and ridicule
-from the students (&ldquo;Lab notebooks? For a software engineering class?
-What the hell?&rdquo;). (To be fair, I suspect they did a horrible job of
+from the students (“Lab notebooks? For a software engineering class?
+What the hell?”). (To be fair, I suspect they did a horrible job of
 it, but I'm not sure that students would have been any less confused
 at the idea).
-<&#47;p>
+</p>
 <p>
 Part of the reason is probably also the nature of software that makes
 it very easy to record certain things as part of our tools, and that
@@ -47,7 +47,7 @@ again later, any time you want? Computers feel much neater and simpler
 than messy bio or chem labs, and software is much simpler than
 complicated biology experiments or chemical syntheses, and so no one
 feels the need to be nearly as careful.
-<&#47;p>
+</p>
 <p>
 However, I am increasingly of the opinion that most software
 engineers' total inability to work in a lab-notebook style, where you
@@ -56,9 +56,9 @@ detrimental to their work. While it's true that things like commit
 logs do a good job of documenting certain processes, here are some
 types of situations where I've found working with meticulous notes at
 every step can be invaluable:
-<&#47;p>
+</p>
 <dl>
-<dt>Debugging subtle problems<&#47;dt><dd>
+<dt>Debugging subtle problems</dt><dd>
 Debugging is very much a problem of
 gathering data and making and testing hypotheses. For subtle bugs
 in large programs, the amount of state you need to keep track of
@@ -70,7 +70,7 @@ even across a lunch break.
 If you've ever found yourself wondering "Wait &ndash; did I see the
 bug after I made $CHANGE to my code or test environment?", you
 should have been writing more things down.
-<&#47;p>
+</p>
 <p>
 This is especially important for non-deterministic bugs, such as
 rare race conditions. If it takes you half a hour on average to
@@ -83,8 +83,8 @@ any relevant prompts, and every single code change (or, since we
 have technology, obsessively saving the output of `history`,
 making commits to test branches, and recording the correlation
 between them).
-<&#47;p><&#47;dd>
-<dt>Profiling and optimization<&#47;dt><dd>
+</p></dd>
+<dt>Profiling and optimization</dt><dd>
 This is a process similar in many ways
 to debugging, but even more data-driven. When you're done with a
 session of optimizing a piece of code or a system, if you can't
@@ -103,14 +103,14 @@ out of the system, and it'd be nice not to start from scratch. Or
 maybe future testing will reveal that or more of your
 optimizations was invalid, and you need to go back and consider
 alternate options.
-<&#47;p>
+</p>
 <p>
 This is critically important when you're optimizing not just a
 piece of code, but some kind of system with lots of configuration
 and setup, that you'll later have to duplicate somewhere else,
 instead of just checking the result into source control.
-<&#47;p><&#47;dd>
-<dt>Understanding a new project's code or documentation<&#47;dt><dd>
+</p></dd>
+<dt>Understanding a new project's code or documentation</dt><dd>
 Whenever I'm
 first diving into a large code-base or first playing with a large
 new API, I find it invaluable to take notes as I go about what I
@@ -124,13 +124,13 @@ And when the documentation is ambiguous, I'll often drop into a
 REPL or build test programs to make various calls and understand
 what happens. Again, after more than two or three of these, it's
 vital that I've been writing down my findings.
-<&#47;p>
+</p>
 <p>
 This is one example where a chronological style documenting
 exactly in what order I found things is less critical, but that
 detailed notes as I go are still vital.
-<&#47;p><&#47;dd>
-<dt>Designing things<&#47;dt><dd>
+</p></dd>
+<dt>Designing things</dt><dd>
 Whenever you're designing something &ndash; be it an
 API, a protocol, an interface, some kind of system, or something
 else &ndash; it's worth taking notes on the process you took to get to
@@ -146,16 +146,16 @@ and how to best use or extend it in the future. Hopefully, when
 you're done, you'd do this writeup in brief somewhere anyways,
 but the best way to make sure you don't forget is to take good
 notes as your thought process happens.
-<&#47;p>
+</p>
 <p>
 And nothing in software is ever complete. If you have to revise
 the design for some reason, because someone points out problems
 or new requirements come up, you'll probably want to remember the
 other possibilities you came up with &ndash; maybe one of them is now
 more right.
-<&#47;p>
-<&#47;dd>
-<&#47;dl>
+</p>
+</dd>
+</dl>
 
 <p>So, if you're a software engineer, I strongly encourage you to try to
 get better at writing things down. In a future post, I'll hopefully
@@ -163,4 +163,4 @@ write up the techniques I've started using to take notes as I code,
 debug, and design, but in the meanwhile, I encourage you to just grab
 a text editor or a physical lab notebook, whichever is more
 comfortable for you, and start taking more notes on what you're doing.
-<&#47;p><&#47;div>
+</p></div>

@@ -13,4 +13,4 @@ categories:
 - Uncategorized
 tags: []
 ---
-I'm [Nelson Elhage](http:&#47;&#47;nelhage.com), a kernel programmer and engineer at [Ksplice](http:&#47;&#47;ksplice.com). I find computers endlessly fascinating and frustrating, and hate sysadminning but can't stop doing it. I'm interested in all sorts of low-level computer systems.
+I'm [Nelson Elhage](http://nelhage.com), a kernel programmer and engineer at [Ksplice](http://ksplice.com). I find computers endlessly fascinating and frustrating, and hate sysadminning but can't stop doing it. I'm interested in all sorts of low-level computer systems.

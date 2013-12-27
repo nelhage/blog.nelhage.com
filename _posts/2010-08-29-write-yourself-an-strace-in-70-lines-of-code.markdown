@@ -27,8 +27,8 @@ already familiar with this incredibly versatile tool, I suggest you go
 check out my friend and coworker Greg Price's excellent [blog
 post][priceblog] on the subject, and then come back here.
 
-[strace]: http:&#47;&#47;linux.die.net&#47;man&#47;1&#47;strace
-[priceblog]: http:&#47;&#47;blog.ksplice.com&#47;2010&#47;08&#47;strace-the-sysadmins-microscope&#47;
+[strace]: http://linux.die.net/man/1/strace
+[priceblog]: http://blog.ksplice.com/2010/08/strace-the-sysadmins-microscope/
 
 We all love strace, but have you ever wondered how it works? How does
 it interject itself between the kernel and the userspace program? This
@@ -62,15 +62,15 @@ this happens, the kernel will stop the child with `SIGTRAP`. Since the
 tracer is now the child's parent, it can thus watch for this using the
 standard UNIX `waitpid` system call.
 
-[ptrace]: http:&#47;&#47;linux.die.net&#47;man&#47;2&#47;ptrace
+[ptrace]: http://linux.die.net/man/2/ptrace
 
 Our miniature `strace` will only support the `strace COMMAND` form of
 `strace` (as opposed to `strace -p`), and we'll only print syscall
 numbers and return values -- no decoding of names or arguments or
 anything. So a sample run might look like:
 
-    $ .&#47;ministrace ls
-    &hellip;
+    $ ./ministrace ls
+    …
     syscall(6) = 0
     syscall(54) = 0
     syscall(54) = 0
@@ -81,23 +81,23 @@ anything. So a sample run might look like:
     syscall(6) = 0
     syscall(197) = 0
     syscall(192) = -1219706880
-    &hellip;
+    …
 
 Not the most useful thing in the world, but it shows off the core
 tracing tools. So, let's see the code:
 
-    #include <sys&#47;ptrace.h>
-    #include <sys&#47;reg.h>
-    #include <sys&#47;wait.h>
-    #include <sys&#47;types.h>
+    #include <sys/ptrace.h>
+    #include <sys/reg.h>
+    #include <sys/wait.h>
+    #include <sys/types.h>
     #include <unistd.h>
     #include <stdlib.h>
     #include <stdio.h>
     #include <errno.h>
     #include <string.h>
 
-We start with the necessary headers. `sys&#47;ptrace.h` defines `ptrace`
-and the `__ptrace_request` constants, and we'll need `sys&#47;reg.h` to
+We start with the necessary headers. `sys/ptrace.h` defines `ptrace`
+and the `__ptrace_request` constants, and we'll need `sys/reg.h` to
 help decode system calls. More about that later. Everything else you
 should probably recognize.
 
@@ -197,7 +197,7 @@ internal non-memory state. On i386, the syscall number lives in
 `%eax`. For various technical reasons, however, the kernel has already
 clobbered the child's `%eax` at this point, but it saves the original
 value at a different offset, `ORIG_EAX`, which comes from
-`sys&#47;regs.h'.
+`sys/regs.h'.
 
             if (wait_for_syscall(child) != 0) break;
 
@@ -250,7 +250,7 @@ loop to start it again until it hits a syscall.
 And that's all there is to it. You can find the version I just posted on
 [github][for-blog] if you want to download and try it out.
 
-[for-blog]: http:&#47;&#47;github.com&#47;nelhage&#47;ministrace&#47;tree&#47;for-blog
+[for-blog]: http://github.com/nelhage/ministrace/tree/for-blog
 
 Making it more useful
 ---------------------
@@ -265,7 +265,7 @@ includes a Python script to scan the Linux source to pick up syscall numbers and
 argument counts and types, and it knows how to decode string arguments, so that
 you can see filenames and `read` and `write` data.
 
-[master]: http:&#47;&#47;github.com&#47;nelhage&#47;ministrace&#47;tree&#47;master
+[master]: http://github.com/nelhage/ministrace/tree/master
 
 Reading arguments is easy -- on i386, they're passed in registers, so it's just
 another `PTRACE_GETUSER` for each argument. Perhaps the most interesting piece
@@ -317,4 +317,4 @@ found a terminating NULL, or else looping to read another word.
         return val;
     }
 
-[for-blog]: http:&#47;&#47;github.com&#47;nelhage&#47;ministrace&#47;tree&#47;for-blog
+[for-blog]: http://github.com/nelhage/ministrace/tree/for-blog

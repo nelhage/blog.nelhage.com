@@ -15,7 +15,7 @@ categories:
 tags: []
 ---
 Recently, I've been working on some <a
-href="http:&#47;&#47;barnowl.mit.edu&#47;">BarnOwl<&#47;a> branches that move more of
+href="http://barnowl.mit.edu/">BarnOwl</a> branches that move more of
 the core functionality of BarnOwl into perl code, instead of C
 (BarnOwl is written in an unholy mix of C and perl code that call each
 other back and forth obsessively).
@@ -26,7 +26,7 @@ spots related to its tendency to keep tens or hundreds of thousands of
 messages in memory and loop over all of them in response to various
 commands.
 
-Unfortunately, one downside of the C&#47;perl mix is that it makes
+Unfortunately, one downside of the C/perl mix is that it makes
 profiling quite difficult. I can run the perl side under NYTProf and
 get a good picture from the perl side of things, but I've been
 unsatisfied about my visibility into the C side of things. The main
@@ -104,7 +104,7 @@ I still haven't yet written the code to turn traces into userful profiling
 information, but if I do produce a useful profiler tool, I'll post something on this blog.
 
 
-[1]: http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Binary_File_Descriptor_library
-[2]: http:&#47;&#47;udis86.sourceforge.net&#47;
-[josh]: http:&#47;&#47;oremanj.scripts.mit.edu&#47;blog&#47;
-[gcc]: http:&#47;&#47;gcc.gnu.org&#47;onlinedocs&#47;gcc-4.3.2&#47;gcc&#47;Code-Gen-Options.html
+[1]: http://en.wikipedia.org/wiki/Binary_File_Descriptor_library
+[2]: http://udis86.sourceforge.net/
+[josh]: http://oremanj.scripts.mit.edu/blog/
+[gcc]: http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Code-Gen-Options.html

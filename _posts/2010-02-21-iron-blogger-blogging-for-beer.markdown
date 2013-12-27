@@ -29,14 +29,14 @@ either)
 
 <blockquote>
 <p>I know a whole bunch of you have mentioned that you should blog more
-often.<&#47;p>
+often.</p>
 
-<p>I propose that a bunch of us start blogs &#47; dust off old ones, and
-commit to updating regularly -- say a modest one post&#47;week initially.
+<p>I propose that a bunch of us start blogs / dust off old ones, and
+commit to updating regularly -- say a modest one post/week initially.
 Every week, anyone who fails to update owes say $5 to a collective
 beer fund. Every month or so, we all go out and enjoy drinks on the
 tab of everyone who was lame. We also humiliate them as
-appropriate.<&#47;p> <&#47;blockquote>
+appropriate.</p> </blockquote>
 
 At the time, I expected maybe 6-10 people, at most, and we'd be able
 to just go to a random bar in the area, get a table, and sit down. I
@@ -48,9 +48,9 @@ and all of the [participants][participants].  I've written 250 lines
 of Python to manage the site and weekly reports, which you can
 download from [github][github].
 
-[rules]: http:&#47;&#47;iron-blogger.mit.edu&#47;the-rules
-[participants]: http:&#47;&#47;iron-blogger.mit.edu&#47;participants&#47;
-[github]: http:&#47;&#47;github.com&#47;nelhage&#47;iron-blogger
+[rules]: http://iron-blogger.mit.edu/the-rules
+[participants]: http://iron-blogger.mit.edu/participants/
+[github]: http://github.com/nelhage/iron-blogger
 
 In celebration of the two-month anniversary of that zephyr that
 started this ridiculous event, here are some statistics, as of when I
@@ -58,8 +58,8 @@ write this. No doubt these numbers will change by 0600 tomorrow, when
 this week's deadline rolls around.
 
 So far, I count 307 blog bosts that have been made as part of Iron
-Blogger, by 42 bloggers, for an average of 7.3 posts&#47;person, or 0.8
-posts&#47;person&#47;week. (This isn't quite accurate, in that some people
+Blogger, by 42 bloggers, for an average of 7.3 posts/person, or 0.8
+posts/person/week. (This isn't quite accurate, in that some people
 have joined late, so I shouldn't be counting them for all weeks, but
 close enough).
 

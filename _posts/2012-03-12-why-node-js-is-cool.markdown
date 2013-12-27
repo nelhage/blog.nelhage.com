@@ -20,11 +20,11 @@ tags:
 ---
 For the past N months, it seems like there is no new technology stack
 that is either hotter or more controversial than node.js. [node.js is
-cancer](http:&#47;&#47;teddziuba.com&#47;2011&#47;10&#47;node-js-is-cancer.html)!
+cancer](http://teddziuba.com/2011/10/node-js-is-cancer.html)!
 [node.js cures
-cancer](http:&#47;&#47;blog.brianbeck.com&#47;post&#47;10967024222&#47;node-js-cures-cancer)!
+cancer](http://blog.brianbeck.com/post/10967024222/node-js-cures-cancer)!
 [node.js is bad ass rock star
-tech](http:&#47;&#47;www.youtube.com&#47;watch?v=bzkRVzciAZg)!. I myself have
+tech](http://www.youtube.com/watch?v=bzkRVzciAZg)!. I myself have
 given node.js a lot of shit, often involving the phrase "explicit
 continuation-passing style."
 
@@ -47,7 +47,7 @@ mainstream language. That problem is the fact that, as long as
 to write networked code in a way that it can be combined with other
 network code, while allowing them to interact.
 
-In most languages&#47;environments -- virtually every other language
+In most languages/environments -- virtually every other language
 people use today -- when you write networked code, you can either make
 it fully blocking itself, and implement your own main loop -- which is
 almost always easiest -- or you can pick your favorite event loop
@@ -132,7 +132,7 @@ a sweet spot in terms of what developers are willing to put up
 with. Certainly, people are writing node.js code like mad -- check out
 the [npm registry][npm] for a partial list.
 
-[npm]: http:&#47;&#47;search.npmjs.org&#47;
+[npm]: http://search.npmjs.org/
 
 
 So, node.js is not magic, and it definitely doesn't cure cancer. But
@@ -142,7 +142,7 @@ glue some unrelated networked services together, give node.js a shot
 quick HTTP frontend onto whatever you've created. I promise you'll be
 shocked by how easy it is.
 
-<a name="example"><&#47;a>
+<a name="example"></a>
 Postscript - A Python Example
 -----------------------------
 
@@ -166,8 +166,8 @@ IRC main loop:
     bot = MyBot(channel, nickname, server, port)
     bot.start()
 
-[pyirc]: http:&#47;&#47;python-irclib.sourceforge.net&#47;
-[xmpppy]: http:&#47;&#47;xmpppy.sourceforge.net&#47;
+[pyirc]: http://python-irclib.sourceforge.net/
+[xmpppy]: http://xmpppy.sourceforge.net/
 
 And in xmpppy, we construct an `xmpp.Client` object, and call
 `Client.Process` in a loop, with a timeout:
@@ -197,7 +197,7 @@ calling `start` to calling `process_once` in a loop with a short
 timeout.
 
 This will work, and we'll eventually get something working, but now
-we're forced into polling, with all the annoying latency&#47;CPU tradeoffs
+we're forced into polling, with all the annoying latency/CPU tradeoffs
 that entails, and also half of our code so far has just been spent
 gluing these two libraries together.
 

@@ -72,7 +72,7 @@ If all file descriptors referring to the read end of a pipe have been
 closed, then a write(2) will cause a SIGPIPE signal to be generated
 for the calling process.  If the calling process is ignoring this
 signal, then write(2) fails with the error EPIPE.
-<&#47;blockquote>
+</blockquote>
 
 Under normal circumstances, `gzip` expects that whoever is downstream
 of it may only care about a prefix of the uncompressed stream, and so
@@ -88,7 +88,7 @@ to ignore `SIGPIPE` by setting it to `SIG_IGN`.
 As explained in `sigaction(2)`:
 <blockquote>
 A child created via fork(2) inherits a copy of its parent's signal dispositions.   During  an  execve(2),  the  dispositions of handled signals are reset to the default; the dispositions of ignored signals are left unchanged.
-<&#47;blockquote>
+</blockquote>
 
  And so, when started from Python, `gzip` starts up with
 `SIGPIPE` ignored. And, for reasons I don't understand, rather than
@@ -120,8 +120,8 @@ posting his discovery of this class of bug on his [blog][5], which
 greatly reduced the amount of time I would have had to spend tracking
 this down)
 
-[1]: http:&#47;&#47;web.mit.edu&#47;6.033&#47;www&#47;
-[2]: http:&#47;&#47;ebroder.net&#47;2010&#47;01&#47;25&#47;complex-systems-and-simple-failures&#47;
-[3]: http:&#47;&#47;docs.python.org&#47;library&#47;tarfile.html
-[4]: http:&#47;&#47;bugs.python.org&#47;issue1652
-[5]: http:&#47;&#47;www.chiark.greenend.org.uk&#47;ucgi&#47;~cjwatson&#47;blosxom&#47;2009-07-02-python-sigpipe.html
+[1]: http://web.mit.edu/6.033/www/
+[2]: http://ebroder.net/2010/01/25/complex-systems-and-simple-failures/
+[3]: http://docs.python.org/library/tarfile.html
+[4]: http://bugs.python.org/issue1652
+[5]: http://www.chiark.greenend.org.uk/ucgi/~cjwatson/blosxom/2009-07-02-python-sigpipe.html

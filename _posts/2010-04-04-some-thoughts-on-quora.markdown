@@ -21,12 +21,12 @@ tags:
 - answers
 ---
 With the announcement this week that <a
-href="http:&#47;&#47;quora.com">Quora<&#47;a> had taken $11 million in VC at an
+href="http://quora.com">Quora</a> had taken $11 million in VC at an
 $86 million valuation, there's been an awful lot of attention on
 Quora. I've had an account there and wanted to write up some of my
 initial thoughts.
 
-If you haven't heard about Quora, it's yet another question&#47;answer
+If you haven't heard about Quora, it's yet another question/answer
 site on the web. People pose questions, and you can view questions and
 answer them. I've heard it described as "StackOverflow, but for
 anything", which is roughly true, even if I think they want to be
@@ -34,7 +34,7 @@ more. There are tons of Q&A sites out there, but I think there is
 clearly room for more, or better ones -- none of them seem to get it
 quite right in various ways.
 
-Here's my thoughts&#47;observations on Quora:
+Here's my thoughts/observations on Quora:
 
 <ul>
 
@@ -42,22 +42,22 @@ Here's my thoughts&#47;observations on Quora:
 Silicon Valley crowd. Half the questions seem to be about web startups
 or related topics. I'm sure the userbase will branch out eventually,
 but until it does, it's somewhat difficult to anticipate how the feel
-will change.<&#47;p><&#47;li>
+will change.</p></li>
 
 <li><p>I want it to be more real-time. I'm fairly good at using Google
 to answer questions, so if I post a technical question, it's usually
 just because I'm too lazy to go digging myself. But if I don't get an
 answer back quickly, I'll tend to time out and just go do the work
 myself. In my experience, it hasn't been fast enough to avoid that
-timeout.  <&#47;p>
+timeout.  </p>
 
 <p> I do have the advantage that if I want opinons or answers to more
 subjective questions, I can ask <a
-href="http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Zephyr_(protocol)">Zephyr<&#47;a>,
+href="http://en.wikipedia.org/wiki/Zephyr_(protocol)">Zephyr</a>,
 MIT's instant messaging network, which I describe as somewhat like a
 cross between IRC and Twitter. It's possible there's more value here
-for people who don't have that resource.<&#47;p>
-<&#47;li>
+for people who don't have that resource.</p>
+</li>
 
 <li>
 
@@ -70,14 +70,14 @@ asks a question, it's quite common for one person to throw out a guess
 (noted as such), or partial answer, and for whoever else is around to
 start from that guess and go to Google, Wikipedia, or other
 references, reporting progress as they go, until they arrive at a
-satisfactory answer.  <&#47;p>
+satisfactory answer.  </p>
 
 <p> I would love to see a Q&A site for the web that harnesses the same
 sort of collaboration to find answers to questions that no single
 person already knows the full answer to.  Quora isn't that (yet?), and
 so it remains much less useful to me than Zephyr. I'll be curious to
 follow where it goes, though. $11 million probably opens a lot of
-possibilities.<&#47;p>
+possibilities.</p>
 
-<&#47;li>
-<&#47;ul>
+</li>
+</ul>

@@ -34,4 +34,4 @@ to someone. My `.xsession` incant is simply:
     autocutsel -fork
     autocutsel -selection PRIMARY -fork
 
-[autocutsel]: http:&#47;&#47;www.nongnu.org&#47;autocutsel&#47;
+[autocutsel]: http://www.nongnu.org/autocutsel/

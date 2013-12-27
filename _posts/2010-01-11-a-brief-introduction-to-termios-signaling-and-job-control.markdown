@@ -24,8 +24,8 @@ tags:
 terminal emulation on UNIX. Read [part 1][part-1] or [part 2][part-2]
 if you're new here)
 
-[part-1]: http:&#47;&#47;blog.nelhage.com&#47;archives&#47;14
-[part-2]: http:&#47;&#47;blog.nelhage.com&#47;archives&#47;27
+[part-1]: http://blog.nelhage.com/archives/14
+[part-2]: http://blog.nelhage.com/archives/27
 
 For my final entry on termios, I will be looking at job control in the
 shell (i.e. backgrounding and foreground jobs) and the very closely
@@ -45,14 +45,14 @@ group leader** or **session leader**. A process creates a new session
 using `setsid(2)`, or a new process group using `setpgid(2)`.
 
 On Linux, you can inspect the process group and session of a process
-using the `stat` field in `&#47;proc&#47;$PID`. The first several fields in
+using the `stat` field in `/proc/$PID`. The first several fields in
 that file are:
 
-        pid (name) state ppid pgid sid &hellip;
+        pid (name) state ppid pgid sid …
 
 or, in more words:
 
-        [process id] ([name]) [state] [parent process id] [process group id] [session id] &hellip;
+        [process id] ([name]) [state] [parent process id] [process group id] [session id] …
 
 ### Sessions
 
@@ -137,4 +137,4 @@ If you launch a job in the background, the shell simply doesn't
 
 # In conclusion
 
-That's probably all I want to say about termios. I could talk more about terminal emulation, ncurses, `$TERM` and friends, but it's less interesting to me -- I think I'm a kernel hacker at heart, and that stuff is just userspace programs talking to each other at this point. I hope you found this series interesting and&#47;or informative, and I'm always happy to answer questions.
+That's probably all I want to say about termios. I could talk more about terminal emulation, ncurses, `$TERM` and friends, but it's less interesting to me -- I think I'm a kernel hacker at heart, and that stuff is just userspace programs talking to each other at this point. I hope you found this series interesting and/or informative, and I'm always happy to answer questions.

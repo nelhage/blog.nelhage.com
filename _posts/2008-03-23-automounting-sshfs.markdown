@@ -23,7 +23,7 @@ For some time now, many of us around MIT have noticed just how awesome
 [sshfs][sshfs] is. It gives a totally lightweight way to access the
 remote filesystem of any machine you have ssh to, without requiring
 _any_ extra setup on the host. I've been running for at least a year
-now with my `&#47;data` RAID on my server sshfs-mounted on my laptop, and
+now with my `/data` RAID on my server sshfs-mounted on my laptop, and
 it works totally great.
 
 Recently, I came across two awesome things that make sshfs even
@@ -40,7 +40,7 @@ option. Just add
     Host *
     ServerAliveInterval 15
 
-to `.ssh&#47;config`, and ssh will send in-protocol keepalives every 15
+to `.ssh/config`, and ssh will send in-protocol keepalives every 15
 seconds if the connection is idle, and die if it doesn't receive
 anything back. Combine this with `-o reconnect`, and everything Just
 Works when you change IPs
@@ -49,17 +49,17 @@ The second cool thing is [afuse][afuse], the FUSE automounter. It lets
 you set up an automounter for just about anything you can think of,
 using another FUSE filesystem itself. I simply run it as
 
-    afuse -o mount_template='sshfs -o reconnect %r:&#47; %m' -o unmount_template='fusermount -u -z %m' &#47;ssh
+    afuse -o mount_template='sshfs -o reconnect %r:/ %m' -o unmount_template='fusermount -u -z %m' /ssh
 
-from my `.xsession`, and I have a `&#47;ssh` automounter!  Combined with
+from my `.xsession`, and I have a `/ssh` automounter!  Combined with
 the wonders of kerberos and public keys, so I never have to type a
 password, and I can get easy remote access to just about every machine
 I care about!
 
-(Note that I did have to chown `&#47;ssh` to me in order for me to be able
+(Note that I did have to chown `/ssh` to me in order for me to be able
 to run `afuse` as me, which is necessary for `sshfs` to access my
 kerberos tickets and ssh keys. This is fine for my laptop, but
 obviously wouldn't work for a dialup or other multi-user machine.)
 
-[afuse]: http:&#47;&#47;afuse.sourceforge.net&#47;
-[sshfs]: http:&#47;&#47;fuse.sourceforge.net&#47;sshfs.html
+[afuse]: http://afuse.sourceforge.net/
+[sshfs]: http://fuse.sourceforge.net/sshfs.html

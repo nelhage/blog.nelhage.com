@@ -32,7 +32,7 @@ The objective
 
 I want to be able to resolve my VM's hostnames so that I can ssh to
 them, or run other network services and access them from the host. I
-could just assign static addresses and put them in `&#47;etc&#47;hosts`, but
+could just assign static addresses and put them in `/etc/hosts`, but
 that's totally lame, and liable to be a source of error and
 frustration, because I have dozens of VMs, and add and remove them
 frequently.
@@ -52,7 +52,7 @@ local NAT on my machine. I configure that virtual network inside
 VMware as follows (run `vmware-netconfig`, or follow the appropriate
 menus):
 
-<a href="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;10&#47;vmw.png"><img src="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;10&#47;vmw.png" alt="" title="VMware workstation network configuration" width="512" height="576" class="aligncenter size-full wp-image-388" &#47;><&#47;a>
+<a href="http://blog.nelhage.com/wp-content/uploads/2010/10/vmw.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/10/vmw.png" alt="" title="VMware workstation network configuration" width="512" height="576" class="aligncenter size-full wp-image-388" /></a>
 
 Note how I **disable** "Use local DHCP service to distribute IP
 addresses to VMs" -- we're going to set up dnsmasq to prove DHCP, so
@@ -64,7 +64,7 @@ choose a different one, you'll need to adjust accordingly later.
 Configuring `dnsmasq`
 ---------------------
 
-Then, I install `dnsmasq`, and configure `&#47;etc&#47;dnsmasq.conf` as
+Then, I install `dnsmasq`, and configure `/etc/dnsmasq.conf` as
 follows:
 
     listen-address=172.16.37.1
@@ -72,7 +72,7 @@ follows:
     no-dhcp-interface=lo
 
     server=192.168.1.1
-    local=&#47;vmware&#47;
+    local=/vmware/
 
     no-hosts
     no-resolv
@@ -97,7 +97,7 @@ virtual network we set up in the previous step. We don't want it
 serving DHCP to `localhost`, though, so we tell it not to.
 
     server=192.168.1.1
-    local=&#47;vmware&#47;
+    local=/vmware/
 
 Here we tell `dnsmasq` how to forward DNS requests to the outside
 world. We're going to be using `dnsmasq` as our primary nameserver,
@@ -114,7 +114,7 @@ the `resolv-file` option or similar, but I don't, personally.
     no-resolv
 
 These options tell `dnsmasq` not to look at `resolv.conf` or
-`&#47;etc&#47;hosts` when resolving names -- we want it only to resolve VMs
+`/etc/hosts` when resolving names -- we want it only to resolve VMs
 itself, and to forward everything else.
 
     domain=vmware
@@ -160,12 +160,12 @@ DHCP requests, so that `dnsmasq` can add them to its address
 table. How to do this varies by OS, but most modern OSes do it
 automatically. If they don't, here are a few hints:
 
-For RHEL-based distros, edit `&#47;etc&#47;sysconfig&#47;network-scripts&#47;ifcfg-INTERFACE`, and add a line like
+For RHEL-based distros, edit `/etc/sysconfig/network-scripts/ifcfg-INTERFACE`, and add a line like
 
      DHCP_HOSTNAME=centos-5-amd64
 
 For most other Linux distributions, you can often edit `dhclient.conf`
-(usually in `&#47;etc&#47;` or `&#47;etc&#47;dhclient&#47;`) to include:
+(usually in `/etc/` or `/etc/dhclient/`) to include:
 
      send host-name "centos-5-amd64";
 
@@ -183,5 +183,5 @@ hopefully someone else will find this useful. If you need `dnsmasq` to
 do something more subtle, the [documentation][dnsmasq] is mostly quite
 good.
 
-[dnsmasq]: http:&#47;&#47;www.thekelleys.org.uk&#47;dnsmasq&#47;docs&#47;dnsmasq-man.html
+[dnsmasq]: http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
 

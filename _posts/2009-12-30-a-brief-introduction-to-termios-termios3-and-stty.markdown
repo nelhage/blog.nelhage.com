@@ -22,7 +22,7 @@ tags:
 (This is part two of a multi-part introduction to termios and terminal
 emulation on UNIX. Read [part 1][part-1] if you're new here)
 
-[part-1]: http:&#47;&#47;blog.nelhage.com&#47;archives&#47;14
+[part-1]: http://blog.nelhage.com/archives/14
 
 In this entry, we'll look at the interfaces that are used to control
 the behavior of the "termios" box sitting between the master and
@@ -48,11 +48,11 @@ get it for you).
 So what's inside `struct termios`? POSIX
 specifies that this structure contains at least the following fields:
 
-           tcflag_t c_iflag;      &#47;* input modes *&#47;
-           tcflag_t c_oflag;      &#47;* output modes *&#47;
-           tcflag_t c_cflag;      &#47;* control modes *&#47;
-           tcflag_t c_lflag;      &#47;* local modes *&#47;
-           cc_t     c_cc[NCCS];   &#47;* control chars *&#47;
+           tcflag_t c_iflag;      /* input modes */
+           tcflag_t c_oflag;      /* output modes */
+           tcflag_t c_cflag;      /* control modes */
+           tcflag_t c_lflag;      /* local modes */
+           cc_t     c_cc[NCCS];   /* control chars */
 
 Each "flag" field contains a number of flags (implemented as a bitmask) that can be individually enabled or disabled.
 `c_iflag` and `c_oflag` contain flags that affect the processing
@@ -140,13 +140,13 @@ Without aguments, `stty` prints in what way its terminal's settings differ from 
 defaults. `stty -a` causes it to print the value of every flag in the
 `struct termios` in a human-readable format.
 
-You can toggle flags using <tt>stty <i>flag<&#47;i><&#47;tt> to enable a flag, and <tt>stty
--<i>flag<&#47;i><&#47;tt> to disable it. So for instance, `stty -isig` will disable
+You can toggle flags using <tt>stty <i>flag</i></tt> to enable a flag, and <tt>stty
+-<i>flag</i></tt> to disable it. So for instance, `stty -isig` will disable
 signal generation -- run a program after doing this, and you'll find
 yourself unable to `^C` it. In general it uses the same names as the C constants, except in lowercase, but check the man page if in doubt.
 
 `stty` can also change the value of the control characters in
-`c_cc`, using <tt>stty <i>symbolic-name<&#47;i> <i>character<&#47;i><&#47;tt>. If you wanted `^G` to be the interrupt character, instead of `^C`, a simple `stty intr ^G` would suffice. You can spell `0` as `undef` to disable a given control character. So, if you hate flow
+`c_cc`, using <tt>stty <i>symbolic-name</i> <i>character</i></tt>. If you wanted `^G` to be the interrupt character, instead of `^C`, a simple `stty intr ^G` would suffice. You can spell `0` as `undef` to disable a given control character. So, if you hate flow
 control and want to totally disable it, you could try `stty -ixon stop
 undef` -- disable `IXON`, and then also disable the `VSTOP`
 character for good measure. (You might still be foiled by screen or some other layer doing its own flow control, unfortunately).
@@ -154,19 +154,19 @@ character for good measure. (You might still be foiled by screen or some other l
 `stty`'s `-F` option can be great for peeking at what some other program is
 doing to its terminal. If you run `tty` in a shell, it will print the
 path to that shell's terminal device (usually of the form
-<tt>&#47;dev&#47;pts&#47;<i>N<&#47;i><&#47;tt>, at least under Linux). Now,
-from a different shell, you can run <tt>stty -a -F &#47;dev&#47;pts&#47;<i>N<&#47;i><&#47;tt> to see how
+<tt>/dev/pts/<i>N</i></tt>, at least under Linux). Now,
+from a different shell, you can run <tt>stty -a -F /dev/pts/<i>N</i></tt> to see how
 the first shell's terminal is configured.  You can then run programs
 in the first shell, and repeat the `stty` incant in shell two to see
-what settings are getting set. For example, if I run `stty -F &#47;dev&#47;pts&#47;10` right now (while I have a `bash` talking to a `gnome-terminal` via that pty), I see:
+what settings are getting set. For example, if I run `stty -F /dev/pts/10` right now (while I have a `bash` talking to a `gnome-terminal` via that pty), I see:
 
-    $ stty -F &#47;dev&#47;pts&#47;10
+    $ stty -F /dev/pts/10
     speed 38400 baud; line = 0;
     eol = M-^?; eol2 = M-^?; swtch = M-^?; lnext = <undef>; min = 1; time = 0;
     -icrnl iutf8
     -icanon -echo
 
-So we can see that bash&#47;readline has disabled CR&rarr;LF translation on input (`icrnl`), disabled canonical mode and echo, but turned on UTF-8 mode (because bash detected a utf-8 locale). Note that if I run `stty` directly in that shell, I see something slightly different:
+So we can see that bash/readline has disabled CR→LF translation on input (`icrnl`), disabled canonical mode and echo, but turned on UTF-8 mode (because bash detected a utf-8 locale). Note that if I run `stty` directly in that shell, I see something slightly different:
 
     $ stty
     speed 38400 baud; line = 0;
@@ -191,7 +191,7 @@ the kernel, if not through syscalls?
 The answer is a single odd little catch-all system call, known as
 `ioctl`. Historically, one of the "big ideas" of UNIX was that
 "everything is a file" -- you could communicate with devices just like
-you could files, by opening files in `&#47;dev&#47;`. But a file on UNIX is also just a stream of bytes, without any
+you could files, by opening files in `/dev/`. But a file on UNIX is also just a stream of bytes, without any
 OS-imposed structure. And for a device, you may often need to send
 out-of-band control data -- e.g. to set the baud and parity bit settings on a
 serial port. And adding new system calls for every new device type would

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: Using wpa_supplicant on Debian&#47;Ubuntu
+title: Using wpa_supplicant on Debian/Ubuntu
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -21,7 +21,7 @@ tags:
 ---
 I've been using `wpa_supplicant` to manage wifi on my Ubuntu laptop
 for a while, and have found that it's pretty close to what I want for
-managing wireless &mdash; closer than anything else I've found, at least. I
+managing wireless — closer than anything else I've found, at least. I
 figured I should document my setup and experiences.
 
 Some Background
@@ -51,7 +51,7 @@ and a password or key if needed. You then tell it "go", and it will go
 scan for networks and connect to the appropriate ones as needed. If
 you need to override it, there's a command line client (`wpa_cli`) to
 connect to the running ndaemon and tell it connect to a specific
-network or AP (I think &mdash; I haven't actually had occasion to use it
+network or AP (I think — I haven't actually had occasion to use it
 much at all)
 
 My configuration
@@ -66,22 +66,22 @@ First, install the necessary packages:
 
 Then set up your configuration:
 
-* `&#47;etc&#47;network&#47;interfaces` &mdash; We're still going to use `ifupdown` to
+* `/etc/network/interfaces` — We're still going to use `ifupdown` to
 manage getting DHCP, but just not for wireless. So add a stanza to
 `interfaces` that looks something like:
 
         auto ath0
         iface ath0 inet dhcp
         wpa-driver wext
-        wpa-conf &#47;etc&#47;wpa_supplicant&#47;wpa_supplicant.conf
+        wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
-* `&#47;etc&#47;wpa_supplicant&#47;wpa_supplicant.conf` &mdash; This is the file where
+* `/etc/wpa_supplicant/wpa_supplicant.conf` — This is the file where
 you're going to specify what networks you want to connect
-to. `&#47;usr&#47;share&#47;doc&#47;wpasupplicant&#47;examples&#47;` can explain the full
+to. `/usr/share/doc/wpasupplicant/examples/` can explain the full
 range of options better than I can, but there are some examples
 below. For now, you can just put a
 
-        ctrl_interface=&#47;var&#47;run&#47;wpa_supplicant
+        ctrl_interface=/var/run/wpa_supplicant
 
 at the start of the file.
 
@@ -124,4 +124,4 @@ found for moving my laptop between multiple access points, and handles
 WEP, WPA, and WPA2 just fine. Hopefully it'll be helpful for someone
 else.
 
-[xmonad]: http:&#47;&#47;xmonad.org
+[xmonad]: http://xmonad.org

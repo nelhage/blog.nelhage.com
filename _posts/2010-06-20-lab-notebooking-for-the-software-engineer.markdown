@@ -24,28 +24,28 @@ found useful to try to get in the habit of lab-notebooking my work,
 even though I still feel like I could be better at writing things
 down.
 
-[prev]: http:&#47;&#47;blog.nelhage.com&#47;2010&#47;05&#47;software-and-lab-notebooks&#47;
+[prev]: http://blog.nelhage.com/2010/05/software-and-lab-notebooks/
 
 Here's my advice for keeping a lab notebook as a computer scientist:
 
 <dl>
-<dt>Use a text file<&#47;dt>
+<dt>Use a text file</dt>
 
 <dd> <p>There's no need to use anything fancier. And if you're writing
 code all day, you can just keep your log file open in your editor of
 choice, so that you don't need to leave your hacking environment to
 make a note of something. I'm an emacs junkie and use
-<a href="http:&#47;&#47;orgmode.org&#47;">org-mode<&#47;a> to keep all my notes, but use whatever you're
-comfortable with.<&#47;p>
+<a href="http://orgmode.org/">org-mode</a> to keep all my notes, but use whatever you're
+comfortable with.</p>
 
 
 <p>You could use a physical notebook, but unless you expect to want
 documentation of what you were working on for some legal reason, I
 don't see the point. And most programmers I know hate writing things
-out by hand.<&#47;p>
-<&#47;dd>
+out by hand.</p>
+</dd>
 
-<dt>Treat your file as append-only<&#47;dt>
+<dt>Treat your file as append-only</dt>
 
 <dd>One of the downsides of just using a text file is that you need to
 enforce some discipline on yourself. It's tempting to go back and fix
@@ -53,9 +53,9 @@ up things that have changed, or to keep editing a desgin description
 as it evolved. But creating a perfect finished piece of documentation
 is a different task. The point here is to have a log of everything you
 do, not a single finished document. You can work on one side-by-side
-with the (dated or even timestampped) append-only log.<&#47;dd>
+with the (dated or even timestampped) append-only log.</dd>
 
-<dt>Keep automatic backups.<&#47;dt>
+<dt>Keep automatic backups.</dt>
 
 <dd>Do this any way you want. I keep my log files in git, and have a
 cron job that commits and pushes to a server every five minutes. This
@@ -63,9 +63,9 @@ provides at least two benefits. First, it applies an automatic timestamp (to
 within five minutes) on anything I type, and second, it serves to make
 sure that a recent version is available on my server, in case I switch
 machines and want to keep working on a project.
-<&#47;dd>
+</dd>
 
-<dt>Train yourself to make regular entries.<&#47;dt>
+<dt>Train yourself to make regular entries.</dt>
 
 <dd>
 
@@ -77,16 +77,16 @@ always record. With an explict list of these that you've decided to
 always record, you can get good at making a note whenever you perform
 one of these tasks, which gets you into the habit of writing things
 down. Here's a partial list of some of the sorts of things I make a
-point of writing down:<&#47;p>
+point of writing down:</p>
 
 <ul>
 
 <li>Whenever I take a measurement. That is, any time I run
-<tt>time<&#47;tt>, or look at <tt>top<&#47;tt> to figure out how much memory a
+<tt>time</tt>, or look at <tt>top</tt> to figure out how much memory a
 program under development is using, or similar, I'll write down the
 number and the circumstances under which it was recorded. I've found
 that I almost always would like to have a better record of such things
-later.<&#47;li>
+later.</li>
 
 <li>Whenever I do a non-trivial search and find a result. This can be
 anything from googling for a solution to some problem where it takes
@@ -94,32 +94,32 @@ me several tries to find the right keywords, or grepping a large
 codebase searching for the function that performs some task, or
 tracking down some API function in documentation. If I wanted it once,
 I'll often want it later, and if it was hard to find, I'll feel stupid
-if I didn't write it down.<&#47;li>
+if I didn't write it down.</li>
 
 <li>Whenever I make an explicit design decision. If I'm thinking about
 how to design some function, system, process, or whatever, I'll stop
 and take a moment to write down the options I was considering, and why
 I made the choice I did. This ensures I can go back and remember why I
 built a system the way it is.
-<&#47;li>
+</li>
 
 
 <li>Whenever I wish I had written something down last time. This
 should be obvious, but if you find yourself thinking "I know I did
 this before; Why didn't I take notes?", you should
-<strong>always<&#47;strong> make a point of writing it down this time, no
+<strong>always</strong> make a point of writing it down this time, no
 matter what excuse you come up with for why you really won't need that
 information a third time.
-<&#47;li>
+</li>
 
-<&#47;ul>
+</ul>
 
 <p>These categories are deliberately broad, but at the same time
 well-defined. It's fairly easy to train yourself to notice whenever
 any of these points triggers, and remember to stop and write something
 down. And that's the first step to getting in the habit of writing
-down everything that you'll later wish you had written down.<&#47;p>
+down everything that you'll later wish you had written down.</p>
 
-<&#47;dd>
+</dd>
 
-<&#47;dl>
+</dl>

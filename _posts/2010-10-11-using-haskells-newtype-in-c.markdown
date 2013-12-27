@@ -59,11 +59,11 @@ Operating Systems Engineering class. JOS remaps all of physical memory
 starting at a specific virtual memory address (`KERNBASE`), and so
 provides the following macros:
 
-    &#47;* This macro takes a kernel virtual address -- an address that points above
+    /* This macro takes a kernel virtual address -- an address that points above
      * KERNBASE, where the machine's maximum 256MB of physical memory is mapped --
      * and returns the corresponding physical address.  It panics if you pass it a
      * non-kernel virtual address.
-     *&#47;
+     */
     #define PADDR(kva)                                          \
     ({                                                          \
             physaddr_t __m_kva = (physaddr_t) (kva);            \
@@ -72,8 +72,8 @@ provides the following macros:
             __m_kva - KERNBASE;                                 \
     })
 
-    &#47;* This macro takes a physical address and returns the corresponding kernel
-     * virtual address.  It panics if you pass an invalid physical address. *&#47;
+    /* This macro takes a physical address and returns the corresponding kernel
+     * virtual address.  It panics if you pass an invalid physical address. */
     #define KADDR(pa)                                           \
     ({                                                          \
             physaddr_t __m_pa = (pa);                           \
@@ -196,7 +196,7 @@ checks vanish for a production build:
                 return v;                       \
         }
     #else
-    &#47;* Same definition as above *&#47;
+    /* Same definition as above */
     #endif
 
 Because the types have identical representations, you can safely
@@ -215,17 +215,17 @@ Addendum
 I didn't invent this trick, although as far as I know the `NEWTYPE` macro is my
 own invention (<em>Edited to add: A commenter points out that I'm not the first
 to [use the `newtype` name in
-C](http:&#47;&#47;notanumber.net&#47;archives&#47;33&#47;newtype-in-c-a-touch-of-strong-typing-using-compound-literals),
-although I think I prefer my implementation<&#47;em>).
+C](http://notanumber.net/archives/33/newtype-in-c-a-touch-of-strong-typing-using-compound-literals),
+although I think I prefer my implementation</em>).
 
 . I learned this trick from the Linux kernel, which uses it for a
 very similar application -- distinguishing entries in different levels of the
 x86 page tables. `page.h` on amd64 includes following definitions [Taken from an
 old version, but the current version has equivalent ones):
 
-    &#47;*
+    /*
      * These are used to make use of C type-checking..
-     *&#47;
+     */
     typedef struct { unsigned long pte; } pte_t;
     typedef struct { unsigned long pmd; } pmd_t;
     typedef struct { unsigned long pud; } pud_t;
@@ -240,24 +240,24 @@ i386 ABI specifications both require:
 Structures and unions assume the alignment of their most strictly aligned
 component. Each member is assigned to the lowest available offset with the
 appropriate alignment. The size of any object is always a multiple of the
-object&rsquo;s alignment.
-<&#47;blockquote>
+object’s alignment.
+</blockquote>
 
 (text quoted from the amd64 document, but the i386 one is almost identical).
 
-And C99 requires (&sect;6.7.2.1 para 13):
+And C99 requires (§6.7.2.1 para 13):
 
 <blockquote>
-&hellip; A pointer to a structure object, suitably converted, points to its initial
+… A pointer to a structure object, suitably converted, points to its initial
 member (or if that member is a bit-field, then to the unit in which it resides),
 and vice versa. There may be unnamed padding within a structure object, but not
 at its beginning.
-<&#47;blockquote>
+</blockquote>
 
 I believe these requirements, taken together, should be enough to ensure that
 the `struct` and the bare type will have the same representation.
 
 
-[hungarian]: http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Hungarian_Notation
-[newtype]: http:&#47;&#47;blog.ezyang.com&#47;2010&#47;08&#47;type-kata-newtypes&#47;
-[metric]: http:&#47;&#47;articles.cnn.com&#47;1999-09-30&#47;tech&#47;9909_30_mars.metric.02_1_climate-orbiter-spacecraft-team-metric-system?_s=PM:TECH
+[hungarian]: http://en.wikipedia.org/wiki/Hungarian_Notation
+[newtype]: http://blog.ezyang.com/2010/08/type-kata-newtypes/
+[metric]: http://articles.cnn.com/1999-09-30/tech/9909_30_mars.metric.02_1_climate-orbiter-spacecraft-team-metric-system?_s=PM:TECH

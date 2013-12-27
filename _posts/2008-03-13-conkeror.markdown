@@ -35,7 +35,7 @@ UI you see is just code written on top of a generic core, that
 implements the core emacs primitives, including
 
 * The basic `buffer` datatype. But instead of being a plain text
-  store, it's instead a full Gecko XUL&#47;XHTML DOM.
+  store, it's instead a full Gecko XUL/XHTML DOM.
 * A self-documenting `command` infrastructure and `variable`
   infrastructure, that lets you look up the documentation and
   definition of any command or configuration variable.
@@ -45,8 +45,8 @@ implements the core emacs primitives, including
   keybinding sets
 
 In other words, it really is not just an emacs-like frontend to
-Gecko&#47;Firefox, but is a full platform on top of xulrunner for writing
-interactive applications in javascript&#47;html&#47;css like emacs.
+Gecko/Firefox, but is a full platform on top of xulrunner for writing
+interactive applications in javascript/html/css like emacs.
 
 I predict it's only a matter of time before someone
 
@@ -56,4 +56,4 @@ I predict it's only a matter of time before someone
   Things we've come to expect from emacs, and
 * Writes a mailreader for it ;)
 
-[conkeror]: http:&#47;&#47;conkeror.mozdev.org
+[conkeror]: http://conkeror.mozdev.org

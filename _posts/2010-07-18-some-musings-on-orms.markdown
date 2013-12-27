@@ -21,7 +21,7 @@ tags:
 - musings
 ---
 I'm pretty sure every developer who has ever worked with a modern
-database-backed application, particularly a web-app, has a love&#47;hate
+database-backed application, particularly a web-app, has a love/hate
 relationship with their [ORM][orm], or object-relational mapper.
 
 On the one hand, ORMs are vastly more pleasant to work with than code
@@ -95,7 +95,7 @@ means there's potential for incrementel adoption and improvement.
 
 The key insight here is that, while the decision of what to `SELECT`
 is critical for performance, it's (mostly)<a
-href="#fn1"><sup>1<&#47;sup><&#47;a> irrelevant for correctness whether you
+href="#fn1"><sup>1</sup></a> irrelevant for correctness whether you
 have to make additional queries later, or pull in too much data. A
 good ORM, if it notices you ask for a field it doesn't have cached,
 will just go ahead and make the `SELECT` for you.
@@ -122,7 +122,7 @@ the ORM could automatically discover relations between the application
 structure and the ORM queries. It could "learn", for example, that
 certain users are administrators, and so will access more fields on
 certain models than other users. It could learn that even though
-`&#47;places&#47;list&#47;` and `&#47;places&#47;details&#47;` pull up the exact same set of
+`/places/list/` and `/places/details/` pull up the exact same set of
 models (maybe even through the same helper function!), the former
 needs only their names and IDs, while the latter needs to pull in full
 details, as well as rows from the associated `reviews` table.
@@ -138,12 +138,12 @@ Is anyone aware of any work in this space? It sounds like a
 potentially extremely exciting project to me, but I probably don't
 have the time to attempt to throw together an implementation.
 
-[orm]: http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Object-relational_mapping
-[django]: http:&#47;&#47;www.djangoproject.com&#47;
-[select_related]: http:&#47;&#47;docs.djangoproject.com&#47;en&#47;dev&#47;ref&#47;models&#47;querysets&#47;#django.db.models.QuerySet.select_related
-[defer]: http:&#47;&#47;docs.djangoproject.com&#47;en&#47;dev&#47;ref&#47;models&#47;querysets&#47;#django.db.models.QuerySet.defer
+[orm]: http://en.wikipedia.org/wiki/Object-relational_mapping
+[django]: http://www.djangoproject.com/
+[select_related]: http://docs.djangoproject.com/en/dev/ref/models/querysets/#django.db.models.QuerySet.select_related
+[defer]: http://docs.djangoproject.com/en/dev/ref/models/querysets/#django.db.models.QuerySet.defer
 
-<small><a name="fn1">1.<&#47;a>Ignoring, for example, race conditions
+<small><a name="fn1">1.</a>Ignoring, for example, race conditions
 where you need to select a model and related models atomically, and
 don't want or can't afford a transaction around the entire lifetime of
-the objects in the app code.<&#47;small>
+the objects in the app code.</small>

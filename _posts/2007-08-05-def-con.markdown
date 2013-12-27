@@ -18,7 +18,7 @@ tags:
 - summer
 ---
 I'm sitting in the airport in Las Vegas on the way back from [DEF
-CON][http:&#47;&#47;defcon.org] 15. It's the first time I've been at the con,
+CON][http://defcon.org] 15. It's the first time I've been at the con,
 and it wasn't really what I expected. Frankly, I walked away feeling
 kinda underwhelmed.
 
@@ -35,24 +35,24 @@ hoping for.
 
 I felt like I was disappointed at the amount of cool random hacker
 energy from the attendants, as well. DEF CON seems to be universally
-characterized as &ldquo;hardk0re&rdquo;, but it didn't always feel like it to
-me. There was a &ldquo;&Oslash;wn the box, Own the box&rdquo; contest, where about a
+characterized as “hardk0re”, but it didn't always feel like it to
+me. There was a “Øwn the box, Own the box” contest, where about a
 dozen boxes were put on the network at published IPs, and if you
 compromised one of them, you would walk away with it. Not one of them
 got owned, even ones running known-vulnerable services (albeit
 protected by ASLR and some form of W^X). Maybe the boxes actually were
 just really secure, but I had hoped that at the place with a
-reputation for &ldquo;The world's most hostile network,&rdquo; one of them would
-have gotten cracked. It seems like people &mdash; at least the people with
-real skill and experience &mdash; probably just weren&rsquo;t trying. Obviously a
-crappy PIII isn&rsquo;t worth the time you&rsquo;re going to spend cracking it,
+reputation for “The world's most hostile network,” one of them would
+have gotten cracked. It seems like people — at least the people with
+real skill and experience — probably just weren’t trying. Obviously a
+crappy PIII isn’t worth the time you’re going to spend cracking it,
 but I would hope people would do it for the fun and the challenge.
 
 Maybe part of the problem is that no one wanted to take much time out
 of the talks to work on other stuff. I think that if I go back, I'll
 probably punt most of the talks, and spend my time at the contests,
 learning to pick locks better, or participating in aCTF or attacking
-the &Oslash;tB&#47;OtB boxes myself. I severely doubt I would have won anything,
+the ØtB/OtB boxes myself. I severely doubt I would have won anything,
 but I think I would have learned more, and met more cool people, than
 I did at the talks.
 

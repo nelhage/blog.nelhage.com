@@ -31,13 +31,13 @@ It turns out that `wpa_gui` not only allows you to select existing
 networks, but also to scan for and add new networks to your
 configuration file. In addition, you can run it as yourself, without
 needing to `sudo` it. In order to do so, you need to add two lines to
-`&#47;etc&#47;wpa_supplicant&#47;wpa_supplicant.conf`:
+`/etc/wpa_supplicant/wpa_supplicant.conf`:
 
     ctrl_interface_group=netdev
     update_config=1
 
 `ctrl_interface_group` selects a UNIX group that will be given
-permission to read&#47;write the control socket. I chose `netdev` because
+permission to read/write the control socket. I chose `netdev` because
 it seems like it's supposed to be networking-related, and my login
 user was already in it on my Ubuntu machine.
 
@@ -46,7 +46,7 @@ if instructed to configure new networks by a UI (`wpa_cli` or
 `wpa_gui`). Note that this will squash any comments you have in the
 file.
 
-`wpa_action` &mdash; a mostly-baked roaming solution
+`wpa_action` — a mostly-baked roaming solution
 ----------------------------------------------
 
 The setup I described in the previous post causes `wpa_supplicant` to
@@ -59,13 +59,13 @@ lease. It turns out we can turn this picture inside-out, and make
 interface, whenever it associates or loses association.
 
 To make this work, we're going to need to edit
-`&#47;etc&#47;network&#47;interface` again. Our `wpa_supplicant.conf` can stay
+`/etc/network/interface` again. Our `wpa_supplicant.conf` can stay
 unchanged; Debian's wrapper scripts do all the magic. Replace your
 `ath0` block and add a virtual `default` interface as follows:
 
     iface ath0 inet manual
       wpa-driver wext
-      wpa-roam &#47;etc&#47;wpa_supplicant&#47;wpa_supplicant.conf
+      wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
     
     iface default inet dhcp
 
@@ -101,7 +101,7 @@ bring up the `nelhage` interface, binding `ath0` to the static
 configuration there listed.
 
 For documentation, check out the third section of
-`&#47;usr&#47;share&#47;doc&#47;wpasupplicant&#47;README.modes.gz` on your Debian or
+`/usr/share/doc/wpasupplicant/README.modes.gz` on your Debian or
 Ubuntu machine.
 
 In conclusion...

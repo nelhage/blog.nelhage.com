@@ -44,7 +44,7 @@ move the point over a label, any other instances of that label get
 highlighted, which I found useful in keeping track of all the "lXXXXX"
 labels dedexer generates.
 
-[caption id="attachment_438" align="aligncenter" width="499" caption="An example file (from k9mail) highlighted using ddx-mode"]<a href="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;12&#47;ddx-e1293480505629.png"><img src="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;12&#47;ddx-e1293480505629.png" alt="" title="ddx-mode" width="499" height="471" class="size-full wp-image-438" &#47;><&#47;a>[&#47;caption]
+[caption id="attachment_438" align="aligncenter" width="499" caption="An example file (from k9mail) highlighted using ddx-mode"]<a href="http://blog.nelhage.com/wp-content/uploads/2010/12/ddx-e1293480505629.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/12/ddx-e1293480505629.png" alt="" title="ddx-mode" width="499" height="471" class="size-full wp-image-438" /></a>[/caption]
 
 `ddx2dot`
 ---------
@@ -61,7 +61,7 @@ an example, the [`parseToken`][parseToken] method from the IMAP parser
 in the [k9mail][k9] application for Android looks like the following,
 when disassembled and rendered to a CFG:
 
-[caption id="attachment_442" align="aligncenter" width="300" caption="A CFG for k9mail\'s <tt>ImapResponseParser.parseToken<&#47;tt> method"]<a href="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;12&#47;parseToken.png"><img src="http:&#47;&#47;blog.nelhage.com&#47;wp-content&#47;uploads&#47;2010&#47;12&#47;parseToken-300x143.png" alt="" title="parseToken" width="300" height="143" class="size-medium wp-image-442" &#47;><&#47;a>[&#47;caption]
+[caption id="attachment_442" align="aligncenter" width="300" caption="A CFG for k9mail\'s <tt>ImapResponseParser.parseToken</tt> method"]<a href="http://blog.nelhage.com/wp-content/uploads/2010/12/parseToken.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/12/parseToken-300x143.png" alt="" title="parseToken" width="300" height="143" class="size-medium wp-image-442" /></a>[/caption]
 
 I use the term "parses" because it's really just a pile of regexes, `line.split()` and `line.startswith("...")`, but it gets the job done, so I hope it might be of use to someone else. The biggest missing feature is that it doesn't parse `catch` directives, so those just end up floating out to the side as unattached blocks.
 
@@ -75,10 +75,10 @@ github, and are released under the MIT license. Please feel free to do
 whatever you want with them, although I'd appreciate it if you let me
 know if you make any improvements or find them useful.
 
-[dedexer]: http:&#47;&#47;dedexer.sourceforge.net&#47;
-[baksmali]: http:&#47;&#47;code.google.com&#47;p&#47;smali&#47;
-[ddx.el]: https:&#47;&#47;github.com&#47;nelhage&#47;reverse-android&#47;blob&#47;master&#47;ddx.el
-[k9]: http:&#47;&#47;code.google.com&#47;p&#47;k9mail&#47;
-[parseToken]: http:&#47;&#47;code.google.com&#47;p&#47;k9mail&#47;source&#47;browse&#47;k9mail&#47;trunk&#47;src&#47;com&#47;fsck&#47;k9&#47;mail&#47;store&#47;ImapResponseParser.java?r=2996#119
-[git-repo]: https:&#47;&#47;github.com&#47;nelhage&#47;reverse-android
-[dot]: http:&#47;&#47;www.graphviz.org&#47;
+[dedexer]: http://dedexer.sourceforge.net/
+[baksmali]: http://code.google.com/p/smali/
+[ddx.el]: https://github.com/nelhage/reverse-android/blob/master/ddx.el
+[k9]: http://code.google.com/p/k9mail/
+[parseToken]: http://code.google.com/p/k9mail/source/browse/k9mail/trunk/src/com/fsck/k9/mail/store/ImapResponseParser.java?r=2996#119
+[git-repo]: https://github.com/nelhage/reverse-android
+[dot]: http://www.graphviz.org/

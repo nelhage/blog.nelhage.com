@@ -62,11 +62,11 @@ calling convention for variadic functions, but unfortunately, for
 historical reasons and otherwise, C requires that code be able to call
 functions even if their prototype is not visible, which means the
 compiler doesn't necessarily know if it's calling a variadic function
-at any given call site. <em>[edited to add: <strong>caf<&#47;strong>
+at any given call site. <em>[edited to add: <strong>caf</strong>
 points out in the comments that C99 actually explicitly does not
 require this property. But I speculate that the ABI designers wanted
 to preserve this property from i386 because it has historically
-worked, and so existing code depended on it]<&#47;em>).
+worked, and so existing code depended on it]</em>).
 
 That's not all, however. Not only can integer arguments be passed by
 registers, but small `struct`s (16 bytes or fewer) can also be passed
@@ -142,7 +142,7 @@ storage both above and below it.
     +----------------+  |      |
     |      ...       |   \ register
     +----------------+    }save|
-    |     %xmm0      |   &#47; area|
+    |     %xmm0      |   / area|
     +----------------+  |      |
     |      %r9       |  |      |
     +----------------+  |      | fp_offset
@@ -152,7 +152,7 @@ storage both above and below it.
     +----------------+  |   | gp_offset
     |     %rsi       |  |   |  |
     +----------------+  |   |  |
-    |     %rdi       | &#47;    |  |
+    |     %rdi       | /    |  |
     +----------------+ <----+--+--- reg_save_area
     |     ...        | (potentially more storage)
     +----------------+ <----------- %esp
@@ -197,6 +197,6 @@ does. Note that I don't mean to suggest this is a performance concern
 if this is measurable in any reasonable code. But I was surprised by
 how complex this operation is.
 
-[llvm]: http:&#47;&#47;llvm.org&#47;
-[va_arg-bug]: http:&#47;&#47;llvm.org&#47;bugs&#47;show_bug.cgi?id=1740
-[amd64abi]: http:&#47;&#47;www.x86-64.org&#47;documentation&#47;abi.pdf
+[llvm]: http://llvm.org/
+[va_arg-bug]: http://llvm.org/bugs/show_bug.cgi?id=1740
+[amd64abi]: http://www.x86-64.org/documentation/abi.pdf

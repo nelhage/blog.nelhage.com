@@ -26,7 +26,7 @@ question I need to answer, I've come up with a collection of tips that
 will hopefully be helpful to others looking to source-dive Linux for
 whatever reason.
 
-[question]: http:&#47;&#47;blog.nelhage.com&#47;2010&#47;08&#47;suggestion-time-what-should-i-blog-about&#47;#comment-2597
+[question]: http://blog.nelhage.com/2010/08/suggestion-time-what-should-i-blog-about/#comment-2597
 
 Know the layout
 ---------------
@@ -36,33 +36,33 @@ source-diving into the Linux kernel without pausing to familiarize
 yourself with the basic layout of the kernel sources. The most
 interesting directories are:
 
-- `fs&#47;` -- This directory contains both the VFS implementation (the
+- `fs/` -- This directory contains both the VFS implementation (the
   generic filesystem code and the top-level implementation of
   filesystem syscalls), and specific filesystems, in
   subdirectories. If you're looking for the implementation of a
-  filesystem-related system call, it's probably in one of `fs&#47;*.c`.
+  filesystem-related system call, it's probably in one of `fs/*.c`.
 
-- `mm&#47;` -- This contains the virtual memory and memory management
+- `mm/` -- This contains the virtual memory and memory management
   subsystems. `mmap` lives here, as do all of the kernel's various
   memory allocators, including `kmalloc` and `vmalloc`.
 
-- `kernel&#47;` -- This contains the "core" kernel code. The scheduler
+- `kernel/` -- This contains the "core" kernel code. The scheduler
   lives here, as does the implementation of various primitives used
   throughout the kernel, like `printk` and various data
   structures. timer- and process- related system calls live here,
   including `fork` and `exit`, and most anything related to uids and
   pids.
 
-- `net&#47;` is the networking subsystem; much like `fs&#47;` it contains both
+- `net/` is the networking subsystem; much like `fs/` it contains both
   generic code and specific network protocol
   implementations. networking-related system calls are mostly in
-  `net&#47;socket.c`
+  `net/socket.c`
 
-- `arch&#47;` -- Architecture-specific code lives here, in
-  `arch&#47;ARCHITECTURE&#47;`. Per-architecture include files live in
-  `arch&#47;ARCHITECTURE&#47;include&#47;asm&#47;`; Prior to 2.6.28 they were in
-  `include&#47;asm-ARCH&#47;`. `arch&#47;` directories tend to loosely parallel
-  the top-level source directory, with `kernel&#47;` and `mm&#47;`
+- `arch/` -- Architecture-specific code lives here, in
+  `arch/ARCHITECTURE/`. Per-architecture include files live in
+  `arch/ARCHITECTURE/include/asm/`; Prior to 2.6.28 they were in
+  `include/asm-ARCH/`. `arch/` directories tend to loosely parallel
+  the top-level source directory, with `kernel/` and `mm/`
   subdirectories.
 
 Know your git
@@ -100,7 +100,7 @@ include:
   was introduced. Here's how it works:
 
   Suppose I wanted to know when the `vmsplice` system call was
-  introduced. A `git grep` will reveal the line in `fs&#47;splice.c` that
+  introduced. A `git grep` will reveal the line in `fs/splice.c` that
   defines the system call:
 
         SYSCALL_DEFINE4(vmsplice, int, fd, const struct iovec __user *, iov,
@@ -114,7 +114,7 @@ include:
 
   Instead, I can run:
 
-        git log -Svmsplice fs&#47;splice.c
+        git log -Svmsplice fs/splice.c
 
   which yields two commits, the earliest of which is the one I want.
 
@@ -169,8 +169,8 @@ be familiar with:
   `struct super_operations`, `struct inode_operations`, `struct
   file_operations`, and so on.
 
-- `struct list_head`, defined in `include&#47;linux&#47;types.h`, with
-  operations in `include&#47;linux&#47;list.h` is used basically anywhere the
+- `struct list_head`, defined in `include/linux/types.h`, with
+  operations in `include/linux/list.h` is used basically anywhere the
   kernel needs to store linked lists. To save on space and reduce
   fragmentation, the kernel uses a trick where `struct list_head`s are
   stored inside the structures that are the element of a list, and
@@ -198,17 +198,17 @@ be familiar with:
   Instead, ext2 embeds the `struct inode` *inside* `struct
   ext_inode_info`:
 
-        &#47;*
+        /*
          * second extended file system inode data in memory
-         *&#47;
+         */
         struct ext2_inode_info {
                 __le32  i_data[15];
-                &hellip;
+                …
                 struct inode    vfs_inode;
-                &hellip;
+                …
         };
 
-  (See `fs&#47;ext2&#47;ext2.h` for the full definition)
+  (See `fs/ext2/ext2.h` for the full definition)
 
   Then, whenever ext2 gets a callback from the VFS with a `struct
   inode`, it can retrieve the `ext2_inode_info` using:
@@ -268,7 +268,7 @@ Well, this has been quite the braindump. I hope this turns out to be
 useful to someone, and please comment if you have other advice or
 resources you recommend for getting into the Linux source code.
 
-[lkml]: http:&#47;&#47;lkml.org&#47;
-[utlk]: http:&#47;&#47;oreilly.com&#47;catalog&#47;9780596005658
-[lwn]: http:&#47;&#47;lwn.net&#47;
-[lwn-kernel]: http:&#47;&#47;lwn.net&#47;Kernel&#47;Index&#47;
+[lkml]: http://lkml.org/
+[utlk]: http://oreilly.com/catalog/9780596005658
+[lwn]: http://lwn.net/
+[lwn-kernel]: http://lwn.net/Kernel/Index/

@@ -34,7 +34,7 @@ Checking for ruby-level leaks
 One powerful technique for tracking down tough memory leaks is
 post-mortem analysis. If our program's normal memory footprint is
 50MB, and we let it leak until it's using, say, 2GB, 
-1950&#47;2000 =
+1950/2000 =
 97.5% of the program's memory is leaked objects! If we look at a core
 file (or, even better, a running image in `gdb`), signs of the leak
 will be all over the place.
@@ -99,7 +99,7 @@ probability. We generate a core file in gdb:
 
 And then look at a random page (4k block) of the core file:
 
-    $ off=$(($RANDOM % ($(stat -c "%s" leak.core)&#47;4096)))
+    $ off=$(($RANDOM % ($(stat -c "%s" leak.core)/4096)))
     $ dd if=leak.core bs=4096 skip=$off count=1 | xxd
     0000000: 0000 0000 0000 0000 4590 c191 3a71 b2aa  ........E...:q..
     ...
@@ -159,7 +159,7 @@ instance, if we were leaking Ruby String objects, every one would have
 an identical pointer to the Ruby object that represents the `String'
 class. So, let's take a look:
 
-    (gdb) x&#47;16gx 0x00007f1b5358a800
+    (gdb) x/16gx 0x00007f1b5358a800
     0x7f1b5358a800:	0x0000000000000401	0x00007f1b53340f24
     0x7f1b5358a810:	0x00007f1b532c7780	0x00007f1b532c7690
     0x7f1b5358a820:	0x00007f1b532c7880	0x00007f1b532c78c0
@@ -173,46 +173,46 @@ The first field, `0x401`, contains only two bits set, suggesting some
 kind of flag field. After that, there are a whole bunch of
 pointers. Let's chase the first one:
 
-    (gdb) x&#47;s 0x00007f1b53340f24
+    (gdb) x/s 0x00007f1b53340f24
     0x00007f1b53340f24:	"memory buffer"
 
 Great. So we are leaking ... memory buffers. Thanks.
 
 But this is actually fantastically informative, especially coupled
-with the one other piece of information we have: `&#47;proc&#47;<pid>&#47;maps`
+with the one other piece of information we have: `/proc/<pid>/maps`
 for the target program, which tells us which files are mapped into our
 program at which addresses. Searching that for the target address, we
 find:
 
-    7f1b53206000-7f1b5336c000 r-xp 00000000 08:01 16697      &#47;lib&#47;libcrypto.so.0.9.8
+    7f1b53206000-7f1b5336c000 r-xp 00000000 08:01 16697      /lib/libcrypto.so.0.9.8
 
-`0x7f1b53206000` &le; `0x7f1b5358a800` < `7f1b5336c000`, so this mapping
+`0x7f1b53206000` ≤ `0x7f1b5358a800` < `7f1b5336c000`, so this mapping
 contains our "type" object. `libcrypto` is the library containing
 OpenSSL's cryptographic routines, so we are leaking some sort of
 OpenSSL buffer object. This is real progress.
 
-I am not overly familiar with libssl&#47;libcrypto, so let's go to the
+I am not overly familiar with libssl/libcrypto, so let's go to the
 source to learn more:
 
     $ apt-get source libssl0.9.8
     $ cd openssl*
     $ grep -r "memory buffer" .
-    .&#47;crypto&#47;err&#47;err_str.c:{ERR_PACK(ERR_LIB_BUF,0,0)		,"memory buffer routines"},
-    .&#47;crypto&#47;asn1&#47;asn1.h: * be inserted in the memory buffer
-    .&#47;crypto&#47;bio&#47;bss_mem.c:	"memory buffer",
-    .&#47;README:        sockets, socket accept, socket connect, memory buffer, buffering, SSL
-    .&#47;doc&#47;ssleay.txt:-	BIO_s_mem()  memory buffer - a read&#47;write byte array that
-    .&#47;test&#47;times:talks both sides of the SSL protocol via a non-blocking memory buffer
+    ./crypto/err/err_str.c:{ERR_PACK(ERR_LIB_BUF,0,0)		,"memory buffer routines"},
+    ./crypto/asn1/asn1.h: * be inserted in the memory buffer
+    ./crypto/bio/bss_mem.c:	"memory buffer",
+    ./README:        sockets, socket accept, socket connect, memory buffer, buffering, SSL
+    ./doc/ssleay.txt:-	BIO_s_mem()  memory buffer - a read/write byte array that
+    ./test/times:talks both sides of the SSL protocol via a non-blocking memory buffer
 
 Only one of those is a string constant, so we go browse
-`.&#47;crypto&#47;bio&#47;bss_mem.c` and read the docs ([bio(3)][bio] and
+`./crypto/bio/bss_mem.c` and read the docs ([bio(3)][bio] and
 [buffer(3)][buffer]) a bit. Sparing you all the details, we learn:
 
  - OpenSSL uses the `BIO` structure as a generic abstraction around any kind of
    source or sink of data that can be read or written to.
  - A `BIO` has a pointer to a `BIO_METHOD`, which essentially contains
    a small amount of metadata and a
-   [vtable](http:&#47;&#47;en.wikipedia.org&#47;wiki&#47;Virtual_method_table),
+   [vtable](http://en.wikipedia.org/wiki/Virtual_method_table),
    describing what specific kind of `BIO` this is, and how to interact
    with it. The second field in a `BIO_METHOD` is a `char *` pointing
    at a string holding the name of this type.
@@ -224,8 +224,8 @@ So, it appears we are leaking `BIO` objects. Interestingly, we don't
 actually seem to be leaking the underlying memory buffers, just the
 `BIO` struct that contains the metadata about the buffer.
 
-[bio]: http:&#47;&#47;www.openssl.org&#47;docs&#47;crypto&#47;bio.html
-[buffer]: http:&#47;&#47;www.openssl.org&#47;docs&#47;crypto&#47;buffer.html
+[bio]: http://www.openssl.org/docs/crypto/bio.html
+[buffer]: http://www.openssl.org/docs/crypto/buffer.html
 
 Tracing the source
 ------------------
@@ -238,7 +238,7 @@ there, for now.
 
 That leaves EventMachine as the most likely culprit. Our program uses
 SSL heavily via the EventMachine APIs, and we do know that
-EventMachine contains a bunch of C&#47;C++, which, to be frank, does not
+EventMachine contains a bunch of C/C++, which, to be frank, does not
 have a sterling reputation.
 
 So, we pull up an EventMachine checkout. There are a number of ways to
@@ -246,16 +246,16 @@ construct a new `BIO`, but the most basic and common seems to be
 `BIO_new`, sensibly enough. So let's look for that:
 
     $ git grep BIO_new
-    ext&#47;rubymain.cpp:		out = BIO_new(BIO_s_mem());
-    ext&#47;ssl.cpp:	BIO *bio = BIO_new_mem_buf (PrivateMaterials, -1);
-    ext&#47;ssl.cpp:	pbioRead = BIO_new (BIO_s_mem());
-    ext&#47;ssl.cpp:	pbioWrite = BIO_new (BIO_s_mem());
-    ext&#47;ssl.cpp:	out = BIO_new(BIO_s_mem());
+    ext/rubymain.cpp:		out = BIO_new(BIO_s_mem());
+    ext/ssl.cpp:	BIO *bio = BIO_new_mem_buf (PrivateMaterials, -1);
+    ext/ssl.cpp:	pbioRead = BIO_new (BIO_s_mem());
+    ext/ssl.cpp:	pbioWrite = BIO_new (BIO_s_mem());
+    ext/ssl.cpp:	out = BIO_new(BIO_s_mem());
 
 Great: there are some calls (so it could be one of them!), but not too
 many (so we can reasonably audit them all).
 
-Starting from the top, we find, in `ext&#47;rubymain.cpp`:
+Starting from the top, we find, in `ext/rubymain.cpp`:
 
     static VALUE t_get_peer_cert (VALUE self, VALUE signature)
     {
@@ -320,13 +320,13 @@ connections from a single Ruby process, it's not totally surprising
 that no one had caught this before.
 
 Having found the issue, the
-[fix](https:&#47;&#47;github.com&#47;eventmachine&#47;eventmachine&#47;commit&#47;b2006a6f4893f35ca8b1b5fc283f3b1e2127bc5c)
+[fix](https://github.com/eventmachine/eventmachine/commit/b2006a6f4893f35ca8b1b5fc283f3b1e2127bc5c)
 was simple, and was promptly
-[merged](https:&#47;&#47;github.com&#47;eventmachine&#47;eventmachine&#47;commit&#47;016800f60bd1ec1894fd73ccd0c2634f5fabc1c9)
+[merged](https://github.com/eventmachine/eventmachine/commit/016800f60bd1ec1894fd73ccd0c2634f5fabc1c9)
 upstream.
 
-[stripe]: https:&#47;&#47;stripe.com
-[ruby]: http:&#47;&#47;www.ruby-lang.org&#47;en&#47;
-[EM]: http:&#47;&#47;rubyeventmachine.com&#47;
-[em-getpeercert]: http:&#47;&#47;eventmachine.rubyforge.org&#47;EventMachine&#47;Connection.html#get_peer_cert-instance_method
-[em-starttls]: http:&#47;&#47;eventmachine.rubyforge.org&#47;EventMachine&#47;Connection.html#start_tls-instance_method
+[stripe]: https://stripe.com
+[ruby]: http://www.ruby-lang.org/en/
+[EM]: http://rubyeventmachine.com/
+[em-getpeercert]: http://eventmachine.rubyforge.org/EventMachine/Connection.html#get_peer_cert-instance_method
+[em-starttls]: http://eventmachine.rubyforge.org/EventMachine/Connection.html#start_tls-instance_method

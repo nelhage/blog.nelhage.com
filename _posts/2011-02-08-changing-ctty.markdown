@@ -56,7 +56,7 @@ restrictions. In particular:
 > The calling process must be a session leader and not have a
 > controlling terminal already.  If this terminal is already the
 > controlling terminal of a different session group then the ioctl fails
-> with EPERM [&hellip;]
+> with EPERM […]
 
 In the typical case, where I'm trying to attach a (say) `mutt` that
 you spawned from your shell, `mutt` won't be a session leader -- your
@@ -110,10 +110,10 @@ It turns out I didn't invent this technique -- [injcode][injcode] and
 independently of them, and it was a fun little hunt through unix
 arcana.
 
-[reptyr]: https:&#47;&#47;github.com&#47;nelhage&#47;reptyr
-[announce]: http:&#47;&#47;blog.nelhage.com&#47;2011&#47;01&#47;reptyr-attach-a-running-process-to-a-new-terminal&#47;
-[ptrace]: http:&#47;&#47;linux.die.net&#47;man&#47;2&#47;ptrace
-[retty]: http:&#47;&#47;pasky.or.cz&#47;~pasky&#47;dev&#47;retty&#47;
-[termios]: http:&#47;&#47;blog.nelhage.com&#47;2010&#47;01&#47;a-brief-introduction-to-termios-signaling-and-job-control&#47;
-[injcode]: http:&#47;&#47;blog.habets.pp.se&#47;2009&#47;03&#47;Moving-a-process-to-another-terminal
-[neercs]: http:&#47;&#47;caca.zoy.org&#47;wiki&#47;neercs
+[reptyr]: https://github.com/nelhage/reptyr
+[announce]: http://blog.nelhage.com/2011/01/reptyr-attach-a-running-process-to-a-new-terminal/
+[ptrace]: http://linux.die.net/man/2/ptrace
+[retty]: http://pasky.or.cz/~pasky/dev/retty/
+[termios]: http://blog.nelhage.com/2010/01/a-brief-introduction-to-termios-signaling-and-job-control/
+[injcode]: http://blog.habets.pp.se/2009/03/Moving-a-process-to-another-terminal
+[neercs]: http://caca.zoy.org/wiki/neercs

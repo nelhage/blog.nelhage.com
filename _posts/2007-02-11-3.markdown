@@ -20,7 +20,7 @@ tags:
 - '6.170'
 - vcs
 ---
-I'm taking [6.170](http:&#47;&#47;web.mit.edu&#47;6.170&#47;www&#47;) Lab in Software
+I'm taking [6.170](http://web.mit.edu/6.170/www/) Lab in Software
 Engineering this semester. The course sucks in various ways, but
 one of the most egregious, in my opinion, is that they _force_ you to
 use CVS for your version control. Problem sets are distributed by the
@@ -40,21 +40,21 @@ doesn't do syncing and merging between the two repositories. So, if I
 have svn mirror CVS, then changes I make don't get propagated back. If
 I mirror svn to CVS, I don't get new problem sets the TAs import.
 
-My current solution, which I can describe only as &ldquo;I know what I am
-doing is wrong&rdquo;, is as follows:
+My current solution, which I can describe only as “I know what I am
+doing is wrong”, is as follows:
 
 * I have tailor set up to merge from SVN to CVS
 * `tailor` runs in a SVN post-commit hook, so revisions are
   automatically pushed to CVS
 * Whenever the TAs announce a new pset is available, I do the following:
 
-        # The svn repo is checked out at ~&#47;6.170&#47;psets
-        # The cvs repo is located at &#47;mit&#47;nelhage&#47;6.170&#47;cvsroot
+        # The svn repo is checked out at ~/6.170/psets
+        # The cvs repo is located at /mit/nelhage/6.170/cvsroot
         # The TAs have just announced ps2 is available
-        $ cd ~&#47;6.170&#47;psets
-        $ cvs -d &#47;mit&#47;nelhage&#47;6.170&#47;cvsroot co &#47;psets&#47;ps2
+        $ cd ~/6.170/psets
+        $ cvs -d /mit/nelhage/6.170/cvsroot co /psets/ps2
         $ svn add ps2
-        $ rm -rf &#47;mit&#47;nelhage&#47;6.170&#47;cvsroot&#47;psets&#47;ps2
+        $ rm -rf /mit/nelhage/6.170/cvsroot/psets/ps2
         $ svn ci -m "ps2 import from CVS"
 
 That is to say, I manually add the new problem set to SVN, and then
@@ -71,8 +71,8 @@ information in the CVS repository. And, frankly, I'm uncomfortable
 that the TAs are injecting things directly into my repository
 anyways, so I have no problem undoing it.
 
-* [tailor configuration file](http:&#47;&#47;web.mit.edu&#47;nelhage&#47;Public&#47;6.170.tailor)
-* [post-commit hook to run tailor](http:&#47;&#47;web.mit.edu&#47;nelhage&#47;Public&#47;psets.post-commit)
+* [tailor configuration file](http://web.mit.edu/nelhage/Public/6.170.tailor)
+* [post-commit hook to run tailor](http://web.mit.edu/nelhage/Public/psets.post-commit)
 
-[svk]: http:&#47;&#47;svk.bestpractical.com&#47;
-[tailor]: http:&#47;&#47;www.darcs.net&#47;DarcsWiki&#47;Tailor
+[svk]: http://svk.bestpractical.com/
+[tailor]: http://www.darcs.net/DarcsWiki/Tailor

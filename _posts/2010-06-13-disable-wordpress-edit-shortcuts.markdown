@@ -33,20 +33,20 @@ total control over your keys, and grab key combinations for a WYSIWYG
 editor of some sort. And so whenever I try to edit a post in Wordpress
 (most of them are written in emacs and then copied over), I find
 myself trying to go backwards a word, and inserting random
-<code><strong><&#47;code> tags all over my post (Because `M-b` is
+<code>&lt;strong&gt;</code> tags all over my post (Because `M-b` is
 bound to make text bold, by Wordpress's editor). I finally got annoyed
 enough to do some source-diving, and discovered that Wordpress's
 editor constructs keyboard shortcuts using the HTML <a
-href="http:&#47;&#47;www.w3.org&#47;TR&#47;html5&#47;editing.html#dfnReturnLink-0">accesskey<&#47;a>
+href="http://www.w3.org/TR/html5/editing.html#dfnReturnLink-0">accesskey</a>
 attribute. This is easy enough to manipulate from Javascript, so I
 went and wrote up a quick Greasemonkey user script. The bulk of it is
 a simple XPath:
 
-        var buttons = document.evaluate('&#47;&#47;input[@type="button"][@accesskey]', poststuff);
+        var buttons = document.evaluate('//input[@type="button"][@accesskey]', poststuff);
         var button;
 
-You can <a href="http:&#47;&#47;nelhage.com&#47;files&#47;wp-keys.user.js">install the
-script<&#47;a> off of nelhage.com.
+You can <a href="http://nelhage.com/files/wp-keys.user.js">install the
+script</a> off of nelhage.com.
 
 Let me know if you find this useful, or if anyone figures out a
 general way to disable (sets of) keyboard shortcuts for websites,

@@ -23,9 +23,9 @@ converting everything over and setting up Wordpress I've decided I
 hate it, but hopefully I hate it less than I hate Blogger. We'll see.
 
 I've also changed the URL to this blog from
-[http:&#47;&#47;nelhage.com&#47;blog](http:&#47;&#47;nelhage.com&#47;blog) to
-[http:&#47;&#47;blog.nelhage.com](http:&#47;&#47;blog.nelhage.com), which I like
+[http://nelhage.com/blog](http://nelhage.com/blog) to
+[http://blog.nelhage.com](http://blog.nelhage.com), which I like
 better as URL anyways. It should redirect to the toplevel of the new
 URL now.
 
-[scripts]: http:&#47;&#47;scripts.mit.edu
+[scripts]: http://scripts.mit.edu

@@ -30,9 +30,9 @@ any scripts here, only a description of a workflow: It's simple enough that I ha
 ## On the machines
 
 On each machine, I have the dotfiles directory checked out into
-`~&#47;.dotfiles&#47;`, and a symlink farm from the actual files in `~&#47;` into
-`~&#47;.dotfiles`. If I need to edit files, I just edit them in place and
-commit in `~&#47;.dotfiles`. When adding new dotfiles, I just manually
+`~/.dotfiles/`, and a symlink farm from the actual files in `~/` into
+`~/.dotfiles`. If I need to edit files, I just edit them in place and
+commit in `~/.dotfiles`. When adding new dotfiles, I just manually
 create them in the checkout and create the symlink -- no fancy
 scripts. I do this rarely enough that I find it doesn't bug me.
 
@@ -51,7 +51,7 @@ branch, and I could then merge `master` into each machine branch to
 sync the state of my dotfiles around. Unfortunately, one of my main
 desiderata is that I can edit and commit dotfiles in place. And
 committing to a non-checked-out branch is awkward at best, and
-checking out `master` in the `~&#47;.dotfiles&#47;` working copy is
+checking out `master` in the `~/.dotfiles/` working copy is
 undesirable, since that might disrupt other programs that are using my
 dotfiles at the time. So in practice, I make commits to the branch of
 whichever machine I made a given change on, and then push them to that

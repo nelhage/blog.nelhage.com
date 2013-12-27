@@ -23,11 +23,11 @@ interesting discussion there about some details I'd handwaved
 over. This is a quick followup on some the investigation that various
 people carried out, and the conclusions they reached.
 
-[0]: &#47;archives&#47;150
+[0]: /archives/150
 
-In the reddit thread, [lacos&#47;lbzip2][2] [objected][6] that in his
+In the reddit thread, [lacos/lbzip2][2] [objected][6] that in his
 experiments, he didn't see `tar` closing the input pipe before it was
-done reading the file, and so questioned where the `SIGPIPE`&#47;`EPIPE`
+done reading the file, and so questioned where the `SIGPIPE`/`EPIPE`
 was coming from in the first place. I had actually done similar
 experiments with similar results, but I was still seeing the `EPIPE`,
 so I knew it could happen, but I couldn't totally explain why.
@@ -53,9 +53,9 @@ things, revealed that the bug I posted about has been [fixed][5] in
 GNU tar as of last summer, by having `tar` reset the disposition of
 `SIGPIPE` to `SIG_DFL` before spawning a child. It was also pointed out that tar checks whether a filter subprocess is killed by `SIGPIPE`, and treats that as a success -- so it's not actually necessary for a `tar` filter to handle `SIGPIPE` and exit cleanly, like `gzip` does.
 
-[1]: http:&#47;&#47;www.reddit.com&#47;r&#47;programming&#47;comments&#47;b7djd&#47;stuff_like_this_makes_me_hate_python_subtle_bugs&#47;
-[2]: http:&#47;&#47;lacos.hu&#47;
-[3]: http:&#47;&#47;davidben.scripts.mit.edu&#47;blog&#47;2010&#47;02&#47;28&#47;tar-filled-pipes&#47;
-[4]: http:&#47;&#47;lists.gnu.org&#47;archive&#47;html&#47;help-tar&#47;2010-03&#47;msg00000.html
-[5]: http:&#47;&#47;lists.gnu.org&#47;archive&#47;html&#47;bug-tar&#47;2009-06&#47;msg00009.html
-[6]: http:&#47;&#47;www.reddit.com&#47;r&#47;programming&#47;comments&#47;b7djd&#47;stuff_like_this_makes_me_hate_python_subtle_bugs&#47;c0lc0dy
+[1]: http://www.reddit.com/r/programming/comments/b7djd/stuff_like_this_makes_me_hate_python_subtle_bugs/
+[2]: http://lacos.hu/
+[3]: http://davidben.scripts.mit.edu/blog/2010/02/28/tar-filled-pipes/
+[4]: http://lists.gnu.org/archive/html/help-tar/2010-03/msg00000.html
+[5]: http://lists.gnu.org/archive/html/bug-tar/2009-06/msg00009.html
+[6]: http://www.reddit.com/r/programming/comments/b7djd/stuff_like_this_makes_me_hate_python_subtle_bugs/c0lc0dy

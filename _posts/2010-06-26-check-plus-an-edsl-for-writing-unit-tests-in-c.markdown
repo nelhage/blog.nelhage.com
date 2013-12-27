@@ -98,7 +98,7 @@ something like:
     {
       Suite *s = suite_create ("Example test suite");
     
-      &#47;* Core test case *&#47;
+      /* Core test case */
       TCase *tc_core = tcase_create ("Core tests");
       tcase_add_test (tc_core, test_strcmp);
       tcase_add_test (tc_core, test_strcat);
@@ -113,6 +113,6 @@ appreciate it once the test suite gets large. For more documentation on Check, c
 Let me know if you find this useful for anything. Next week, I'll do a
 writeup on the tricks behind the implementation.
     
-[check]: http:&#47;&#47;check.sourceforge.net&#47;
-[chkp]: http:&#47;&#47;github.com&#47;nelhage&#47;check-plus
-[manual]: http:&#47;&#47;check.sourceforge.net&#47;doc&#47;check_html&#47;index.html
+[check]: http://check.sourceforge.net/
+[chkp]: http://github.com/nelhage/check-plus
+[manual]: http://check.sourceforge.net/doc/check_html/index.html

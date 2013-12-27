@@ -65,7 +65,7 @@ Switching the target's controlling terminal is not easy and involves a
 fair bit of trickery with `ptrace` and Linux's terminal APIs. I will
 probably do another blog post some time about the dirty details of how
 I make this work, but for now you can check out
-[attach.c](https:&#47;&#47;github.com&#47;nelhage&#47;reptyr&#47;blob&#47;master&#47;attach.c) if
+[attach.c](https://github.com/nelhage/reptyr/blob/master/attach.c) if
 you really want to know.
 
 reptyr still has a number of limitations -- it doesn't generally work,
@@ -81,8 +81,8 @@ and [neercs][neercs] both accomplish the same thing, even using the same trick
 to change the CTTY. Ah well, I had run writing it anyways, and apparently I
 wasn't the only one who didn't know about the existing alternatives. `neercs` is a full screen replacement, though, and I think that reptyr should be more robust than `injcode` -- I use a different techique for `ptrace`-hijacking, for example -- and so hopefully this tool still has a niche as a more robust standalone utility. Certainly, judging from the amount of enthusiasm I've seen for this tool, this still isn't a problem that is solved to the average user's satisfaction.
 
-[github]: http:&#47;&#47;github.com&#47;nelhage&#47;reptyr
-[screenify]: http:&#47;&#47;tomaw.net&#47;tmp&#47;screenify
-[retty]: http:&#47;&#47;pasky.or.cz&#47;~pasky&#47;dev&#47;retty&#47;
-[injcode]: http:&#47;&#47;blog.habets.pp.se&#47;2009&#47;03&#47;Moving-a-process-to-another-terminal
-[neercs]: http:&#47;&#47;caca.zoy.org&#47;wiki&#47;neercs
+[github]: http://github.com/nelhage/reptyr
+[screenify]: http://tomaw.net/tmp/screenify
+[retty]: http://pasky.or.cz/~pasky/dev/retty/
+[injcode]: http://blog.habets.pp.se/2009/03/Moving-a-process-to-another-terminal
+[neercs]: http://caca.zoy.org/wiki/neercs

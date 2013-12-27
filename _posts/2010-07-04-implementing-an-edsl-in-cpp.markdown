@@ -35,13 +35,13 @@ We want to write some toplevel declarations that look like:
 
     #define TEST_CASE core
     BEGIN_TEST_CASE("Core tests");
-    &hellip;
+    …
 
 and so on, and somehow translate them into code that does the equivalent of:
 
     Suite *s = suite_create ("Example test suite");
     TCase *tc_core = tcase_create ("Core tests");
-    &hellip;
+    …
 
 First steps
 -----------
@@ -83,11 +83,11 @@ interspersed with other code, so we can't just use a literal array, like
     struct test_suite s = {
      .suite_name = "Example test suite",
      .cases = {
-       &hellip;
+       …
      }
     };
 
-because that "&hellip;" is going to have arbitrary code shoved in it.
+because that "…" is going to have arbitrary code shoved in it.
 
 The solution is to take advantage of a feature of the ELF object file format,
 and some GCC extensions that let us take advantage of it.
@@ -120,10 +120,10 @@ like:
     struct test_case _test_example_core
       __attribute__((section(".data.example.cases"))) = {
       .test_name = "Core tests",
-      &hellip;
+      …
     };
 
-    &hellip;
+    …
 
     struct test_case _end_example_cases[0]
       __attribute__((section(".data.example.cases")));
@@ -193,7 +193,7 @@ look something like:
 
     #define BEGIN_SUITE(name)                                               \
         struct test_case _begin_ ## SUITE_NAME ## _cases[];                 \
-        &hellip;
+        …
 
 You'll quickly realize, however, that since `##` is applied at the
 same time as function-like macro expansion, this will always give you
@@ -210,9 +210,9 @@ case, we require three layers of macros to get the order right:
 This causes the following sequence of expansions for
 `BEGIN_SUITE("Example");`:
 
-    BEGIN_SUITE("Example");                     &#47;&#47; (a)
-    _BEGIN_SUITE(SUITE_NAME, "Example");        &#47;&#47; (b)
-    __BEGIN_SUITE(sym, "Example");              &#47;&#47; (c)
+    BEGIN_SUITE("Example");                     // (a)
+    _BEGIN_SUITE(SUITE_NAME, "Example");        // (b)
+    __BEGIN_SUITE(sym, "Example");              // (c)
 
 The key here is that when expanding a function-like macro, the
 preprocessor performs the following steps, in order:
@@ -236,8 +236,8 @@ you're comfortable with that, you can try your hand at unravelling the
 implementation of the Linux kernel's [tracing][define_trace]
 [macros][ftrace], next ([sample usage][tracing])!
 
-[lasttime]: http:&#47;&#47;blog.nelhage.com&#47;2010&#47;06&#47;check-plus-an-edsl-for-writing-unit-tests-in-c&#47;
-[check]: http:&#47;&#47;check.sourceforge.net&#47;
-[define_trace]: http:&#47;&#47;git.kernel.org&#47;?p=linux&#47;kernel&#47;git&#47;torvalds&#47;linux-2.6.git;a=blob;f=include&#47;trace&#47;define_trace.h;h=1dfab54015113b83bce9f3302470c3a5ed95b5e7;hb=HEAD
-[ftrace]: http:&#47;&#47;git.kernel.org&#47;?p=linux&#47;kernel&#47;git&#47;torvalds&#47;linux-2.6.git;a=blob;f=include&#47;trace&#47;ftrace.h;h=5a64905d7278a47fb683a0aceb63cef029dd467b;hb=HEAD
-[tracing]: http:&#47;&#47;git.kernel.org&#47;?p=linux&#47;kernel&#47;git&#47;torvalds&#47;linux-2.6.git;a=blob;f=include&#47;trace&#47;events&#47;kmem.h;h=3adca0ca9dbee10479d34d5a3e3562609ef89e86;hb=HEAD
+[lasttime]: http://blog.nelhage.com/2010/06/check-plus-an-edsl-for-writing-unit-tests-in-c/
+[check]: http://check.sourceforge.net/
+[define_trace]: http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=blob;f=include/trace/define_trace.h;h=1dfab54015113b83bce9f3302470c3a5ed95b5e7;hb=HEAD
+[ftrace]: http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=blob;f=include/trace/ftrace.h;h=5a64905d7278a47fb683a0aceb63cef029dd467b;hb=HEAD
+[tracing]: http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=blob;f=include/trace/events/kmem.h;h=3adca0ca9dbee10479d34d5a3e3562609ef89e86;hb=HEAD

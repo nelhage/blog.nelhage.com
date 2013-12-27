@@ -20,14 +20,14 @@ tags:
 - subversion
 ---
 I've been helping a number of people get started working with `git`
-over the last couple of weeks, as [Ksplice](http:&#47;&#47;ksplice.com&#47;) has
+over the last couple of weeks, as [Ksplice](http://ksplice.com/) has
 brought on some new interns, and we've had to get them up to speed on
 our internal git repositories. (As you might expect from a bunch of
 kernel hackers, we use git for absolutely everything). While that
 experience is what prompted this post, it wasn't really anything I
-haven't seen before as [SIPB](http:&#47;&#47;sipb.mit.edu) transitioned from a
+haven't seen before as [SIPB](http://sipb.mit.edu) transitioned from a
 group that mostly versioned code in SVN or
-[SVK](http:&#47;&#47;svk.bestpractical.com&#47;) to one that used git almost
+[SVK](http://svk.bestpractical.com/) to one that used git almost
 exclusively, practically overnight, as these things go.
 
 I love git, and use it everywhere. One of the things I particularly
@@ -40,7 +40,7 @@ complexity (which I don't and don't have to understand) behind
 implementing its model efficiently, but I can describe the basic git
 data model in about a single slide (And in fact [I have][git-slides]).
 
-[git-slides]: http:&#47;&#47;web.mit.edu&#47;nelhage&#47;Public&#47;git-slides-2009.pdf
+[git-slides]: http://web.mit.edu/nelhage/Public/git-slides-2009.pdf
 
 At the same time, though, I consistently find that people who come to
 git from subversion find it insufferably complex and hard to learn,
@@ -121,7 +121,7 @@ we can improve on:
         fatal: The remote end hung up unexpectedly
 
    In general, the error messages are pretty bad. I believe it was
-   [`@defunkt`](http:&#47;&#47;twitter.com&#47;defunkt) who nominated "src refspec
+   [`@defunkt`](http://twitter.com/defunkt) who nominated "src refspec
    does not match any" as the "worst error message of all time", and
    it's hard not to see his point.
 
@@ -159,7 +159,7 @@ we can improve on:
   for moving content between the index, the working tree, and
   `HEAD`. Just the other day, three of us git experts had to stop and
   think for a while about how to answer the question "So, if I'm in a
-  conflicted merge, and I want to just conditionally take &ldquo;their&rdquo;
+  conflicted merge, and I want to just conditionally take “their”
   changes, what the hell do I do?". That's not a good sign for new
   users being able to figure out what to do here.
 
