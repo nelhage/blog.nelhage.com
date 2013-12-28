@@ -1,3 +1,4 @@
 name: Made of Bugs
 markdown: redcarpet
 pygments: true
+permalink: /:categories/:year/:month/:title
