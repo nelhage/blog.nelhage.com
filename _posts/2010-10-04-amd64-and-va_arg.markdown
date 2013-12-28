@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 355
 wordpress_url: http://blog.nelhage.com/?p=355
 date: 2010-10-04 00:14:28.000000000 +02:00
-categories:
-- Low-level hacking
 tags:
 - C
 - amd64

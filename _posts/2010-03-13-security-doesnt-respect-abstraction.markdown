@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 171
 wordpress_url: http://blog.nelhage.com/?p=171
 date: 2010-03-13 20:20:26.000000000 +01:00
-categories:
-- Computer Security
 tags:
 - security
 - abstraction

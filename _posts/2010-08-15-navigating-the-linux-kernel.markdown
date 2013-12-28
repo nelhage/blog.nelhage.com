@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 291
 wordpress_url: http://blog.nelhage.com/?p=291
 date: 2010-08-15 21:52:58.000000000 +02:00
-categories:
-- linux
 tags:
 - linux
 - kernel

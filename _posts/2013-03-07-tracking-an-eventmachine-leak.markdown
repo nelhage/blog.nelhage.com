@@ -10,10 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 1863
 wordpress_url: http://blog.nelhage.com/?p=1863
 date: 2013-03-07 13:13:37.000000000 +01:00
-categories:
-- Software Engineering
-- Low-level hacking
-- ruby
 tags: []
 ---
 At [Stripe][stripe], we rely heavily on [ruby][ruby] and

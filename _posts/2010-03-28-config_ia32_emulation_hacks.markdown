@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 201
 wordpress_url: http://blog.nelhage.com/?p=201
 date: 2010-03-28 20:07:43.000000000 +02:00
-categories:
-- Uncategorized
 tags: []
 ---
 <div id="outline-container-1" class="outline-2">

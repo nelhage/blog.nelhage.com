@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 287
 wordpress_url: http://blog.nelhage.com/?p=287
 date: 2010-08-08 21:44:55.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - blogging
 - copout

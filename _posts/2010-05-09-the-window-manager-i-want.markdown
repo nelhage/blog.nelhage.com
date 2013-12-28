@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 220
 wordpress_url: http://blog.nelhage.com/?p=220
 date: 2010-05-09 17:08:47.000000000 +02:00
-categories:
-- linux
 tags:
 - linux
 - emacs

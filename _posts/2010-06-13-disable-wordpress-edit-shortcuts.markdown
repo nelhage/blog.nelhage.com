@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 250
 wordpress_url: http://blog.nelhage.com/?p=250
 date: 2010-06-13 20:07:00.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - javascript
 - emacs

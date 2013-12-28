@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 278
 wordpress_url: http://blog.nelhage.com/?p=278
 date: 2010-07-18 18:38:23.000000000 +02:00
-categories:
-- Software Engineering
 tags:
 - programming
 - sql

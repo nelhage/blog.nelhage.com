@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 232
 wordpress_url: http://blog.nelhage.com/?p=232
 date: 2010-05-30 20:25:52.000000000 +02:00
-categories:
-- linux
 tags: []
 ---
 If you're reading this blog, I probably don't have to explain why I love

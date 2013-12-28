@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 394
 wordpress_url: http://blog.nelhage.com/?p=394
 date: 2010-11-07 18:00:38.000000000 +01:00
-categories:
-- Software Engineering
 tags:
 - unix
 - C

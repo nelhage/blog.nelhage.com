@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 224
 wordpress_url: http://blog.nelhage.com/?p=224
 date: 2010-05-23 19:53:30.000000000 +02:00
-categories:
-- Software Engineering
 tags: []
 ---
 Recently, I've been working on some <a

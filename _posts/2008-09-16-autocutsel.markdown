@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 12
 wordpress_url: http://blog.nelhage.com/?p=12
 date: 2008-09-16 12:08:12.000000000 +02:00
-categories:
-- Uncategorized
-- linux
 tags: []
 ---
 As most of you probably know, X has several different mechanisms for

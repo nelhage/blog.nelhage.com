@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 5
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=5
 date: 2007-08-05 22:53:00.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - DEFCON
 - hackers

@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 474
 wordpress_url: http://blog.nelhage.com/?p=474
 date: 2011-08-08 13:32:29.000000000 +02:00
-categories:
-- Computer Security
-- Low-level hacking
 tags:
 - linux
 - DEFCON

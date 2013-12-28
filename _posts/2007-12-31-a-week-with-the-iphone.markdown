@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 6
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=6
 date: 2007-12-31 01:41:00.000000000 +01:00
-categories:
-- Uncategorized
 tags:
 - iPhone
 - hardware

@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 134
 wordpress_url: http://blog.nelhage.com/?p=134
 date: 2010-02-14 20:03:15.000000000 +01:00
-categories:
-- git
 tags:
 - unix
 - git

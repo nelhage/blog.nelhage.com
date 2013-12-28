@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 13
 wordpress_url: http://blog.nelhage.com/?p=13
 date: 2008-09-18 12:07:49.000000000 +02:00
-categories:
-- Uncategorized
-- linux
 tags:
 - wifi
 - linux

@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 27
 wordpress_url: http://blog.nelhage.com/?p=27
 date: 2009-12-30 01:47:17.000000000 +01:00
-categories:
-- Uncategorized
-- linux
 tags:
 - termios
 - unix

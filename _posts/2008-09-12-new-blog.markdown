@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 11
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=11
 date: 2008-09-12 14:17:42.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - wordpress
 - blogger

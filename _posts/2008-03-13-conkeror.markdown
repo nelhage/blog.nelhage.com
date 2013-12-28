@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 8
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=8
 date: 2008-03-13 19:57:00.000000000 +01:00
-categories:
-- Uncategorized
 tags:
 - conkeror
 - js

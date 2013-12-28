@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 3
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=3
 date: 2007-02-11 01:33:00.000000000 +01:00
-categories:
-- Uncategorized
 tags:
 - svn
 - cvs

@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 484
 wordpress_url: http://blog.nelhage.com/?p=484
 date: 2012-03-12 11:36:35.000000000 +01:00
-categories:
-- Software Engineering
 tags:
 - software
 - node.js

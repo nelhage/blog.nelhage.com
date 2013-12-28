@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 210
 wordpress_url: http://blog.nelhage.com/?p=210
 date: 2010-04-04 23:33:51.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - web
 - quora

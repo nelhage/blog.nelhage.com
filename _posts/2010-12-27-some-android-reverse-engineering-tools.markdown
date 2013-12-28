@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 436
 wordpress_url: http://blog.nelhage.com/?p=436
 date: 2010-12-27 16:26:13.000000000 +01:00
-categories:
-- Low-level hacking
 tags:
 - security
 - android

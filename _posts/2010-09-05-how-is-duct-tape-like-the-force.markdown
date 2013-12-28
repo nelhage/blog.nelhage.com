@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 309
 wordpress_url: http://blog.nelhage.com/?p=309
 date: 2010-09-05 18:37:19.000000000 +02:00
-categories:
-- Uncategorized
 tags:
 - duct tape
 - dragon*con

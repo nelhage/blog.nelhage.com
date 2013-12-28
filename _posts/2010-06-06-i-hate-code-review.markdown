@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 241
 wordpress_url: http://blog.nelhage.com/?p=241
 date: 2010-06-06 20:21:11.000000000 +02:00
-categories:
-- Software Engineering
 tags:
 - software
 - code review

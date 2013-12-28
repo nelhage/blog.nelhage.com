@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 144
 wordpress_url: http://blog.nelhage.com/?p=144
 date: 2010-02-21 23:09:57.000000000 +01:00
-categories:
-- Uncategorized
 tags:
 - blogging
 - beer

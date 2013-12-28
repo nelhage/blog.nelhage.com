@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 9
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=9
 date: 2008-03-23 18:54:00.000000000 +01:00
-categories:
-- Uncategorized
-- linux
 tags:
 - linux
 - afuse

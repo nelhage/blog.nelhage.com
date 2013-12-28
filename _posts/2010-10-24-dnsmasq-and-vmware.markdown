@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 383
 wordpress_url: http://blog.nelhage.com/?p=383
 date: 2010-10-24 23:15:23.000000000 +02:00
-categories:
-- linux
 tags:
 - testing
 - vmware

@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 314
 wordpress_url: http://blog.nelhage.com/?p=314
 date: 2010-09-12 23:48:28.000000000 +02:00
-categories:
-- Computer Security
 tags:
 - security
 - twitter

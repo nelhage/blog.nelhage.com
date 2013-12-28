@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 10
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=10
 date: 2008-08-22 14:06:00.000000000 +02:00
-categories:
-- Uncategorized
-- linux
 tags:
 - debian
 - wifi

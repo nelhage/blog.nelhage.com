@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 461
 wordpress_url: http://blog.nelhage.com/?p=461
 date: 2011-02-08 23:06:50.000000000 +01:00
-categories:
-- linux
 tags:
 - linux
 - termios

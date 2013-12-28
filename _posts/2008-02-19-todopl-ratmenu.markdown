@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 7
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=7
 date: 2008-02-19 23:46:00.000000000 +01:00
-categories:
-- Uncategorized
 tags:
 - hiveminder
 - ratmenu

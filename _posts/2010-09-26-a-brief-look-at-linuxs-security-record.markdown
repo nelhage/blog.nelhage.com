@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 343
 wordpress_url: http://blog.nelhage.com/?p=343
 date: 2010-09-26 23:16:19.000000000 +02:00
-categories:
-- Computer Security
-- linux
 tags:
 - linux
 - security

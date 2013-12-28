@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 450
 wordpress_url: http://blog.nelhage.com/?p=450
 date: 2011-01-21 21:56:01.000000000 +01:00
-categories:
-- Low-level hacking
 tags:
 - linux
 - termios

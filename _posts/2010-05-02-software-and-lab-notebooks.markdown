@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 217
 wordpress_url: http://blog.nelhage.com/?p=217
 date: 2010-05-02 23:14:14.000000000 +02:00
-categories:
-- Software Engineering
 tags:
 - software
 - lab notebooks

@@ -10,9 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 74
 wordpress_url: http://blog.nelhage.com/?p=74
 date: 2010-01-24 23:30:02.000000000 +01:00
-categories:
-- Uncategorized
-- git
 tags:
 - git
 - pictures

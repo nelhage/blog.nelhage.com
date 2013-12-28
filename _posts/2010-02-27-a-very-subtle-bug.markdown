@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 150
 wordpress_url: http://blog.nelhage.com/?p=150
 date: 2010-02-27 23:48:47.000000000 +01:00
-categories:
-- linux
 tags:
 - unix
 - python

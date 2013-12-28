@@ -10,8 +10,6 @@ author_url: http://nelhage.com
 wordpress_id: 64
 wordpress_url: http://blog.nelhage.com/?p=64
 date: 2010-01-18 00:57:31.000000000 +01:00
-categories:
-- git
 tags:
 - svn
 - git
