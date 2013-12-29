@@ -2,6 +2,7 @@
   table td.code { width: 100%; }
   border: 1px solid $pre-border !important;
 }
+
 .highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
   text-align: right;
   font-size: 13px;
@@ -91,6 +92,7 @@ pre {
   padding: .8em 1em;
   color: $pre-color;
   overflow: auto;
+  
 }
 h3.filename {
   @extend .code-title;
@@ -102,12 +104,9 @@ p, li {
     @extend .mono;
     display: inline-block;
     white-space: no-wrap;
-    background: #fff;
     font-size: .8em;
     line-height: 1.5em;
     color: #555;
-    border: 1px solid #ddd;
-    @include border-radius(.4em);
     padding: 0 .3em;
     margin: -1px 0;
   }
@@ -241,7 +240,7 @@ figure.code {
   font-weight: normal;
   margin-bottom: 0;
   @include border-top-radius(5px);
-  font-family: "Helvetica Neue", Arial, "Lucida Grande", "Lucida Sans Unicode", Lucida, sans-serif;
+  font-family: $sans;
   background: #aaaaaa image-url("code_bg.png") top repeat-x;
   border: 1px solid #565656;
   border-top-color: #cbcbcb;

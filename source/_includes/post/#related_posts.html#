@@ -8,3 +8,10 @@
   {% endif %}
 </span>
 {% endunless %}
+
+{% if site.related_posts %}
+<span class="related">
+  <h3>Related:</h3>
+  <ul>
+</span>
+{% endif %}

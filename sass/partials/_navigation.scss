@@ -2,9 +2,6 @@ body > nav {
   position: relative;
   background-color: $nav-bg;
   @include background($nav-bg-front, $nav-bg-back);
-  border: {
-    top: 1px solid $nav-border-top;
-    bottom: 1px solid $nav-border-bottom; }
   padding-top: .35em;
   padding-bottom: .35em;
   form {
@@ -40,7 +37,7 @@ body > nav {
     font-size: .9em;
     ul {
       @include horizontal-list(0);
-      float: left;
+      float: none;
       display: block;
       padding-top: .15em;
     }
@@ -61,6 +58,7 @@ body > nav {
       font-size: 1.1em;
       padding: .1em 0;
       line-height: 1.5em;
+      text-align: center;
     }
     li + li {
       border-left: 1px solid $nav-border-left;
@@ -134,4 +132,3 @@ body > nav {
   a[rel=subscribe-rss]{ @include mask-subscription-nav('rss.png'); }
   a[rel=subscribe-email]{ @include mask-subscription-nav('email.png'); }
 }
-

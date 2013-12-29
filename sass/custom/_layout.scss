@@ -19,3 +19,34 @@
 //$sidebar-pad-medium: 15px;
 //$sidebar-pad-wide: 20px;
 //$sidebar-width-wide: 300px;
+
+.navi {
+  text-align: center;
+  ul {
+    padding: 0;
+    list-style: none;
+
+    li {
+      @include inline-block;
+      margin: 0;
+      padding: 0 (2/2 * 1em);
+
+      a {
+        color: #000;
+        text-decoration: none;
+        &:hover {
+          color: #8C8C8C;
+        }
+        &:active {
+          color: #8C8C8C;
+        }
+      } /* // a */
+    } /* // li */
+  } /* // ul */
+} /* // .navi */
+
+body > footer p:last-child {
+  text-align: center;
+  font-size: 0.9em;
+  margin-bottom: 0px;
+}

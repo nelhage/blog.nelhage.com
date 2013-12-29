@@ -3,32 +3,50 @@ $header-height: 30px;
 #header{
 	height: $header-height;
 	padding: 30px 0;
-	border-bottom: 1px solid $color-gray04;
+	margin-bottom: 100px;
+	
 	line-height: $header-height;
 	@media screen and (max-width: 1040px){
+		margin-bottom: 50px;
 		height: auto;
 		position: relative;
 		padding-bottom: 10px;
+	}
+	@media screen and (max-width: 600px){
+	margin-bottom:40px;
 	}
 	a{
 		color: $color-gray01;
 		@include transition(color 0.3s);
 		&:hover{
 			color: $color-main;
+			border-bottom:none;
 		}
 	}
 	h1{
-		float: left;
-		font-weight: 300;
-		font-size: 30px;
+		margin-top:15px;
+		text-align:center;
+		font-weight: bold;
+		font-size: 48px;
+		@media screen and (max-width: 1040px){
+			float: none;
+		}
+		}
+	h4{
+		margin-top:10px;
+		text-align:center;
+		font-weight: 100;
+		font-size: 32px;
 		@media screen and (max-width: 1040px){
 			float: none;
 		}
 	}
 }
 #main-nav{
+	margin-bottom: 0px;
 	float: left;
-	margin-left: 30px;
+	text-align:center;
+	margin-top: 15px;
 	@media screen and (max-width: 1040px){
 		float: none;
 		margin-left: 0;
@@ -51,6 +69,7 @@ $header-height: 30px;
 			&:hover{
 				>a{
 					color: $color-main;
+					border-bottom:none;
 				}
 			}
 			>a{
@@ -313,19 +332,12 @@ $header-height: 30px;
 			@include border-radius(50%);
 			@include inline-block;
 			text-indent: -9999px;
-			margin: 0 15px 15px 0;
+			margin-right: 15px;
 			opacity: 0.5;
 			@include square(28px);
 			@include transition(0.3s);
 			&:hover{
 				opacity: 1;
-			}
-			&.email{
-				background: image-url('social/email.png') center no-repeat #050505;
-				border: 1px solid #050505;
-				&:hover{
-					border: 1px solid darken(#050505, 10%);
-				}
 			}
 			&.facebook{
 				background: image-url('social/facebook.png') center no-repeat #3B5998;
@@ -356,22 +368,25 @@ $header-height: 30px;
 				}
 			}
 			&.coderwall{
-				background: image-url('social/coderwall.png') center no-repeat #3E8DCC;
-				border: 1px solid #3E8DCC;
+				background: image-url('social/coderwall.png') center no-repeat rgb(58,114,159);
+				border: 1px solid rgb(58,114,159);
 				&:hover{
-					border: 1px solid darken(#3E8DCC, 10%);
+					border: 1px solid darken(rgb(58,114,159), 10%);
 				}
 			}
-			&.stackoverflow{
-				background: image-url('social/stackoverflow.png') center no-repeat #EF7522;
-				border:1px solid #EF7522;
-				&:hover{
-					border:1px solid #CC7A00;
-				}
-			}
+      &.pinboard{
+        background: image-url('social/pinboard.png') center no-repeat rgb(0,102,200);
+        border: 1px solid rgb(58,114,159);
+        &:hover{
+          border: 1px solid darken(rgb(0,102,255), 10%);
+        }
+      }
 			&.linkedin{
 				background: image-url('social/linkedin.png') center no-repeat #005A87;
 				border: 1px solid #005A87;
+				&:hover{
+					border: 1px solid darken(#005A87, 10%);
+				}
 			}
 			&.pinterest{
 				background: image-url('social/pinterest.png') center no-repeat rgb(190,64,55);
@@ -386,20 +401,6 @@ $header-height: 30px;
 				&:hover{
 					border: 1px solid darken(rgb(50,113,203), 10%);
 				}
-			}
-			&.pinboard{
-			  background: image-url('social/pinboard.png') center no-repeat rgb(0,102,200);
-			  border: 1px solid rgb(58,114,159);
-			  &:hover{
-			    border: 1px solid darken(rgb(0,102,255), 10%);
-			  }
-			}
-			&.douban{
-			  background: image-url('social/douban.png') center no-repeat rgb(0,128,36);
-			  border: 1px solid rgb(0,128,36);
-			  &:hover{
-			    border: 1px solid darken(rgb(0,128,36), 10%);
-			  }
 			}
 			&.rss{
 				background: image-url('social/rss.png') center no-repeat #EF7522;
