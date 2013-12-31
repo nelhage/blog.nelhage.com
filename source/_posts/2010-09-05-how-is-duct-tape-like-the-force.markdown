@@ -20,7 +20,7 @@ tags:
 I'm at [Dragon*Con][dragoncon] this weekend, my second time here now. I decided that if I was going to Dragon*Con again, I needed to do something in terms of costuming, and I wanted it to be something unique -- I wasn't going to come anywhere near as epic as some of the costumes people pull off, but I wanted something that was going to be a little impressive, hopefully totally unique, and perhaps slightly insane.
 
 I've had, for a long time now, a thing for building tricky things out of duct tape, so, over the last few weeks, I've put together a duct tape storm trooper helmet:
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/09/duct-tape-helm.jpg"><img src="http://blog.nelhage.com/wp-content/uploads/2010/09/IMG_20100905_182025-768x1024.jpg" alt="Duct Tape Stormtrooper helmet" title="Stormtrooper helmet" width="768" height="1024" class="aligncenter size-large wp-image-310" /></a>
+<a href="/images/posts/2010/09/duct-tape-helm.jpg"><img src="/images/posts/2010/09/IMG_20100905_182025-768x1024.jpg" alt="Duct Tape Stormtrooper helmet" title="Stormtrooper helmet" width="768" height="1024" class="aligncenter size-large wp-image-310" /></a>
 
 (Apologies for the shitty camera-phone picture, that's all I've got right now)
 

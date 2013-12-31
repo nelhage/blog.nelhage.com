@@ -54,7 +54,7 @@ So, let's imagine, secure in that knowledge, we build a one-time pad
 encryption system. It looks something like this:
 </p>
 
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/03/otp.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/03/otp.png" alt="" title="One-Time Pad setup" width="132" height="203" class="aligncenter size-full wp-image-174" /></a>
+<a href="/images/posts/2010/03/otp.png"><img src="/images/posts/2010/03/otp.png" alt="" title="One-Time Pad setup" width="132" height="203" class="aligncenter size-full wp-image-174" /></a>
 
 <p>
 A key flows in off of some kind of key storage system, and an operator

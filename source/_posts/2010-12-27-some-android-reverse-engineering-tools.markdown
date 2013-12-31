@@ -42,7 +42,7 @@ move the point over a label, any other instances of that label get
 highlighted, which I found useful in keeping track of all the "lXXXXX"
 labels dedexer generates.
 
-[caption id="attachment_438" align="aligncenter" width="499" caption="An example file (from k9mail) highlighted using ddx-mode"]<a href="http://blog.nelhage.com/wp-content/uploads/2010/12/ddx-e1293480505629.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/12/ddx-e1293480505629.png" alt="" title="ddx-mode" width="499" height="471" class="size-full wp-image-438" /></a>[/caption]
+[caption id="attachment_438" align="aligncenter" width="499" caption="An example file (from k9mail) highlighted using ddx-mode"]<a href="/images/posts/2010/12/ddx-e1293480505629.png"><img src="/images/posts/2010/12/ddx-e1293480505629.png" alt="" title="ddx-mode" width="499" height="471" class="size-full wp-image-438" /></a>[/caption]
 
 `ddx2dot`
 ---------
@@ -59,7 +59,7 @@ an example, the [`parseToken`][parseToken] method from the IMAP parser
 in the [k9mail][k9] application for Android looks like the following,
 when disassembled and rendered to a CFG:
 
-[caption id="attachment_442" align="aligncenter" width="300" caption="A CFG for k9mail\'s <tt>ImapResponseParser.parseToken</tt> method"]<a href="http://blog.nelhage.com/wp-content/uploads/2010/12/parseToken.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/12/parseToken-300x143.png" alt="" title="parseToken" width="300" height="143" class="size-medium wp-image-442" /></a>[/caption]
+[caption id="attachment_442" align="aligncenter" width="300" caption="A CFG for k9mail\'s <tt>ImapResponseParser.parseToken</tt> method"]<a href="/images/posts/2010/12/parseToken.png"><img src="/images/posts/2010/12/parseToken-300x143.png" alt="" title="parseToken" width="300" height="143" class="size-medium wp-image-442" /></a>[/caption]
 
 I use the term "parses" because it's really just a pile of regexes, `line.split()` and `line.startswith("...")`, but it gets the job done, so I hope it might be of use to someone else. The biggest missing feature is that it doesn't parse `catch` directives, so those just end up floating out to the side as unattached blocks.
 

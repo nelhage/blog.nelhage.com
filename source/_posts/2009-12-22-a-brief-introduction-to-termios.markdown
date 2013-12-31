@@ -47,7 +47,7 @@ emulator (e.g. `xterm`), and the "slave" pty is connected to the
 program being run (e.g. your shell). "Input" flows from the user into the master pty and out the slave, and "output" flows from your program into the slave and then out the master. The basic diagram for
 what's going on, then is:
 
-<img src="http://blog.nelhage.com/wp-content/uploads/2009/12/termios.png" alt="termios blog diagram" title="Termios Block Diagram" width="443" height="121" class="alignnone size-full wp-image-17" />
+<img src="/images/posts/2009/12/termios.png" alt="termios blog diagram" title="Termios Block Diagram" width="443" height="121" class="alignnone size-full wp-image-17" />
 
 This diagram is a simplification in a few ways, but it still captures
 most of what's going on. 

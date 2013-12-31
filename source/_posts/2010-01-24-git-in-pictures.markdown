@@ -25,7 +25,7 @@ The second step, of course, is learning the git commands so that you can actuall
 
 Personally, I find that the commands that often trip me up the most in git are the various commands for moving data between the working tree, index, and HEAD. I can always remember the basic ones like "add" and "commit", of course, but if I, say, want to update some files in the index to match some commit, it often takes a minute to remember I want `git reset`. The following image attempts to diagram the working tree, the index, and HEAD, the last commit, and show the common commands for moving data between any pair of them:
 
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/01/index-3.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/01/index-3.png" alt="Moving data around the git working copy." title="Git Index" class="aligncenter size-full wp-image-77" /></a>
+<a href="/images/posts/2010/01/index-3.png"><img src="/images/posts/2010/01/index-3.png" alt="Moving data around the git working copy." title="Git Index" class="aligncenter size-full wp-image-77" /></a>
 
 The command above each pair of arrows moves data from left to right, and the one on the bottom from right to left. As you can see from the diagram, moving data directly between the working tree and the latest commit generally also updates the index, which is what makes it possible to mostly pretend that the index doesn't exist during normal usage, if you so choose. Also, of course, anywhere in this diagram where a command accepts `HEAD`, you can instead specify a an arbitrary commit object.
 
@@ -33,16 +33,16 @@ The command above each pair of arrows moves data from left to right, and the one
 
 The next pair of diagrams, will both be starting from the following image, showing part of a git repository that contains two branches (`master` and `topic`), which refer to some commits within the git object store:
 
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/01/base.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/01/base.png" alt="A Git Repository" title="base" class="aligncenter size-full wp-image-80" /></a>
+<a href="/images/posts/2010/01/base.png"><img src="/images/posts/2010/01/base.png" alt="A Git Repository" title="base" class="aligncenter size-full wp-image-80" /></a>
 
 Starting from this image, we can adjust master by adding new commits in several ways. The following diagram shows how the picture would change after each of `git commit`, `git commit --amend` or `git merge topic`:
 
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/01/creating.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/01/creating.png" alt="Committing to the git repository" title="Committing" class="aligncenter size-full wp-image-81" /></a>
+<a href="/images/posts/2010/01/creating.png"><img src="/images/posts/2010/01/creating.png" alt="Committing to the git repository" title="Committing" class="aligncenter size-full wp-image-81" /></a>
 
 Note that these three commands aren't quite parallel -- the first two, assuming you've staged some files into the index, will both result in the same tree object, whereas the third will execute a merge and construct its tree that way.
 
 Instead of committing to the repository, we might want to create new branches, or move refs around. The fourth diagram, below, shows various commands we could execute to create a branch, move to another branch, or move around the `master` pointer:
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/01/branching.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/01/branching.png" alt="Manipulating git refs." title="Branching"  class="aligncenter size-full wp-image-83" /></a>
+<a href="/images/posts/2010/01/branching.png"><img src="/images/posts/2010/01/branching.png" alt="Manipulating git refs." title="Branching"  class="aligncenter size-full wp-image-83" /></a>
 
 Hopefully someone finds some of these useful as a quick reference, or perhaps feels inspired to do something similar but better -- my graphic design abilities are limited at best. Let me know if you find any of these helpful!
 

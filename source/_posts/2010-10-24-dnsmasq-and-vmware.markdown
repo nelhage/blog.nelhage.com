@@ -50,7 +50,7 @@ local NAT on my machine. I configure that virtual network inside
 VMware as follows (run `vmware-netconfig`, or follow the appropriate
 menus):
 
-<a href="http://blog.nelhage.com/wp-content/uploads/2010/10/vmw.png"><img src="http://blog.nelhage.com/wp-content/uploads/2010/10/vmw.png" alt="" title="VMware workstation network configuration" width="512" height="576" class="aligncenter size-full wp-image-388" /></a>
+<a href="/images/posts/2010/10/vmw.png"><img src="/images/posts/2010/10/vmw.png" alt="" title="VMware workstation network configuration" width="512" height="576" class="aligncenter size-full wp-image-388" /></a>
 
 Note how I **disable** "Use local DHCP service to distribute IP
 addresses to VMs" -- we're going to set up dnsmasq to prove DHCP, so
