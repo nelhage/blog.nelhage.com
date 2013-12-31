@@ -306,8 +306,9 @@ the following options. I've attached explanations to some of them.
 - `CONFIG_EXT4_USE_FOR_EXT23`
   ext2/3/4 support for the root
 - `CONFIG_TMPFS`
+  Needed for udev
 - `CONFIG_INOTIFY_USER`
-  These two are needed for `udev`
+  Needed for udev
 - `CONFIG_VIRTIO_BLK`
   Needed for the virtio HDD
 - `CONFIG_VIRTIO_CONSOLE`
