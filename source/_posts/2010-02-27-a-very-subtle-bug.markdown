@@ -34,22 +34,26 @@ The following code snippet in Python is intended to extract and return
 a single file from a tarball. It probably should be using
 [`tarfile`][3], but let's ignore that for the moment.
 
-    import subprocess
-    def extractFile(tarball, path):
-      p = subprocess.Popen(['tar', '-xzOf', tarball, path],
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.PIPE)
-      contents, err = p.communicate()
-      if p.returncode:
-        raise SomethingWentWrong(err)
-      return contents
+```python
+import subprocess
+def extractFile(tarball, path):
+  p = subprocess.Popen(['tar', '-xzOf', tarball, path],
+                       stdout=subprocess.PIPE,
+                       stderr=subprocess.PIPE)
+  contents, err = p.communicate()
+  if p.returncode:
+    raise SomethingWentWrong(err)
+  return contents
+```
 
 This code has a bug. It will often work just fine, but occasionally it
 will fail, with 'err' containing a message including `gzip: stdout:
 Broken pipe`. If, however you were to write the equivalent code in a
 shell script:
 
-     contents="$(tar -xzOf "$tarball" "$path")"
+```shell
+contents="$(tar -xzOf "$tarball" "$path")"
+```
 
 you would find that it never fails in this way. So what's going on?
 
@@ -103,11 +107,13 @@ an exception.
 There's an easy workaround, which is to re-enable SIGPIPE in the
 `subprocess` child:
 
-      p = subprocess.Popen(['tar', '-xzOf', tarball, path],
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.PIPE,
-                           preexec_fn=lambda:
-                            signal.signal(signal.SIGPIPE, signal.SIG_DFL))
+```python
+p = subprocess.Popen(['tar', '-xzOf', tarball, path],
+                     stdout=subprocess.PIPE,
+                     stderr=subprocess.PIPE,
+                     preexec_fn=lambda:
+                      signal.signal(signal.SIGPIPE, signal.SIG_DFL))
+```
 
 But who would think of doing that, without first having seen this
 horribly subtle chain of bug, and having to track down what went
