@@ -291,8 +291,10 @@ the following options. I've attached explanations to some of them.
   Optional, but being able to run 32-bit binaries can be useful for testing.
 - `CONFIG_NET`
 - `CONFIG_UNIX`
+- `CONFIG_PACKET`
+  dhclient needs `CONFIG_PACKET`
 - `CONFIG_INET`
-  TCP/IP; unix sockets are used internally a lot.
+  TCP/IP
 - `CONFIG_NETDEVICES`
 - `CONFIG_VIRTIO_NET`
 - `CONFIG_NET_9P`
