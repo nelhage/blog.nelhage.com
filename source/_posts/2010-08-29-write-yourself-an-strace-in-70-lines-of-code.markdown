@@ -162,7 +162,7 @@ ready to be traced.
 
         ptrace(PTRACE_SETOPTIONS, child, 0, PTRACE_O_TRACESYSGOOD);
 
-I mentioned earliar that `ptrace` turns basically all events into a
+I mentioned earlier that `ptrace` turns basically all events into a
 `SIGTRAP` on the child. This is inconvenient because it means that
 when you see the child has stopped due to `SIGTRAP`, there's no good
 way to know which of several possible reasons it stopped for.
