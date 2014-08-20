@@ -51,7 +51,7 @@ will fail, with 'err' containing a message including `gzip: stdout:
 Broken pipe`. If, however you were to write the equivalent code in a
 shell script:
 
-```shell
+```sh
 contents="$(tar -xzOf "$tarball" "$path")"
 ```
 

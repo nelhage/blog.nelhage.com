@@ -4,7 +4,7 @@ title: "Lightweight Linux Kernel Development with KVM"
 date: 2013-12-30 02:11:45 +0100
 comments: true
 categories:
-published: false
+published: true
 ---
 
 I don't do a ton of Linux kernel development these days, but I've done
