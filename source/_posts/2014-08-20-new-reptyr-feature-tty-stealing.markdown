@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "New reptyr feature: tty-stealing"
+title: "New reptyr feature: TTY-stealing"
 date: 2014-08-20 08:41:34 -0700
 comments: true
 categories:
@@ -14,7 +14,7 @@ worked on single processes, and [could not attach][issue24] processes
 with children, making it useless in a large class of real-world
 situations.
 
-## tty stealing
+## TTY stealing
 
 Recently, I merged an experimental reptyr feature that I call
 "tty-stealing", which has the potential to fix all of these issues
@@ -56,11 +56,18 @@ might be `ssh`), which then displays it to you in some way.
 Instead of switching out terminals in the target process, `reptyr -T`
 goes after the *other* end of the `pty`, the so-called
 "master". `reptyr -T` attempts to discover the pid of the terminal
-emulator, attaches to it via `ptrace(2)`, and then passes the master
-end of the pty back to itself over a UNIX socket. It then takes over
-the role of terminal emulator, proxying data between this master and
-its own terminal, with the net effect that you appear to be connected
-directly to the target session.
+emulator, attaches to it via `ptrace(2)`, and finds the fd
+corresponding to the master end of the target pty. It then opens a
+UNIX socket, and uses [`SCM_RIGHTS`](http://linux.die.net/man/3/cmsg)
+to send the file descriptor back to the `reptyr` process. `reptyr`
+closes the master fd in the original terminal emulator (opening
+`/dev/null` over it, to minimize disruption), and detaches from the
+master.
+
+`reptyr` then takes over the role of terminal emulator, reading from
+the the master fd and copying output to its own terminal, and copying
+input from its terminal back to the master fd. This has the net effect
+that you appear to be connected directly to the target session.
 
 Because this process does not touch the terminal session at all, it is
 entirely transparent to the process(es) being attached, which and
@@ -74,9 +81,9 @@ terminal emulator instead of the target process brings a few new
 problems.
 
 The most notable one is that you need to be able to attach to the
-emulator process at all. In the case of an ssh session`, that means
-the forked `sshd` child for your connection. `sshd` drops privileges
-to match the authenticated user (via `setuid(2)` and friends), so the
+emulator process at all. In the case of an ssh session, that means the
+forked `sshd` child for your connection. `sshd` drops privileges to
+match the authenticated user (via `setuid(2)` and friends), so the
 emulator process *does* match the user ID of your user
 account. However, Linux forbids users from `ptrace()`ing a process
 that has undergone a UID transition via `setuid`, and so we can't
