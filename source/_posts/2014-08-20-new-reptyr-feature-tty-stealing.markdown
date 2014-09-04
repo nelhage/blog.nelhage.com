@@ -96,6 +96,11 @@ ssh private keys. We can't be confident it's truly unprivileged (and
 thus safe to sketch on) until it's called `execve` and cleared out all
 interesting state).
 
+## Try it out!
+
+I've tested out `reptyr -T` a fair bit, but it hasn't gotten broad
+testing or usage yet. I'd love your reports of what it does or doesn't
+work on, for you! Try it, and drop me an email or open an issue!
 
 [reptyr]: /2011/01/reptyr-attach-a-running-process-to-a-new-terminal/
 [issue24]: https://github.com/nelhage/reptyr/issues/24
