@@ -28,7 +28,7 @@ Figuring that this might just be something no one got around to, and
 couldn't actually be that hard, I pulled out my copy of the [amd64
 ABI][amd64abi] specification, figuring that maybe I could throw
 together a patch and fix this issue.
-
+ 
 Maybe half an hour of reading later, I stopped in terror and gave up,
 repenting of my foolish ways to go work on something else. `va_arg` on
 amd64 is a hairy, hairy beast, and probably not something I was going
@@ -40,11 +40,10 @@ The problem: Argument passing on amd64
 
 On i386, because of the dearth of general-purpose registers, the
 calling convention passes all arguments on the stack. This makes the
-va_arg implementation easy -- A `va_list` is simply a pointer into the
-stack, and `va_arg` just adds the size of the type to be retrieved to
-the `va_list`, and returns the old value. In fact, the i386 ABI
-reference simply specifies `va_arg` in terms of a single line of
-code:
+va\_arg implementation easy -- A `va_list` is simply a pointer into
+the stack, and `va_arg` just adds the size of the type to be retrieved
+to the `va_list`, and returns the old value. In fact, the i386 ABI
+reference simply specifies `va_arg` in terms of a single line of code:
 
     #define va_arg(list, mode) ((mode *)(list = (char *)list + sizeof(mode)))[-1]
 
@@ -198,3 +197,4 @@ how complex this operation is.
 [llvm]: http://llvm.org/
 [va_arg-bug]: http://llvm.org/bugs/show_bug.cgi?id=1740
 [amd64abi]: http://www.x86-64.org/documentation/abi.pdf
+
