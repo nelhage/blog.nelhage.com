@@ -67,7 +67,7 @@ worked, and so existing code depended on it]</em>).
 
 That's not all, however. Not only can integer arguments be passed by
 registers, but small `struct`s (16 bytes or fewer) can also be passed
-on the stack. A sufficiently small struct, for the purposes of the
+in registers. A sufficiently small struct, for the purposes of the
 calling convention, is essentially broken up into its component
 members, which are passed as though they were separate arguments --
 unless only some of them would fit into registers, in which case the
