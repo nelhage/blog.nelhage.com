@@ -90,11 +90,11 @@ debootstrap to control the architecture of the bootstrapped chroot)
 ## Booting to userspace
 
 At this point, you can boot to a working userspace by using a simple
-`qemu-system-x86_64` invocation, giving it your disk image (specifying
+`kvm` invocation, giving it your disk image (specifying
 it should be exposed as a virtio device) and your kernel, and telling
 the kernel to boot from the virtual disk:
 
-    qemu-system-x86_64 -kernel arch/x86/boot/bzImage \
+    kvm -kernel arch/x86/boot/bzImage \
       -drive file=$HOME/vms/wheezy.img,if=virtio \
       -append root=/dev/vda
 
@@ -108,7 +108,7 @@ NAT your VM to the outside world. To get ssh access, you can tell KVM
 to set up a port-forward. Just add these arguments to your
 command-line:
 
-    qemu-system-x86_64 [...]
+    kvm [...]
       -net nic,model=virtio,macaddr=52:54:00:12:34:56 \
       -net user,hostfwd=tcp:127.0.0.1:4444-:22
 
@@ -132,9 +132,9 @@ By default, KVM will pop up a graphical console for your VM. This is
 probably more annoying than useful. To get headless operation, add
 this to your command-line:
 
-    qemu-system-x86_64 [...]
+    kvm [...]
       -append 'root=/dev/vda console=hvc0' \
-      -chardev stdio,id=stdio,mux=on \
+      -chardev stdio,id=stdio,mux=on,signal=off \
       -device virtio-serial-pci \
       -device virtconsole,chardev=stdio \
       -mon chardev=stdio \
@@ -166,7 +166,7 @@ do this, I use a virtio 9P mount. Say I want to share `~/code/linux`
 with the VM. I'd add this to my command-line:
 
 
-    qemu-system-x86_64 [...]
+    kvm [...]
       -fsdev local,id=fs1,path=$HOME/code/linux,security_model=none \
       -device virtio-9p-pci,fsdev=fs1,mount_tag=host-code
 
@@ -223,7 +223,7 @@ initrd. For example:
     $ gcc -o initrd/init -static hello.c
     $ ( cd initrd/ && find . | cpio -o -H newc ) | gzip > initrd.gz
     1751 blocks
-    $ qemu-system-x86_64 -kernel arch/x86/boot/bzImage \
+    $ kvm -kernel arch/x86/boot/bzImage \
         -initrd initrd.gz \
         -append 'console=hvc0' \
         -chardev stdio,id=stdio,mux=on \
@@ -289,6 +289,8 @@ the following options. I've attached explanations to some of them.
   We really need ELF and shebang support.
 - `CONFIG_IA32_EMULATION`
   Optional, but being able to run 32-bit binaries can be useful for testing.
+- `CONFIG_FILE_LOCKING`
+  `dpkg` and and many other essential userspace tools need file locking.
 - `CONFIG_NET`
 - `CONFIG_UNIX`
 - `CONFIG_PACKET`
@@ -321,3 +323,9 @@ the following options. I've attached explanations to some of them.
   Build with debug symbols; `_REDUCED` gives significantly better
   build times, but still keeps key symbols around. Drop it if you're
   going to be doing serious kernel debugging.
+
+## Changelog
+
+- *2014-09-23* -- Added `CONFIG_FILE_LOCKING`, recommended `kvm`
+   command instead of `qemu`, and mention `signal=off`. Thanks to
+   Martin Kelly for the suggestions
