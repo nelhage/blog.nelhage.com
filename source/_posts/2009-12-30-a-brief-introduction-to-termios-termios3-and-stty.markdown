@@ -19,7 +19,7 @@ tags:
 (This is part two of a multi-part introduction to termios and terminal
 emulation on UNIX. Read [part 1][part-1] if you're new here)
 
-[part-1]: http://blog.nelhage.com/archives/14
+[part-1]: /2009/12/a-brief-introduction-to-termios
 
 In this entry, we'll look at the interfaces that are used to control
 the behavior of the "termios" box sitting between the master and

@@ -46,6 +46,6 @@ Instead of committing to the repository, we might want to create new branches, o
 
 Hopefully someone finds some of these useful as a quick reference, or perhaps feels inspired to do something similar but better -- my graphic design abilities are limited at best. Let me know if you find any of these helpful!
 
-[git-post]: /archives/64
+[git-post]: /2010/01/on-git-and-usability
 [git-cs]: http://eagain.net/articles/git-for-computer-scientists/
 [slides]: http://web.mit.edu/nelhage/Public/git-slides-2009.pdf

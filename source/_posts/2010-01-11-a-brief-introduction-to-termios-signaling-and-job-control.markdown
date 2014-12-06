@@ -21,8 +21,8 @@ tags:
 terminal emulation on UNIX. Read [part 1][part-1] or [part 2][part-2]
 if you're new here)
 
-[part-1]: http://blog.nelhage.com/archives/14
-[part-2]: http://blog.nelhage.com/archives/27
+[part-1]: /2009/12/a-brief-introduction-to-termios
+[part-2]: /2009/12/a-brief-introduction-to-termios-termios3-and-stty/
 
 For my final entry on termios, I will be looking at job control in the
 shell (i.e. backgrounding and foreground jobs) and the very closely

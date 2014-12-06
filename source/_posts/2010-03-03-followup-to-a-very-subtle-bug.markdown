@@ -21,7 +21,7 @@ interesting discussion there about some details I'd handwaved
 over. This is a quick followup on some the investigation that various
 people carried out, and the conclusions they reached.
 
-[0]: /archives/150
+[0]: /2010/02/a-very-subtle-bug
 
 In the reddit thread, [lacos/lbzip2][2] [objected][6] that in his
 experiments, he didn't see `tar` closing the input pipe before it was
