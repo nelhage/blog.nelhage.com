@@ -164,15 +164,24 @@ give us the location of the search string in the larger text.
 So, we have a large corpus of source code we want to do regular
 expression search over.
 
-First, livegrep reads all of the source and flattens them together
-into a single enormous buffer (remembering which regions of the buffer
-correspond to which source files), and building a suffix array over
-that buffer. (This is something of a simplification; future blog posts
-will discuss the specifics in more detail, but it's close enough).
+During indexing, livegrep reads all of the source and flattens them
+together into a single enormous buffer. As it does this, it maintains
+information I call the "file content map", which is essentially just a
+sorted table of `(start index, end index, file information)`, which
+allows us to determine which input file provided which bytes of the
+buffer.
 
-But now how do we use that array to match regular expressions?
 
-As a first pass, we can find literal substrings of the regular
+(This is something of a simplification; livegrep actually uses a
+number of suffix arrays, instead of a single giant one, and we
+compress the input by deduplicating identical lines, which makes the
+file content map more complicated. A future blog post may discuss the
+specifics in more detail)
+
+But now how do we use that structure to efficiently match regular
+expressions?
+
+As a first idea, we can find literal substrings of the regular
 expression, find any occurrences of those strings using the suffix
 array, and then only search those locations in the corpus.
 
@@ -204,14 +213,18 @@ substring search:
   one for `m`, which will give us two smaller chunks, once for "his"
   and one for "him".
 
-And we can combine these strategies. We can search for `/[a-f][0-9]/`
-by:
+We also have the option of making multiple searches and combining the
+results; Given `/hello|world/`, we can search for "hello", and search
+for "world", and then look at both locations.
+
+And we can combine all of these strategies. By way of example, we can
+search for `/[a-f][0-9]/` by:
 
 1. Binary searching to find `a-f`
 2. Splitting that into 6 ranges, one for `a`, `b`, `c`, `d`, `e`, and
    `f`
-3. For each of those ranges, doing a binary search over the *second*
-   character of the suffix, to find the 0-9 range
+3. For each of those ranges, doing a binary search over the second
+   character, looking for the `0-9` range.
 
 
 <div>
@@ -290,42 +303,78 @@ by:
 
 <div>
 
+<div style='clear:both'></div>
+
 When we're done, each of the resulting ranges in the suffix array then
 contains only locations matching `/[A-F][0-9]/`.
 
-Approximately, this means we can handle any regular expression
-consisting of character classes, literal characters, and alternations
-(`|`) — we handle alternations and non-contiguous character classes
-essentially by matching each side separately and combining the
-matches.
+Essentially, this means we can answer queries using index lookup keys
+of the form (borrowing Go syntax):
 
-A future blog post will give more details about how we walk an
-arbitrary regular expression and extract a relevant piece for
-indexing, but this is the basic idea. In the meanwhile,
-[indexer.cc][indexer.cc] contains the hairy details if you're curious.
+```go
+type IndexKey struct {
+  edges []struct {
+    min  byte
+    max  byte
+    next *IndexKey
+  }
+}
+```
+
+(livegrep's
+[definition](https://github.com/livegrep/livegrep/blob/23cd22f625a387809657da277a5df14ed4a3d70c/src/indexer.h#L118)
+is similar at the core, with some additional bookkeeping that's used
+while analyzing the regex)
+
+For each `edge` in a query, we do a search to find all suffixes
+starting in that range, then split that range into individual
+characters, and recurse, evaluating `next` and looking one character
+deeper into the suffix.
+
+Given a regular expression, livegrep analyzes it to extract an
+`IndexKey` that should have the property that any matches of the
+regular expression *must* be matched by that `IndexKey`, and that is
+as selective as possible.
+
+For many cases, this is simple — a character class gets translated
+directly into a series of ranges, a literal string is a linear chain
+of `IndexKey`s with one-character ranges, and so on. For repetition
+operators and alternations (`|`), things get more complicated. I hope
+to write more about this in a future blog post, but for now you can
+read [indexer.cc][indexer.cc] if you're curious, or play with
+[analyze-re][analyze-re], which has a `dot` output mode showing the
+results of livegrep's analysis.
 
 [indexer.cc]: https://github.com/livegrep/livegrep/blob/master/src/indexer.cc
+[analyze-re]: https://github.com/livegrep/livegrep/blob/master/src/tools/analyze-re.cc
 
 ## Using the Results
 
-Walking the suffix array as above produces a (potentially-large)
+Walking the suffix array as above produces a (potentially large)
 number of positions in the input corpus, which we want to
 search. Rather than searching each individually, livegrep takes all of
 the matches and sorts them in memory. We then walk the list in order,
 and if several matches are close together, we just feed the entire
-range of text to `RE2` at once, which reduces the number of RE2 calls
-and prevents us from duplicating work if a single line has multiple
-matches for from the index lookup.
+range of text to `RE2` at once, which reduces the number of `RE2`
+calls (`RE2` is quite fast, and we're happy to feed it a few kb of
+text and let it churn through it, instead of trying to micromanage
+finding line boundaries and such in between.
+
+In order to decide exactly how far to search around a potential match,
+we use the fact that livegrep searches on lines of source code: We can
+use a simple `memchr` to find the preceding and following newline, and
+just search precisely the line of code containing the possible match.
 
 Once we've run `RE2` over all of the match positions, we have a list
 of positions in the corpus that we know to match. We look up which
-files those correspond to (using, essentially, just a table that maps
-character ranges to source file names), and return the matches.
+files those correspond to (using the file-content table mentioned
+earlier), and return the matches.
 
 If we've also been given a file reference to constrain the search
 (e.g. `file:foo\.c`), we walk the file-contents map in parallel with
-the list of results from the index walk, and discard positions unless
-the file containing them matches the file regular expression.
+the list of results from the index walk, and discard positions
+outright unless the file containing them matches the file regular
+expression.
 
 
 # More…
