@@ -1,3 +1,6 @@
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+{% for css_name in page.extra_css %}
+<link rel="stylesheet" href="{{ css_name }}">
+{% endfor %}

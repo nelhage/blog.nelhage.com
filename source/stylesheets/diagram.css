@@ -1,0 +1,77 @@
+table.diagram {
+  margin: 1em 0;
+}
+
+table.diagram td {
+  font-family: monospace;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+tr.index td {
+  font-size: 80%;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+}
+
+td.index {
+  font-weight: bold;
+  text-align: left;
+  border-right: 3px double black;
+}
+
+table.diagram th {
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+table.diagram td.match {
+  background-color: yellow;
+}
+
+table.diagram td.no {
+  background-color: #ddd;
+}
+
+table.diagram td.up {
+ border-top: none;
+}
+
+table.diagram td.thin {
+ height: 10px;
+}
+
+table.diagram td.thick {
+ height: 50px;
+}
+
+table.diagram td.down {
+ border-bottom: none;
+}
+
+table.diagram td.greyup {
+ border-top: 1px solid gray;
+}
+
+table.diagram td.greydown {
+ border-bottom: 1px solid gray;
+}
+
+div.searchdemo {
+  float: left;
+  padding: 20px;
+}
+
+div.searchdemo table {
+//  margin: auto;
+  width: 100px;
+}
+
+#d1 td.thick {
+  padding: 1px 0px 0px;
+}
