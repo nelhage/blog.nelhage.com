@@ -240,7 +240,7 @@ search for `/[a-f][0-9]/` by:
   <tr><td class='match thick down'>A…</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
-  <tr><td class='match thick up down'>…</td></tr>
+  <tr><td class='match thick up down'>&nbsp;</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
   <tr><td class='match thick up'>F…</td></tr>
   <tr><td style='height: 50px'>…</td></tr>
