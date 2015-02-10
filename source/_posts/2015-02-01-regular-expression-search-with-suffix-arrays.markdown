@@ -137,12 +137,13 @@ of the array itself).
 Once we have a suffix array, one basic application is full-text
 search.
 
-Given a string to search, any substring of that text is a prefix of
-some suffix. Thus, given a suffix array, any substring present in the
-input must be the start of some entry in the suffix array. For
-example, searching for "her" in "hither and thither", we find that it
-is present in two places in the string, and it begins two lines of the
-suffix array:
+If we're trying to find a substring within a larger corpus, we know
+that that substring, if present, must be a prefix of some suffix of
+the larger corpus. That is, given a suffix array, any substring
+present in the corpus must be the start of some entry in the suffix
+array. For example, searching for "her" in "hither and thither", we
+find that it is present in two places in the string, and it begins two
+lines of the above suffix array:
 
 <table class='diagram'>
 <tr>
@@ -161,16 +162,20 @@ give us the location of the search string in the larger text.
 
 # Towards Regular Expression Search
 
-So, we have a large corpus of source code we want to do regular
+We begin with a large corpus of source code we want to do regular
 expression search over.
 
 During indexing, livegrep reads all of the source and flattens them
-together into a single enormous buffer. As it does this, it maintains
-information I call the "file content map", which is essentially just a
-sorted table of `(start index, end index, file information)`, which
-allows us to determine which input file provided which bytes of the
-buffer.
+together into a single enormous buffer (livegrep uses the open-source
+[libdivsufsort][divsufsort] library to build the suffix array; old
+versions of livegrep used a hand-rolled radix sort, which often went
+quadratic – divsufsort dramatically improved index-building
+performance). As it does this, it maintains information I call the
+"file content map", which is essentially just a sorted table of
+`(start index, end index, file information)`, which allows us to
+determine which input file provided which bytes of the buffer.
 
+[divsufsort]: https://code.google.com/p/libdivsufsort/
 
 (This is something of a simplification; livegrep actually uses a
 number of suffix arrays, instead of a single giant one, and we
@@ -186,7 +191,7 @@ expression, find any occurrences of those strings using the suffix
 array, and then only search those locations in the corpus.
 
 For example, given `/hello.*world/`, we can easily see that any
-mathches must contain the string "hello", and so we could look up
+matches must contain the string "hello", and so we could look up
 "hello", find all lines containing it, and then check each line
 against the full regular expression.
 
@@ -232,12 +237,12 @@ search for `/[a-f][0-9]/` by:
   1.
   <table class='diagram' id='d1'>
   <tr><td style='height: 50px'>…</td></tr>
-  <tr><td class='match thick down'>AAAAAA</td></tr>
+  <tr><td class='match thick down'>A…</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
   <tr><td class='match thick up down'>…</td></tr>
   <tr><td class='match thick up down'>&nbsp;</td></tr>
-  <tr><td class='match thick up'>FZZZZZ</td></tr>
+  <tr><td class='match thick up'>F…</td></tr>
   <tr><td style='height: 50px'>…</td></tr>
   </table>
 </div>
@@ -354,11 +359,20 @@ Walking the suffix array as above produces a (potentially large)
 number of positions in the input corpus, which we want to
 search. Rather than searching each individually, livegrep takes all of
 the matches and sorts them in memory. We then walk the list in order,
-and if several matches are close together, we just feed the entire
-range of text to `RE2` at once, which reduces the number of `RE2`
-calls (`RE2` is quite fast, and we're happy to feed it a few kb of
-text and let it churn through it, instead of trying to micromanage
-finding line boundaries and such in between.
+and if several matches are close together, run a single regex match
+over the entire range at once.
+
+Livegrep uses Russ Cox's own [RE2][RE2] library to match regular
+expressions. In addition to being quite fast, `RE2`, unlike PCRE or
+most other regex libraries, actually compiles regexes into
+finite-state automata, providing guaranteed-linear matching
+performance.
+
+Grouping matches together lets us take advantage of RE2's speed to
+churn through big chunks of text at once, instead of micromanaging the
+calls and doing excessive bookkeeping ourselves.
+
+[RE2]: https://code.google.com/p/re2/
 
 In order to decide exactly how far to search around a potential match,
 we use the fact that livegrep searches on lines of source code: We can
@@ -366,15 +380,32 @@ use a simple `memchr` to find the preceding and following newline, and
 just search precisely the line of code containing the possible match.
 
 Once we've run `RE2` over all of the match positions, we have a list
-of positions in the corpus that we know to match. We look up which
-files those correspond to (using the file-content table mentioned
-earlier), and return the matches.
+of matches in the corpus. For each match, use use the file content
+table mentioned earlier to identify the file that contained those
+bytes, and return the the match. In order to identify line number, we
+just pull the entire file contents out, and count newlines directly.
 
-If we've also been given a file reference to constrain the search
-(e.g. `file:foo\.c`), we walk the file-contents map in parallel with
-the list of results from the index walk, and discard positions
+If, however, we've also been given a file reference to constrain the
+search (e.g. `file:foo\.c`), we walk the file-contents map in parallel
+with the list of results from the index walk, and discard positions
 outright unless the file containing them matches the file regular
 expression.
+
+The interesting feature of this approach is that applying a filename
+restriction doesn't actually limit the search space that much —
+livegrep still walks the entire suffix array, and still considers each
+resulting match (although it can do a faster check against the content
+map, instead of calling into RE2). However, livegrep is fast enough
+that it doesn't need to take advantage of this restriction to return
+results quickly — and in fact it needs to be, in order to handle
+queries with no file restriction.
+
+This does mean that some of the slowest queries you can make against
+livegrep are ones that limit the path heavily, but don't provide good
+usage of the suffix array: [`. file:zzzz`][pathology] is close to the
+slowest query you can make against livegrep today.
+
+[pathology]: http://livegrep.com/search/linux?q=.+file:zzzz
 
 
 # More…
