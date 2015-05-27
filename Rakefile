@@ -7,7 +7,7 @@ require "stringex"
 ssh_user       = "nelhage.com"
 ssh_port       = "22"
 document_root  = "/opt/www/blog.nelhage.com/"
-beta_root      = "/opt/www/blog-beta.nelhage.com/"
+draft_root      = "/opt/www/blog.nelhage.com/draft/"
 rsync_delete   = true
 rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
@@ -224,8 +224,8 @@ task :deploy do
   Rake::Task["#{deploy_default}"].execute
 end
 
-task :beta_deploy do
-  document_root = beta_root
+task :draft_deploy do
+  document_root = draft_root
   Rake::Task[:deploy].execute
 end
 
