@@ -146,7 +146,8 @@ index we which to eliminate.
 
 However, if we want to adopt the more general primitive, of removing
 slices, (Python's `del array[x:y]`), we run into the same problem as
-extracting slices, previously, with the same solution.
+extracting slices, previously. Once again, shifting our thinking to
+index between elements removes all ambiguity.
 
 ## Incrementally consuming an array
 
@@ -158,8 +159,8 @@ How do we keep track of our current position? Should we keep the index
 of the last element we've processed, or of the first element we have
 yet to process?
 
-If we shift our perspective, the problem, once again, vanishes: We can
-store the index between the last item consumed, and the next one to be
+If we shift our perspective, this problem too vanishes: We can store
+the index between the last item consumed, and the next one to be
 consumed. Our index neatly partitions the buffer into "processed" and
 "to-be-processed", with no ambiguity at all.
 
@@ -172,12 +173,15 @@ array or of iterators as referring to a specific element in memory.
 However, both systems allow for this additional "valid" iterator or
 pointer, which points "just past the end" of a container. This
 pointer/iterator does not name a valid element, but is a valid pointer
-or iterator. The C specification is full of verbiage like "both
-[pointers] shall point to elements of the same array object, or one
-past the last element of the array object;" (N1256 §6.5.6p9). And with
-a C++ `std::vector`, `v.begin()` and `v.end()` are both valid
-iterators, but `v.end()` points "one past the end" and cannot be
-dereferenced.
+or iterator. The C specification is full of awkward verbiage to
+address this special-case:
+
+> both [pointers] shall point to elements of the same array object, or
+> one past the last element of the array object;
+
+(N1256 §6.5.6p9). And with a C++ `std::vector`, `v.begin()` and
+`v.end()` are both valid iterators, but `v.end()` points "one past the
+end" and cannot be dereferenced.
 
 <!-- img -->
 
