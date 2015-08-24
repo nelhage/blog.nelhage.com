@@ -11,7 +11,8 @@ and I asked you to draw a diagram of an array, the array indices, and
 the array elements, odds are good you'd produce a diagram something
 like this:
 
-<!-- img -->
+<img src="/images/indices/array-elements.png"
+  width="499" height="84" />
 
 In this post, I want to persuade you to replace that image, or, at
 least, to augment it with an alternate view on the world.
@@ -20,7 +21,8 @@ I want to argue that, rather than numbering elements of an array, it
 makes just as much sense, and in many cases more, to number the spaces
 *between* elements:
 
-<!-- img -->
+<img src="/images/indices/array-between.png"
+  width="499" height="108" />
 
 With this representation, we do have to relearn how to refer to
 indexing: We refer to `A[i]` no longer as "The element at index `i`",
@@ -34,11 +36,8 @@ most of them boil down to representing *ranges of elements*.
 Suppose we have an array, and we want a way to refer to a certain
 subset of it, like so:
 
-<!--
-  img
-
-  [ _ , X, X, X, _, _ ]
--->
+<img src="/images/indices/array-range.png"
+  width="499" height="88" />
 
 One obvious answer is with a start and a length: `start=2 length=3`,
 but it's often convenient to represent a range as a pair of `(start,
@@ -48,18 +47,14 @@ if an index falls into the range directly.
 If we number elements, it's not immediately apparent which index to
 use for `end`:
 
-<!--
-  [ _ , 1, 2, 3, _, _ ]
--->
+<img src="/images/indices/array-range-elements.png"
+  width="499" height="80" />
 
 Both `(1, 3)` and `(1, 4)` seem initially defensible. But if we number
 *between* elements, there's a clear, unique answer:
 
-<!--
-
- [ _ , X , X , X , _ , _ ]
- 0   1   2   3   4   5   6
--->
+<img src="/images/indices/array-range-between.png"
+  width="499" height="98" />
 
 The indices we want are the ones that lie between the included and
 excluded elements: `(1, 4)`.
@@ -69,15 +64,18 @@ straightforward:
 
 - Two ranges are adjacent if `left.end == right.start`
 
-  <!-- img -->
+<img src="/images/indices/array-adjacent.png"
+  width="499" height="170" />
 
 - One range is a subset of another if `inner.start >= outer.start && inner.end <= outer.end`
 
-  <!-- img -->
+<img src="/images/indices/array-contains.png"
+  width="499" height="171" />
 
 - A range contains `end - start` elements:
 
-  <!-- img -->
+<img src="/images/indices/array-length.png"
+  width="499" height="221" />
 
 In order to answer the question "if I dereference an index, is the
 result contained in the range?", we need to remember that `A[i]` is
@@ -183,7 +181,11 @@ address this special-case:
 `v.end()` are both valid iterators, but `v.end()` points "one past the
 end" and cannot be dereferenced.
 
-<!-- img -->
+<img src="/images/indices/pointers-element.png"
+  width="499" height="164" />
+
+<img src="/images/indices/iterators-element.png"
+  width="499" height="156" />
 
 These apparent odd inconsistencies and special cases vanish if you
 shift your thinking slightly in just the way I've been arguing:
@@ -195,7 +197,11 @@ end -- it points directly at the end, which is no more fundamentally
 special than the "start" iterator which points directly at the
 beginning.
 
-<!-- img -->
+<img src="/images/indices/pointers-between.png"
+  width="499" height="162" />
+
+<img src="/images/indices/iterators-between.png"
+  width="499" height="165" />
 
 It's still the case that we cannot *dereference* `v.end()`, but that
 behavior is a function of the "dereference" operation, which selects
@@ -215,9 +221,10 @@ indexing between elements, one of the more mind-bending realizations
 that followed was that this model can harmonize the "index from 0" and
 "index from 1" camps!
 
-Let's consider an arrar with interstices labeled again:
+Let's consider an array with interstices labeled again:
 
-<!-- img -->
+<img src="/images/indices/array-between.png"
+  width="499" height="108" />
 
 The first element, `A[0]` in C or Python, is bracked by indexes `0`
 and `1`. The decision, then to name it as `1`, does not involveb
