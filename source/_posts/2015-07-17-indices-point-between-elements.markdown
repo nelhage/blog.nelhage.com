@@ -120,7 +120,7 @@ indexes:
     [2, 3]
 
 The [documentation][pyslice], however, has to resolve the same
-ambiguity noted above: Is the final index excluded or excluded? Ruby
+ambiguity noted above: Is the final index excluded or included? Ruby
 even helpfully offers you both choices:
 
     irb(main)> [1,2,3,4][1...3]
