@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Indices point between elements"
-date: 2015-07-17 21:40:27 -0700
+date: 2015-08-24 09:00:00 -0700
 comments: true
 categories:
 ---
