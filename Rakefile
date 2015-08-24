@@ -7,7 +7,7 @@ require "stringex"
 ssh_user       = "nelhage.com"
 ssh_port       = "22"
 document_root  = "/opt/www/blog.nelhage.com/"
-draft_root      = "/opt/www/blog.nelhage.com/draft/"
+draft_root      = "/opt/www/blog-beta.nelhage.com/"
 rsync_delete   = true
 rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
@@ -254,7 +254,7 @@ desc "deploy public directory to github pages"
 multitask :push do
   puts "## Deploying branch to Github Pages "
   puts "## Pulling any updates from Github Pages "
-  cd "#{deploy_dir}" do 
+  cd "#{deploy_dir}" do
     system "git pull"
   end
   (Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
