@@ -227,8 +227,8 @@ Let's consider an array with interstices labeled again:
 <img src="/images/indices/array-between.png"
   width="499" height="108" />
 
-The first element, `A[0]` in C or Python, is bracked by indexes `0`
-and `1`. The decision, then to name it as `1`, does not involveb
+The first element, `A[0]` in C or Python, is bracketed by indexes `0`
+and `1`. The decision, then to name it as `1`, does not involve
 changing the picture at all; If you draw indices between elements, the
 statement "Arrays start at 1" is simply a decision that "The deference
 operator refers to the element to the left of an index," in exactly
@@ -247,7 +247,7 @@ while talking about [buffer representations][2].
 
 I recommend giving the book a read even if you never aspire personally
 to implement an Emacs; It's filled with a great number of interesting
-ideas, and possessed of a profound clarity of throught throughout.
+ideas, and possessed of a profound clarity of thought throughout.
 
 [1]: http://www.finseth.com/craft/
 [2]: http://www.finseth.com/craft/#c6.4.3
