@@ -130,11 +130,12 @@ even helpfully offers you both choices:
 
 As discussed earlier, if we adjust our view of indexes, there is no
 ambiguity at all. Conveniently, this also gives us the same semantics
-as Python and most other languages: there is a laundry list of why
+as Python and most other languages: there are [good reasons][dijkstra]
 half-inclusive ranges are generally preferable, and most languages
 converge on this choice.
 
 [pyslice]: https://docs.python.org/2/tutorial/introduction.html
+[dijkstra]: https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html
 
 ## Removing elements
 
