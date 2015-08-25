@@ -141,7 +141,7 @@ converge on this choice.
 
 If we want to remove a single element from an array, it does seem
 simpler to index elements directly -- we can just name directly the
-index we which to eliminate.
+index which we want to eliminate.
 
 However, if we want to adopt the more general primitive, of removing
 slices, (Python's `del array[x:y]`), we run into the same problem as
