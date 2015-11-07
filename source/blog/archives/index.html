@@ -6,6 +6,7 @@ footer: false
 
 <div id="blog-archives">
 {% for post in site.posts reverse %}
+{% unless post.draft %}
 {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
 {% unless year == this_year %}
   {% assign year = this_year %}
@@ -14,5 +15,6 @@ footer: false
 <article>
   {% include archive_post.html %}
 </article>
+{% endunless %}
 {% endfor %}
 </div>
