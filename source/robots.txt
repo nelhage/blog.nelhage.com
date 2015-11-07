@@ -5,3 +5,6 @@ User-agent: *
 Disallow: /draft/
 
 Sitemap: {{ site.url }}/sitemap.xml
+
+User-Agent: *{% for post in site.posts limit: 20 %}{% if post.draft %}
+Disallow: {{ post.url }}{% endif %} {% endfor %}

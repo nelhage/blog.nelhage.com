@@ -5,10 +5,9 @@ layout: default
 <div class="blog-index">
   {% assign index = true %}
   {% for post in paginator.posts %}
-  {% assign content = post.content %}
-    <article>
-      {% include article.html %}
-    </article>
+    {% unless post.draft %}
+      <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+    {% endunless %}
   {% endfor %}
   <div class="pagination">
     {% if paginator.next_page %}
