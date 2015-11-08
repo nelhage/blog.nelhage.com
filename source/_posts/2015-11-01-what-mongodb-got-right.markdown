@@ -89,42 +89,43 @@ Nearly anyone who uses SQL databases in production ends up configuring
 read replicas, in order to distribute read load, and provide a hot
 spare in the event of the loss of the primary. However, with both
 MySQL and PostgreSQL, configuring replication remains complex and
-error-prone, both in terms of the breadth of options available (Try to
-read [mysql][mysql-replication] and [postgres][postgres-replication]'s
-replication documentation and efficiently determine the correct
-solution), and in the procedures to set it up (generally involving an
-out-of-band transfer of an initial data dump, and potentially also
-replication offsets).
+error-prone, both in terms of the breadth of options available, and in
+the set-up and management of read replicas. I challenge anyone
+unfamiliar with the respective systems to read
+[mysql][mysql-replication] or [postgres][postgres-replication]'s
+replication documentation and efficiently determine the correct setup
+for a simple read slave.
 
 And automated failover is even more fraught in the SQL world; Github
-famously [disabled automated failover][github-failover] after their
-solution caused more outages than it resolved. Even once you have a
-failover solution -- and everyone's looks slightly different -- client
-libraries are often not built with failover in mind, requiring
+famously [disabled their automated failover][github-failover] after
+their solution caused more outages than it resolved. Even once you
+have a failover solution -- and everyone's looks slightly different --
+client libraries are often not built with failover in mind, requiring
 applications to manually detect failure and trigger reconnects.
 
 MongoDB's replica sets are not without their warts, but the conceptual
 model is fundamentally strong, and allows operators to, with minimal
 fussing, configure read replicas, manually or automatically fail over
 to a new server, add or remove replicas, and monitor replication
-health, via simple, standard interfaces, all with minimal no or
-minimal downtime, and almost entirely using in-band administrative
-commands (no editing of configuration files or command-line options).
+health, via simple, standard interfaces, all with minimal or no
+downtime, and almost entirely using in-band administrative commands
+(no editing of configuration files or command-line options).
 
-In addition, since the replication and failover solution is
-standardized and baked in, MongoDB client drivers are all required to
-be aware of it, and correctly detecting read secondaries and failovers
-and reconnecting as appropriate, with minimal additional
-configuration. They even allow application developers to select
-desired consistency and durability guarantees ("read preference" and
-"write concern" in Mongo jargon) on a per-operation level.
+Baking replication, membership, and failover into the core also means
+that drivers can be aware of it at a much higher level. The standard
+MongoDB client drivers are aware of replica set membership, and
+automatically discover the primary and reconnect as failovers happen
+and the primary moves around or nodes come and go. Awareness of
+secondaries also allows application developers to select desired
+consistency and durability guarantees ("read preference" and "write
+concern" in Mongo jargon) on a per-operation level.
 
 In a world where we increasingly take for granted the devops mantra of
 "cattle, not pets", and where databases are often the quintessential
 "pet" (special, singleton, servers requiring lots of careful manual
-attention, the MongoDB replica set model moves us strongly towards a
+attention), the MongoDB replica set model moves us strongly towards a
 world where a database is a cluster of mostly-indistinguishable
-machines than can be individually swapped out at will, and the system
+machines that can be individually swapped out at will, and the system
 will adapt appropriately.
 
 [replset]: https://docs.mongodb.org/manual/replication/
@@ -149,7 +150,7 @@ the design is compelling in a number of ways.
 The oplog is exposed directly as a collection (`local.oplog.rs`) in
 MongoDB, and can be accessed just like any other collection. This
 design choice simplifies interacting with the oplog in a number of
-ways: The same APIs can be used in client bindings, the standard
+ways: the same APIs can be used in client bindings, the standard
 authentication and authorization mechanisms work, and the same data
 format (BSON objects) is used, making entries easy for users to
 interpret.
@@ -160,17 +161,17 @@ seamlessly follow writes across the replica set as a logical unit,
 without thinking too hard about the physical topology or which nodes
 are primary.
 
-The oplog's BSON-based entries and standardized, document-based
-events, means it's easy to parse and interpret the oplog; All records
-apply to a single document, and contain only a handful of possible
-mutation operations, and thus do not require extensive logic to parse
-and implement.
+Rather than define a new serialization format for changes, the oplog
+reuses BSON, like everything else in MongoDB. In addition, the
+structure of BSON entries is quite simple -- there are only five or so
+types of operations. The conjunction of these two features makes it
+easy to parse and interpret oplog entries.
 
 The combination of all these features means that it's feasible -- even
-comparatively easy -- to use the oplog not just as an internal
-implementation detail, but as an application-visible [log][log] of all
-database writes, which can be used to drive external systems, such as
-data analysis pipelines or backup systems.
+easy -- to use the oplog not just as an internal implementation
+detail, but as an application-visible [log][log] of all database
+writes, which can be used to drive external systems, such as data
+analysis pipelines or backup systems.
 
 My own [MoSQL][mosql], for instance, replicates from MongoDB (via the
 oplog) into PostgreSQL, in under 1000 lines of Ruby. [Meteor][meteor],
