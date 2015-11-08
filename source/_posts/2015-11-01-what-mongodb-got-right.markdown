@@ -181,7 +181,7 @@ database without having to poll for changes.
 
 # Conclusion
 
-This post is not a wholistic defense of MongoDB as it exists
+This post is not a holistic defense of MongoDB as it exists
 today. MongoDB remains immature, and today's SQL databases remain some
 of the most mature, battle-tested, reliable, and performant storage
 solutions ever created. And MongoDB made many novel design decisions
