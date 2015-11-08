@@ -179,6 +179,10 @@ a platform for realtime javascript applications, leverages the oplog
 to get [realtime notification][meteor-oplog] of changes to the
 database without having to poll for changes.
 
+# Conclusion
+
+TODO: write some words here.
+
 
 [oplog]: https://docs.mongodb.org/manual/core/replica-set-oplog/
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
