@@ -28,7 +28,7 @@ to explore some design decisions that I believe MongoDB got *right*,
 especially compared to SQL databases, its main competitors[^sql].
 
 Implementations evolve and improve with time, but interfaces last
-nearly forever; In each of the cases I explore, I contend that MongoDB
+nearly forever. In each of the cases I explore, I contend that MongoDB
 legitimately out-innovated SQL databases, potentially positioning it
 -- in a few years, once the implementation matures -- as a superior
 database for a wide range of use cases.
@@ -51,7 +51,7 @@ SQL is a great language for ad-hoc exploration of data or for building
 aggregates over data sets. It's an absolutely miserable language for
 programmatically accessing data.
 
-Querying SQL data involves constructing string, and then -- if you
+Querying SQL data involves constructing strings, and then -- if you
 want to avoid SQL injection -- successfully lining up placeholders
 between your pile of strings and your programming language. If you
 want to insert data, you'll probably end up constructing the string
@@ -181,20 +181,50 @@ database without having to poll for changes.
 
 # Conclusion
 
-TODO: write some words here.
+This post is not a wholistic defense of MongoDB as it exists
+today. MongoDB remains immature, and today's SQL databases remain some
+of the most mature, battle-tested, reliable, and performant storage
+solutions ever created. And MongoDB made many novel design decisions
+other than the ones I've cited above; some are good ideas, some are
+bad ideas, and some remain to be determined.
 
+However, I do believe that, in significant ways, MongoDB is much
+better designed for the ways we write and run applications in 2015
+than the SQL RDBMS paradigm.
+
+Put that way, of course, this realization shouldn't be surprising: SQL
+databases -- while incredible pieces of technology -- haven't really
+fundamentally changed in decades. We should probably expect a database
+designed and written today to be a better fit for modern application
+and operational paradigms, in at least some ways.
+
+The interesting question, then, is whether the rest of the engineering
+behind MongoDB can catch up. I, for one, am optimistic. MongoDB
+continues to improve rapidly: It's adapted
+[a real storage engine][wiredtiger], and Facebook is
+[working on another][mongo-rocks]. MongoDB 3.2, now in RC,
+[significantly improves leader elections][mongo32-raft]. Every day,
+more experienced engineers turn their eyes on MongoDB, and while they
+often do discover problems, those problems then tend to get fixed
+fairly efficiently.
+
+So while MongoDB today may not be a great database, I think there's a
+good chance that the MongoDB of 5 or 10 years from now truly will be.
 
 [oplog]: https://docs.mongodb.org/manual/core/replica-set-oplog/
-[log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
-[mosql]: https://github.com/stripe/mosql
-[meteor]: https://www.meteor.com/
-[meteor-oplog]: https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
+[log]:
+https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+[mosql]: https://github.com/stripe/mosql [meteor]:
+https://www.meteor.com/ [meteor-oplog]:
+https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
+[mongo-rocks]:
+http://blog.parse.com/announcements/mongodb-rocksdb-parse/
+[mongo32-raft]:
+https://www.mongodb.com/presentations/replication-election-and-consensus-algorithm-refinements-for-mongodb-3-2
 
-
-[^sql]: Despite all the "NoSQL" hype, from the perspective of an
-    application developer, I would argue that MongoDB is more similar
-    to a SQL database than it is to any of the more exotic NoSQL
-    databases.
+[^sql]: Despite all the "NoSQL" hype, MongoDB is structurally and
+    functionally much more similar to a SQL database than it is to
+    most of the more exotic NoSQL databases.
 
 [^injection]: MongoDB did mess up slightly and allow a
     literal/operator ambiguity that permits
