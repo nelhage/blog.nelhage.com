@@ -212,15 +212,12 @@ So while MongoDB today may not be a great database, I think there's a
 good chance that the MongoDB of 5 or 10 years from now truly will be.
 
 [oplog]: https://docs.mongodb.org/manual/core/replica-set-oplog/
-[log]:
-https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
-[mosql]: https://github.com/stripe/mosql [meteor]:
-https://www.meteor.com/ [meteor-oplog]:
-https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
-[mongo-rocks]:
-http://blog.parse.com/announcements/mongodb-rocksdb-parse/
-[mongo32-raft]:
-https://www.mongodb.com/presentations/replication-election-and-consensus-algorithm-refinements-for-mongodb-3-2
+[log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+[mosql]: https://github.com/stripe/mosql
+[meteor]: https://www.meteor.com/
+[meteor-oplog]: https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
+[mongo-rocks]: http://blog.parse.com/announcements/mongodb-rocksdb-parse/
+[mongo32-raft]: https://www.mongodb.com/presentations/replication-election-and-consensus-algorithm-refinements-for-mongodb-3-2
 
 [^sql]: Despite all the "NoSQL" hype, MongoDB is structurally and
     functionally much more similar to a SQL database than it is to
