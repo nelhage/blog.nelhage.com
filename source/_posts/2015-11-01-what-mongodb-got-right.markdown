@@ -33,9 +33,12 @@ legitimately out-innovated SQL databases, potentially positioning it
 -- in a few years, once the implementation matures -- as a superior
 database for a wide range of use cases.
 
-This post is also not an exhaustive consideration of design choices in
-MongoDB. In the interests of space, I've omitted several areas of
-discussion that I could also point at as containing valuable ideas.
+This post is not an exhaustive enumeration: In the interests of space,
+I've chosen a few areas to focus on, in which I think MongoDB has
+really hit on some good ideas. There are a lot of other differences
+between MongoDB and a SQL RDBMS; This post shouldn't be construed as
+either a defense of or a criticism of any individual feature or design
+choice not listed here.
 
 [mongo]: https://www.mongodb.org/
 [webscale]: http://www.mongodb-is-web-scale.com/
