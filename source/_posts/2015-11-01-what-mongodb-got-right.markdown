@@ -33,6 +33,10 @@ legitimately out-innovated SQL databases, potentially positioning it
 -- in a few years, once the implementation matures -- as a superior
 database for a wide range of use cases.
 
+This post is also not an exhaustive consideration of design choices in
+MongoDB. In the interests of space, I've omitted several areas of
+discussion that I could also point at as containing valuable ideas.
+
 [mongo]: https://www.mongodb.org/
 [webscale]: http://www.mongodb-is-web-scale.com/
 [broken-by-design]: http://hackingdistributed.com/2013/01/29/mongo-ft/
@@ -221,7 +225,10 @@ good chance that the MongoDB of 5 or 10 years from now truly will be.
 
 [^sql]: Despite all the "NoSQL" hype, MongoDB is structurally and
     functionally much more similar to a SQL database than it is to
-    most of the more exotic NoSQL databases.
+    most of the more exotic NoSQL databases. In both MongoDB and SQL
+    RDBMSes, the core abstraction is a single server, with a number of
+    tables or collections that support multiple consistent secondary
+    indexes and rich querying.
 
 [^injection]: MongoDB did mess up slightly and allow a
     literal/operator ambiguity that permits
