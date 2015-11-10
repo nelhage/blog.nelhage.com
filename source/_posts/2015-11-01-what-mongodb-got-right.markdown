@@ -72,7 +72,7 @@ painful [impedance mismatches][impedance].
 By using a structured (BSON) interface, MongoDB makes the experience
 of programmatically interacting with the database much simpler and
 less error-prone[^injection]. In a world where databases are more
-frequently used as backend implementaion details owned by an
+frequently used as backend implementation details owned by an
 application -- and thus accessed entirely programmatically -- this is
 a clear win.
 
