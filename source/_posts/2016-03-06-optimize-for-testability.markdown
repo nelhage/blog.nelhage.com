@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Optimize for Testability"
-date: 2016-02-06 09:46:39 -0800
+date: 2016-03-06 09:46:39 -0800
 comments: true
 draft: true
 categories:
@@ -52,8 +52,6 @@ Second, in order to really realize the benefits of good tests, you
 need to be able to run tests -- or, at a mininum, the subset of tests
 covering your changes -- quickly, in order to keep a fast development
 cycle.
-
-<!-- todo: talk about scalability ? -->
 
 In order to preserve this property as a system scales, you need to
 have good *unit* tests. There are a lot of religious arguments out
