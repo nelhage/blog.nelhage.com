@@ -3,7 +3,7 @@ layout: post
 title: "Optimize for Testability"
 date: 2016-02-06 09:46:39 -0800
 comments: true
-preview: true
+draft: true
 categories:
 ---
 
