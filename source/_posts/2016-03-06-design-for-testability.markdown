@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optimize for Testability"
+title: "Design for Testability"
 date: 2016-03-06 09:46:39 -0800
 comments: true
 draft: true
@@ -134,12 +134,11 @@ architecting a system with testing in mind, we generally get a
 better-factored system than we would have, otherwise.
 
 Furthermore, by approaching these properties indirectly -- through the
-lense of testing -- instead of directly, we make them more
-concrete. It's easy to debate indefinitely what the right modules,
-interfaces and structures are for a software system; By approaching
-them with the concrete frame of "What makes it easy to adequately test
-this code?", we can provide a frame that makes it easier to evaluate
-our decisions and know when we've done enough.
+lense of testing -- we make them more concrete. It's easy to debate
+indefinitely what the right modules, interfaces and structures are for
+a software system; But faced with the concrete frame of "What makes it
+easy to adequately test this code?", it's easier to evaluate our
+choices and to decide when we've gone far enough.
 
 # Conclusion
 
