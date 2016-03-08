@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "Design for Testability"
-date: 2016-03-06 09:46:39 -0800
+date: 2016-03-08 10:00:00 -0800
 comments: true
-draft: true
 categories:
 ---
 
