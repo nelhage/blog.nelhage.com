@@ -1,0 +1,161 @@
+---
+layout: post
+title: "How I TDD"
+date: 2016-10-12 16:24:28 +0000
+comments: true
+categories:
+---
+
+The longer I spend as a software engineer, the more obsessive I get
+about testing. I fully subscribe to the definition of legacy code as
+"code without an automated test suite." I'm convinced that the best
+thing you can do to encourage fast progress in a test suite is to
+[design for testing][design-for-testing] and have a fast, reliable,
+comprehensive test suite.
+
+But for all that, I've never really subscribed to any of the
+test-driven-development manifestos or practices that I've
+encountered. I don't believe in religiously writing tests before code,
+or swear by any particular structure for tests.
+
+I do try to write a lot of tests, these days, though, and I do try to
+write my code with tests in mind. And I've come to realize that my
+approach could be thought of as a test-driven-development
+philosophy. Here's how I think about code and testing, especially in
+green-field systems.
+
+## Work module-at-a-time
+
+As I explore how to structure a new project, I think about how to
+structure it into separable components, guided by the question of "How
+can I design units that are testable with as few dependencies as
+possible?"
+
+As I work on each module, I try to write tests for the code in that
+module before I move on.
+
+I rarely write the tests before the code. Except for the simplest
+cases, I often don't know the details of the implementation and
+interfaces I'm writing until I've started working on them and
+experimented with a few approaches. If writing the tests (which are,
+themselves, clients of the interface!) helps me feel out the
+interfaces, I might do so, but it's certainly not a rule.
+
+However, by working module at a time and by writing the module and its
+tests together before moving on, I ensure both that my modules are
+testable (and aren't excessively coupled with other parts of the
+system) and that I maintain overall test coverage as I go.
+
+This rule (and in fact, none of the rules I list here) isn't a hard
+and fast rule for me. I cheat sometimes. But I've found this approach
+to be a valuable heuristic.
+
+## Avoid running `main`
+
+When developing a new project, or adding a feature, there's a very
+strong instinct to start with manual testing -- to run the binary and
+test the new feature by hand.
+
+I try very hard to resist this urge. As I'm developing a feature, I
+try hard only to run my automated tests, and to write new ones as need
+be, instead of ever testing something manually.
+
+Manual testing is generally quick and easy and satisfying -- you can
+directly test your application without having to fiddle with fixtures
+or anything, and can directly see the results.
+
+However, it's also wasted effort. A manual test only verifies the
+current state of the code base. As soon as you make a change, you've
+invalidated the results. If you take the effort to encode the test in
+code as an automated test, it continues to be valid indefinitely into
+the future.
+
+## Build tools for testing
+
+Often, though, it is genuinely substantially easier to test your
+application by hand than to write a test. Clicking is much simpler
+than trying to reason about coordinates. Entering input and getting
+feedback interactively is easier than encoding an entire transcript up
+front by thinking hard.
+
+If testing your application in code is hard or frustrating, it's worth
+the effort to invest in your own testing tooling to make it easier. At
+the most basic, this can consist of a library of helpers designed
+solely for testing, that allow you to construct useful objects or bits
+of state.
+
+Another powerful technique is designing and implement a textual
+representation of your state objects or key data structures, and
+building tooling to convert to and from it. Then, build a debug mode
+that makes interactive sessions dump relevant state in this
+format. Now, you can construct test cases by running `main` and poking
+around interatively, but when you get to the state you were trying to
+test, you can just copy-paste the state representation directly into
+your test file, use your parser to reconstitute it, and
+programmatically execute whatever tests you want.
+
+Often, it's worth going one step forward and building a completely
+data-driven test harness, which reads in a directory of test cases and
+runs over each of them in turn. Done right, this will let you add new
+tests without writing any code, and often even let you directly copy
+in test cases that result from bug reports or from interactive use.
+
+This technique is well-known among compiler developers (probably
+because compilers have the luxury of a very clear input format: text
+files); Take a look at a [sample gcc test case][gcc-test]. You don't
+need to understand ueverything that's going on there, but there are
+some key techniques that generalize:
+
+ - This is a self-contained test case. Someone created this test by
+   adding this file, which is in a format very familiar to any GCC
+   developer (C source), and by doing no additional work.
+ - Note the `{dg-* …}` comments. In order to make these tests
+   self-contained, and to make the system flexible, the GCC developers
+   have built a custom annotation/directive system to instruct the
+   test harness how to interpret this test case, and what to check
+   for.
+
+[gcc-test]: https://github.com/gcc-mirror/gcc/blob/87d59e72dfe85065aa3fdefdd01dd538292392ea/gcc/testsuite/c-c%2B%2B-common/array-lit.c
+
+Building a runner for these test cases may at first feel like a lot of
+code "just" to support testing, but it's well worth it; By making it
+easier to write tests, you'll ensure that you and other contributors
+write more tests, and your future selves (and other future
+developers!) will thank you for the effort.
+
+This technique is easiest for programs, like compilers, with
+self-contained textual inputs, but it can be adopted more widely. At
+my work, I worked on an internal custom HTTP proxy; We built out a
+test harness so that we could ultimately paste entire HTTP requests
+and the expected responses into files, and perform end-to-end
+testing. This required stubbing out various pieces of entropy and
+having a "standard" well-known initial database state for these tests,
+but the end result was very easy regression testing as we discovered
+new edge cases.
+
+## Regression tests, Regression tests, Regression tests
+
+My final, and perhaps more important, advice is to always write
+regression tests. Encode every single bug you find as a test, to
+ensure that you'll notice if you ever encounter it again.
+
+This doesn't have to just mean "bugs reported by a user" or anything
+similar; Any bug you find in the course of development is worth
+writing a test for. Even if you find yourself half way into typing a
+line of code, realize you've made a mistake, and backspace half the
+line: Pause, and ask yourself "If I had made that mistake, is there a
+test I could have written to demonstrate it?"
+
+The goal is, essentially, to ensure a ratchet on the types of possible
+bugs in your system. There are probably nigh-infinitely many bugs you
+could write, but the set of desired behaviors of your system is
+relatively finite, and the set of bugs you're *likely* to write is
+similarly limited, and if you turn every bug into a test on one of
+those behaviors, you'll eventually converge on testing for most of the
+important failure modes of your system.
+
+At least, that's the optimistic take. Even if it doesn't converge,
+though, there's a lot to be said for only having any specific bug
+once, ever.
+
+[design-for-testing]: /2016/03/design-for-testability/
