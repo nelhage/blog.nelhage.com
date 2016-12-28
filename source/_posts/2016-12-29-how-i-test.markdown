@@ -122,8 +122,9 @@ lower-level, ancillary details of implementing the interface.
 
 The "sarama" Go Kafka client implements
 [such a programmable fake](https://godoc.org/github.com/Shopify/sarama#MockBroker)
-Kafka Broker, allowing for testing both of the library itself, and by
-consumers of the library if they wish.
+kafka broker, which is used repeatedly in the library's own tests, and
+can also be used by consumers wishing to construct more end-to-end
+tests.
 
 Anytime you find yourself stubbing out an external in an ad-hoc basis,
 it's worth stepping back and asking if you should be writing a
@@ -138,7 +139,6 @@ or some input to your system with particular properties -- certain
 contents, a certain bit pattern, whatever. It's very easy to find
 yourself writing long sequences of code to construct objects, or
 copying around opaque representations of internal data structures.
-
 
 One powerful technique can be to design and implement a small textual
 format for representing your data (either internal state objects, or
@@ -171,6 +171,9 @@ cases entirely as data files in a directory, without adding any
 additional code. Done right, this lets you add new test cases directly
 in a familiar format, and even directly translate bug reports or
 interactive tests into test cases.
+
+(A coworker calls this pattern a "zoo", because you get one directory
+containing all of your exotic animals, and I've adopted that nickname)
 
 This technique is well-known among compiler developers (probably
 because compilers have the luxury of a very clear input format: simple
