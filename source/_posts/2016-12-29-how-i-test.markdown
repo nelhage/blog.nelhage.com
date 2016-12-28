@@ -4,6 +4,7 @@ title: "How I Write Tests"
 date: 2016-12-29 19:00:00 +0000
 comments: true
 categories:
+draft: true
 ---
 
 The longer I spend as a software engineer, the more obsessive I get
