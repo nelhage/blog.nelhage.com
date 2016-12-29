@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /draft/
+
+Sitemap: https://blog.nelhage.com/sitemap.xml

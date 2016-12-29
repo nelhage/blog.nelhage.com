@@ -1,0 +1,77 @@
+---
+author: nelhage
+author_email: nelhage@mit.edu
+author_login: nelhage
+author_url: http://nelhage.com
+date: 2007-02-11T01:33:00Z
+published: true
+status: publish
+tags:
+- svn
+- cvs
+- svk
+- tailor
+- "6.170"
+- vcs
+title: 6.170, CVS, and SVN
+url: /2007/02/11/3/
+wordpress_id: 3
+wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=3
+---
+
+I'm taking [6.170](http://web.mit.edu/6.170/www/) Lab in Software
+Engineering this semester. The course sucks in various ways, but
+one of the most egregious, in my opinion, is that they _force_ you to
+use CVS for your version control. Problem sets are distributed by the
+TAs importing them into your repository, and are then checked out
+later to be graded. Well, CVS sucks, and there's no way I'm going to
+use it when there are sane, modern alternatives like SVN and
+[SVK][svk]
+
+Luckily for sanity, there's a great piece of software called
+[Tailor][tailor] designed to solve exactly this problem -- it lets you
+mirror a repository that uses one version control system into one
+using another. So, I can mirror the required CVS repository into a svn
+repository somewhere, and operate against that.
+
+But the issue is that tailor only really does one-way mirroring; It
+doesn't do syncing and merging between the two repositories. So, if I
+have svn mirror CVS, then changes I make don't get propagated back. If
+I mirror svn to CVS, I don't get new problem sets the TAs import.
+
+My current solution, which I can describe only as “I know what I am
+doing is wrong”, is as follows:
+
+* I have tailor set up to merge from SVN to CVS
+* `tailor` runs in a SVN post-commit hook, so revisions are
+  automatically pushed to CVS
+* Whenever the TAs announce a new pset is available, I do the following:
+
+        # The svn repo is checked out at ~/6.170/psets
+        # The cvs repo is located at /mit/nelhage/6.170/cvsroot
+        # The TAs have just announced ps2 is available
+        $ cd ~/6.170/psets
+        $ cvs -d /mit/nelhage/6.170/cvsroot co /psets/ps2
+        $ svn add ps2
+        $ rm -rf /mit/nelhage/6.170/cvsroot/psets/ps2
+        $ svn ci -m "ps2 import from CVS"
+
+That is to say, I manually add the new problem set to SVN, and then
+delete all trace of it from CVS, and then the commit runs tailor to
+re-create it in CVS, but keeping svn as the master repository.
+
+The sketchy piece is that I am _actually_ deleting all trace of it
+from the CVSROOT; There is no trace whatsoever of the initial import
+by the TAs.
+
+However, the same time, it feels somewhat elegant; The svn
+repository is at all times the master, containg all the
+information in the CVS repository. And, frankly, I'm uncomfortable
+that the TAs are injecting things directly into my repository
+anyways, so I have no problem undoing it.
+
+* [tailor configuration file](http://web.mit.edu/nelhage/Public/6.170.tailor)
+* [post-commit hook to run tailor](http://web.mit.edu/nelhage/Public/psets.post-commit)
+
+[svk]: http://svk.bestpractical.com/
+[tailor]: http://www.darcs.net/DarcsWiki/Tailor

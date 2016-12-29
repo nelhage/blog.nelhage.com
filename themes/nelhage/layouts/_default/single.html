@@ -1,0 +1,19 @@
+{{ partial "head.html" . }}
+
+<div>
+<article class="hentry" role="article">
+  {{ partial "article.html" . }}
+  <footer>
+    <p class="meta">
+      {{ if .PrevInSection }}
+        <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}" title="Previous Post: {{.PrevInSection.LinkTitle}}">&laquo; {{.PrevInSection.LinkTitle}}</a>
+      {{ end }}
+      {{ if .NextInSection }}
+        <a class="basic-alignment right" href="{{.NextInSection.Permalink}}" title="Next Post: {{.NextInSection.LinkTitle}}">{{.NextInSection.LinkTitle}} &raquo;</a>
+      {{ end }}
+    </p>
+  </footer>
+</article>
+</div>
+
+{{ partial "footer.html" .}}
