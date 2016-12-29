@@ -14,7 +14,7 @@ tags:
 - kvm
 - blackhat
 title: 'BlackHat/DEFCON 2011 talk: Breaking out of KVM'
-url: /2011/08/08/breaking-out-of-kvm/
+url: /2011/08/breaking-out-of-kvm/
 wordpress_id: 474
 wordpress_url: http://blog.nelhage.com/?p=474
 ---

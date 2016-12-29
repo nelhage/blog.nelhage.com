@@ -12,7 +12,7 @@ tags:
 - tty
 - apis
 title: 'A Brief Introduction to termios: termios(3) and stty'
-url: /2009/12/30/a-brief-introduction-to-termios-termios3-and-stty/
+url: /2009/12/a-brief-introduction-to-termios-termios3-and-stty/
 wordpress_id: 27
 wordpress_url: http://blog.nelhage.com/?p=27
 ---

@@ -8,7 +8,7 @@ published: true
 status: publish
 tags: []
 title: Tracking down a memory leak in Ruby's EventMachine
-url: /2013/03/07/tracking-an-eventmachine-leak/
+url: /2013/03/tracking-an-eventmachine-leak/
 wordpress_id: 1863
 wordpress_url: http://blog.nelhage.com/?p=1863
 ---

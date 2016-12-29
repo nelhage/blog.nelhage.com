@@ -13,7 +13,7 @@ tags:
 - storm trooper
 - crafts
 title: How is duct tape like the force?
-url: /2010/09/05/how-is-duct-tape-like-the-force/
+url: /2010/09/how-is-duct-tape-like-the-force/
 wordpress_id: 309
 wordpress_url: http://blog.nelhage.com/?p=309
 ---

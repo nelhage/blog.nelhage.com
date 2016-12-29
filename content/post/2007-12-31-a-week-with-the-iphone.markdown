@@ -11,7 +11,7 @@ tags:
 - hardware
 - sync
 title: A week with the iPhone
-url: /2007/12/31/a-week-with-the-iphone/
+url: /2007/12/a-week-with-the-iphone/
 wordpress_id: 6
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=6
 ---

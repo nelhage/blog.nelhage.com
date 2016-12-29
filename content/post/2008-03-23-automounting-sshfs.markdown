@@ -12,7 +12,7 @@ tags:
 - sshfs
 - ssh
 title: Automounting sshfs
-url: /2008/03/23/automounting-sshfs/
+url: /2008/03/automounting-sshfs/
 wordpress_id: 9
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=9
 ---

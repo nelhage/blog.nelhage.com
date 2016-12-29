@@ -14,7 +14,7 @@ tags:
 - gzip
 - pipes
 title: A Very Subtle Bug
-url: /2010/02/27/a-very-subtle-bug/
+url: /2010/02/a-very-subtle-bug/
 wordpress_id: 150
 wordpress_url: http://blog.nelhage.com/?p=150
 ---

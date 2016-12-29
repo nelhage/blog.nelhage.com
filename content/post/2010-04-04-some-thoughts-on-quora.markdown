@@ -14,7 +14,7 @@ tags:
 - questions
 - answers
 title: Some thoughts on Quora
-url: /2010/04/04/some-thoughts-on-quora/
+url: /2010/04/some-thoughts-on-quora/
 wordpress_id: 210
 wordpress_url: http://blog.nelhage.com/?p=210
 ---

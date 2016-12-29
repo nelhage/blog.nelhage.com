@@ -5,7 +5,7 @@ date: 2015-02-01T15:52:43Z
 extra_css:
 - /stylesheets/diagram.css
 title: Regular Expression Search with Suffix Arrays
-url: /2015/02/01/regular-expression-search-with-suffix-arrays/
+url: /2015/02/regular-expression-search-with-suffix-arrays/
 ---
 
 Back in January of 2012, Russ Cox posted an [excellent blog

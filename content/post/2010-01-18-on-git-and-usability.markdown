@@ -13,7 +13,7 @@ tags:
 - usability
 - subversion
 title: On git and usability
-url: /2010/01/18/on-git-and-usability/
+url: /2010/01/on-git-and-usability/
 wordpress_id: 64
 wordpress_url: http://blog.nelhage.com/?p=64
 ---

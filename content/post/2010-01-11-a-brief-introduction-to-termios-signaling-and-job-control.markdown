@@ -13,7 +13,7 @@ tags:
 - signals
 - shell
 title: 'A Brief Introduction to termios: Signaling and Job Control'
-url: /2010/01/11/a-brief-introduction-to-termios-signaling-and-job-control/
+url: /2010/01/a-brief-introduction-to-termios-signaling-and-job-control/
 wordpress_id: 60
 wordpress_url: http://blog.nelhage.com/?p=60
 ---

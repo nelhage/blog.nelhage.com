@@ -14,7 +14,7 @@ tags:
 - window manager
 - ratpoison
 title: The Window Manager I Want
-url: /2010/05/09/the-window-manager-i-want/
+url: /2010/05/the-window-manager-i-want/
 wordpress_id: 220
 wordpress_url: http://blog.nelhage.com/?p=220
 ---

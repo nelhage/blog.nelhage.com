@@ -11,7 +11,7 @@ tags:
 - git
 - dotfiles
 title: Versioning dotfiles in git
-url: /2010/02/14/versioning-dotfiles-in-git/
+url: /2010/02/versioning-dotfiles-in-git/
 wordpress_id: 134
 wordpress_url: http://blog.nelhage.com/?p=134
 ---

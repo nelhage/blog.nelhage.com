@@ -11,7 +11,7 @@ tags:
 - hackers
 - summer
 title: DEF CON
-url: /2007/08/05/def-con/
+url: /2007/08/def-con/
 wordpress_id: 5
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=5
 ---

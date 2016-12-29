@@ -11,7 +11,7 @@ tags:
 - copout
 - suggestions
 title: 'Suggestion time: What should I blog about?'
-url: /2010/08/08/suggestion-time-what-should-i-blog-about/
+url: /2010/08/suggestion-time-what-should-i-blog-about/
 wordpress_id: 287
 wordpress_url: http://blog.nelhage.com/?p=287
 ---

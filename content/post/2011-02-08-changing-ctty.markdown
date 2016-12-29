@@ -13,7 +13,7 @@ tags:
 - tty
 - reptyr
 title: 'reptyr: Changing a process''s controlling terminal'
-url: /2011/02/08/changing-ctty/
+url: /2011/02/changing-ctty/
 wordpress_id: 461
 wordpress_url: http://blog.nelhage.com/?p=461
 ---

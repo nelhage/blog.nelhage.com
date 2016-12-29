@@ -13,7 +13,7 @@ tags:
 - greasemonkey
 - keyboard
 title: 'Wordpress tricks: Disabling editing shortcuts'
-url: /2010/06/13/disable-wordpress-edit-shortcuts/
+url: /2010/06/disable-wordpress-edit-shortcuts/
 wordpress_id: 250
 wordpress_url: http://blog.nelhage.com/?p=250
 ---

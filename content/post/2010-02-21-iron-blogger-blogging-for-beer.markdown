@@ -11,7 +11,7 @@ tags:
 - beer
 - mit
 title: 'Iron Blogger: Blogging for Beer'
-url: /2010/02/21/iron-blogger-blogging-for-beer/
+url: /2010/02/iron-blogger-blogging-for-beer/
 wordpress_id: 144
 wordpress_url: http://blog.nelhage.com/?p=144
 ---

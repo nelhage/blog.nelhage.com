@@ -8,7 +8,7 @@ published: true
 status: publish
 tags: []
 title: 'Fun with the preprocessor: CONFIG_IA32_EMULATION hacks in Linux'
-url: /2010/03/28/config_ia32_emulation_hacks/
+url: /2010/03/config_ia32_emulation_hacks/
 wordpress_id: 201
 wordpress_url: http://blog.nelhage.com/?p=201
 ---

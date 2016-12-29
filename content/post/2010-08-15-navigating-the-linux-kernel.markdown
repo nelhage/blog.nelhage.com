@@ -11,7 +11,7 @@ tags:
 - kernel
 - source-diving
 title: Navigating the Linux Kernel
-url: /2010/08/15/navigating-the-linux-kernel/
+url: /2010/08/navigating-the-linux-kernel/
 wordpress_id: 291
 wordpress_url: http://blog.nelhage.com/?p=291
 ---

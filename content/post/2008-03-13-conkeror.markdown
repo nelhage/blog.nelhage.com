@@ -13,7 +13,7 @@ tags:
 - emacs
 - web
 title: Conkeror
-url: /2008/03/13/conkeror/
+url: /2008/03/conkeror/
 wordpress_id: 8
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=8
 ---

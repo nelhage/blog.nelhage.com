@@ -15,7 +15,7 @@ tags:
 - operating systems
 - memory
 title: Using Haskell's 'newtype' in C
-url: /2010/10/11/using-haskells-newtype-in-c/
+url: /2010/10/using-haskells-newtype-in-c/
 wordpress_id: 364
 wordpress_url: http://blog.nelhage.com/?p=364
 ---

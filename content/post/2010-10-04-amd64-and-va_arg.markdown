@@ -12,7 +12,7 @@ tags:
 - abi
 - calling convention
 title: amd64 and va_arg
-url: /2010/10/04/amd64-and-va_arg/
+url: /2010/10/amd64-and-va_arg/
 wordpress_id: 355
 wordpress_url: http://blog.nelhage.com/?p=355
 ---

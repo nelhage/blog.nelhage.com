@@ -3,7 +3,7 @@ categories: null
 comments: true
 date: 2016-12-29T19:00:00Z
 title: How I Write Tests
-url: /2016/12/29/how-i-test/
+url: /2016/12/how-i-test/
 ---
 
 The longer I spend as a software engineer, the more obsessive I get

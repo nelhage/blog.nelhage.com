@@ -3,7 +3,7 @@ categories: null
 comments: true
 date: 2015-11-01T10:00:00Z
 title: What MongoDB got Right
-url: /2015/11/01/what-mongodb-got-right/
+url: /2015/11/what-mongodb-got-right/
 ---
 
 [MongoDB][mongo] is perhaps the

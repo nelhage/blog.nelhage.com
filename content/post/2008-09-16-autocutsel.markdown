@@ -8,7 +8,7 @@ published: true
 status: publish
 tags: []
 title: autocutsel
-url: /2008/09/16/autocutsel/
+url: /2008/09/autocutsel/
 wordpress_id: 12
 wordpress_url: http://blog.nelhage.com/?p=12
 ---

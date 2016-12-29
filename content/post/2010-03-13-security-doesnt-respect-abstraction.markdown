@@ -12,7 +12,7 @@ tags:
 - xor
 - EE
 title: Security doesn't respect abstraction boundaries
-url: /2010/03/13/security-doesnt-respect-abstraction/
+url: /2010/03/security-doesnt-respect-abstraction/
 wordpress_id: 171
 wordpress_url: http://blog.nelhage.com/?p=171
 ---

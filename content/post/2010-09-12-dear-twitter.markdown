@@ -14,7 +14,7 @@ tags:
 - lies
 - barnowl
 title: 'Dear Twitter: Stop screwing over your developers. '
-url: /2010/09/12/dear-twitter/
+url: /2010/09/dear-twitter/
 wordpress_id: 314
 wordpress_url: http://blog.nelhage.com/?p=314
 ---

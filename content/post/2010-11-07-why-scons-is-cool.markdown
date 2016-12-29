@@ -13,7 +13,7 @@ tags:
 - make
 - build
 title: Why scons is cool
-url: /2010/11/07/why-scons-is-cool/
+url: /2010/11/why-scons-is-cool/
 wordpress_id: 394
 wordpress_url: http://blog.nelhage.com/?p=394
 ---

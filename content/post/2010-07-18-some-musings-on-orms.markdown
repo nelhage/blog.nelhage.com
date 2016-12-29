@@ -14,7 +14,7 @@ tags:
 - dynamic analysis
 - musings
 title: Some musings on ORMs
-url: /2010/07/18/some-musings-on-orms/
+url: /2010/07/some-musings-on-orms/
 wordpress_id: 278
 wordpress_url: http://blog.nelhage.com/?p=278
 ---

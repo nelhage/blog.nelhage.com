@@ -4,7 +4,7 @@ comments: true
 date: 2014-08-20T08:41:34Z
 published: true
 title: 'New reptyr feature: TTY-stealing'
-url: /2014/08/20/new-reptyr-feature-tty-stealing/
+url: /2014/08/new-reptyr-feature-tty-stealing/
 ---
 
 Ever since I wrote [reptyr][reptyr], I've been frustrated by a number

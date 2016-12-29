@@ -12,7 +12,7 @@ tags:
 - wpa_supplicant
 - ubuntu
 title: 'wpa_supplicant: GUI and wpa_action'
-url: /2008/09/18/wpa_supplicant-gui-and-wpa_action/
+url: /2008/09/wpa_supplicant-gui-and-wpa_action/
 wordpress_id: 13
 wordpress_url: http://blog.nelhage.com/?p=13
 ---

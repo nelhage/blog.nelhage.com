@@ -13,7 +13,7 @@ tags:
 - testing
 - macros
 title: 'Check Plus: An EDSL for writing unit tests in C'
-url: /2010/06/26/check-plus-an-edsl-for-writing-unit-tests-in-c/
+url: /2010/06/check-plus-an-edsl-for-writing-unit-tests-in-c/
 wordpress_id: 263
 wordpress_url: http://blog.nelhage.com/?p=263
 ---

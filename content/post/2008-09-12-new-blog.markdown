@@ -11,7 +11,7 @@ tags:
 - blogger
 - blog
 title: New Blog Location
-url: /2008/09/12/new-blog/
+url: /2008/09/new-blog/
 wordpress_id: 11
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=11
 ---

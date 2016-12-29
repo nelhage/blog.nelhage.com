@@ -6,10 +6,10 @@
   <footer>
     <p class="meta">
       {{ if .PrevInSection }}
-        <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}" title="Previous Post: {{.PrevInSection.LinkTitle}}">&laquo; {{.PrevInSection.LinkTitle}}</a>
+        <a class="basic-alignment left" href="{{.PrevInSection.RelPermalink}}" title="Previous Post: {{.PrevInSection.LinkTitle}}">&laquo; {{.PrevInSection.LinkTitle}}</a>
       {{ end }}
       {{ if .NextInSection }}
-        <a class="basic-alignment right" href="{{.NextInSection.Permalink}}" title="Next Post: {{.NextInSection.LinkTitle}}">{{.NextInSection.LinkTitle}} &raquo;</a>
+        <a class="basic-alignment right" href="{{.NextInSection.RelPermalink}}" title="Next Post: {{.NextInSection.LinkTitle}}">{{.NextInSection.LinkTitle}} &raquo;</a>
       {{ end }}
     </p>
   </footer>

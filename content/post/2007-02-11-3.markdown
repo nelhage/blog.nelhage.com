@@ -14,7 +14,7 @@ tags:
 - "6.170"
 - vcs
 title: 6.170, CVS, and SVN
-url: /2007/02/11/3/
+url: /2007/02/3/
 wordpress_id: 3
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=3
 ---

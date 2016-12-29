@@ -3,7 +3,7 @@ categories: null
 comments: true
 date: 2016-03-06T10:00:00Z
 title: Design for Testability
-url: /2016/03/06/design-for-testability/
+url: /2016/03/design-for-testability/
 ---
 
 When designing a new software project, one is often faced with a glut

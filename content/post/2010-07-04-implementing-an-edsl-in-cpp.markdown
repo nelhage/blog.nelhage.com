@@ -14,7 +14,7 @@ tags:
 - dsl
 - preprocessor
 title: Implementing a declarative mini-language in the C preprocessor
-url: /2010/07/04/implementing-an-edsl-in-cpp/
+url: /2010/07/implementing-an-edsl-in-cpp/
 wordpress_id: 272
 wordpress_url: http://blog.nelhage.com/?p=272
 ---

@@ -11,7 +11,7 @@ tags:
 - lab notebooks
 - writing
 title: Lab Notebooking for the Software Engineer
-url: /2010/06/20/lab-notebooking-for-the-software-engineer/
+url: /2010/06/lab-notebooking-for-the-software-engineer/
 wordpress_id: 254
 wordpress_url: http://blog.nelhage.com/?p=254
 ---

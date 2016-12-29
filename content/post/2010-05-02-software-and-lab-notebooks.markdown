@@ -12,7 +12,7 @@ tags:
 - engineering
 - debugging
 title: Software Engineers should keep lab notebooks
-url: /2010/05/02/software-and-lab-notebooks/
+url: /2010/05/software-and-lab-notebooks/
 wordpress_id: 217
 wordpress_url: http://blog.nelhage.com/?p=217
 ---

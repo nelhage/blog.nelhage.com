@@ -13,7 +13,7 @@ tags:
 - dedexer
 - reverse-engineering
 title: Some Android reverse-engineering tools
-url: /2010/12/27/some-android-reverse-engineering-tools/
+url: /2010/12/some-android-reverse-engineering-tools/
 wordpress_id: 436
 wordpress_url: http://blog.nelhage.com/?p=436
 ---

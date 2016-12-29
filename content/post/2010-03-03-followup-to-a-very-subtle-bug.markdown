@@ -12,7 +12,7 @@ tags:
 - tar
 - followup
 title: Followup to "A Very Subtle Bug"
-url: /2010/03/03/followup-to-a-very-subtle-bug/
+url: /2010/03/followup-to-a-very-subtle-bug/
 wordpress_id: 160
 wordpress_url: http://blog.nelhage.com/?p=160
 ---

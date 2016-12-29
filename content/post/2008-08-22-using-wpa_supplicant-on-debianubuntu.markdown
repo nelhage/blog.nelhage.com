@@ -12,7 +12,7 @@ tags:
 - linux
 - wpa_supplicant
 title: Using wpa_supplicant on Debian/Ubuntu
-url: /2008/08/22/using-wpa_supplicant-on-debianubuntu/
+url: /2008/08/using-wpa_supplicant-on-debianubuntu/
 wordpress_id: 10
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=10
 ---

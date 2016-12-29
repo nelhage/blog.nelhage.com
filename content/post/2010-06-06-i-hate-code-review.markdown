@@ -13,7 +13,7 @@ tags:
 - ksplice
 - development
 title: 'Confessions of a programmer: I hate code review'
-url: /2010/06/06/i-hate-code-review/
+url: /2010/06/i-hate-code-review/
 wordpress_id: 241
 wordpress_url: http://blog.nelhage.com/?p=241
 ---

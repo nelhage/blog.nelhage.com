@@ -12,7 +12,7 @@ tags:
 - networking
 - composability
 title: Why node.js is cool (it's not about performance)
-url: /2012/03/12/why-node-js-is-cool/
+url: /2012/03/why-node-js-is-cool/
 wordpress_id: 484
 wordpress_url: http://blog.nelhage.com/?p=484
 ---

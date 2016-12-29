@@ -8,7 +8,7 @@ published: true
 status: publish
 tags: []
 title: Getting carried away with hack value
-url: /2010/05/23/hack-value/
+url: /2010/05/hack-value/
 wordpress_id: 224
 wordpress_url: http://blog.nelhage.com/?p=224
 ---

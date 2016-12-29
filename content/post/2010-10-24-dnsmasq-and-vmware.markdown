@@ -13,7 +13,7 @@ tags:
 - dhcp
 - sysadmin
 title: Configuring dnsmasq with VMware Workstation
-url: /2010/10/24/dnsmasq-and-vmware/
+url: /2010/10/dnsmasq-and-vmware/
 wordpress_id: 383
 wordpress_url: http://blog.nelhage.com/?p=383
 ---

@@ -11,7 +11,7 @@ tags:
 - pictures
 - ui
 title: Git in pictures
-url: /2010/01/24/git-in-pictures/
+url: /2010/01/git-in-pictures/
 wordpress_id: 74
 wordpress_url: http://blog.nelhage.com/?p=74
 ---

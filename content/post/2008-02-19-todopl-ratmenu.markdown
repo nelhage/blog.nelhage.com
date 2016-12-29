@@ -11,7 +11,7 @@ tags:
 - ratmenu
 - todo.pl
 title: todo.pl ratmenu
-url: /2008/02/19/todopl-ratmenu/
+url: /2008/02/todopl-ratmenu/
 wordpress_id: 7
 wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=7
 ---

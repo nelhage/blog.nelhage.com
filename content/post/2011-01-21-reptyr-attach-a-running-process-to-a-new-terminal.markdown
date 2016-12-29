@@ -13,7 +13,7 @@ tags:
 - screenify
 - reptyr
 title: 'reptyr: Attach a running process to a new terminal'
-url: /2011/01/21/reptyr-attach-a-running-process-to-a-new-terminal/
+url: /2011/01/reptyr-attach-a-running-process-to-a-new-terminal/
 wordpress_id: 450
 wordpress_url: http://blog.nelhage.com/?p=450
 ---

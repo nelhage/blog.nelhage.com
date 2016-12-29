@@ -13,7 +13,7 @@ tags:
 - strace
 - ptrace
 title: Write yourself an strace in 70 lines of code
-url: /2010/08/29/write-yourself-an-strace-in-70-lines-of-code/
+url: /2010/08/write-yourself-an-strace-in-70-lines-of-code/
 wordpress_id: 300
 wordpress_url: http://blog.nelhage.com/?p=300
 ---

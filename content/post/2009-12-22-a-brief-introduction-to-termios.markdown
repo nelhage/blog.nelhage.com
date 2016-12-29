@@ -11,7 +11,7 @@ tags:
 - unix
 - tty
 title: A Brief Introduction to termios
-url: /2009/12/22/a-brief-introduction-to-termios/
+url: /2009/12/a-brief-introduction-to-termios/
 wordpress_id: 14
 wordpress_url: http://blog.nelhage.com/?p=14
 ---

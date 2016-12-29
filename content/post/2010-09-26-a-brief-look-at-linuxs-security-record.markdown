@@ -11,7 +11,7 @@ tags:
 - security
 - kernel
 title: A brief look at Linux's security record
-url: /2010/09/26/a-brief-look-at-linuxs-security-record/
+url: /2010/09/a-brief-look-at-linuxs-security-record/
 wordpress_id: 343
 wordpress_url: http://blog.nelhage.com/?p=343
 ---

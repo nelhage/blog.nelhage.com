@@ -8,7 +8,7 @@ published: true
 status: publish
 tags: []
 title: Using X forwarding with screen by proxying $DISPLAY
-url: /2010/05/30/using-x-forwarding-with-screen/
+url: /2010/05/using-x-forwarding-with-screen/
 wordpress_id: 232
 wordpress_url: http://blog.nelhage.com/?p=232
 ---
