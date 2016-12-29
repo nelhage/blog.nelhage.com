@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'A Brief Introduction to termios: Signaling and Job Control'
+title: 'A Brief Introduction to termios: Signaling and Job Control'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

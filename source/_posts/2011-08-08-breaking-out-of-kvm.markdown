@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'BlackHat/DEFCON 2011 talk: Breaking out of KVM'
+title: 'BlackHat/DEFCON 2011 talk: Breaking out of KVM'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -27,4 +27,3 @@ I've posted <a href="https://nelhage.com/talks/kvm-defcon-2011.pdf">the final sl
 In addition, as I mentioned, this bug was found by a simple KVM fuzzer I wrote. I'm also going to clean that up and release it, but don't expect it too soon.
 
 I had a great time meeting lots of interesting people at BlackHat and DEFCON, some that I'd met online and others I hadn't. If any of you are ever in Boston, drop me a note and we can grab a beer or something.
-

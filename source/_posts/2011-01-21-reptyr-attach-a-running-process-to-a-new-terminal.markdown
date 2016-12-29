@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'reptyr: Attach a running process to a new terminal'
+title: 'reptyr: Attach a running process to a new terminal'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Wordpress tricks: Disabling editing shortcuts'
+title: 'Wordpress tricks: Disabling editing shortcuts'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

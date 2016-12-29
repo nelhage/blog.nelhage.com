@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Check Plus: An EDSL for writing unit tests in C'
+title: 'Check Plus: An EDSL for writing unit tests in C'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -46,22 +46,22 @@ look like:
 
     #include <string.h>
     #include <stdlib.h>
-    
+
     #include "check-plus.h"
-    
+
     #define SUITE_NAME example
     BEGIN_SUITE("Example test suite");
-    
+
     #define TEST_CASE core
     BEGIN_TEST_CASE("Core tests");
-    
+
     TEST(strcmp)
     {
         fail_unless(strcmp("hello", "HELLO") != 0);
         fail_unless(strcasecmp("hello", "HELLO") == 0);
     }
     END_TEST
-    
+
     TEST(strcat)
     {
         char buf[1024] = {0};
@@ -70,7 +70,7 @@ look like:
         fail_unless(strcmp(buf, "Hello, World.") == 0);
     }
     END_TEST
-    
+
     END_TEST_CASE;
     #undef TEST_CASE
     END_SUITE;
@@ -95,13 +95,13 @@ something like:
     example_suite (void)
     {
       Suite *s = suite_create ("Example test suite");
-    
+
       /* Core test case */
       TCase *tc_core = tcase_create ("Core tests");
       tcase_add_test (tc_core, test_strcmp);
       tcase_add_test (tc_core, test_strcat);
       suite_add_tcase (s, tc_core);
-    
+
       return s;
     }
 
@@ -110,7 +110,7 @@ appreciate it once the test suite gets large. For more documentation on Check, c
 
 Let me know if you find this useful for anything. Next week, I'll do a
 writeup on the tricks behind the implementation.
-    
+
 [check]: http://check.sourceforge.net/
 [chkp]: http://github.com/nelhage/check-plus
 [manual]: http://check.sourceforge.net/doc/check_html/index.html

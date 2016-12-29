@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Iron Blogger: Blogging for Beer'
+title: 'Iron Blogger: Blogging for Beer'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

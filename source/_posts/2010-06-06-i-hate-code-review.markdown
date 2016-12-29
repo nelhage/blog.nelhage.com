@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Confessions of a programmer: I hate code review'
+title: 'Confessions of a programmer: I hate code review'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

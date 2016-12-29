@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'A Brief Introduction to termios: termios(3) and stty'
+title: 'A Brief Introduction to termios: termios(3) and stty'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -66,7 +66,7 @@ bit. Enabling it enables "canonical" mode -- also known as
 "line editing" mode. When `ICANON` is set, the terminal buffers a line
 at a time, and enables line editing. Without `ICANON`, input is made
 available to programs immediately (this is also known as "cbreak"
-mode). 
+mode).
 
  * `ECHO` in `c_lflag` controls whether input is immediately re-echoed as
 output. It is independent of `ICANON`, although they are often turned on and off together. When `passwd` prompts for your password, your terminal is in canonical mode, but `ECHO` is disabled.
@@ -170,7 +170,7 @@ So we can see that bash/readline has disabled CR→LF translation on input (`icr
     eol = M-^?; eol2 = M-^?; swtch = M-^?;
     iutf8
 
-This is because bash maintains its own set of termios settings (for readline), and saves and restores settings around running programs, so that settings in place while running a program are different from those in place while you're typing at the bash prompt. 
+This is because bash maintains its own set of termios settings (for readline), and saves and restores settings around running programs, so that settings in place while running a program are different from those in place while you're typing at the bash prompt.
 
 In the next post, we'll look at signal generation from `ISIG` and how it interacts with job control in your shell.
 
@@ -202,6 +202,6 @@ of "I-O-cuddle", "I-octal" or "I-O-C-T-L"). `ioctl` is prototyped as:
 It takes a file descriptor, a numeric "request" code, and an unspecified number of
 other arguments. `ioctl` looks up whatever device (or file
 system, network protcol, or whatever) is backing that file descriptor, and hands it the "request" and the arguments
-to do with as they will. 
+to do with as they will.
 
 So any device that needs extra control channels can define some `ioctl` numbers and parameters and document them somewhere, and they become the interface to control that device. So, for instance (at least on Linux), an `ioctl` on a tty device with  a "request" of `TCGETS` (defined in `termios.h`) takes a parameter that is a pointer to a `struct termios`, and copies the in-kernel settings for that tty to the provided struct. So somewhere in libc, `tcgetattr(fd, p)` is just defined to do an `ioctl(fd, TCGETS, p)`. Similar ioctls are defined for `tcsetattr` and all the functions in `termios(3)`. On Linux, at least, the morbidly curious can find out all the gory details in `tty_ioctl(4)`.

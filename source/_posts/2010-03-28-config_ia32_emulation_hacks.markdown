@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Fun with the preprocessor: CONFIG_IA32_EMULATION hacks in Linux'
+title: 'Fun with the preprocessor: CONFIG_IA32_EMULATION hacks in Linux'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

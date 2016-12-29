@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'reptyr: Changing a process''s controlling terminal'
+title: "reptyr: Changing a process's controlling terminal"
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu

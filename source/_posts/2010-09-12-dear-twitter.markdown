@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Dear Twitter: Stop screwing over your developers. '
+title: 'Dear Twitter: Stop screwing over your developers. '
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -68,10 +68,10 @@ The OAuth specification [recognizes][oauth-consumer] this fact, and states,
 > executable binary, an attacker may be able to download a copy for
 > analysis.  In such cases, attackers will be able to recover the
 > client credentials.
-> 
+>
 > Accordingly, servers should not use the client credentials alone to
 > verify the identity of the client.
-   
+
 Accordingly, most sane implementations of OAuth, such as Google's
 Buzz, don't require secrets from desktop applications, although they
 may allow a User-Agent string or similar for apps to voluntarily

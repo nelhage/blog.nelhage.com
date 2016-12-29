@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'wpa_supplicant: GUI and wpa_action'
+title: 'wpa_supplicant: GUI and wpa_action'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
@@ -63,7 +63,7 @@ unchanged; Debian's wrapper scripts do all the magic. Replace your
     iface ath0 inet manual
       wpa-driver wext
       wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-    
+
     iface default inet dhcp
 
 The way this is going to work is that, whenever `wpa_supplicant`

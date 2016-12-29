@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: ! 'Suggestion time: What should I blog about?'
+title: 'Suggestion time: What should I blog about?'
 author: nelhage
 author_login: nelhage
 author_email: nelhage@mit.edu
