@@ -3,7 +3,7 @@ categories: null
 comments: true
 date: 2015-07-17T09:00:00Z
 title: Indices point between elements
-url: /2015/07/indices-point-between-elements/
+url: /2015/08/indices-point-between-elements/
 ---
 
 If you're familiar with nearly any mainstream programming language,
