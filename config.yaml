@@ -7,6 +7,6 @@ metaDataFormat: yaml
 theme: nelhage
 params:
   Author: Nelson Elhage
-# permalinks:
-#   post: /:year/:month/:title
+  permalinks:
+    post: /post/:title
 ...
