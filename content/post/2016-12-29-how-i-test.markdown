@@ -103,7 +103,7 @@ use the term "fake" as I picked it up from
 [a great PyCon talk][stop-mocking], which is a standalone
 implementation of a component's interface that is reusable between
 multiple tests, and that is independently testable on its own. (That's
-a good talk, by the way, that very my influenced my thinking. It's
+a good talk, by the way, that very much influenced my thinking. It's
 worth a watch.)
 
 In some cases, a fake can be a near-complete in-memory implementation
