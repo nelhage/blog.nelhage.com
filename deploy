@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -Pax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
