@@ -1,2 +1,4 @@
 #!/bin/bash
-rsync -Pax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
+set -ex
+hugo
+rsync -vax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
