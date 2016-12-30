@@ -1,0 +1,14 @@
+baseURL: https://blog.nelhage.com
+disablePathToLower: true
+languageCode: en-us
+title: Made of Bugs
+googleAnalytics: UA-10238083-1
+metaDataFormat: yaml
+theme: nelhage
+rssURI: atom.xml
+taxonomies: []
+permalinks:
+  post: /post/:title
+params:
+  Author: Nelson Elhage
+...
