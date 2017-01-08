@@ -92,7 +92,7 @@ while True:
 We can now tell our metrics system to construct a stacked graph of
 this metric, stacked by tags, and normalized to show count-per-second:
 
-<img src='/images/posts/hitcount.png' width='585' height='214'>
+<img src='/images/posts/hitcount.png' width='585' height="214"></img>
 
 The graph total shows you the number of workers, since each worker
 performs one second-per-second of work (above, I'm running with four
@@ -106,7 +106,7 @@ The above image shows a system at running at capacity. If we're not,
 then the graph gives us an easy way to eyeball how much spare capacity
 we have:
 
-<img src='/images/posts/hitcount-idle.png' width='585' height='215>
+<img src='/images/posts/hitcount-idle.png' width='585' height="215"></img>
 
 If we're at capacity, we will never be waiting on messages, and we
 should be spending nearly no time in the "receive" state (from the
