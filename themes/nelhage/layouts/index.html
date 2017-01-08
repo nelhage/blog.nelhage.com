@@ -5,7 +5,7 @@
       <h1 class="entry-title">Recent Posts...</h1>
     </header>
     <div id="blog-archives">
-      {{ range first 20 .Data.Pages }}
+      {{ range first 20 (where .Data.Pages "Section" "post") }}
       {{ if ne ($.Scratch.Get "this_year") .Date.Year }}
       <h2>{{.Date.Year}}
       {{ $.Scratch.Set "this_year" .Date.Year }}
