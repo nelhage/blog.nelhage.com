@@ -5,13 +5,16 @@ slug: utilization
 ---
 
 One of my favorite concepts when thinking about instrumenting a system
-to understand capacity is what I call "time utilization". This is the
-question of, for a given thread in some system, what fraction of its
-time is spent doing what kind of work?
+to understand its overall performance and capacity is what I call
+"time utilization".
 
-Let's consider this notion via the concrete example of a job that
-consumes request logs off of a queue and updates hit counts in a
-database:
+By this I mean: If you look at the behavior of a thread over some
+window of time, what fraction of its time is spent in each "kind" of
+work that it does?
+
+Let's make this notion concrete by examining a toy example. Imagine
+we're running a job that pulls request events off of a distributed
+queue, and updates a hit count table in a database:
 
 ```python
 while True:
@@ -25,8 +28,8 @@ while True:
 
 How should we instrument this? How can we monitor how it is
 performing, understand why it's getting slow if it ever does get too
-slow, and make an informed decision about how many such processes we
-need to run in order to comfortably our load?
+slow, and make an informed capacity planning decisions about how many
+workers to run?
 
 We're making several network calls (to our queue and to our database)
 and doing some local computation (`compute_route`). A good first
@@ -45,7 +48,7 @@ the slow parts:
 ```
 
 With most statsd implementations, this will give you histogram
-statistics on the latencies of your database call; Perhaps it will
+statistics on the latencies of your database call -- perhaps it will
 report the median, `p90`, `p95`, and `p99`.
 
 We can definitely infer some knowledge about this process's behavior
@@ -57,13 +60,17 @@ background asynchronous job, so we don't overly care about the
 we tell if we're running near capacity? If it's making multiple calls,
 how do we aggregate the histograms into a useful summary?
 
-We can get a much cleaner picture if we realize that don't care about
-the *absolute* time spent in each component so much as we care about
-the *fraction* of all time spent in each phase of the component's
-lifecycle. And we can instrument that by just counting the total time
-spent in each phase, and then configuring our frontend to normalize to
-a per-second count. That would look something like this (I'm assuming
-`dogstatsd` here, and a tag-based scheme):
+We can get a much cleaner picture if we realize that we care less
+about the *absolute* time spent in each component so much as we care
+about the *fraction* of all time spent in each phase of the
+component's lifecycle. Is a given worker spending *most* of its time
+waiting on the database, or is it spending most of its time idle,
+waiting for new events?
+
+We can instrument that by counting the *total* time spent on each
+operation, and then normalizing to counts-per-second in our stats
+pipeline, giving us a unitless seconds-per-second ratio. This might
+look something like this:
 
 
 ```python
@@ -94,13 +101,16 @@ this metric, stacked by tags, and normalized to show count-per-second:
 
 <img src='/images/posts/hitcount.png' width='585' height="214"></img>
 
-The graph total shows you the number of workers, since each worker
-performs one second-per-second of work (above, I'm running with four
-workers, so we're close, but we're losing a bit of time somewhere).
+Since each worker performs one second per second of work, the graph
+total gives you the number of active workers (and indeed, I generated
+this example with four workers). We're losing a bit of time
+(potentially in the `statsd.increment` calls themselves?), but we're
+pretty close.
 
-We can also immediately see that we're spending most of our time
-talking to the database -- 2.7s or (dividing by 4) about 68% of our
-time.
+We can immediately see that we're spending most of our time talking to
+the database -- 2.7s/s or (dividing by 4) about 68% of our time. And
+the stacked graphs give a very clear visualization of the overall
+usage of the system.
 
 The above image shows a system at running at capacity. If we're not,
 then the graph gives us an easy way to eyeball how much spare capacity
