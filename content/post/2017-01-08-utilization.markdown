@@ -4,6 +4,11 @@ title: Measuring Capacity Through Utilization
 slug: utilization
 ---
 
+(This post is
+[cross-posted](https://honeycomb.io/blog/2017/01/instrumentation-measuring-capacity-through-utilization/)
+from
+[Honeycomb's instrumentation series](https://honeycomb.io/blog/2017/01/instrumentation-a-series/)).
+
 One of my favorite concepts when thinking about instrumenting a system
 to understand its overall performance and capacity is what I call
 "time utilization".
