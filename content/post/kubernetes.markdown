@@ -7,7 +7,7 @@ title: Thoughts On Kubernetes
 I spent a while the last week porting [livegrep.com][livegrep] from
 running directly AWS to running on [Kubernetes][k8s] on
 [Google's Cloud Platform][gcp] (specifically, the
-[google container enginer][gke], which provisions and manages the
+[google container engine][gke], which provisions and manages the
 cluster for me).
 
 I left this experience profoundly enthusiastic about the future of
@@ -27,7 +27,7 @@ a cluster, and then a "service" that handles routing traffic to that
 code within the cluster with [a few lines of yaml][backend]. And these
 primitives are very well thought-out and robustly implemented;
 "deployments" natively support incremental no-downtime deployments,
-inclnuding healthchecking of the underlying service and so on. And
+including healthchecking of the underlying service and so on. And
 since the abstraction level is so high -- I'm really describing the
 logical units my application is built on, rather than the physical
 details -- the implementation will hopefully continue to improve and
