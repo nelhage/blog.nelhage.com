@@ -11,8 +11,8 @@ running directly AWS to running on [Kubernetes][k8s] on
 I left this experience profoundly enthusiastic about the future of
 Kubernetes. I think that if Google can execute properly, it's clearly
 the future for how we build distributed applications. That said, it
-clearly also has a long way to go. This post is some of my thoughts
-and experiences from this project.
+also feels like it has a ways to go yet. This post is some of my
+thoughts and experiences from this project.
 
 # The Good
 
@@ -25,24 +25,25 @@ a cluster, and then a "service" that handles routing traffic to that
 code within the cluster with [a few lines of yaml][backend]. And these
 primitives are very well thought-out and robustly implemented;
 "deployments" natively support incremental no-downtime deployments,
-including healthchecking of the underlying service and so on. And
+inclnuding healthchecking of the underlying service and so on. And
 since the abstraction level is so high -- I'm really describing the
 logical units my application is built on, rather than the physical
-details -- the implementation can continue to improve and evolve as
-Kubernetes does.
+details -- the implementation will hopefully continue to improve and
+evolve without requiring extensive modification by users.
 
-They're also all very well-integrated based on a rich, shared, schema;
-healthchecks are (rightly) a property of a container, but the
-"deployment" (ensures K copies of a pad are always present), "service"
-(within-kubernetes routing), and "ingress" (external routing)
-primitives all automatically know to look at that healthcheck
-definition and take it into account.
+The abstractions are also all very well-integrated with each other
+based on a rich, shared, schema; healthchecks are (rightly) a property
+of a container, but the "deployment" (ensures K copies of a container
+are always present), "service" (within-kubernetes routing), and
+"ingress" (external routing) primitives all automatically know to look
+at that healthcheck definition and take it into account for their own
+purposes.
 
 This is a much higher level of abstraction than my previous deployment
 on raw AWS, which had to manage everything from firewall rules to user
 accounts up to Amazon autoscaling groups. And it shows in size, too:
-My [kubernetes configuration][kube] comes in under 500 lines, compared
-with [600+ lines of ansible][ansibleconf] and
+My [kubernetes configuration][kubeconf] comes in under 500 lines,
+compared with [600+ lines of ansible][ansibleconf] and
 [700+ lines of terraform][tfconf] for the ec2 deployment.
 
 And the new version is *better* in many important ways: I have
@@ -68,19 +69,21 @@ extensibility will look like once mature.
 For livegrep.com, I wanted automatic certificate management using
 [letsencrypt][letsencrypt]-provisioned certificates, so I adopted the
 [kube-cert-manager][kcm] project, based on
-[Kelsey Hightower's original project][kcm-kelsey]. Enabling it was
-fairly easy; I grabbed
+[Kelsey Hightower's original project][kcm-kelsey].
+
+Enabling it was fairly easy, although it involved a few manual steps;
+I created a GCP volume and service account, added the service account
+to a kubernetes secret, and then grabbed
 [two](https://github.com/PalmStoneGames/kube-cert-manager/blob/master/k8s/certificate-type.yaml)
 [files](https://github.com/PalmStoneGames/kube-cert-manager/blob/master/k8s/deployment.yaml)
-from their repository, edited one slightly per the comments, and ran
-`kubectl create -f` on each after creating a new service account and
-volume in my GCP account.
+from their repository, edited one slightly, and ran `kubectl create
+-f` to create the configuration in my kubernetes cluster.
 
-Once I'd done so, I created a [certificate object][cert] describing
-the certificate I wanted, waited a few seconds for the certificate
-manager to notice it and negotiate with the letsencrypt ACME server,
-and then, like magic, I had a valid TLS certificate available as a
-Kubernetes secret:
+Once I'd done so, things got almost magically simple. I created a
+[certificate object][cert] describing the certificate I wanted, waited
+a few seconds for the certificate manager to notice it and negotiate
+with the letsencrypt ACME server, and then I had a valid TLS
+certificate available as a Kubernetes secret:
 
     $ kubectl describe secret beta.livegrep.com
     Name:           beta.livegrep.com
@@ -95,18 +98,19 @@ Kubernetes secret:
     tls.crt:        3448 bytes
     tls.key:        1675 bytes
 
-But, even more magically, I didn't actually even need to create the
-`certificate` object. `kube-cert-manager` integrates with the
-kubernetes `ingress` type, and, by way of a
-[few lines of "annotations"][ann], it will automatically provision
-certificates for an HTTPS frontend, which the ingress controller will
-automaticllly propagate to GCP's cloud load balancer.
+But in fact, I didn't actually even need to create the `certificate`
+object. `kube-cert-manager` integrates with the existing kubernetes
+`ingress` type: I added [few lines of "annotations"][ann] to my
+ingress definition, and the certificate controller automatically
+provisioned a certificate, which was automatically picked up by the
+ingress controller, registered with google's cloud load balancer, and
+available to serve https traffic into my application.
 
 Third-party extensions in general, and `kube-cert-manager` in
 particular, are new, beta, and somewhat experimental, and I ran into a
-few rough edges that I'll talk about later. However, even so, they
-still worked impressively well, and give a tantalizing vision of the
-future in which kubernetes will have a rich, extensible ecosystem of
+few rough edges that I'll mention later. However, even so, they still
+worked impressively well, and give a tantalizing vision of the future
+in which kubernetes will have a rich, extensible ecosystem of
 third-party resources for controlling not only your kubernetes cluster
 but any external dependencies you might want, in a uniform and
 integrated way.
@@ -124,14 +128,14 @@ time I interact with it, and it's entirely unclear to me how I'm
 "supposed" to build docker images for my application; I ended up
 stitching together a lot of pieces together by hand in a way that felt
 like I was working against the grain at every step. Here's a few of
-the concrete issues I ran into:
+the concrete issues and open questions I ran into:
 
 ### Tagging images
 
 Every time I try to understand docker repositories, I'm left a little
-baffled by how I'm supposed to use tags. The standard convention seems
-to be to rely heavily on mutable tags, tagging based on major releases
-or similar.
+baffled by how I'm supposed to use "tags". The standard convention
+seems to be to rely heavily on mutable tags, tagging based on major
+releases or similar.
 
 However, as an operator, this feels like a nightmare, making tracking
 the provenance of my images, or building reproducible images, an
@@ -139,25 +143,27 @@ absolute nightmare. I'd much rather tag builds with a hyper-specific
 version number, so I have a more-or-less complete and readable
 provenance chain, and then bump those dependencies explicitly as
 needed. Similarly, kubernetes appears to implicitly expect immutable
-tags; The default
-[`ImagePullPolicy`](https://kubernetes.io/docs/user-guide/images/#updating-images)
-of `IfNotPresent` will cache a given image locally ~forever. And all
-the doc examples of
-[deploying a new version](https://kubernetes.io/docs/user-guide/deployments/#updating-a-deployment)
-assume you will do so by switching over to a new image tag (which will
-automatically trigger an incremental rollout; I was unable to find a
-way to force kubernetes to do a "no-op" redeploy just to get it to
-re-pull a tag).
+tags:
+
+- The default
+  [`ImagePullPolicy`](https://kubernetes.io/docs/user-guide/images/#updating-images)
+  of `IfNotPresent` will cache a given image locally ~forever.
+
+- All the doc examples for
+  [deploying a new version](https://kubernetes.io/docs/user-guide/deployments/#updating-a-deployment)
+  assume you do so by switching over to a new image tag (which will
+  automatically trigger an incremental rollout); I experimented
+  initially with always using the `latest` tag, and I was unable to
+  find a way to force kubernetes to do a "no-op" redeploy just to get
+  it to re-pull a tag.
 
 However, none of the Docker tooling seems to support immutable
-per-versin tags well. For example, I can't parameterize the `FROM`
+per-version tags well. For example, I can't parameterize the `FROM`
 line, so if I want to depend on specific versions of an upstream
 image, I'm forced to rewrite my `Dockerfile` every time I want to
 update. And [docker hub](https://hub.docker.com)'s automatic builds
-(which I considered, but ended up rejecting in favor of
-[Travis](https://travis-ci.org/livegrep/livegrep.com)) seem to only
-support constant tags for a given branch, not reading out a tag value
-in any way.
+seem to only support constant tags for a given branch, and not a
+per-build tag.
 
 ### Building images
 
@@ -172,9 +178,9 @@ I have no idea how I'm "supposed" to build `Dockerfile`s for this. I
 could build a single image that installs both livegrep and `nginx` and
 the configuration for all three components, and invoke it in different
 ways; That'd be easiest but feels kludgy and wouldn't scale past a
-certain point. What I wanted to do was build four images: A base image
-containing the `livegrep` build artifacts, and then three specialized
-images for each service:
+certain point [^build]. What I wanted to do was build four images: A
+base image containing the `livegrep` build artifacts, and then three
+specialized images for each service:
 
 
     ubuntu  <-- livegrep/base  <-- livegrep/backend
@@ -213,8 +219,8 @@ livegrep instance. But I'm not at all clear what the "right" option
 is. It seems plausible I could store the configuration in a kubernetes
 [ConfigMap](https://kubernetes.io/docs/user-guide/configmap/), but how
 do I get it from there into the `nginx.conf`? Do I need to templatize
-my configuration at container startup? Is that something I have to
-build myself?
+my configuration at container startup? It seems that today that's
+something I would need to build myself.
 
 ## The declarative/convergence model
 
@@ -229,8 +235,8 @@ change requires a transition that the controller doesn't know how to
 make. Concretely, what this tends to mean is that certain properties
 can only be set at initial object creation time, and can't be changed
 later. However, because the controller acts asynchronously from the
-Kubernetes API, changing them through the API will just result in
-incorrect state, rather than an error.
+Kubernetes API, such changes result in no visible errors, just silent
+divergence.
 
 I ran into a few such cases while working on livegrep, where I had to
 destroy and re-create a resource in order for a change to take
@@ -247,20 +253,20 @@ complex operational changes in a zero-downtime manner.
 ## It's very young
 
 Kubernetes definitely feels very young and still a
-work-in-progress. Many of the critical features I relied on, like the
+work-in-progress. Many of the features I relied on, like the
 third-party extensions for letsencrypt, and the GCP ingress controller
 that automatically configured Google's Cloud Load Balancer from within
 Kubernetes, are marked as beta and subject to change. Kubernetes is
 changing rapidly, and documentation from a month ago may already be
-out of date, and there are very few public examples of robust,
-complex, setups to learn from.
+out of date, and there are very few public examples of nontrivial
+setups to learn from.
 
 The third-party resource ecosystem is still very new and evolving; I
 had to switch from Kelsey Hightower's `kube-cert-manager` to the new
 `PalmStoneGames` implementation, and that one is still
 [missing features](https://github.com/PalmStoneGames/kube-cert-manager/issues/37)
 that I could really use. I'm completely sold on the potential of this
-ecosystem, but it remains mostly potential.
+ecosystem, but it remains mostly potential at this point.
 
 Security is another area where it seems like there's work to be
 done. Kubernetes secrets
@@ -294,3 +300,9 @@ security, or stability requirements.
 [tfconf]: https://github.com/livegrep/livegrep.com/tree/233bb93f1097225d75775b5440774132808b11df/terraform
 [cert]: https://github.com/livegrep/livegrep.com/blob/233bb93f1097225d75775b5440774132808b11df/gcloud/kubernetes/cert-beta.livegrep.com.yaml
 [ann]: https://github.com/livegrep/livegrep.com/blob/c0b96d4d082183a0166a8c40f25ab243d3232986/kubernetes/frontend.yaml#L71-L74
+
+[^build]: In retrospect, for my application, this would almost
+    certainly have been the right solution; But I wanted to do the
+    more-general thing out of stubborn curiosity. And even a single
+    image wouldn't have obviously my question of how to version
+    images.
