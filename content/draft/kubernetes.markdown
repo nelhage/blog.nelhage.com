@@ -6,7 +6,9 @@ title: Thoughts On Kubernetes
 
 I spent a while the last week porting [livegrep.com][livegrep] from
 running directly AWS to running on [Kubernetes][k8s] on
-[Google's Cloud Platform][gcp].
+[Google's Cloud Platform][gcp] (specifically, the
+[google container enginer][gke], which provisions and manages the
+cluster for me).
 
 I left this experience profoundly enthusiastic about the future of
 Kubernetes. I think that if Google can execute properly, it's clearly
@@ -119,8 +121,8 @@ integrated way.
 
 ## Docker
 
-Kubernetes, by default, runs code in the form of docker containers
-distributed through a docker image repository.
+Kubernetes, by default[^docker], runs code in the form of docker
+containers distributed through a docker image repository.
 
 While I'm incredibly enthusiastic about the future of container images
 as a deployment format, docker continues to feel like a hot mess every
@@ -289,6 +291,7 @@ security, or stability requirements.
 [livegrep]: https://livegrep.com/
 [k8s]: https://kubernetes.io/
 [gcp]: https://cloud.google.com/
+[gke]: https://cloud.google.com/container-engine/
 [backend]: https://github.com/livegrep/livegrep.com/blob/1fdd0b5fddd31c8a3fcd641d888f67fcd122a745/kubernetes/backend-linux.yaml
 [thirdparty]: https://kubernetes.io/docs/user-guide/thirdpartyresources/
 [letsencrypt]: https://letsencrypt.org/
@@ -306,3 +309,8 @@ security, or stability requirements.
     more-general thing out of stubborn curiosity. And even a single
     image wouldn't have obviously my question of how to version
     images.
+
+[^docker]: Kubernetes nominally supports other container backends,
+    like rkt; My impression is that docker is currently very much the
+    "blessed" runtime. It's also the only one supported by GKE, which
+    was how I deployed my cluster.
