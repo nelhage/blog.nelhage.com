@@ -47,7 +47,7 @@ the slow parts:
     db.execute('''
       UPDATE hitcount WHERE route = ? SET hits=hits + 1
       ''', (route, ))
-  with statsd.timer('hitcount.finish):
+  with statsd.timer('hitcount.finish'):
     req.finish()
 # ...
 ```
