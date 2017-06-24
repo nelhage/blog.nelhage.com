@@ -59,7 +59,7 @@ x86 processors, like many others, implement virtual memory by a
 table in memory [^tree]. Traditionally, on x86 processors, each table
 entry has controlled the mapping of a single 4KB "page" of memory.
 
-[^tree]: It's actually more properly phyiscally a tree, but it's equivalent to a large sparse table.
+[^tree]: It's actually a tree structure of varying depth, but it's equivalent to a large sparse table.
 
 While these page tables are themselves stored in memory, the processor
 caches a subset of the page table entries in a cache on the processor
