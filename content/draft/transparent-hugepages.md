@@ -57,7 +57,7 @@ powerful features.
 x86 processors, like many others, implement virtual memory by a
 [page table][pagetable] scheme that stores the mapping as a large
 table in memory [^tree]. Traditionally, on x86 processors, each table
-entry has controlled the mapping of a single 4KB "page" of memory.
+entry controls the mapping of a single 4KB "page" of memory.
 
 [^tree]: It's actually a tree structure of varying depth, but it's equivalent to a large sparse table.
 
