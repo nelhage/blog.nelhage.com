@@ -1,4 +1,5 @@
 #!/bin/bash
 set -ex
-hugo
+hugo --cleanDestinationDir
+git push
 rsync -vax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
