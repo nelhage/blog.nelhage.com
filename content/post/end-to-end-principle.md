@@ -1,6 +1,6 @@
 ---
 date: 2017-06-11T13:42:01-07:00
-slug: null
+slug: end-to-end-principle
 title: Two Perspectives on the End-to-End Principle
 ---
 
