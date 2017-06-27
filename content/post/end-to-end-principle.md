@@ -32,7 +32,7 @@ interesting.
 
 To understand either perspective, we'll need to first reflect on what
 we mean by a "system" and "system design." Merriam-Webster
-[defines][mw] a "system" a "a regularly interacting or interdependent
+[defines][mw] a "system" as "a regularly interacting or interdependent
 group of items forming a unified whole". The essential character of a
 system, then, is that it is a unit that decomposes into some number of
 sub-components, which can be understood or considered substantially in
