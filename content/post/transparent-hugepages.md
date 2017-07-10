@@ -1,5 +1,5 @@
 ---
-date: 2017-03-12T14:14:59Z
+date: 2017-07-10T21:15:00Z
 slug: transparent-hugepages
 title: Disable Transparent Hugepages
 ---
