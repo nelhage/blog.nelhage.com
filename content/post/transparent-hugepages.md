@@ -13,7 +13,7 @@ processor's memory-mapping hardware. It is enabled
 
 Transparent Hugepages gives some applications a
 [small performance improvement][benchmarks] (~ 10% at best, 0-3% more
-typically) at best, but can cause [significant][mongodb]
+typically), but can cause [significant][mongodb]
 [performance][oracle] [problems][splunk], or even apparent
 [memory][d-o] [leaks][golang] at worst.
 
