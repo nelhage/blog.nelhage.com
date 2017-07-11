@@ -134,11 +134,11 @@ In steady-state usage by applications with fairly static memory
 allocation, the work done by `khugepaged` is minimal. However, on
 certain workloads that involve aggressive memory remapping or
 short-lived processes, `khugepaged` can end up doing huge amounts of
-to merge and/or split memory regions, which ends up being entirely
-short-lived and useless. This manifests as excessive CPU usage, and
-can also manifest as long pauses, as the kernel is forced to break up
-a 2MB page back into 4KB pages before performing what would otherwise
-have been a fast operation on a single page.
+work to merge and/or split memory regions, which ends up being
+entirely short-lived and useless. This manifests as excessive CPU
+usage, and can also manifest as long pauses, as the kernel is forced
+to break up a 2MB page back into 4KB pages before performing what
+would otherwise have been a fast operation on a single page.
 
 Several applications have seen 30% performance degradations or worse
 with THP enabled, for these reasons.
