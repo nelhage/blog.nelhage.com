@@ -5,7 +5,9 @@ title: Made of Bugs
 googleAnalytics: UA-10238083-1
 MetaDataFormat: yaml
 theme: nelhage
-rssURI: atom.xml
+outputFormats:
+  RSS:
+    BaseName: atom
 taxonomies: []
 permalinks:
   post: /post/:slug
