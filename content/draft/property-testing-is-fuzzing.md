@@ -12,6 +12,25 @@ the properties hold for that input. If an input violates a property,
 you've demonstrated a bug, as well as a convenient example that
 demonstrates it.
 
+A classic example of property-based testing is testing a `sort`
+function:
+
+{{<highlight python>}}
+@given(st.lists(st.integers()))
+def test_sort(s):
+  out = list(sorted(s))
+  assert set(out) == set(s)
+  assert all(x<=y for x,y in zip(out, out[1:]))
+{{< / highlight >}}
+
+This test asserts that, given a list of integers, sorting the list
+- preserves the set of elements
+- produces a sorted output
+
+The test framework will then automatically execute it over some set of
+input lists, and report if any counter-examples are found.
+
+
 ["Fuzzing"][fuzzing] is a much older practice, and generally refers to
 passing randomly-generated data of some variety (often a purely-random
 bytestream, but potentially chosen in some intelligent way) to a
