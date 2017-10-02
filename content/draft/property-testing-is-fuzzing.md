@@ -65,7 +65,7 @@ and fuzzing appear very similar. In both cases, we have:
 - A system under test
 
   The traditional granularity of a property-based test is a function,
-  and for a fuzzer is a binary, but both are just different
+  and for a fuzzer is a binary[^libfuzzer], but both are just different
   implementation of "some arbitary computation"
 
 - A property we want to ensure
@@ -126,3 +126,6 @@ so you can crib its best ideas for yourself.
 [5linefuzzer]: http://flatlinesecurity.com/posts/charlie-miller-five-line-fuzzer/
 [fuzz-bn]: https://blog.fuzzing-project.org/31-Fuzzing-Math-miscalculations-in-OpenSSLs-BN_mod_exp-CVE-2015-3193.html
 [hypothesis]: http://hypothesis.works
+[afl]: http://lcamtuf.coredump.cx/afl/
+
+[^libfuzzer]: Although more recent tools, such as [libfuzzer](https://llvm.org/docs/LibFuzzer.html), have also supported writing fuzz targets with the granularity of "a function"
