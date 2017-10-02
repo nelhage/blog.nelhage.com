@@ -37,6 +37,12 @@ bytestream, but potentially chosen in some intelligent way) to a
 program in the hopes of finding an input that causes a crash (and
 thus, also, demonstrating a bug).
 
+In recent years, pioneered largely by [AFL][afl], the practice of
+coverage-guided fuzzing has used a form of code
+instrumentation/coverage to explore inputs more likely to exercise
+interesting behavior; This technique has proven to be incredibly
+effective for a large variety of fuzz targets.
+
 Historically, fuzzing and property-based testing have been regarded as
 fairly separate practices. Property-based testing originated primarily
 with [Haskell's QuickCheck][quickcheck], and so tends to be associated
