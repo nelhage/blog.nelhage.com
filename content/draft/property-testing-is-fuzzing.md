@@ -1,7 +1,7 @@
 ---
 title: "Property-Based Testing Is Fuzzing"
 slug: property-testing-is-fuzzing
-date: 2017-10-02T09:00:00-07:00
+date: 2017-10-03T09:00:00-07:00
 ---
 
 ["Property-based testing"][proptesting] refers to the idea of writing
