@@ -139,7 +139,7 @@ potential committing by the developer.
 ## Coverage-guided generation and feedback
 
 How will `proptest generate` decide which cases to save, and how will
-it decide when it has enough tests? Here we take inpsiration from AFL,
+it decide when it has enough tests? Here we take inspiration from AFL,
 and use coverage-guided exploration to guide test case generation, and
 also to determine when to stop. The generator stops generating tests
 cases after some combination of
@@ -155,7 +155,7 @@ case and/or generator.)
 Once it has stopped (or perhaps concurrently with generation), the
 tool will use a coverage-driven minimization process (ala
 [`afl-cmin`][afl-cmin]) to find a near-minimal list of test cases that
-exercises approximately the samet set of coverage as the total
+exercises approximately the same set of coverage as the total
 corpus. In addition, any tests that fail are automatically preserved
 (perhaps up to uniqueness, as judged by the execution trace and
 related criteria).
