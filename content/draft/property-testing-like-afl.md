@@ -11,43 +11,53 @@ tool. In line with the previous post, the UX I describe here is
 largely in line with that offered by various tools in the `afl` family
 tree, such as [Google's OSS-Fuzz][oss-fuzz].
 
-# Preface: Desiderata for a Unit Test Suite
+# Preface: Desiderata for a Test Suite
 
 A large software project, in general, may have multiple test suites,
 which are run at different frequencies or different levels of
-developer interactivity or involvement. In this post, I'll use the
-term "unit test suite" or "unit tests" to describe a suite of tests
-that are run on every branch in a continuous integration environment,
-and that additionally is likely run interactively (perhaps a subset of
-the suite) by developers as they work.
+developer interactivity or involvement, with different goals.
 
-Suchs test suites are, in many ways, first and foremost regression
-tests; Their purpose is not to verify absolute correctness against
-some spec, but to document (in an executable+verifiable way) which
-properties of the code must not be accidentally modified by future
-changes. In a large codebase subject to active development, such test
-suites are a critical tool for enabling confident development.
+In most projects I've worked on, however, the most common test suite
+pattern is a continuous integration suite that runs on every change
+(proposed or merged), and a subset of which is run interactively by
+developers as they develop to validate their work.
+
+Such a test suite is, in many ways, first and foremost a regression
+suite. Developers may write in a test-first "TDD" style or write tests
+for compliance with an external spec (implicit or explicit), but once
+the code is written, the most important function of the test suite is
+to document (in an executable+verifiable way) the critical properties
+of the code which must be preserved by future changes. In a large
+codebase under active development, this regression testing gives
+future developers the ability to make changes with some confidence
+that they have not broken everything.
 
 What properties do we want from such a test suite? There are a number,
-but I want to highlight two important ones here. Specifically, a unit
-test suite should be **fast** and **deterministic**.
+but I want to highlight two important ones here. Specifically, a test
+suite should be **fast** and **deterministic**.
+
+## Speed
 
 Speed of execution is important, because fast tests enable rapid
-feedback for developers, both locally as they write code (make a
-change, re-run that module's tests, get feedback if you broke
-something), and in CI, where you run all (or a large swath of) the
-tests to get greater cross-program confidence. Slow tests are
-frustrating to developers, and force them to resort to manual or
-ad-hoc testing during development, instead of leaning on the test
-suite.
+feedback for developers. In a large codebase, adding a feature or
+fixing a bug is often not hard, but adding a feature or fixing a bug
+_without breaking any existing behavior_ is the hard part. Since tests
+provide your first line of feedback for that property, they often
+become a critical rate-limiter on your development feedback
+cycle. Slow tests are frustrating to developers, and force them to
+resort to manual or ad-hoc testing during development, instead of
+relying on the test suite.
 
-Similarly, tests must be deterministic; For a CI regression-testing
-suite to be viable, "tests pass once before merge" must imply "those
-tests will continue to pass until someone does something to break
-them". If that inference isn't true, then you'll see CI breakage at
-random points in time on random code, which frustrates and slows down
-whichever developer happens to hit that failure, and decreases
-developer trust in CI as the arbiter of safety.
+## Determinism
+
+Tests must also be deterministic in order to reliably provide the
+desired confidence for developers. For a CI regression-testing suite
+to be viable, tests must not fail randomly, since otherwise the
+compounding effects of random failures makes it impossible to keep the
+build "green", ruining the feedback value of CI. Similarly, if
+developers learn that tests sometimes fail at random, they will stop
+trusting the test suite as an arbiter of safety, resulting in CI being
+a source of make-work more than a source of confidence.
 
 # Where Property-Based Fuzzing Falls Short
 
@@ -55,40 +65,46 @@ Traditional property-based fuzzing fails at both these criteria, which
 I suspect is one of the reasons it has gotten less traction than it
 might have.
 
-- Because traditional property-based testing generates random inputs
-  at runtime, you need a relatively large number of runs (most systems
-  I've seen default to something like 100) to get decent
-  coverage. While it's pretty easy to execute 100 runs of a toy
-  example within "human" timescales, large systems have a bad habit of
-  ending up with test cases that have many expensive dependencies, I/O
-  requirements, or other slowdowns, and a 10x slowdown vs "executing
-  on 10 hand-chosen examples" may not be acceptable.
+  - Because traditional property-based testing generates random inputs
+    at runtime, you generally need a relatively large number of runs
+    to get decent test coverage (most systems I've seen default to
+    something like 100). While it's pretty easy to execute 100 runs of
+    a toy example within human timescales, large systems have a bad
+    habit of ending up with test cases that have many expensive
+    dependencies, I/O requirements, or other slowdowns, and a 10x
+    slowdown vs "executing on 10 hand-chosen examples" is a
+    frustrating price to pay.
 
-- Because property-based testing selects test cases at random, it is
-  prone (by design, in many cases!) to nondeterminism. Authors and
-  adherents of property-based test suites often describe this as a
-  feature, rightly pointing out that it gives every run the
-  opportunity to discover novel bugs, continually improving your
-  coverage and confidence. However, this nondeterminism is untenable
-  for a unit test suite that must run on every commit for every
-  developer.
+  - Because property-based testing selects test cases at random, it is
+    prone (by design!) to nondeterminism. Authors and adherents of
+    property-based test suites often describe this as a feature,
+    rightly pointing out that it gives every test run the opportunity
+    to discover novel bugs, continually improving your
+    coverage. However, this nondeterminism is untenable for a CI suite
+    that must run on every commit for every developer; CI's job is to
+    prove the absence of (certain) regressions, not absolute
+    correctness.
 
     Many property-based test suites attempt to (optionally) recover
     determinism by supporting a deterministic random-number
-    generator. This approach certainly helps, but can still leave you
-    with a **brittle** test suite, where small changes to your
-    generation strategy or test cases cause cascading changes to the set
-    of considered test cases.
+    generator. This approach helps a lot, but can still leave you with
+    a **brittle** test suite, where small changes to your generation
+    strategy or test cases cause cascading changes to the set of
+    considered test cases. A developer who adds a branch to a
+    data-generation strategy to support their new feature may find
+    bizarre cascading failures if doing so changes the examples seen
+    by other tests.
 
 # The Workflow I Want
 
-With that motivation out of the way, I want to lay out the workflow I
-believe I want out of property-based testing, which I think would
-effectively bridge the gap between many of the present tools, and the
-needs of a large-scale regression suite. This description is inspired
-by a combination of the above concerns and by techniques already
-widespread in the fuzzing space, notably the [afl][afl] and
-[oss-fuzz][oss-fuzz] tools.
+With that motivation as background, I want to lay out the workflow I
+believe I want out of property-based testing. Based on my judgment and
+experience, I think a design of this shape would effectively bridge
+the gap between many of the present tools, and the needs of a
+large-scale regression suite. This description is inspired by a
+combination of attempting to address the above concerns, and by
+techniques already widespread in the fuzzing space, notably the
+[afl][afl] and [oss-fuzz][oss-fuzz] tools.
 
 ## Hard-coded examples
 
@@ -107,37 +123,47 @@ desired above.
 
 So far, what I've described is just a slightly-heavyweight version of
 "table-driven testing", and doesn't have the generative nature that
-typically defines property-based testing. The next key detail in my
-desires is that those lists of inputs should be, in most cases,
-automatically generated by the property-based framework. After writing
-a test, I might run `proptest generate --test=MyTestCase`, and it will
-begin a traditional property-based-testing generation-and-minimization
-process, with the difference that any failing tests, and a sample of
-other tests, will be automatically written out to the "examples" file
-for future runs.
+typically defines property-based testing. And while I'm an enormous
+proponent of table-driven tests, it seems clear that automatic test
+generation has something to offer above and beyond such tests.
+
+To bridge the gap, I desire that the aforementioned lists of inputs
+should be, in most cases, automatically generated by the
+property-based framework, before being commited. After writing a test,
+I might run `proptest generate`, which will begin a traditional
+property-based-testing generation-and-minimization process, with the
+difference that any failing tests, and a sample of other tests, will
+be automatically written out to the "examples" file for review and
+potential committing by the developer.
 
 ## Coverage-guided generation and feedback
 
 How will `proptest generate` decide which cases to save, and how will
-it decide when it has enough tests? It runs my test using AFL-style
-coverage-guided exploration, and stops after some combination of
+it decide when it has enough tests? Here we take inpsiration from AFL,
+and use coverage-guided exploration to guide test case generation, and
+also to determine when to stop. The generator stops generating tests
+cases after some combination of
 
-- A configurable max timeout
+- A configurable timeout
 - When coverage stops improving
-- When coverage is sufficiently high
+- When coverage is sufficiently high in an absolute sense
 
-It can also print statistics about this exploration process to inform
-the quality of the test case and/or generator.
+(Upon completion, it can also print statistics about this exploration
+process and the coverage reached, to inform the quality of the test
+case and/or generator.)
 
-Once it has stopped (or perhaps concurrently with generation), it will
-use a coverage-driven minimization process (ala
+Once it has stopped (or perhaps concurrently with generation), the
+tool will use a coverage-driven minimization process (ala
 [`afl-cmin`][afl-cmin]) to find a near-minimal list of test cases that
-exercise the same set of paths as the total corpus.
+exercises approximately the samet set of coverage as the total
+corpus. In addition, any tests that fail are automatically preserved
+(perhaps up to uniqueness, as judged by the execution trace and
+related criteria).
 
 The end result of such a process should be a small corpus of tests
-that execute quickly, while still exercising nearly as much of the
-code under test as possible, and explicitly checking test cases that
-once failed, to prevent regressions of known bugs.
+that execute quickly, while still exercising about as much of the code
+under test as possible, and explicitly checking test cases that once
+failed, to prevent regressions of known bugs.
 
 ## Exploration Mode
 
@@ -150,13 +176,13 @@ somewhere, or, ideally, in a cloud executor designed for this purpose
 
 Importantly, since this search process will run as a separate job, it
 will discover bugs asynchronously to my main development process, and
-not block PRs or break trunk, and I can address these bugs on whatever
-timeline I see fit, after triaging or otherwise evaluating severity or
+not block PRs or break trunk. I can then triage and address these bugs
+on whatever timeline I see fit, making my own judgment of severity or
 urgency.
 
 Additionally, any failures found in this mode will generate output
 that includes a formatted example that I can copy-paste directly into
-the committed examples list and commit; This makes local reproduction
+the committed examples list and commit. This makes local reproduction
 easy, since a `make test` will now run this test case and demonstrate
 the failure for me, and also ensures that this bug is never regressed,
 by directly testing this test case on every future CI run, once I do
@@ -164,9 +190,9 @@ land a fix.
 
 # Conclusion
 
-I can't speak for others, but I'm pretty confident I'd be much more
-willing to adopt property testing frameworks in my own code if they
-behaved more like they described above.
+I'm fairly confident I'd be much more willing to adopt property
+testing frameworks in my own code if they behaved more like the
+(notional) system described above.
 
 I have pretty good confidence in many parts of the above workflow,
 because I've largely just described tools that exist in the fuzzing
