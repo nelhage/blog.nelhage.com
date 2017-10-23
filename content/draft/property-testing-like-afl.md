@@ -4,12 +4,14 @@ slug: property-testing-like-afl
 date: 2017-10-11T19:15:44-04:00
 ---
 
-This post is a bit of a followup to my
-[last post](post/property-testing-is-fuzzing/), in which I lay out the
-developer experience I'd like to have with a property-based testing
-tool. In line with the previous post, the UX I describe here is
-largely in line with that offered by various tools in the `afl` family
-tree, such as [Google's OSS-Fuzz][oss-fuzz].
+In my last [last post](post/property-testing-is-fuzzing/), I argued
+that property-based testing and fuzzing are essentially the same
+practice, or at least share a lot of commonality. In this followup
+post, I want to explore that idea a bit more, by exploring some of my
+frustrations and hesitations around typical property-based testing
+tools, and proposing a hypothetical UX to resolve these concerns, by
+taking inspiration from the fuzzing tool family, primarily the
+[AFL][afl] family tree and [Google's OSS-Fuzz][oss-fuzz].
 
 # Preface: Desiderata for a Test Suite
 
