@@ -36,7 +36,7 @@ that they have not broken everything.
 
 What properties do we want from such a test suite? There are a number,
 but I want to highlight two important ones here. Specifically, a test
-suite should be **fast** and **deterministic**.
+suite should be **fast** and **reproducible**.
 
 ## Speed
 
@@ -50,16 +50,22 @@ cycle. Slow tests are frustrating to developers, and force them to
 resort to manual or ad-hoc testing during development, instead of
 relying on the test suite.
 
-## Determinism
+## Reproducibility
 
-Tests must also be deterministic in order to reliably provide the
-desired confidence for developers. For a CI regression-testing suite
-to be viable, tests must not fail randomly, since otherwise the
-compounding effects of random failures makes it impossible to keep the
-build "green", ruining the feedback value of CI. Similarly, if
-developers learn that tests sometimes fail at random, they will stop
-trusting the test suite as an arbiter of safety, resulting in CI being
-a source of make-work more than a source of confidence.
+Test results must also be **reproducible** in order to reliably
+provide the desired confidence for developers. By this, I mean that
+once a test succeeds, it should reliably continue succeeding until
+something meaningful changes, and if a test fails, it should be easy
+to reliably reproduce the failure.
+
+Both properties are essential for a CI regression-testing suite to be
+viable. Once tests pass and are merged, they must not fail randomly;
+otherwise, the compounding effects of random failures makes it
+impossible to ever keep the build "green", ruining the feedback value
+of CI. On the flip side, if a test fails during development or in a
+pre-merge push, it must be easy to reproduce that failure to allow a
+developer to debug and fix the issue quickly and with confidence that
+the issue has been resolved.
 
 # Where Property-Based Fuzzing Falls Short
 
@@ -78,8 +84,9 @@ might have.
     frustrating price to pay.
 
   - Because property-based testing selects test cases at random, it is
-    prone (by design!) to nondeterminism. Authors and adherents of
-    property-based test suites often describe this as a feature,
+    prone (by design!) to nondeterminism, which spoils the
+    above-described reproducibility properties. Authors and adherents
+    of property-based test suites often describe this as a feature,
     rightly pointing out that it gives every test run the opportunity
     to discover novel bugs, continually improving your
     coverage. However, this nondeterminism is untenable for a CI suite
@@ -118,8 +125,8 @@ for ease of review and merging.
 
 When run in a default mode (e.g. `make test` or your CI entrypoint),
 the tool should **only** run those examples. By running a fixed,
-small, set of examples, we recover the speed and determinism we
-desired above.
+small, set of examples, we recover the speed and reliably we desired
+above.
 
 ## Example Generation
 
@@ -189,6 +196,25 @@ easy, since a `make test` will now run this test case and demonstrate
 the failure for me, and also ensures that this bug is never regressed,
 by directly testing this test case on every future CI run, once I do
 land a fix.
+
+## Other Notes
+
+Given such a system, the tool can also implement a "traditional"
+property-testing mode, which ignores the hardcoded corpus and runs
+each test for a fixed duration or number of runs. We can also mark a
+given test as "never autogenerate input", and recover classic
+table-driven testing. This flexibility should allow for workflows that
+scale from small tests on trivial codebases to very large, complex
+test setups, all within a uniform framework.
+
+Similarly, even for tests that already have committed examples, if you
+change the code under test, you should be able to re-run the
+generator, seeded with the existing examples, to re-start the
+exploration process on the new code, and produce a new minimized
+high-coverage corpus. Obviously this process shouldn't be necessary --
+if the properties haven't changed, the old examples should still be
+valid -- but it's important to allow us to evolve our corpus and test
+data with an evolving implementation.
 
 # Conclusion
 
