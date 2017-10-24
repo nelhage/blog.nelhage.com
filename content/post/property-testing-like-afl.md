@@ -1,7 +1,7 @@
 ---
 title: "Property Testing Like AFL"
 slug: property-testing-like-afl
-date: 2017-10-11T19:15:44-04:00
+date: 2017-10-24T09:00:00-07:00
 ---
 
 In my last [last post](/post/property-testing-is-fuzzing/), I argued
