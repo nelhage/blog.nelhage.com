@@ -4,7 +4,7 @@ slug: property-testing-like-afl
 date: 2017-10-11T19:15:44-04:00
 ---
 
-In my last [last post](post/property-testing-is-fuzzing/), I argued
+In my last [last post](/post/property-testing-is-fuzzing/), I argued
 that property-based testing and fuzzing are essentially the same
 practice, or at least share a lot of commonality. In this followup
 post, I want to explore that idea a bit more: I'll first detour into
