@@ -171,9 +171,14 @@ them by default, to save numerous more administrators and operators
 and developers from having to rediscover these failure modes for
 themselves.
 
+## Postscript
+
+This post is also available in [translation into Russian][russian].
+
 
 [virtmem]: https://en.wikipedia.org/wiki/Virtual_memory
 [pagetable]: https://en.wikipedia.org/wiki/Page_table
 [tlb]: https://en.wikipedia.org/wiki/Translation_lookaside_buffer
 [hugetlbfs]: https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt
 [thp]: https://www.kernel.org/doc/Documentation/vm/transhuge.txt
+[russian]: http://howtorecover.me/otklucenie-prozracnyh-vizitnyh-kartocek
