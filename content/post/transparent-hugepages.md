@@ -173,7 +173,8 @@ themselves.
 
 ## Postscript
 
-This post is also available in [translation into Russian][russian].
+This post is also available in
+<a href=http://howtorecover.me/otklucenie-prozracnyh-vizitnyh-kartocek" rel="nofollow">translation into Russian</a>
 
 
 [virtmem]: https://en.wikipedia.org/wiki/Virtual_memory
@@ -181,4 +182,3 @@ This post is also available in [translation into Russian][russian].
 [tlb]: https://en.wikipedia.org/wiki/Translation_lookaside_buffer
 [hugetlbfs]: https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt
 [thp]: https://www.kernel.org/doc/Documentation/vm/transhuge.txt
-[russian]: http://howtorecover.me/otklucenie-prozracnyh-vizitnyh-kartocek

@@ -243,6 +243,9 @@ and
 I don't write much Python these days, but if I did I'd definitely
 explore building out a variant of this workflow on top of Hypothesis.
 
+## Postscript
+
+This post is also available in <a href="http://clipartmag.com/ru-property-testing-like-afl" rel="nofollow">translation into Russian</a>
 
 [afl]: http://lcamtuf.coredump.cx/afl/
 [oss-fuzz]: https://github.com/google/oss-fuzz
