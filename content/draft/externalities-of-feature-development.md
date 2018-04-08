@@ -7,85 +7,104 @@ date: 2018-03-18T13:39:01-07:00
 # On change and blame
 
 In a large software system with any substantial userbase, the hardest
-part of making changes very often is avoiding regressions. Adding
-purely new functionality is usually manageable; Modifying existing
-functionality -- or refactoring an internal abstraction or data model
--- is fraught with the possibility of inadvertently breaking an
-existing user or downstream system.
+part of making changes tends to be avoiding regressions. Adding purely
+new functionality is usually manageable, but modifying existing
+functionality -- or refactoring an internal abstraction -- is fraught
+with the possibility of inadvertently breaking an existing user or
+downstream system.
 
-[Hyrum's Law][hyrum] is one statement of this problem; This
-only-somewhat-tongue-in-cheek law states
+The difficulty is exacerbated by users' (both human and computer)
+tendency to depend on every observable behavior of a system that they
+use. One notable formulation of this tendency is [Hyrum's Law][hyrum],
+which observes:
 
 > With a sufficient number of users of an API,
 > it does not matter what you promise in the contract,
 > all observable behaviors of your system
 > will be depended on by somebody.
 
-[XKCD 1172][xkcd] makes essentially the same observation about
-end-user-visible behavior and changes.
+In a very different medium, [XKCD 1172][xkcd] makes essentially the
+same observation.
 
-Looking beyond the merely technical, enhancing the challenge is the
-human tendency to blame any problem on whichever component most
-recently changed -- what Adam Langley refers to as the
-["Law of the Internet"][agl].  Anyone making a change to a functioning
-system thus risks not only breaking behavior, but being directly
-blamed for that breakage, no matter the nature of the breakage.
+Beyond the merely technical, enhancing the challenge is the human
+tendency to blame any problem on whichever component most recently
+changed. Google's Adam Langley refers to as the
+["Law of the Internet"][agl], but it can apply in systems of any
+variety, including those much smaller than the public internet. No
+matter what any specification document, contract, SLA, or unwritten
+norm says, someone who makes a change to a functioning system that
+results in breaking something tends to, as a default, unconditionally
+take the blame.
 
-In terms of an API, it doesn't matter whether a consumer of your API
-dependened on unspecified behavior (or even behavior specifically
-specified to be subject to change); If you break the consumer because
-you changed the behavior, users will be inclined to blame you, and not
-the code that used to work.
+In narrow programming terms, if you expose a public API, and a
+downstream developer depends on an undocumented behavior, and you
+later change that behavior, you tend to get blamed, instead of the
+downstream developer who was -- in some sense -- technically in the
+wrong.
 
-Hyrum's law suggests that -- in the limit -- *any* change is a
-breaking change to some user. And agl's Law of the Internet suggests
-that any such change will be perceived as the fault of the actor
-making the change.
+This observation, of course, then chains with Hyrum's law, which
+suggests that, in the limit, some user will depend on *any* observable
+behavior in your API, specified or not. Thus, in a sufficiently large
+system, any observable change at all will break some user -- and the
+developer who made the change will take the blame.
 
-These compounding effects go a long way to explainining why changing
-software systems is hard, especially the deeper in the dependency
-stack you go.
-
-This is also a large part of why traditional "sysadmin" roles --
-responsible for the ongoing running and operational environment of
-someone else's code -- are so frustrating.
+The net result of these conjoined observations is to ossify software
+systems over time; As they grow more users, and especially as they
+grow more distinct downstream dependencies, they become harder and
+harder to change. As they become harder to change, developers change
+them less and less frequently, and downstream users become even more
+accustomed to them never changing, and the cycle of ever-increasing
+brittleness intensifies.
 
 # Building systems for change
 
 If we desire to build and maintain software systems over extended
-periods of time, it is extremely valuable to preserve our ability over
-time to make changes to any part of the system. In order to preserve
-that ability, we need to push back against the above one-two punch
-that serves to ossify core components of our system.
+periods of time, this ossification process is dangerous and costly. If
+we can't change the core-most components of our systems, we risk
+instead having to build increasingly complex workarounds as new needs
+arise, or maintaining numerous parallel systems with subtly differnet
+behavior, increasing the cost of development and change. If we want to
+avoid this fate, we need to figure out how to resist this vicious
+cycle.
 
-The formulation of Hyrum's Law contains within in a hint for how to
-cope with it, one that is well-understood by most developers who have
-maintained APIs long enough: Strive -- as far as possible -- to
-enforce all specified behavior in the observable behavior of the
-code. Library authors must explicitly check all assumptions on valid
-input, explicitly randomize any values or orders that are left
-unspecified, and so. [GREASE][grease] is one of many attempts by Adam
-Langley's team to apply this design principle to TLS, in order to
-preserve the ability to continue modifying TLS into the future.
+The main strategy for coping with Hyrum's law are hinted at by the
+very formulation of the law, and are well-known by most developers who
+maintain APIs long enough: One must strive -- as far as possible -- to
+make the "observable behavior" of the system identical with "what you
+promise in the contract"; All assumptions on incoming data must be
+strictly checked, and behavior on outputs must be either specified, or
+explicitly randomized. Developers of standards on the public internet
+have become experts at these techniques: As two examples,
+[GREASE][grease] applies explicit randomization to TLS, in order to
+shake out and prevent brittle clients, and [HTML 5][html5] fully
+specifies parser behavior on *any* input string, not just valid ones,
+making it harder to rely on undocumented behavior [^html].
 
-However, it's also possible, in certain contexts, to push back against
-the Law of the Internet. And, I believe, this is ultimately critical
-to maintaining a healthy software-development organization.
+[^html]: Note, of course, that this latter strategy brings "observable behavior" and "specified behavior" closer together, but at the cost of making change *harder*. For a standard where the goal is interoperability, and where evolution happens at other layers (e.g. the DOM), this is a good tradeoff, but it doesn't solve all problems.
+
+On the public internet, these strategies may be our best option for
+enabling change and encouraging interoperability. However, in other
+contexts -- especially inside smaller, more closed organizations -- I
+believe we can also usefully push back against the "Law of the
+Internet", and encourage the development of living systems capable of
+absorbing ongoing change through an additional set of
+tools. Furthermore, I believe that organizations that manage do so
+gain an incredible advantage in the long run.
 
 # Internalizing the externalities of feature development
 
-Every feature that is written has (presumably) value to
+Every feature that is written has (hopefully) value to
 someone. However, it also has costs: it represents a behavior that
-must be preserved into the future, and thereby imposes (explicitly or
-otherwise) requirements on the system around it (the kinds of
-requirements of which Hyrum's Law is made).
+users will come to rely on and thus must be preserved into the future,
+and it imposes (explicitly or otherwise) requirements on the system
+around it (of which Hyrum's Law is made).
 
-If the Law of the Internet is true, these costs represent _negative
-externalities_ of feature development: A feature's author bears the
-work of writing the feature, but some fraction of the future
-maintainence burden for this feature falls on others -- infrastructure
-developers, developers of shared libraries or tooling, developers of
-future features, operators, and so on. From development onward, any
+In most sytems, many of these costs represent _negative externalities_
+of feature development: A feature's author bears the work of writing
+the feature, but some substantial fraction of the future maintainence
+burden for this feature falls on others -- infrastructure developers,
+developers of shared libraries or tooling, developers of future
+features, operators, and so on. From development onward, any
 participant in the sytem bears a tacit responsibility for every
 behavior already present in the system.
 
@@ -93,34 +112,37 @@ As any econ 101 student will tell you, negative externalities lead to
 distorted incentives, conflicts between actors, and generally
 unhappiness all around.
 
-Our problem, therefore, is to _internalize the long-term externalities
-of code_. We must find ways to make feature developers responsible for
-the correctness of their feature indefinitely into the future, instead
-of foisting that work off on others.
+As we saw earlier, in software systems, these externalities show up
+most acutely (although not exclusively) when other participants in the
+system attempt to make changes, and thus contribute to the ongoing
+brittleness and ossification of systems depended on by features.
 
-In essence, we should aspire to build software-engineering cultures
+Our problem, therefore, is to _internalize the long-term externalities
+of feature code_. To encourage systems capable of change, we should
+find ways to make feature developers more responsible for the
+correctness of their feature indefinitely into the future, instead of
+forever foisting that work off onto downstream maintainers.
+
+In essence, we should aspire to build software engineering cultures
 and organizations where the developer or owner of a feature is
 responsible for that feature _even in the ongoing presence of others'
 changes to the system_.
 
 # How do we do this?
 
-On the surface, this challenge appears hard or nearly
+On the surface, this challenge appears hard or
 impossible. Responsibility appears to flow backwards in time: How can
 a developer of a feature anticipate and take responsibility for every
 future change to the system that might impact their component?
 
-However, while there are [no silver bullets][silver], it's still
-possible to make progress on this goal. And, I think, a large number
-of developments in software engineering practice can be seen as
-efforts to pursue this goal.
+This task is hard, and there are [no silver bullets][silver], but it's
+still possible to make progress on this goal. And, I think, a large
+number of developments in software engineering practice can be
+usefully understood as efforts in pursuit of this goal.
 
-Note that most of my thoughts here are in the context of a corporate
-development environment, where the pool of developers is relatively
-stable and all participants share tooling and infrastructure and
-communication channels. I believe that similar principles apply in
-open-source world and on the broader internet, but the details of the
-practices may differ.
+## Ownership
+
+
 
 ## Testing
 
@@ -178,6 +200,7 @@ feature, further helping to internalize the costs of maintenance.
 
 [agl]: https://www.imperialviolet.org/2016/05/16/agility.html
 [grease]: https://tools.ietf.org/html/draft-davidben-tls-grease-01
+[html5]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
 [silver]: https://en.wikipedia.org/wiki/No_Silver_Bullet
 [hyrum]: http://www.hyrumslaw.com/
 [xkcd]: https://xkcd.com/1172/
