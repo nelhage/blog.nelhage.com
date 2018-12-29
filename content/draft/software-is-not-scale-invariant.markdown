@@ -20,14 +20,16 @@ techniques that make perfect sense for side projects or small startups
 break down for larger teams and deployments.
 
 This post -- informed in large part by my experiences at Stripe as it
-has scaled from tens to thousands of employees -- aims to explore some
-of the ways software development and operations "in the small" and "in
-the large" require different strategies and approaches. I've come to
-believe that many disagreements about tools or methodologies boil down
-to disagrements between developers operating at or optimizing for
-different scales. I hope that by making explicit some of the
-distinctions I see, I can help frame at least a few such conversations
-more productively.
+has scaled across muliple powers of 10 in both traffic volume and
+organizational scale -- aims to explore some of the ways I've observed
+that software development and operations "in the small" and "in the
+large" require different strategies and tradeoffs.
+
+I've come to believe that many disagreements about tools and
+methodologies boil down to disagrements between developers operating
+at or optimizing for different scales, and I hope that others may find
+it informative to have an explicit elaboration of some of the
+distinctions.
 
 # Operational scale
 
@@ -131,10 +133,10 @@ servers". Some examples:
 Notwithstanding earlier remarks about efficiency, at large scales, one
 often has no choice but to opt for solutions that emphasize
 scalability. If your datasets or workloads simply won't fit onto
-single systems, or if your growth rates are fast enough that ease of
-scaling is vital concern, then it can be well worth taking a hit in
-absolute efficiency in order to be able to easily allocate more
-hardware to a problem, without thinking twice.
+single systems, or if your growth rates are fast (and potentially
+unpredictable) enough that ease of scaling is paramount, then it can
+be well worth taking a hit in absolute efficiency in order to be able
+to easily allocate more hardware to a problem, without thinking twice.
 
 A small deployment, however, may fit on a single machine with
 [orders of magnitude to spare][^single]. In that case, using
@@ -151,9 +153,98 @@ preserving scalablity options that you will never need.
 
 # Development
 
+In addition to operational scale, a second important axis of scale
+concerns the size and organization of the development team. A project
+developed by a small team of four engineers working very closely
+together for an extended duration requires substantially different
+concerns than a codebase maintained by hundreds or thousands of
+developers, who are constantly joining and leaving the team.
+
+## Implicit vs Explicit
+
+Code ends up being read (and debugged, which tends to necessitate
+reading and understanding) many more times than it is written. There
+is thus a fairly widespread consensus that writing code with an eye to
+legibility and understandability is essential.
+
+However, what constitutes "understandable" can be very
+context-dependent. We can aim to make code more understandable in at
+least two ways:
+
+-   We can attempt to "compress" the program as much as possible by
+    removing irrelevant details. Concretely, this generally entails
+    building rich abstractions that let us express as much as possible
+    in as few lines (or even characters!) as necessary. The "core" logic
+    of a feature becomes explicit, but increasing amounts of the logic
+    become implicit in the frameworks and abstractions and tools.
+
+    This is the general approach taken by mathematical notation, which
+    can compress immense meaning into typographical choices and other
+    conventions. It's also, broadly speaking, the style typically
+    advocated by power users of Scala and Haskell and other type-rich
+    languages. It's also the intent of Ruby on Rails' infamous
+    "Convention over Configuration" style.
+
+    This approach tends to make the resulting logic shorter, but at the
+    expense of requiring readers to keep more concepts and abstractions
+    in their head, since so much has been made explicit.
+
+-   On the flip side, we can lean much further in the direction of
+    "explicit is better than implicit". Powerful abstractions and
+    widespread convention can make the code easier to read and write for
+    experts, but create a large barrier to entry to outsiders to the
+    codebase, since all of the implicit convention and concepts behind
+    the abstraction must be first internalized before a piece of code
+    can be fully understood.
+
+    Seeing this downside, we might aim to make a codebase more
+    comprehensible by eschewing over-abstraction, and choosing
+    configuration over convention, since configuration -- at its best --
+    is explicit and discoverable at the use site, making the meaning of
+    a piece of code much more discoverable and self-contained.
+
+<!--
+  Furthermore, in a large codebase, there is some amount of inevitable
+  drift betweeen different teams and different parts of the codebase,
+  as different engineers work on different components and develop
+  local abstractions and styles. Investment in tooling teams and
+  shared abstractions and standardization can slow the drift, but some
+  degree of drift is all-but-inevitable at scale. Since engineers
+  working on one feature or subsystem end up depending on or
+  interacting with other subsystems, in the large, every developer
+  typically spends some amount of time reading and interacting with
+  code outside their own areas of expertise and focus, and the value
+  grows to making behavior and logic explicit in the code, instead of
+  hidden behind abstraction and convention.
+  -->
+
+Many, if not most, problems in engineering are ultimately about
+tradeoffs, and so the question of how much and when to abstract, and
+how much to make explicit versus implicit, or driven by explicit
+configuration versus assumed convention, have no general easy
+answers.
+
+However, as a generalization, larger teams find themselves better
+served by more verbose and explicit styles. New engineers (and adding
+engineers becomes more frequent, and thus worth optimizing for, as you
+scale) can come up to speed faster when the details are spelled out in
+the source, instead of left implicit, and engineers can navigate
+unfamiliar source more efficiently. And, in large teams, any given
+engineer can only be an expert in a subset of the code that they end
+up having to interact with, at least occasionally, meaning that every
+engineer spends part of their time working as a non-expert.
+
+In a small code base, though, where every engineer can practically
+become an expert in the entire application, it becomes worth pursuing
+density as a goal over easy comprehension; The denser the expression
+of the code, the more easily it is maintained "in your head" by the
+small and focused team, and the faster the engineers can both read and
+write code.
+
+## Interconnection vs modularity
 
 
-## Keeping it all in your head
-## Individual productivity vs scalability
+
+
 
 # Conclusion
