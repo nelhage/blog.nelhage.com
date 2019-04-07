@@ -2,6 +2,7 @@
 title: "Software organizations and enabling change"
 slug: software-evolution
 date: 2018-03-18T13:39:01-07:00
+draft: true
 ---
 
 # On change and blame
