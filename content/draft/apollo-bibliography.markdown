@@ -9,26 +9,26 @@ Over the last fewn years — perhaps not unusually among the nerds I know — I�
 These are approximately in order of how much I recommend them or how good I remember them being, but I’ve also attached notes to each of them. I will attempt to keep this list updated as I read more in the future.
 
 
-- [Failure Is Not An Option](https://www.amazon.com/Failure-Not-Option-Mission-Control/dp/1439148813) by Gene Kranz
+- <a name="failure-is-not-an-option">[Failure Is Not An Option](https://www.amazon.com/Failure-Not-Option-Mission-Control/dp/1439148813) by Gene Kranz</a>
 
     This was the first book I read about the early space program, and I’d recommend it as a good entry point. Mission Control is definitely one of the most fascinating — to me, at least — aspects of the space program; They were the ones running the show and calling the shots, especially during the mission, and they were — as much as the astronauts and often more so — the ones on the hook for handling any problems that arose in flight and resolving them. Their planning, training creativity and poise under pressure were essential to the success of Apollo.
 
     And Gene Kranz, author of this book, was Chief Flight Director for Gemini and Apollo, and had as much a role as anyone in defining what Mission Control was, and in driving its remarkable success and achievements. He was the Flight Director — with overall operational responsibility for Mission Control and the entire mission — for the actual Apollo 11 landing, and directed recovery efforts following the Apollo 13 explosion.
 
 
-- [A Man on the Moon: The Voyages of the Apollo Astronauts](https://www.amazon.com/Man-Moon-Voyages-Astronauts-Collection/dp/0241363829/) by Andrew Chaikin
+- <a name="a-man-on-the-moon">[A Man on the Moon: The Voyages of the Apollo Astronauts](https://www.amazon.com/Man-Moon-Voyages-Astronauts-Collection/dp/0241363829/) by Andrew Chaikin</a>
 
 
     This book covers Apollo 8 (the first mission to visit and orbit the moon) through Apollo 17, the final Apollo mission. It’s a solid, well-sourced (“*based on hundreds of hours of in-depth interviews with each of the twenty-four moon voyagers, as well as those who contributed their brain power, training and teamwork on Earth*”), general overview of the heart of the Apollo program. Also an excellent entry point.
 
 
-- [From the Earth to the Moon (HBO miniseries)](https://www.imdb.com/title/tt0120570/)
+- <a name="from-the-earth-to-the-moon">[From the Earth to the Moon (HBO miniseries)](https://www.imdb.com/title/tt0120570/)</a>
 
 
     This is a 12-episode HBO miniseries largely based on the previous book. It’s also an excellent work, and I’d highly recommend it. I’ve both seen it and read the book, and while I don’t remember how much they overlap, I do recall learning new things from each.
 
 
-- [Sunburst and Luminary](https://www.amazon.com/gp/product/B07L9YQ9WV/) by Don Eyles
+- <a name="sunburst-and-luminary">[Sunburst and Luminary](https://www.amazon.com/gp/product/B07L9YQ9WV/) by Don Eyles</a>
 
 
     The most recent book on the list (published about a month ago, as of this writing), this book is a memoir by Don Eyles, who wrote most of the software that ran on the Lunar Module during landing, which was almost certainly the most complex and high-stakes operation of the entire flight. The only reason it isn’t higher on this list is that the content is a bit specialized and narrowly focused on the landing and the software and adjacent topics; it’s definitely one of my favorite books here.
@@ -37,31 +37,31 @@ These are approximately in order of how much I recommend them or how good I reme
     Eyles tells the story of the technical details of the Apollo Computer and the landing, as well as of the culture and the people (within the MIT Instrumentation Laboratory, since renamed the [Charles Stark Draper Lab](https://www.draper.com) and spun out of MIT). It’s both a better telling of the technical details of the computer and the software and the technical issues that nearly aborted Apollos 11 and 14 than I’ve found elsewhere, and a great snapshot of the culture at MIT at the time, which I think also serves as a snapshot of the broader tech culture and a slide of ‘60s counterculture more broadly, and their role in Apollo, a program which had been otherwise (incompletely) called a “triumph of the squares.”
 
 
-- [Thirteen: The Apollo Flight That Failed](https://www.amazon.com/Thirteen-Apollo-Flight-That-Failed-ebook/dp/B00H5KRG82/) by Henry S. F. Cooper
+- <a name="thirteen">[Thirteen: The Apollo Flight That Failed](https://www.amazon.com/Thirteen-Apollo-Flight-That-Failed-ebook/dp/B00H5KRG82/) by Henry S. F. Cooper</a>
 
 
     Almost everyone knows — at least in broad outlines — the story of Apollo 13, based in large part on the movie by that name. This book covers the mission and the details of the recovery efforts and the incredible work by Mission Control and by the astronauts to get the crew home safely after a catastrophic failure no one had even begun to plan for.
 
 
-- (Documentary) [Mission Control: The Unsung Heroes of Apollo](https://www.imdb.com/title/tt5959952/)
+- <a name="mission-control-unsung-heroes">(Documentary) [Mission Control: The Unsung Heroes of Apollo](https://www.imdb.com/title/tt5959952/)</a>
 
 
     I don’t actually remember this one in much detail. However, as I mentioned above, Mission Control was the beating heart of Apollo and one of the most fascinating and critical components of the program, so I recommend it anyways. It features extensive interviews with the surviving members of the Mission Control teams as of its filming, and really talks through what they accomplished and what it took to orchestrate a lunar mission.
 
 
-- (Movie) [Apollo 11](https://www.imdb.com/title/tt8760684/)
+- <a name="apollo-11">(Movie) [Apollo 11](https://www.imdb.com/title/tt8760684/)</a>
 
 
     Apollo 11 is a very recent movie, still in theaters as I write this. The movie recreates the Apollo 11 mission itself, from launch minus 4 hours to splashdown, using almost exclusively actual footage and photography recorded at the time. It’s well worth a watch, to see what it looked like at the time, but I also found it almost anticlimactic to watch: With the benefit of history there’s no real uncertainty or tension about what will happen, and the format gives the viewer disappointingly little “behind-the-scenes” insight into just what it took to make the mission go off, and the entire mission — including the perilous minutes of the final lunar landing, in which Neil Armstrong landed the LM in unknown terrain with a partially-functioning computer with mere seconds of fuel remaining — ends up looking almost routine.
 
 
-- [Hidden Figures](https://www.amazon.com/Hidden-Figures-American-Untold-Mathematicians/dp/0062363603) by Margot Lee Shetterly and [Movie adaptation](https://www.imdb.com/title/tt4846340/)
+- <a name="hidden-figures">[Hidden Figures](https://www.amazon.com/Hidden-Figures-American-Untold-Mathematicians/dp/0062363603) by Margot Lee Shetterly and [Movie adaptation](https://www.imdb.com/title/tt4846340/)</a>
 
 
     Hidden Figures tells the untold story of the Black female mathematicians at NASA who performed many of the calculations that the early space program was built upon. They worked as “computers”, back when that word referred to a human who performed extensive calculations by hand or with the aid of simple mechanical or electrical calculators, computing the trajectories and analysis required to turn theory into practice. The book and movie only tangentially touch on Apollo itself (although it does appear!), but they make the list because they are well worth the read / watch, and they tell an important story of yet another facet of the immense collaboration that was the space program, and the incredible diversity of people and backgrounds and stories and kinds of work that went into making it all work.
 
 
-- [Apollo 8: The Thrilling Story of the First Mission to the Moon](https://www.amazon.com/gp/product/B01M9F1OTT/) by Jeffrey Kluger
+- <a name="apollo-8">[Apollo 8: The Thrilling Story of the First Mission to the Moon](https://www.amazon.com/gp/product/B01M9F1OTT/) by Jeffrey Kluger</a>
 
 
     Apollo 8 gets short thrift in history’s recollection of Apollo, but at the time it was (properly) seen as an incredibly daring and risky move, but one whose success was critical for Apollo 11 successfully accomplishing JFK’s challenge to land men on the moon and return before the 60s were out.
@@ -73,7 +73,7 @@ These are approximately in order of how much I recommend them or how good I reme
     Apollo 8 is also the subject of an [upcoming documentary](http://www.firstmoonmovie.com) that I expect I’ll see.
 
 
-- (Documentary) [The Last Man on the Moon](https://www.imdb.com/title/tt3219604/)
+- <a name="last-man-on-the-moon">(Documentary) [The Last Man on the Moon](https://www.imdb.com/title/tt3219604/)</a>
 
 
     The later Apollo missions don’t get a lot of love in the popular consciousness; All of the missions after Apollo 14 went off essentially without a hitch, and became almost routine. Certainly popular enthusiasm and viewership of the in-flight TV broadcasts dropped off precipitously.
@@ -85,12 +85,12 @@ These are approximately in order of how much I recommend them or how good I reme
     The documentary is adapted from [the book of the same name](https://www.amazon.com/Last-Man-Moon-Astronaut-Americas-ebook/dp/B003G93ZCM/) by Eugene Cernan (Apollo 17 Mission Commander) and Donald Davis, which I have not read.
 
 
-- (Movie) [First Man](https://www.imdb.com/title/tt1213641/)
+- <a name="first-man">(Movie) [First Man](https://www.imdb.com/title/tt1213641/)</a>
 
 
     Another recent movie, structured primarily as biography of Neil Armstrong. I enjoyed it, and it got at more of Armstrong’s personal story than I have seen elsewhere, but it was not especially memorable for me.
 
-- [Digital Apollo](https://www.amazon.com/gp/product/B0031AI0X0/) by David A. Mindell
+- <a name="digital-apollo">[Digital Apollo](https://www.amazon.com/gp/product/B0031AI0X0/) by David A. Mindell</a>
 
 
     I honestly don’t recall that much from this book. I read it fairly early on in my Apollo exploration. I’d recommend Eyles’ *Sunburst and Luminary*, above, as a better starting point if you’re interested in the computers that flew Apollo.
@@ -99,7 +99,7 @@ These are approximately in order of how much I recommend them or how good I reme
 ## On my list
 
 
-- [Flight](https://www.amazon.com/Flight-My-Life-Mission-Control/dp/0452283043/) by Chris Kraft
+- <a name="flight">[Flight](https://www.amazon.com/Flight-My-Life-Mission-Control/dp/0452283043/) by Chris Kraft</a>
 
 
     I somehow haven’t gotten around to this one yet, but this is Chris Kraft’s memoir of his time as the first NASA Flight Directory. Along with Gene Kranz, who authored the first book on this list, Kraft defined Mission control and the procedures and culture that still operate NASA missions to this day.
