@@ -1,7 +1,7 @@
 ---
 title: "My Apollo Bibliography"
 slug: apollo-bibliography
-date: 2019-04-07T20:00:00-07:00
+date: 2019-04-08T20:00:00-07:00
 ---
 
 Over the last fewn years — perhaps not that unusually among the nerds
