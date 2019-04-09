@@ -4,9 +4,20 @@ slug: apollo-bibliography
 date: 2019-04-07T20:00:00-07:00
 ---
 
-Over the last fewn years — perhaps not unusually among the nerds I know — I’ve become increasingly fascinated by the Apollo program (and early space program more generally), and been reading my way through a growing number of books and documentaries written about it. At a party this weekend I got asked for my list of Apollo book recommendations, so I decided to write them in a form I can easily share and refer to, in case it’s of interest to anyone else.
+Over the last fewn years — perhaps not that unusually among the nerds
+I know — I’ve become increasingly fascinated by the Apollo program
+(and early space program more generally), and been reading my way
+through a growing number of books and documentaries written about
+it. At a party this weekend I got asked for my list of Apollo book
+recommendations, so I decided to write them in a form I can easily
+share and refer to, in case it’s of interest to anyone else. With all
+the ongoing 50th anniversary events this year, it also seems like a
+good time for it.
 
-These are approximately in order of how much I recommend them or how good I remember them being, but I’ve also attached notes to each of them. I will attempt to keep this list updated as I read more in the future.
+These are approximately in order of how much I recommend them or how
+good I remember them being, but I’ve also attached notes to each of
+them. I will attempt to keep this list updated as I read more in the
+future.
 
 
 - <a name="failure-is-not-an-option">[Failure Is Not An Option](https://www.amazon.com/Failure-Not-Option-Mission-Control/dp/1439148813) by Gene Kranz</a>
