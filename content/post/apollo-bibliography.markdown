@@ -4,7 +4,7 @@ slug: apollo-bibliography
 date: 2019-04-08T20:00:00-07:00
 ---
 
-Over the last fewn years — perhaps not that unusually among the nerds
+Over the last few years — perhaps not that unusually among the nerds
 I know — I’ve become increasingly fascinated by the Apollo program
 (and early space program more generally), and been reading my way
 through a growing number of books and documentaries written about
