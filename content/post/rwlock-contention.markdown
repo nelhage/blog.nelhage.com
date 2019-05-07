@@ -1,7 +1,7 @@
 ---
 title: "Reader/Reader blocking in reader/writer locks"
 slug: rwlock-contention
-date: 2019-05-07T09:00:00-07:00
+date: 2019-05-07T08:00:00-07:00
 ---
 # tl;dr
 
