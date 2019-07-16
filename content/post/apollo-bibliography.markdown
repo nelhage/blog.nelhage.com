@@ -22,7 +22,7 @@ future.
 
 - <a name="failure-is-not-an-option">[Failure Is Not An Option](https://www.amazon.com/Failure-Not-Option-Mission-Control/dp/1439148813) by Gene Kranz</a>
 
-    This was the first book I read about the early space program, and I’d recommend it as a good entry point. Mission Control is definitely one of the most fascinating — to me, at least — aspects of the space program; They were the ones running the show and calling the shots, especially during the mission, and they were — as much as the astronauts and often more so — the ones on the hook for handling any problems that arose in flight and resolving them. Their planning, training creativity and poise under pressure were essential to the success of Apollo.
+    This was the first book I read about the early space program, and I’d recommend it as a good entry point. Mission Control is definitely one of the most fascinating — to me, at least — aspects of the space program; They were the ones running the show and calling the shots, especially during the mission, and they were — as much as the astronauts and often more so — the ones on the hook for handling any problems that arose in flight and resolving them. Their planning, training, creativity and poise under pressure were essential to the success of Apollo.
 
     And Gene Kranz, author of this book, was Chief Flight Director for Gemini and Apollo, and had as much a role as anyone in defining what Mission Control was, and in driving its remarkable success and achievements. He was the Flight Director — with overall operational responsibility for Mission Control and the entire mission — for the actual Apollo 11 landing, and directed recovery efforts following the Apollo 13 explosion.
 
