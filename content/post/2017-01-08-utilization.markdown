@@ -92,7 +92,7 @@ while True:
     req = queue.pop()
   with op('compute_route'):
     route = compute_route(req)
-  with op('update):
+  with op('update'):
     db.execute('''
       UPDATE hitcount WHERE route = ? SET hits=hits + 1
       ''', (route, ))
@@ -104,7 +104,7 @@ while True:
 We can now tell our metrics system to construct a stacked graph of
 this metric, stacked by tags, and normalized to show count-per-second:
 
-<img src='/images/posts/hitcount.png' width='585' height="214"></img>
+<img src='/images/posts/utilization-hc.png' width='585' height="214"></img>
 
 Since each worker performs one second per second of work, the graph
 total gives you the number of active workers (and indeed, I generated
@@ -121,7 +121,7 @@ The above image shows a system at running at capacity. If we're not,
 then the graph gives us an easy way to eyeball how much spare capacity
 we have:
 
-<img src='/images/posts/hitcount-idle.png' width='585' height="215"></img>
+<img src='/images/posts/utilization-hc-idle.png' width='585' height="215"></img>
 
 If we're at capacity, we will never be waiting on messages, and we
 should be spending nearly no time in the "receive" state (from the
