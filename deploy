@@ -1,5 +1,9 @@
 #!/bin/bash
 set -ex
-hugo --cleanDestinationDir
+draft=
+if [ "$1" = "--drafts" ]; then
+    draft=-D
+fi
+hugo --cleanDestinationDir $draft
 git push
 rsync -vax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
