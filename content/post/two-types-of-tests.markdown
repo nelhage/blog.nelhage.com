@@ -1,9 +1,9 @@
 ---
-title: "Two Types of Tests"
+title: "Two kinds of testing"
 date: 2019-12-24T17:09:55-04:00
+slug: two-kinds-of-testing
 ---
 
-# Two kinds of testing
 While talking about thinking about tests and testing in software engineering recently, I’ve come to the conclusion that there are (at least) two major ideas and goals that people have when they test or talk about testing. This post aims to outline what I see as these two schools, and explore some reasons engineers coming from these different perspectives can risk talking past each other.
 
 
