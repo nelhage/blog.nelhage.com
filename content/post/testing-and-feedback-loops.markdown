@@ -39,7 +39,7 @@ In my experience, when you find a problem or a sub-problem that has this desirab
 
 Because these components are so desirable, it’s worth giving thought in your architecture to sub-components where you can encourage this desirable behavior, even if you can’t for the application as a whole for any reason. Are there internal components that can be factored out to have (relatively) stable interfaces and good test coverage? Even if the overall feature set is changing and evolving, are there some core features that are stable over time you can try to lock down in this way?
 
-I also find this feedback loop really valuable when writing [fakes](https://blog.nelhage.com/2016/12/how-i-test/#write-lots-of-fakes) for other components or external services to test against. There is always a risk with a fake that it does not accurate reflect the behavior of the faked system, and thereby gives you false confidence in the system under test.
+I also find this feedback loop really valuable when writing [fakes](https://blog.nelhage.com/2016/12/how-i-test/#write-lots-of-fakes) for other components or external services to test against. There is always a risk with a fake that it does not accurately reflect the behavior of the faked system, and thereby gives you false confidence in the system under test.
 
 However, the fakes *themselves* are amenable to this sort of feedback loop. Write tests for your fakes (or use your normal test, documenting the behavior in the fake that they rely on). Every time you discover a relevant discrepancy between the fake and the production behavior, update the fake and the tests in turn. Over time, your fake will converge on accurately covering all of the edge cases you care about, and becoming an ever-more-powerful tool for future tests.
 
