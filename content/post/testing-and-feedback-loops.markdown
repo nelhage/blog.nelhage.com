@@ -1,5 +1,6 @@
 ---
 title: "Testing and feedback loops"
+slug: "testing-and-feedback-loops"
 date: 2020-01-19T12:00:00-08:00
 ---
 # Testing and feedback loops
