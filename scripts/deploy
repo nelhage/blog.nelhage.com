@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+cd "$(dirname "$0")/.."
 draft=
 if [ "$1" = "--drafts" ]; then
     draft=-D
