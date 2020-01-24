@@ -55,9 +55,9 @@ Sorbet’s error-generation infrastructure uses an idiom which guards all error-
 
 ```c++
 if (auto e = ctx.state.beginError(callLoc, errors::Infer::MethodArgumentCountMismatch)) {
-e.setHeader("Missing required keyword argument `{}` for method `{}`", arg.name.show(ctx),
-method.data(ctx)->show(ctx));
-return e.build();
+    e.setHeader("Missing required keyword argument `{}` for method `{}`", arg.name.show(ctx),
+    method.data(ctx)->show(ctx));
+    return e.build();
 }
 ```
 
