@@ -2,11 +2,10 @@
 import re
 import sys
 
-if len(sys.argv) > 1:
-  with open(sys.argv[1]) as fh:
-    data = fh.read()
-else:
-  data = sys.stdin.read()
+infile, outfile = sys.argv[1:]
+
+with open(infile) as fh:
+  data = fh.read()
 
 data = re.sub(
   r'^[*][*]([^\n]+)[*][*]$',
@@ -15,4 +14,35 @@ data = re.sub(
   flags=re.M|re.S,
 )
 
-sys.stdout.write(data)
+data = re.sub(
+  r''' `
+         \[ ([^]]+) \]
+         \( ([^)]+) \)
+       `
+    ''',
+  r'[`\1`](\2)',
+  data,
+  flags=re.M|re.S|re.X,
+)
+
+data = re.sub(
+  r'\A[#][ ][^\n]+\n',
+  '',
+  data,
+  flags=re.M|re.S|re.X,
+)
+
+with open(outfile) as fh:
+  out = fh.read()
+
+header = re.search(
+  r'\A---\n.*\n---\n',
+  out,
+  re.M|re.S)
+if not header:
+  print("Unable to parse header!")
+  sys.exit(1)
+
+with open(outfile, 'w') as fh:
+  fh.write(header.group(0))
+  fh.write(data)
