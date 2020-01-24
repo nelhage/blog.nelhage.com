@@ -1,6 +1,6 @@
 ---
 slug: why-sorbet-is-fast
-title: "Why Sorbet is fast"
+title: "Why the Sorbet typechecker is fast"
 date: 2020-01-23T17:00:00-08:00
 ---
 This is the second in an indefinite series of posts about things that I think went well in the [Sorbet](https://sorbet.org/) project. The [previous one covered our testing approach.](https://blog.nelhage.com/post/record-replay-in-sorbet/)
