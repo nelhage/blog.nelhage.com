@@ -6,7 +6,7 @@ slug: record-replay-in-sorbet
 
 In 2017 and 2018, I (along with [Paul Tarjan](https://paultarjan.com/) and [Dmitry Petrashko](https://d-d.me/)) was a founding member of the [Sorbet](https://sorbet.org/) project at Stripe to build a gradual static typechecking system for Ruby, with the aim of enhancing productivity on Stripe’s millions of lines of Ruby, and eventually producing a useful open-source tool. I’m very proud of the work we did (and that others continue to do!) on Sorbet; I think we were very successful, and it was one of the best teams I’ve worked on in a number of ways.
 
-I think a lot well in the project, in all of our architecture implementation, and overall project strategy. This is the first of what I hope will be a series of blog posts exploring some pieces of the design and development of Sorbet, and some lessons that I think may generalize to other projects. I don’t claim that these techniques are necessarily novel, just that they worked for us and I hope we make a useful case study for others.
+I think a lot went well in the project, in all of our architecture implementation, and overall project strategy. This is the first of what I hope will be a series of blog posts exploring some pieces of the design and development of Sorbet, and some lessons that I think may generalize to other projects. I don’t claim that these techniques are necessarily novel, just that they worked for us and I hope we make a useful case study for others.
 
 
 ## Testing in Sorbet
