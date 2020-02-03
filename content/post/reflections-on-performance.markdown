@@ -67,7 +67,7 @@ Another observation I’ve made is that starting with a performant core can ulti
 
 Before we wrote Sorbet, Stripe had some internal Ruby static analysis which performed a very limited subset of the analysis implemented by Sorbet (global constant resolution). This tooling was built in Ruby on top of the [Parser](https://github.com/whitequark/parser) gem, and was drastically slower than Sorbet, as well as being more challenging to parallelize because of Ruby’s GVL. In order to make it work, we ended up building an increasingly-complex caching solution using `fork`-based parallelization, just to keep it to an acceptable runtime. Sorbet was able to outperform this system without any caching, due to greatly superior baseline performance, and simple internal parallelism.
 
-There’s a general philosophy here; attempts to add performance to a slow system often add complexity, in the form of complex caching, distributed systems, or additional bookkeeping for fine-grained incremental recomputation. These features add complexity and new classes of bugs, and also add overhead and make straight-line performance even worse, further increasing the problem.
+There’s a general observation here: attempts to add performance to a slow system often add complexity, in the form of complex caching, distributed systems, or additional bookkeeping for fine-grained incremental recomputation. These features add complexity and new classes of bugs, and also add overhead and make straight-line performance even worse, further increasing the problem.
 
 When a tool is fast in the first place, these additional layers may be unnecessary to achieve acceptable overall performance, resulting in a system that is in net much simpler for a given level of performance.
 
