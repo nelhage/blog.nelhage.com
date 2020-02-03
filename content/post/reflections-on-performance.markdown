@@ -2,7 +2,6 @@
 slug: reflections-on-performance
 title: "Reflections on software performance"
 date: 2020-02-02T17:00:00-08:00
-draft: true
 ---
 At this point in my career, I’ve worked on at least three projects where performance was a defining characteristic: [Livegrep](https://livegrep.com/search/linux), [Taktician](https://github.com/nelhage/taktician), and [Sorbet](https://sorbet.org/) (I [discussed sorbet](https://blog.nelhage.com/post/why-sorbet-is-fast/) in particular last time, and [livegrep in an earlier post](https://blog.nelhage.com/2015/02/regular-expression-search-with-suffix-arrays/)). I’ve also done a lot of other performance work on the tools I use, some of which ended up on my other blog, [Accidentally Quadratic](https://accidentallyquadratic.tumblr.com/).
 
