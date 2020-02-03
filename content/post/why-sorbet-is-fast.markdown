@@ -139,4 +139,4 @@ We unfortunately were not as rigorous as we could have been about recording benc
 
 # Conclusions
 
-A lot of factors went into making Sorbet as fast as it is. Next time, I hope to write up a few reflections on the general lessons that guided this experience, and that I take away from it.
+A lot of factors went into making Sorbet as fast as it is. [Next time](/post/reflections-on-performance/), I write up a few reflections on the general lessons that guided this experience, and that I take away from it.
