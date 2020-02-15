@@ -831,7 +831,7 @@ body>header h1 {
 body>header h1 a,
 body>header h1 a:visited,
 body>header h1 a:hover {
-    color: #f2f2f2;
+    color: black;
     text-decoration: none
 }
 body>header h2 {
@@ -840,6 +840,12 @@ body>header h2 {
     color: #aaa;
     font-weight: normal
 }
+body>header h3 {
+    color: #8C8C8C;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+}
+
 body>nav {
     position: relative;
     background-color: #ccc;
@@ -2110,8 +2116,8 @@ body>header {
 }
 body>header h1 a,
 body>header h1 a:visited,
-body>header h1 a:hover {
-    color: #8C8C8C;
+body>header h1 a:hover,
+body>header h3 {
     font-family: "Cabin", "Helvetica Neue", Arial, sans-serif
 }
 body>nav {

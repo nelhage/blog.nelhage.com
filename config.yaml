@@ -13,5 +13,6 @@ permalinks:
   post: /post/:slug
 params:
   Author: Nelson Elhage
+  Subtitle: It's software. It's made of bugs.
 PygmentsCodeFences: true
 ...
