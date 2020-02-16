@@ -2,7 +2,6 @@
 title: "Computers can be understood"
 slug: computers-can-be-understood
 date: 2020-02-16T12:00:00-08:00
-draft: true
 ---
 
 # Introduction
