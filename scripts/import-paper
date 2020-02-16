@@ -32,6 +32,13 @@ data = re.sub(
   flags=re.M|re.S|re.X,
 )
 
+data = re.sub(
+  r'[ ]+\n',
+  '\n',
+  data,
+  flags=re.M|re.S|re.X,
+)
+
 with open(outfile) as fh:
   out = fh.read()
 
