@@ -1,0 +1,1 @@
+/home/nelhage/code/blog.nelhage.com/themes/nelhage/archetypes/default.md

@@ -1,5 +1,5 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "{{ humanize .TranslationBaseName }}"
 slug: {{ .BaseFileName }}
 date: {{ .Date }}
 ---
