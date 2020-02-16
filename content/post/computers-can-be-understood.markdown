@@ -10,7 +10,7 @@ This post attempts to describe a mindset I’ve come to realize I bring to essen
 
 # Software can be understood
 
-I approach software with a deep-seated belief that *computers and software systems can be understood.* 
+I approach software with a deep-seated belief that *computers and software systems can be understood.*
 
 This belief is, for me,  not some abstruse theoretical assertion, but a deeply felt belief that essentially any question I might care to ask (about computers) has a comprehensible answer which is accessible with determined exploration and learning.
 
@@ -59,11 +59,11 @@ Understanding security issues very often requires working at multiple levels of 
 I started my career substantially in security, while working at [Ksplice](https://ksplice.oracle.com/), which sold zero-downtime software updates for the Linux kernel, primarily as a security feature. I learned a lot of my current skill and comfort with digging deeper into the stack and understanding all the layers of abstraction while spending time around a lot of security bugs there.
 
 ### Performance
-Understanding and reasoning [about software performance](https://blog.nelhage.com/post/reflections-on-performance/) also often involves understanding multiple layers of your stack. It’s hard to write efficient Python code without some understanding of the CPython (or PyPy) implementation, and you can’t write cache-efficient C code without some understanding of the generated code and the underlying hardware. Dig into a crowd of performance engineers, and you’ll virtually always find a handful of engineers with the habit of always digging deeper to continually better-understand ever-more layers of abstraction. 
+Understanding and reasoning [about software performance](https://blog.nelhage.com/post/reflections-on-performance/) also often involves understanding multiple layers of your stack. It’s hard to write efficient Python code without some understanding of the CPython (or PyPy) implementation, and you can’t write cache-efficient C code without some understanding of the generated code and the underlying hardware. Dig into a crowd of performance engineers, and you’ll virtually always find a handful of engineers with the habit of always digging deeper to continually better-understand ever-more layers of abstraction.
 
 ## Building mental models
 
-A deeply related habit to trying to learn about the underlying layers of a software stack is the habit of trying to understand software by building detailed mental models of the underlying system. Instead of understanding systems (languages, libraries, APIs, etc) solely as collections of rules and behaviors and edge-cases, I try to build a smaller model of their core primitives, and the rules or principles that generate the larger behaviors of the system. 
+A deeply related habit to trying to learn about the underlying layers of a software stack is the habit of trying to understand software by building detailed mental models of the underlying system. Instead of understanding systems (languages, libraries, APIs, etc) solely as collections of rules and behaviors and edge-cases, I try to build a smaller model of their core primitives, and the rules or principles that generate the larger behaviors of the system.
 
 As a concrete example, I’ve written more `bash` shell scrips in my life than I should perhaps be proud of. At some point, instead of continually memorizing specific patterns and anti-patterns that happen to work or not work (when do you or don’t need to quote something?), I stepped back to read the bash documentation in order to understand the [various expansion phases](https://www.gnu.org/software/bash/manual/bash.html#Shell-Expansions) that bash follows when processing a command line, and which ones are applied in which order in which context. This knowledge didn’t eliminate the need to learn a ton of trivia to write shell scripts — arguably, it added more trivia — but having a framework to fit knowledge into both made it easier to retain that trivia, and increased its explanatory power in the face of novel problems or patterns of code.
 
@@ -100,7 +100,7 @@ I do believe that if I had had more time and patience, I would eventually arrive
 ### Do the easy thing first
 I’ve lost track of the number of times that, faced with a bug in a dependency, I’ve spent days digging deeply into the dependency in order to identify and isolate the bug … only to realize that the bug was already fixed upstream, and we were pinned to an older version. Or when I’ve spent time trying to debug a crash in a binary that was built without debug symbols, by carefully poring through a coredump and x86 disassembly, only for a coworker to find a debug build, reproduce the issue there, and traipse through the green pastures of a working `gdb` session[^em].
 
-I have a particular set of software and systems skills, which happen to include binary reverse-engineering and rapidly coming up to speed on unfamiliar code bases. I have these skills in part because of my obsessive desire to understand the systems I work with. However, having these skills doesn’t mean they’re always the right skills to apply to a problem! 
+I have a particular set of software and systems skills, which happen to include binary reverse-engineering and rapidly coming up to speed on unfamiliar code bases. I have these skills in part because of my obsessive desire to understand the systems I work with. However, having these skills doesn’t mean they’re always the right skills to apply to a problem!
 
 It’s nearly always worth trying the easier approach first (upgrading a dependency, reaching for the debugger, a few passes of trial-and-error cargo-culting from working examples), and only reach for the big guns if those tools fail you.
 
@@ -119,7 +119,7 @@ Learning more about software systems is a compounding skill. The more systems yo
 One of my favorite examples of an engineer who publicly models this mindset is [Julia Evans](https://jvns.ca/), who I was fortunate enough to work with at Stripe. She is incredibly curious about how computers work, and does an amazing job writing and talking, not only about what she learns, but how she learned it, and conveying a raw sense of curiosity and excitement and discovery. Some of my favorite examples:
 
 - Her post about [how she got into kernel development](https://jvns.ca/blog/2014/01/04/4-paths-to-being-a-kernel-hacker/) is a great concrete example of taking a scary area and finding a way in.
-- Her talk on [how to become a wizard](https://jvns.ca/blog/so-you-want-to-be-a-wizard/) mirrors many of the ideas in the post, and also comes with practical advice on how to implement them. 
+- Her talk on [how to become a wizard](https://jvns.ca/blog/so-you-want-to-be-a-wizard/) mirrors many of the ideas in the post, and also comes with practical advice on how to implement them.
 - Her post on [asking great questions](https://jvns.ca/blog/good-questions/) is an excellent resource for anyone working with others, or just who’s curious about learning more in computing!
 
 
@@ -128,4 +128,3 @@ One of my favorite examples of an engineer who publicly models this mindset is [
 Computers are complex, but need not be mysteries. Any question we care to ask can, in principle and usually even in practice, be answered. Unknown systems can be approached with curiosity and determination, not fear.
 
 These beliefs are a huge aspect of how I — and many other experienced engineers I know — approach software engineering. I hope this post serves as a useful articulation of this mindset. If it encourages you to reach out and try to learn or understand something new, [drop me an email](mailto:nelhage@nelhage.com) and let me know!
-
