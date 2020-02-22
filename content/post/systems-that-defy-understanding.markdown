@@ -1,5 +1,5 @@
 ---
-title: "Systems that defy close understanding"
+title: "Systems that defy detailed understanding"
 slug: systems-that-defy-understanding
 date: 2020-02-22T12:00:00-08:00
 ---
