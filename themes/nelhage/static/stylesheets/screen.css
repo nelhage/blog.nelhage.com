@@ -2227,3 +2227,14 @@ figure.code .highlight .gutter {
 aside {
     display: none
 }
+
+div.c2a {
+    border:1px solid #ccc;
+    padding:3px;
+    text-align:center;
+    margin-bottom: 1em;
+}
+
+div.c2a p {
+    margin-bottom: 0px;
+}

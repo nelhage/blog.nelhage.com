@@ -4,6 +4,13 @@
 <article class="hentry" role="article">
   {{ partial "article.html" . }}
   <footer>
+
+    <div class='c2a'>
+    <p>Like this article? Sign up to receive future posts <a
+    href='https://tinyletter.com/madeofbugs'>in your email</a>.
+    </p>
+    </div>
+
     <p class="meta">
       {{ if .PrevInSection }}
         <a class="basic-alignment left" href="{{.PrevInSection.RelPermalink}}" title="Previous Post: {{.PrevInSection.LinkTitle}}">&laquo; {{.PrevInSection.LinkTitle}}</a>
