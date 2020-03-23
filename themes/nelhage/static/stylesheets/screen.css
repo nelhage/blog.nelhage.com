@@ -2238,3 +2238,21 @@ div.c2a {
 div.c2a p {
     margin-bottom: 0px;
 }
+
+a.anchor {
+  text-decoration: none;
+}
+.small {
+  font-size: 50%;
+}
+
+a.anchor {
+  visibility: hidden;
+  position: relative;
+  top: -3px;
+}
+h1:hover a.anchor { visibility: visible }
+h2:hover a.anchor { visibility: visible }
+h3:hover a.anchor { visibility: visible }
+h4:hover a.anchor { visibility: visible }
+h5:hover a.anchor { visibility: visible }
