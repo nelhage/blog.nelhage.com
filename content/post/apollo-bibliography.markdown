@@ -41,11 +41,14 @@ future.
 
 - <a name="sunburst-and-luminary">[Sunburst and Luminary](https://www.amazon.com/gp/product/B07L9YQ9WV/) by Don Eyles</a>
 
-
     The most recent book on the list (published about a month ago, as of this writing), this book is a memoir by Don Eyles, who wrote most of the software that ran on the Lunar Module during landing, which was almost certainly the most complex and high-stakes operation of the entire flight. The only reason it isn’t higher on this list is that the content is a bit specialized and narrowly focused on the landing and the software and adjacent topics; it’s definitely one of my favorite books here.
 
 
     Eyles tells the story of the technical details of the Apollo Computer and the landing, as well as of the culture and the people (within the MIT Instrumentation Laboratory, since renamed the [Charles Stark Draper Lab](https://www.draper.com) and spun out of MIT). It’s both a better telling of the technical details of the computer and the software and the technical issues that nearly aborted Apollos 11 and 14 than I’ve found elsewhere, and a great snapshot of the culture at MIT at the time, which I think also serves as a snapshot of the broader tech culture and a slide of ‘60s counterculture more broadly, and their role in Apollo, a program which had been otherwise (incompletely) called a “triumph of the squares.”
+
+- <a name="how-apollo-flew-to-the-moon">[How Apollo flew to the Moon](https://www.amazon.com/Apollo-Flew-Springer-Praxis-Books-ebook/dp/B0019JGZ3W) by W. David Woods</a>
+
+    This is far and away the best general-audience _technical_ documentation of the Apollo missions I've read. While a lot of the other entries here focus on the Apollo _program_ writ large, this book focuses fairly narrowly on the actual technical components and procedures that got an Apollo mission off the launchpad to the moon. It walks through the mission timeline, from the initial transfer of the Saturn V launch vehicle to the launchpad until splashdown, and explains essentially every major component, including great diagrams and actual mission data from selected missions to contextualize what it's talking about. It manages to be fairly technical while also very accessible; I feel like I left this book with a much better intuition for orbital maneuvers than I entered with, which is no small feat!
 
 
 - <a name="thirteen">[Thirteen: The Apollo Flight That Failed](https://www.amazon.com/Thirteen-Apollo-Flight-That-Failed-ebook/dp/B00H5KRG82/) by Henry S. F. Cooper</a>
