@@ -1,24 +1,11 @@
 {{ partial "head.html" . }}
+
 <div>
-  <article role="article">
-    <header>
-      <h1 class="entry-title">Recent Posts...</h1>
-    </header>
-    <div id="blog-archives">
-      {{ range first 20 (where .Data.Pages "Section" "post") }}
-      {{ if ne ($.Scratch.Get "this_year") .Date.Year }}
-      <h2>{{.Date.Year}}
-      {{ $.Scratch.Set "this_year" .Date.Year }}
-      </h2>
-      {{ end }}
-      <article>
-        {{.Render "archive_link"}}
-      </article>
-      {{ end }}
+  <article class="hentry" role="article">
+    <div class="entry-content">
+      {{ partial "content.html" . }}
     </div>
-    <footer>
-      <a class="basic-alignment" href="/post" title="All Posts">All Posts</a>
-    </footer>
   </article>
 </div>
+
 {{ partial "footer.html" .}}

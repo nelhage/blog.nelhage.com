@@ -10,5 +10,5 @@
 </header>
 
 <div class="entry-content">
-  {{ .Content | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}&nbsp;<a class="anchor" href="#${2}"><i class="small linkify icon">	&#x1F517;&#xFE0E;</i></a> ${3}` | safeHTML }}
+  {{ partial "content.html" .}}
 </div>
