@@ -16,7 +16,7 @@ Like most classifiers, the test suite does not promise perfect accuracy, but aim
 Like all classifiers, a test suite admits two kinds of possible errors[^terminology]:
 
 - A **false alarm**, when the tests return “FAIL,” even though we would like to regard the change as “acceptable”
-- A **missed alarm**, when the tests return “PASS,” even though we would like to regard the chance as “unacceptable”
+- A **missed alarm**, when the tests return “PASS,” even though we would like to regard the change as “unacceptable”
 
 [^terminology]: These are traditionally referred to “Type I” vs ”Type II” errors, or “false positives” vs “false negatives.” I find either set of terms very prone to confusion and parity errors, so I’m trying to use terminology I find less ambiguous.
 
@@ -51,4 +51,3 @@ Because the cost of shipping bugs is often so visible, there’s commonly organi
 If we’re thinking of tests as classifiers, one follow-up question is whether we can try to measure the rates of true and false alarms. As mentioned, it’s hard or impossible to know for sure the ground truth of “acceptability,” but this doesn’t necessarily stop us from trying to gather data here. There are some easy ideas, such as the observation that any change that we are forced to revert is probably an instance of a missed alarm, and I suspect that at scale there may be others.
 
 With access to a full history of git pushes and CI runs (and, potentially, even local test runs, to observe state before a developer even pushes), we can imagine looking at changes to test and non-test files, and trying to measure, for each test, the frequency with which a test failure is fixed by changing the code, or by changing a test file. This isn’t a perfect measure and has some challenges, but it seems like it should, at a minimum, shed light on tests that are outliers for false alarms. I’d love to hear from anyone who’s tried something like this or has any other creative ideas for how we can try to quantify our test suites through this lens!
-
