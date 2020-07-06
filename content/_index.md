@@ -6,7 +6,7 @@ Welcome to the home of Nelson Elhage's writing on the web. I am a software engin
 
 Here are some of my favorite articles you might want to start with:
 
-- [Test suites as classifiers](/post/test-suites-as-classifiers/), in which I argue for thinking of test suites as binary classifiers predicting the answer to the question "Is this change safe to chip?"
+- [Test suites as classifiers](/post/test-suites-as-classifiers/), in which I argue for thinking of test suites as binary classifiers predicting the answer to the question "Is this change safe to ship?"
 - [Two kinds of testing](/two-kinds-of-testing/), where I talk about the difference between testing for correctness and testing as a broader tool for software engineering.
 - [Why the Sorbet typechecker is fast](/post/why-sorbet-is-fast/), where I explore how we made the [Sorbet](https://sorbet.org) typechecker so fast.
 - [My Apollo Bibliography](/post/apollo-bibliography/), where I share my favorite books and movies about the Apollo program.
