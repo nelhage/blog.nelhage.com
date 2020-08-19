@@ -83,3 +83,10 @@ As Stripe’s monorepo continues to grow, relying on Sorbet’s raw performance 
 I’ve really strongly come to believe that we underrate performance when designing and building software. We have become accustomed to casually giving up factors of two or ten or more with our choices of tools and libraries, without asking if the benefits are worth it.
 
 Software can still be fast and responsive in 2020, and it’s very often well worth it to put in that effort. What’s your favorite software tool that’s *surprisingly* fast, in a way that makes it really pleasant to work with?
+
+
+----
+
+This post has been [translated into Chinese][chinese] by InfoQ CN.
+
+[chinese]: https://www.infoq.cn/article/2xBCHuSjb13UCQAISqOU
