@@ -56,8 +56,8 @@ logs do a good job of documenting certain processes, here are some
 types of situations where I've found working with meticulous notes at
 every step can be invaluable:
 </p>
-<dl>
-<dt>Debugging subtle problems</dt><dd>
+
+<h2>Debugging subtle problems</h2>
 Debugging is very much a problem of
 gathering data and making and testing hypotheses. For subtle bugs
 in large programs, the amount of state you need to keep track of
@@ -82,8 +82,8 @@ any relevant prompts, and every single code change (or, since we
 have technology, obsessively saving the output of `history`,
 making commits to test branches, and recording the correlation
 between them).
-</p></dd>
-<dt>Profiling and optimization</dt><dd>
+</p>
+<h2>Profiling and optimization</h2>
 This is a process similar in many ways
 to debugging, but even more data-driven. When you're done with a
 session of optimizing a piece of code or a system, if you can't
@@ -108,8 +108,8 @@ This is critically important when you're optimizing not just a
 piece of code, but some kind of system with lots of configuration
 and setup, that you'll later have to duplicate somewhere else,
 instead of just checking the result into source control.
-</p></dd>
-<dt>Understanding a new project's code or documentation</dt><dd>
+</p>
+<h2>Understanding a new project's code or documentation</h2>
 Whenever I'm
 first diving into a large code-base or first playing with a large
 new API, I find it invaluable to take notes as I go about what I
@@ -128,8 +128,8 @@ vital that I've been writing down my findings.
 This is one example where a chronological style documenting
 exactly in what order I found things is less critical, but that
 detailed notes as I go are still vital.
-</p></dd>
-<dt>Designing things</dt><dd>
+</p>
+<h2>Designing things</h2>
 Whenever you're designing something &ndash; be it an
 API, a protocol, an interface, some kind of system, or something
 else &ndash; it's worth taking notes on the process you took to get to
@@ -153,8 +153,8 @@ or new requirements come up, you'll probably want to remember the
 other possibilities you came up with &ndash; maybe one of them is now
 more right.
 </p>
-</dd>
-</dl>
+
+<h2>Give it a try!</h2>
 
 <p>So, if you're a software engineer, I strongly encourage you to try to
 get better at writing things down. In a future post, I'll hopefully
