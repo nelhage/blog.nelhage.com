@@ -115,9 +115,10 @@ and has
 [written about it](http://hypothesis.works/articles/what-is-property-based-testing/),
 as well as adopted many ideas from the fuzzing world into the tool.
 
-If you maintain a Python codebase, you should probably be using
-Hypothesis. If you don't, you should probably understand Hypothesis,
-so you can crib its best ideas for yourself.
+And in fact, since I first wrote this post, the Hypothesis authors have [launched HypoFuzz](https://hypofuzz.com/) -- in small part inspired by my posts -- to try to better support more diverse workflows with Hypothesis, including ones like the flows discussed in this post. I'm really excited to see what I already thought of as the best-in-breed property-based testing tool getting even more sophisticated.
+
+
+If you maintain a Python codebase, you should probably be using Hypothesis. If you don't, you should probably understand Hypothesis, so you can crib its best ideas for yourself.
 
 
 [proptesting]: http://blog.jessitron.com/2013/04/property-based-testing-what-is-it.html

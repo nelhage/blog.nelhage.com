@@ -240,8 +240,7 @@ of failed examples, the ability to
 and
 [coverage-guided exploration](http://hypothesis.readthedocs.io/en/latest/settings.html?highlight=use_coverage#hypothesis.settings.use_coverage).
 
-I don't write much Python these days, but if I did I'd definitely
-explore building out a variant of this workflow on top of Hypothesis.
+And in fact, since I first wrote this post, the Hypothesis authors have [launched HypoFuzz](https://hypofuzz.com/) -- in small part inspired by my posts -- to try to better support more diverse workflows with Hypothesis, including ones like the flows discussed in this post. I'm really excited to see what I already thought of as the best-in-breed property-based testing tool getting even more sophisticated.
 
 ## Postscript
 
