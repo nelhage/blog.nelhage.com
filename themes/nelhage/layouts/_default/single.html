@@ -1,15 +1,31 @@
 {{ partial "head.html" . }}
 
 <div>
-<article class="hentry" role="article">
-  {{ partial "article.html" . }}
-  <footer>
+  <article class="hentry" role="article">
+    {{ partial "article.html" . }}
+    <footer>
 
-    <div class='c2a'>
-    <p>Like this article? Sign up to receive future posts <a
-    href='https://tinyletter.com/madeofbugs'>in your email</a>.
-    </p>
-    </div>
+      <div class='c2a'>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/nelhage"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/nelhage', 'popupwindow')"
+            class="embeddable-buttondown-form"
+            >
+          <p>
+            <label for="bd-email">Subscribe to my newsletter (~1 post/week and blog updates):</label>
+          </p>
+          <p>
+          <input type="email" name="email" placeholder="email@domain.com" id="bd-email"></input>
+          <input type="hidden" value="1" name="embed"></input>
+          <input type="submit" value="Subscribe"></input>
+          </p>
+          <p>
+            <a href="https://buttondown.email" target="_blank">Powered by Buttondown.</a>
+          </p>
+        </form>
+      </div>
 
     <p class="meta">
       {{ if .PrevInSection }}
