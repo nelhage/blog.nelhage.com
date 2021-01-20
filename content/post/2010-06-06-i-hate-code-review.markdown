@@ -184,4 +184,3 @@ effectively. I'd appreciate pointers to anything you've found
 particularly compelling.
 </p></div>
 </div>
-</div>
