@@ -37,7 +37,7 @@ I can’t deny that query planners are very *useful*, and that there is somethin
 
 However, for application development, the vast majority of the time, you *know* what your data access patterns are, and you have designed indexes around them, and value predictability. For an online application with consistent data access patterns and high throughput, performance is *part of the database’s interface*; if a database continues serving queries but with substantially worse latency, that’s an incident!
 
-The query planner is the antithesis of predictability; *most* of the time it will choose right, but it’s hard to know when it won’t or what the impact will be if it doesn’t. Query planners change behavior based on estimates of data distribution, so even running `EXPLAIN` at CI time does not suffice to provide guarantees. SQL just engines make it really hard to guarantee predictable performance in query excecution.
+The query planner is the antithesis of predictability; *most* of the time it will choose right, but it’s hard to know when it won’t or what the impact will be if it doesn’t. Query planners change behavior based on estimates of data distribution, so even running `EXPLAIN` at CI time does not suffice to provide guarantees. SQL engines just make it really hard to guarantee predictable performance in query excecution.
 
 Postgres, in particular, stubbornly refuses to have any pragma for forcing selection of an index at all, which infuriates me. It’s not a question of whether or not their planner is smart enough (although I have run into cases where it makes bad mistakes!), but it’s about the mindset of development and data management; At some point, transparency, explicitness, and predictability are really important values.
 
@@ -61,7 +61,7 @@ With all that said to the bad about SQL, SQL is a pretty decent ad-hoc query lan
 
 There are plenty of nits to pick about SQL for interactive use, but in net this is where it really shines as a language, in my opinion.
 
-This advantage also carries over, to some degree, to exploratory *development*; if you are building our an early-stage application where you are iterating rapidly, the ability to use SQL and to use the query planner to just write whatever queries you need at the moment and then make them efficient later — if there even is a later, for that feature — is genuinely valuable.
+This advantage also carries over, to some degree, to exploratory *development*; if you are building out an early-stage application where you are iterating rapidly, the ability to use SQL and to use the query planner to just write whatever queries you need at the moment and then make them efficient later — if there even is a later, for that feature — is genuinely valuable.
 
 # Migrations are far more painful than they need to be
 
