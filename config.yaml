@@ -2,7 +2,6 @@ baseURL: https://blog.nelhage.com
 disablePathToLower: true
 languageCode: en-us
 title: Made of Bugs
-googleAnalytics: UA-10238083-1
 MetaDataFormat: yaml
 theme: nelhage
 outputFormats:
