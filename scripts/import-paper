@@ -2,6 +2,10 @@
 import re
 import sys
 
+if len(sys.argv) != 3:
+  print("Usage: {} paper-export.md content/post/blog-post.markdown".format(sys.argv[0]), file=sys.stderr)
+  sys.exit(1)
+
 infile, outfile = sys.argv[1:]
 
 with open(infile) as fh:
