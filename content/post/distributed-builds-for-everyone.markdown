@@ -64,8 +64,16 @@ For decades now, technologists have talked about the vision of [“utility compu
 
 The modern cloud era has been hailed by many as the realization of this vision, in which we rent computing an hour-at-a-time (and more recently, [a second-at-a-time](https://aws.amazon.com/blogs/aws/new-per-second-billing-for-ec2-instances-and-ebs-volumes/)), and virtually no one owns their own hardware at scale any more.
 
-However, cloud environments remain somewhat involved to configure and to operate, and tend to demand a lot of expertise of their users. For me, the vision of utility computing can never be complete until the act of running computation — using the full power and scale of the cloud, at least as far as you’re willing to pay — is about as easy and worry-free as turning on the faucet in your home for fresh water.
+However, cloud environments remain fairly involved to configure and to operate, and tend to demand a lot of expertise of their users. For me, the vision of utility computing can never be complete until the act of running computation — using the full power and scale of the cloud, at least as far as you’re willing to pay — is about as easy and worry-free as turning on the faucet in your home for fresh water.
 
 Llama is my attempt to work towards this vision for — at the least — the specific problem of software builds. Thanks to Amazon Lambda, and the general advancement of cloud technologies, I believe we are finally within reach of concretely achieving this vision, and I’m hopeful we can make it so.
 
 That said, to be clear, Llama doesn’t yet realize this vision entirely. It’s a young project, with few users yet other than me, and lots of sharp edges and rough corners. However, I think results like my LLVM build performance — where it outperforms some of the largest machines money can buy — serve as strong evidence that the approach is feasible and can succeed if we push on it.
+
+## Beyond builds
+
+I've talked about software builds here because that's a domain I'm deeply familiar with, and because that's the one I've chosen to tackle with `llamacc`. However, I think the vision here can go well beyond building software. I imagine a world where _most_ compute-intensive tasks that are performed interactively are seamlessly outsourced to the cloud on-demand, while preserving a user experience _as though_ all of your data remained available locally.
+
+As one other concrete example of feasibility, prior to the `gg` paper, the same team demonstrated [ExCamera][excamera], which used Lambda in a similar fashion to perform video editing and transcoding. Between that project, `gg`, and Llama, I feel confident that we've demonstrated that vision has broad feasibility; now we just need to finish building it!
+
+[excamera]: https://www.usenix.org/conference/nsdi17/technical-sessions/presentation/fouladi
