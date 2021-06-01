@@ -1,7 +1,6 @@
 ---
 title: "Distributed cloud builds for everyone"
 date: 2021-05-31T16:05:17-07:00
-draft: true
 ---
 CPU cycles are cheaper than they have ever been, and cloud computing has never been more ubiquitous. All the major cloud providers offer generous free tiers, and services like GitHub Actions offer free compute resources to open-source repositories. So why do so many developers still build software on their laptops?
 
