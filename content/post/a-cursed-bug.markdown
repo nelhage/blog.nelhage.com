@@ -2,7 +2,6 @@
 title: "A Cursed Bug"
 date: 2022-02-22T19:03:48-08:00
 slug: a-cursed-bug
-draft: true
 ---
 In my day job at [Anthropic](http://anthropic.com/), we run relatively large distributed systems to train large language models. One of the joys of using a lot of computing resources, especially on somewhat niche software stacks, is that you spend a lot of time running into the long-tail of bugs which only happen rarely or in very unusual configurations, which you happen to be the first to encounter.
 
