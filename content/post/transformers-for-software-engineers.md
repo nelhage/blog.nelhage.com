@@ -1,13 +1,13 @@
 ---
 title: "Transformers for software engineers"
 slug: transformers-for-software-engineers
-date: 2022-03-31T15:17:56-07:00
+date: 2022-04-01T13:00:00-07:00
 math: true
 ---
 
-Ever since its introduction in the 2017 paper, [Attention is All You Need](https://arxiv.org/abs/1706.03762), the Transformer model architecture has increasingly taken over the ML world. Initially introduced for machine translation, it has become the tool of choice for a wide range of domains, including text, audio, video, and others. Transformers have also driven a lot of the massive increase in model scale and some of the most impressive ML results of the last few years, including OpenAI’s [GPT-3](https://en.wikipedia.org/wiki/GPT-3) and [Codex](https://openai.com/blog/openai-codex/) models, DeepMind’s [Gopher](https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval) models, and many others.
+Ever since its introduction in the 2017 paper, [Attention is All You Need](https://arxiv.org/abs/1706.03762), the Transformer model architecture has taken the deep-learning world by storm. Initially introduced for machine translation, it has become the tool of choice for a wide range of domains, including text, audio, video, and others. Transformers have also driven most of the massive increases in model scale and capability in the last few years. OpenAI's [GPT-3](https://en.wikipedia.org/wiki/GPT-3) and [Codex](https://openai.com/blog/openai-codex/) models are Transformers, as are DeepMind’s [Gopher](https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval) models and many others.
 
-About a year ago, I started working on reverse-engineering these Transformer models alongside the rest of the Interpretability team at [Anthropic](https://www.anthropic.com/). Our goals is to ultimately understand just how these models implement their impressive capabilities; ideally, we aspire to be able to articulate and describe in details just what algorithms are being executed inside the massive parameters of these models.
+About a year ago, I started working on the Interpretability team at [Anthropic](https://www.anthropic.com/), trying to reverse-engineer models in this family. Our goals is to ultimately understand just how these models implement their impressive capabilities; ideally, we aspire to be able to articulate and describe in detail the algorithms that are being executed inside the massive parameters of these models.
 
 
 ## Reverse-engineering a model
@@ -16,7 +16,9 @@ In some ways, the project of [circuits-style interpretability](https://distill.p
 
 My background is as a software engineer, and I’ve also done some reverse-engineering work in the past, so I tend to – among other lenses – think of Transformer models through very “computational” or “software engineering” lenses.
 
-This post is an attempt to present the Transformer architecture in a way that highlights some of the perspectives and intuitions that view affords. We’ll walk through a (mostly) complete implementation of a GPT-style Transformer, but the goal will not be running code; instead, I’m going to use the language of software engineering and programming to try to explain how these models work and some of the perspectives we bring to them when doing interpretability work. I hope for this post to be a helpful introduction to the details of the Transformer model for anyone with a SWE background, and for it to be particularly helpful if you’re looking to do interpretability work.
+This post is an attempt to present the Transformer architecture in a way that highlights some of the perspectives and intuitions that view affords. We’ll walk through a (mostly) complete implementation of a GPT-style Transformer, but the goal will not be running code; instead, I’m going to use the language of software engineering and programming to explain how these models work and articulate some of the perspectives we bring to them when doing interpretability work.
+
+I hope for this post to be a helpful introduction to the details of the Transformer model for anyone with a SWE background, and for it to be particularly helpful if you’re looking to do interpretability work.
 
 If you want to follow along, you can [find all the code in the post on github](https://github.com/nelhage/transformer-rs/blob/master/src/lib.rs).
 
@@ -503,27 +505,34 @@ However, even though we would never **use** an implementation like this, I find 
 
 Let’s just spell out why this implementation is so much less efficient.
 
-`W_QK` and `W_OV` take as input full `State` vectors, which is to say, vectors of size `D_MODEL`. The natural representation of them is as matrices of size `D_MODEL x D_MODEL`, which means that applying them at a single position requires at least `D_MODEL²` work (since we have to at least look at each element).
+We'll start by looking at the normal implementation of attention, for reference. We'll consider a single attention head; for the total work we can just multiply everything by \\(n_{heads}\\), which will mostly have the effect of changing \\(d_{head}\\) to \\(d_{model}\\) everywhere.
 
-In the above implementation, we evaluate `W_QK` and `W_OV` once for each **pair** of (source, destination) positions, and so we do something like
+We're also just going to count multiplication operations, for simplicity; in practice this covers essentially all of the relevant work.
 
-$$O(n_{ctx}^2\cdot{}d_{model}^2)$$
+- Each of the K, Q, V, and O multiplications is  \\( d_{head}\times{}d_{model} \\). Applying those at every position nets out to \\(4d_{model}d_{head} \\) operations across all heads.
+- Then we have the nested loops over positions. If we have \\(n_{ctx}\\) positions in our context, there are \\(n_{ctx}^2\\) pairs of them[^fnq]; when people refer to a vanilla Transformer as "quadratic", this loop is what they're talking about.
+- At each pair of positions, we do the QK dot product (\\(d_{head}\\) multiplications), and the V*score multiplication (another \\(d_{head}\\) multiplications). Thus we arrive at \\(2n_{ctx}^2d_{head}\\) multiplications.
+- Summing these terms and factoring out a bit we arrive at
 
-work.
+$$2d_{head}n_{ctx}(2d_{model} + n_{ctx})$$
 
-In the normal attention mechanism,  we only look at the `State` vector for each position O(1) times, to generate the Q,K,V vectors. We then do the quadratic (source, destination) operations over the ( smaller) `D_HEAD` dimension. We thus end up with something like
+total multiplications for a single attention head. We note that for large models, we generally have \\(d_{model} \gg n_{ctx}\\) (GPT-3 175B: \\(d_{model}=12288\\\) vs \\(n_{ctx}=2048\\)), and so the quadratic term actually contributes very little to the computational cost!
 
-$$O(n_{ctx}\cdot{}d_{model} + n_{ctx}^2\cdot{}d_{head}^2)$$
+[^fnq]: In our code as written, we only loop over the lower diagonal of this matrix, so we could divide by two. However, performant implementations often do the QK dot product at every pair and then exclude the future positions inside the softmax. In either case, a factor of two doesn't change our analysis.
 
-work, where the first term represents the computation of the vectors and final `W_O` multiplication, and, and the second term is the nested loop over positions.
+However, what if we did the full `State` operations at every position? For maximum efficiency we would represent `W_QK` and `W_OV` in factored form, as a pair of \\(d_{model}\times{}d_{head}\\) matrices which we multiply in the appropriate order. We would do this operation at each point inside the nested loop, for a total of
 
-For large models, `D_HEAD` is typically 10-100 times smaller than `D_MODEL`, which means `D_HEAD`² is 100-10,000 times smaller than `D_MODEL`².  We would thus much prefer to have the smaller constant associated with the \\( O(n_{ctx}^2) \\) term.
 
+$$n_{ctx}^2(4d_{head}d_{model})~~=~~2d_{head}n_{ctx}(2d_{model}n_{ctx})$$
+
+multiplications! Now, instead of \\(d_{model}\\) and \\((n_{ctx}\\) *adding* on the right hand side, they *multiply*, and our computational cost goes absolutely through the roof. Essentially, what has happened was that the traditional version "lifts" the expensive matrix multiplies out of the inner loop, so that we only have relatively-cheap 1d operations inside the loop. We've undone that optimization, and are now doing the much-more-expensive 2d matrix operations inside the inner loop, which is never desirable.
 
 # Closing Thoughts
 
 I really enjoyed this writeup. I feel pretty satisfied about this alternate perspective for understanding and thinking about Transformers, and about the use of notation and types to express the some of the concepts I use to think about these models. I’m hopeful this post will be helpful to other software engineers who are interested in getting into or learning modern ML models, especially anyone interested in Transformer interpretability!
 
 If you want to read more, I recommend our [transformer-circuits](https://transformer-circuits.pub/) site, where we’ve published our first two papers and some additional resources outlining what we’ve learned and how we think about these models!
+
+Alternately, if this post has left you feeling like you better-understand the Transformer but wanting to check your understanding, I recommend trying to write your own in PyTorch or JAX! You can get a working single-GPU model in very few lines of code, and it's very cheap to get small amounts of GPU time in [Google Colab](https://colab.research.google.com/) or TPU time from the [Google TPU Research Cloud](https://sites.research.google/trc/about/), even if you don't have a GPU of your own. Writing a full model end-to-end and watching your loss start to come down is really quite fun.
 
 And, of course, if you’re interested in working with me on these models full time, [Anthropic is hiring](https://www.anthropic.com/#careers)! We don’t require ML experience for strong software and systems engineering candidates; we tend to be [bottlenecked on engineering](https://www.lesswrong.com/posts/YDF7XhMThhNfHfim9/ai-safety-needs-great-engineers) as much as or more so than on ML expertise, and we’re very happy to help strong engineers learn the ML that they need to in order to be productive here!
