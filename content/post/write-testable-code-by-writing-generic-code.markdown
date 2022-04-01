@@ -26,18 +26,18 @@ I agreed this problem statement seemed sensible. Talking about it some more, we 
 The problem, though, could be generalized even further! What Alex had, conceptually, was a way to create an `io.ReadCloser` starting at an arbitrary offset (using an S3 range request), and he wanted to wrap it into an `io.ReadCloser` that handled errors by retrying from the current offset (at least up to some limit). So his problem could be reduced, in large part, to implementing and testing a function like the following:
 
 
-{{<highlight go>}}
-    // NewRetryingReader accepts a function which can create an `io.ReadCloser`
-    // reading from some backend at the specified offset. For instance, this could
-    // be implemented for a filesystem by combining `os.Open` and `os.File.Seek`. It
-    // returns an `io.ReadCloser` which will read the entire backend sequentially
-    // `from` offset 0, retrying any `Read` errors by restarting from the last-read
-    // offset.
-    //
-    // The returned reader will retry at a given offset MaxRetriesAtOffset times. If it
-    // receives that many failures in a row, it will return the last error received
-    // and stop retrying.
-    func NewRetryingReader(startReading func(offset int64) (io.ReadCloser, error)) io.ReadCloser
+{{<highlight golang>}}
+// NewRetryingReader accepts a function which can create an `io.ReadCloser`
+// reading from some backend at the specified offset. For instance, this could
+// be implemented for a filesystem by combining `os.Open` and `os.File.Seek`. It
+// returns an `io.ReadCloser` which will read the entire backend sequentially
+// `from` offset 0, retrying any `Read` errors by restarting from the last-read
+// offset.
+//
+// The returned reader will retry at a given offset MaxRetriesAtOffset times. If it
+// receives that many failures in a row, it will return the last error received
+// and stop retrying.
+func NewRetryingReader(startReading func(offset int64) (io.ReadCloser, error)) io.ReadCloser
 {{</highlight>}}
 
 By abstracting out the details of S3, we’ve created a simple abstraction which can be implemented and tested in isolation of any application code. It’s very easy to test by creating in-memory implementations of `startReading` which back to a byte buffer and return errors periodically, or even fuzzed by randomizing the buffer sizes, read sizes, and failure rate.
