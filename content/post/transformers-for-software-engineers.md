@@ -18,7 +18,9 @@ My background is as a software engineer, and I’ve also done some reverse-engin
 
 This post is an attempt to present the Transformer architecture in a way that highlights some of the perspectives and intuitions that view affords. We’ll walk through a (mostly) complete implementation of a GPT-style Transformer, but the goal will not be running code; instead, I’m going to use the language of software engineering and programming to explain how these models work and articulate some of the perspectives we bring to them when doing interpretability work.
 
-I hope for this post to be a helpful introduction to the details of the Transformer model for anyone with a SWE background, and for it to be particularly helpful if you’re looking to do interpretability work.
+This post is probably best read alongside traditional presentations of these models; I've glossed over a lot of details to focus on the pieces I find interesting. [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) is one great resource, although note we'll be looking at "Decoder-only" models with only the "decoder" stack, and no "encoder.
+
+I hope for this post to be a helpful introduction to the details of the Transformer model for anyone with a SWE background who is in the process of getting into ML, and for it to be particularly helpful if you’re looking to do interpretability work.
 
 If you want to follow along, you can [find all the code in the post on github](https://github.com/nelhage/transformer-rs/blob/master/src/lib.rs).
 
@@ -59,33 +61,31 @@ trait ARModel {
 
 ## The residual stream “state vector”
 
-The core internal architecture of the Transformer is a stack of identically-structured layers. Each layer takes in the previous “hidden state” of the model — one state per each token position — does some computation, and then updates the state to produce the following state.
+The core internal architecture of the Transformer is a stack of identically-structured layers. Each layer takes in the previous “hidden state” of the model — one state per each token position — does some computation, and then updates that state to produce the following state.
 
-I sometimes like to think of this stack of layers almost as an interpreter for a functional language, where the “instructions” are the model architecture, and the weights are the “operands” to those instructions. The functional style comes from the fact that we never mutate the state in-place; instead, each layer produces an “update” which is merged into the state to produce the next state.
-
-In a Transformer, this “state” is just a vector of floating-point values, one vector for each position, each vector of length `D_MODEL`. We’ll define a type to hold that state, along with a few aliases:
+In a Transformer, this “state” is just a vector of floating-point values, one vector for each position, each vector of length `D_MODEL`. We’ll define a type to hold that state:
 
 
 {{<highlight rust>}}
 #[derive(Clone)]
 struct State([f32; D_MODEL]);
 
-type Query = State;
-type Update = State;
+// At every point inside the model, we have one State per token
+// position
+type ResidualStream = [State];
 {{</highlight>}}
-
 
 I often like to think of the state (which we call the “residual stream”) as an “opaque data structure.” It contains within it many different features, but those features are opaque and cannot be directly accessed. Instead, the state exposes two main operations:
 
 - We can **query** it. To do this, we provide a “query” vector, and take a dot product with that vector to produce a single floating-point value.
 - We can **update** it, by providing an “update” vector which will be added to the state vector.
 
-Both the “update” and “query” operations operate on the same physical type as the state itself, but we’ll define type aliases to help us keep straight which conceptual operations we’re doing.
-
-We can define the basic operations on these types:
-
+We'll define type aliases for those types to help keep them straight in our presentation. They're both the same physical type as the state vector, but we'll often think of them pretty differently. We'll also define the basic operations on them.
 
 {{<highlight rust>}}
+type Query = State;
+type Update = State;
+
 impl State {
     fn zero() -> Self {
         State([0.0; D_MODEL])
@@ -115,7 +115,7 @@ fn dot<const N: usize>(l: &[f32; N], r: &[f32; N]) -> f32 {
 
 It’s worth saying a few words about these definitions and how I’m trying to use them to convey intuitions and mental models I have.
 
-
+- Because of the way layers can only update the state by adding an `Update` into it, and not by completely replacing it, I often think of the Transformer as a "functional program" implemented on a very unusual machine. We pass the state stream through and repeatedly update it to produce to a new state, but we never mutate it in-place or completel throw it away. In this model, we might think of the "model architecture" and the layers as the "instructions" for our weird machines, and the weights as our "operands" for those instructions.
 - We will shortly end up with vectors of States, one per token position. Traditionally we represent these directly as 2d tensors (3d with a batch dimension); by defining a `State` alias we can make it clearer when to think of a 2d tensor as a vector of 1d states, vs as a 2d matrix encoding some linear transformation.
 - The “opaque” state and the “query” and “update” operations get at the fact that the residual stream state vectors have [no privileged basis space](https://transformer-circuits.pub/2021/framework/index.html#def-privileged-basis). We should not expect the individual dimensions of the state vector to have meaning, and so we abstract them out.
 - Along that line, it’s a quirk of high-dimensional spaces that in N-dimensional space you can construct exponentially-many “almost-orthogonal” vectors (which all have very small pairwise dot products). We suspect Transformers use this property to (noisily) encode far more than `D_MODEL` features into the residual stream, and I think the “opaque structure you can query for the presence of a particular direction” fits well with this model.
