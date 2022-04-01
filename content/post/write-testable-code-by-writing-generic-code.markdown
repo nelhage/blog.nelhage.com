@@ -26,6 +26,7 @@ I agreed this problem statement seemed sensible. Talking about it some more, we 
 The problem, though, could be generalized even further! What Alex had, conceptually, was a way to create an `io.ReadCloser` starting at an arbitrary offset (using an S3 range request), and he wanted to wrap it into an `io.ReadCloser` that handled errors by retrying from the current offset (at least up to some limit). So his problem could be reduced, in large part, to implementing and testing a function like the following:
 
 
+{{<highlight go>}}
     // NewRetryingReader accepts a function which can create an `io.ReadCloser`
     // reading from some backend at the specified offset. For instance, this could
     // be implemented for a filesystem by combining `os.Open` and `os.File.Seek`. It
@@ -37,6 +38,7 @@ The problem, though, could be generalized even further! What Alex had, conceptua
     // receives that many failures in a row, it will return the last error received
     // and stop retrying.
     func NewRetryingReader(startReading func(offset int64) (io.ReadCloser, error)) io.ReadCloser
+{{</highlight>}}
 
 By abstracting out the details of S3, we’ve created a simple abstraction which can be implemented and tested in isolation of any application code. It’s very easy to test by creating in-memory implementations of `startReading` which back to a byte buffer and return errors periodically, or even fuzzed by randomizing the buffer sizes, read sizes, and failure rate.
 
@@ -72,4 +74,3 @@ However, I’ve seen enthusiastic developers try to follow this approach and pro
 In this instance, I think the proposed abstraction above, or something similar, is probably actually an objectively desirable architecture for Alex’s problem, in addition to being easy to test. It keeps the “business logic” reading the files completely unchanged, with no new error-handling or awareness of the details of the object store. It isolates the S3 connection and retry logic into one place, close together and fairly generically — it’s easy to imagine slotting it in front of all uses of S3 in his application.
 
 If I were instead pursing a “quick fix” to this problem, I might be tempted to inject *ad hoc* error handling and retries into whatever application code is calling `Read` on the `ReadCloser`, infecting the application code with additional error-handling and potentially also knowledge of the specific S3 backend. From an eye to long-term maintainability and sensible layering, I think that wrapping the retries entirely inside the `ReadCloser` makes a lot of sense. I view this case, therefore, as an instance where [designing for testability](https://blog.nelhage.com/2016/03/design-for-testability/) actually ends up leading to better code overall. We started out with a simple question of “I wrote this code, how do I test it?” and by pulling on the thread and by bringing the question of “Can we redesign this?” into scope, we ended up both with better tests, and with better system design overall.
-
