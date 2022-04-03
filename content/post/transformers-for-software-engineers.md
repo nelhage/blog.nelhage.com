@@ -30,6 +30,10 @@ We’ll start with some hyperparameters. I’ve picked the values from GPT-3 175
 
 You can compare these to Table 2.1 [in the GPT-3 paper.](https://arxiv.org/pdf/2005.14165.pdf)
 
+(All the code in this post will be in Rust. I've tried to avoid using
+any overly esoteric features, so hopefully it will be somewhat
+readable even if you aren't comfortable with Rust in particular)
+
 
 {{<highlight rust>}}
 const N_LAYERS: usize = 96;
@@ -37,7 +41,7 @@ const D_MODEL: usize = 12288;
 const D_MLP: usize = 4 * D_MODEL;
 const D_HEAD: usize = 128;
 const N_HEADS: usize = D_MODEL / D_HEAD;
-const N_VOCAB: usize = 50_000;
+const N_VOCAB: usize = 50000;
 {{</highlight>}}
 
 ## Autoregressive language modeling
