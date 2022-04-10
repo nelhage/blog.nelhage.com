@@ -55,7 +55,7 @@ As an interesting aside, I looked up the documentation for the kernel’s reader
 
 > If your code divides neatly along reader/writer lines, and the lock is held by readers for significant lengths of time, using [reader/writer] locks can help.
 
-Based on the phenomenon described in this post, I believe this evidence to be overly simplistic at best, and actively harmful at worst.
+Based on the phenomenon described in this post, I believe this advice to be overly simplistic at best, and actively harmful at worst.
 
 ## MongoDB MMAPv1 storage engine
 
