@@ -17,7 +17,7 @@ wordpress_url: http://nelhage.scripts.mit.edu/madeofbugs/?p=5
 ---
 
 I'm sitting in the airport in Las Vegas on the way back from [DEF
-CON][http://defcon.org] 15. It's the first time I've been at the con,
+CON](http://defcon.org) 15. It's the first time I've been at the con,
 and it wasn't really what I expected. Frankly, I walked away feeling
 kinda underwhelmed.
 

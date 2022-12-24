@@ -47,7 +47,7 @@ two values of `DISPLAY`. You initially open a screen with some dummy
     env DISPLAY=:15 screen
 
 Then, whenever you log in to the machine with X forwarding (or log in
-locally), you simply from:
+locally), you simply run:
 
     proxy-display :15
 
