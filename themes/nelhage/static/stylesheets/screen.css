@@ -2256,3 +2256,7 @@ h2:hover a.anchor { visibility: visible }
 h3:hover a.anchor { visibility: visible }
 h4:hover a.anchor { visibility: visible }
 h5:hover a.anchor { visibility: visible }
+
+dt {
+    font-weight: bold;
+}
