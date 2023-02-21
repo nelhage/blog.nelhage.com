@@ -7,19 +7,19 @@ draft: false
 
 What's the "right" level of CPU utilization for a server? If you look at a monitoring dashboard from a well-designed and well-run service, what CPU utilization should we hope to see, averaged over a day or two?
 
-It's a very general question, and it's not clear it should have a single answer. For a long time, however, I had the vaguely felt conviction that higher must always be better: we should aim for as close to 100% utilization as we can. Why? Anything less than 100% represents unused hardware capacity, which means, in some sense, that we're wasting resources. If a service isn't maxing out its CPU, we could move it onto a smaller instance, save some money, and contine to operate just fine.
+It's a very general question, and it's not clear it should have a single answer. For a long time, however, I generally believed that higher is always better: we should aim for as close to 100% utilization as we can. Why? Well, anything less than 100% represents unused hardware capacity, which means we're wasting resources. If a service isn't maxing out its CPU, we could move it onto a smaller instance and save some money or free up some CPU for another purpose.
 
 This simplistic intuition, it turns out, is rarely quite right.
 
-Suppose we achieve that ideal and our service is running close to 100% utilization. What happens now if we go viral somewhere and receive an unexpected burst of traffic? Or if we want to deploy a new feature which takes a little bit of extra CPU on each request?
+Suppose we achieve that ideal and our service is running close to 100% utilization. What happens now if we go unexpectedly viral and receive an unexpected burst of traffic? Or if we want to deploy a new feature which takes a little bit of extra CPU on each request?
 
-If we were at 100% utilization, and then something happens to increase load, then we're in trouble! Running at 100% utilization leaves us no room to absorb incremental load. We will either degrade in some way, have to scramble to add emergency capacity, or both.
+If we are at 100% utilization, and then something happens to increase load, then we're in trouble! Running at 100% utilization leaves us no room to absorb incremental load. We will either degrade in some way, have to scramble to add emergency capacity, or both.
 
-This toy example is an instance of a very general phenomenon: At some frontier, improvements to effiency almost always trade off against resiliency.
+This toy example is an instance of a very general phenomenon: Improvements to effiency often trade off against resiliency, and the further we optimize a system, the worse this tradeoff tends to become.
 
 Past some point, making a system more efficient will mean making it less resilient, and, conversely, building in robustness tends to make a system less efficient (at least in the short run). This isn't to say there are *no* win/wins; sometimes it is possible to move the [Pareto frontier][pareto] outwards; fixing "dumb" performance bugs sometimes has this effect. However past some level of effort, you will be forced to make tradeoffs.
 
-By "resilience," here, I mean something much broader than just "redundancy" or "reliability"; I mean a much-more-general notion of "ability to absorb or respond to change" -- change of all sorts, including both bugs or failures, but also change in product needs, change in the market, change in the organization or team composition, whatever.
+By "resilience," here, it's important to note that I mean something much broader than just "reliability" or "ability to stay up"; I mean a much more general notion of "ability to absorb or respond to change" -- change of all sorts, including both bugs or failures, but also change in product needs, change in the market, change in the organization or team composition, whatever.
 
 [pareto]: https://en.wikipedia.org/wiki/Pareto_front
 
@@ -29,7 +29,7 @@ This tradeoff occurs in domains beyond capacity planning. It applies at almost e
 
 ### Redundancy
 
-It's extremely common to run multiple instances of a service, with a load balancer set up such that if any instance fails, load will be transparently routed to the others. In sufficiently sophisticated organizations, this pattern is applied at the level of the entire datacenter or region, with an architecture that allows entire datacenters to fail and their load to be routed to others.
+It's extremely common to run multiple instances of a service, with a load balancer set up such that if any instance fails, load will be transparently routed to the others. In sophisticated organizations, this pattern may be applied at the level of the entire datacenter, with an architecture that allows entire datacenters to fail and their load to be routed to others.
 
 In order for this to work, each instance must have enough spare capacity to absorb the incremental load from a failed-over instance. In steady-state, in the absence of failure, that capacity must be sitting idle, or, at best, serving lower-priority work that can be dropped at a moment's notice. The more redundancy we want, the more capacity we must hold idle in steady state.
 
@@ -48,12 +48,20 @@ He, too, talks about how clever code (in this sense) tends to be efficient but s
 [sorbet-fast]: https://blog.nelhage.com/post/why-sorbet-is-fast/#local-only-inference
 [clever]: https://www.hillelwayne.com/post/cleverness/
 
+### Serialization formats
+
+It's hard to find a more efficient serialization format than "just copy your in-memory `structs` directly to disk"; virtually no code is required and there's close to zero serialization cost to save or load data.
+
+However, this results in a brittle system -- even adding a new field requires rewriting data or some other special handling. And sharing data between machines with different endians or word sizes becomes a challenge.
+
+On the flip side, writing all of your data as JSON or some similar generic container creates endless flexibility for adding new fields or for new modules to communicate with each other without impacting existing code, but at the cost of substantial overhead on the wire and in CPU work serializing and deserializing data streams.
+
 
 ### Distributed systems
 
 One of my favorite systems papers ever is the [COST][cost] paper, which examples a number of big-data platforms, and observes that many of them have the desirable property of scaling (near-)linearly with available hardware, but do so at the cost of being *ludicrously* less efficient than a tuned single-threaded implementation.
 
-This is a common tradeoff in my experience. Distributed computation frameworks are flexible and resilient in the sense of being able to handle near-arbitrary workloads by scaling up.  They can handle someone deploying inefficient code by scaling out, and handle hardware failures transparently. Need to process more data? Just add more hardware (often transparently, using some sort of autoscaling).
+I've found this to be a common tradeoff. Distributed computation frameworks are flexible and resilient in the sense of being able to handle near-arbitrary workloads by scaling up.  They can handle someone deploying inefficient code by scaling out, and handle hardware failures transparently. Need to process more data? Just add more hardware (often transparently, using some sort of autoscaling).
 
 On the flip side, carefully-coded single-node solutions will tend to be faster (sometimes 10-100x faster!), but are much more brittle: If the dataset no longer fits on one node, or if you need to peform a 10x more expensive analysis, or if a new engineer on the team unwittingly commits slow code inside a tight inner loop, the entire system may fall over or fail to perform its job.
 
