@@ -7,7 +7,7 @@ draft: false
 
 What's the "right" level of CPU utilization for a server? If you look at a monitoring dashboard from a well-designed and well-run service, what CPU utilization should we hope to see, averaged over a day or two?
 
-It's a very general question, and it's not clear it should have a single answer. For a long time, however, I generally believed that higher is always better: we should aim for as close to 100% utilization as we can. Why? Well, anything less than 100% represents unused hardware capacity, which means we're wasting resources. If a service isn't maxing out its CPU, we could move it onto a smaller instance and save some money or free up some CPU for another purpose.
+It's a very general question, and it's not clear it should have a single answer. That said, for a long time, I generally believed that higher is always better: we should aim for as close to 100% utilization as we can. Why? Well, anything less than 100% represents unused hardware capacity, which means we're wasting resources. If a service isn't maxing out its CPU, we could move it onto a smaller instance or run some additional work on that node.
 
 This simplistic intuition, it turns out, is rarely quite right.
 
@@ -15,7 +15,7 @@ Suppose we achieve that ideal and our service is running close to 100% utilizati
 
 If we are at 100% utilization, and then something happens to increase load, then we're in trouble! Running at 100% utilization leaves us no room to absorb incremental load. We will either degrade in some way, have to scramble to add emergency capacity, or both.
 
-This toy example is an instance of a very general phenomenon: Improvements to effiency often trade off against resiliency, and the further we optimize a system, the worse this tradeoff tends to become.
+This toy example is an instance of a very general phenomenon: Improvements to efficiency often trade off against resiliency, and the further we optimize a system, the worse this tradeoff tends to become.
 
 Past some point, making a system more efficient will mean making it less resilient, and, conversely, building in robustness tends to make a system less efficient (at least in the short run). This isn't to say there are *no* win/wins; sometimes it is possible to move the [Pareto frontier][pareto] outwards; fixing "dumb" performance bugs sometimes has this effect. However past some level of effort, you will be forced to make tradeoffs.
 
@@ -37,7 +37,7 @@ In order for this to work, each instance must have enough spare capacity to abso
 
 Sophisticated performance optimizations often work by exploiting specific properties or structures of the problem domain. By baking invariants into data structures and code organization, you can often win a huge amount of performance. However, the more deeply you rely on specific assumptions, the harder they become to change, which makes heavily-optimized code often much harder to evolve or add features to.
 
-As a concrete example, in my [reflection on Sorbet][sorbet-fast], I talk about how we decided that type inference would be local-only and single-pass, and baked that assumption into our code and data structures. This choice resulted in substantial efficiency gains, but made the system in some sense more brittle: There are many features that some competing type systems have which would be impossible or prohibitively hard to implement in the Sorbet codebase, because of these assumptions. I remain confident this was the correct choice for that project, but the tradeoffs are worth ackowledging.
+As a concrete example, in my [reflection on Sorbet][sorbet-fast], I talk about how we decided that type inference would be local-only and single-pass, and baked that assumption into our code and data structures. This choice resulted in substantial efficiency gains, but made the system in some sense more brittle: There are many features that some competing type systems have which would be impossible or prohibitively hard to implement in the Sorbet codebase, because of these assumptions. I remain confident this was the correct choice for that project, but the tradeoffs are worth acknowledging.
 
 Hillel Wayne, [refers to a similar property][clever] as "clever code", which he defines as
 
@@ -63,7 +63,7 @@ One of my favorite systems papers ever is the [COST][cost] paper, which examples
 
 I've found this to be a common tradeoff. Distributed computation frameworks are flexible and resilient in the sense of being able to handle near-arbitrary workloads by scaling up.  They can handle someone deploying inefficient code by scaling out, and handle hardware failures transparently. Need to process more data? Just add more hardware (often transparently, using some sort of autoscaling).
 
-On the flip side, carefully-coded single-node solutions will tend to be faster (sometimes 10-100x faster!), but are much more brittle: If the dataset no longer fits on one node, or if you need to peform a 10x more expensive analysis, or if a new engineer on the team unwittingly commits slow code inside a tight inner loop, the entire system may fall over or fail to perform its job.
+On the flip side, carefully-coded single-node solutions will tend to be faster (sometimes 10-100x faster!), but are much more brittle: If the dataset no longer fits on one node, or if you need to perform a 10x more expensive analysis, or if a new engineer on the team unwittingly commits slow code inside a tight inner loop, the entire system may fall over or fail to perform its job.
 
 [cost]: https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-mcsherry.pdf
 
@@ -108,7 +108,7 @@ I've tried to touch on a number of concrete examples where efficiency and reliab
 
 Unfortunately, this observation alone rarely tells us what to do with any _particular_ system. If we're looking at some system and a first analysis suggests it's making inefficient use of inputs, we can't tell without looking more closely whether it's a den of dysfunction and bad design choices, or whether that superficial inefficiency is supporting vast reserves of redundancy and flexibility and slack that will enable it to weather any change that may come. We need to look closer, and we almost always need domain expertise in the particular team and particular problem.
 
-Futhermore, sometimes there _are_ free lunches. Some design choices or decisions do shift the Pareto front outwards, and not just move us along it. They may be rare in well-optimized systems, but we can't ignore their possibility. And many systems just haven't been that well optimized yet!
+Furthermore, sometimes there _are_ free lunches. Some design choices or decisions do shift the Pareto front outwards, and not just move us along it. They may be rare in well-optimized systems, but we can't ignore their possibility. And many systems just haven't been that well optimized yet!
 
 In addition, the optimal point in the design space varies depending on the system. Sometimes reliability or resiliency is critically important, and we are right to tolerate massive first-order inefficiency. Sometimes, however, extreme efficiency is the correct goal: perhaps our margins are thin enough for it to be our only choice, or perhaps we are sufficiently confident in the stability of our domain and of the demands upon our system that we feel confident we will not face overly-drastic change of any sort.
 
