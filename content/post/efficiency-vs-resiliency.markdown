@@ -1,8 +1,7 @@
 ---
 title: "Efficiency trades off against resiliency"
 slug: efficiency-vs-resiliency
-date: 2022-12-24T18:18:36-04:00
-draft: false
+date: 2023-04-15T16:00:00-07:00
 ---
 
 What's the "right" level of CPU utilization for a server? If you look at a monitoring dashboard from a well-designed and well-run service, what CPU utilization should we hope to see, averaged over a day or two?
