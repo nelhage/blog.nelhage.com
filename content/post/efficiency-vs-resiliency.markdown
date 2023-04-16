@@ -58,7 +58,7 @@ On the flip side, writing all of your data as JSON or some similar generic conta
 
 ### Distributed systems
 
-One of my favorite systems papers ever is the [COST][cost] paper, which examples a number of big-data platforms, and observes that many of them have the desirable property of scaling (near-)linearly with available hardware, but do so at the cost of being *ludicrously* less efficient than a tuned single-threaded implementation.
+One of my favorite systems papers ever is the [COST][cost] paper, which examines a number of big-data platforms, and observes that many of them have the desirable property of scaling (near-)linearly with available hardware, but do so at the cost of being *ludicrously* less efficient than a tuned single-threaded implementation.
 
 I've found this to be a common tradeoff. Distributed computation frameworks are flexible and resilient in the sense of being able to handle near-arbitrary workloads by scaling up.  They can handle someone deploying inefficient code by scaling out, and handle hardware failures transparently. Need to process more data? Just add more hardware (often transparently, using some sort of autoscaling).
 
