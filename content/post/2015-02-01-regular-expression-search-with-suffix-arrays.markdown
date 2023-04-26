@@ -327,7 +327,7 @@ type IndexKey struct {
 ```
 
 (livegrep's
-[definition](https://github.com/livegrep/livegrep/blob/23cd22f625a387809657da277a5df14ed4a3d70c/src/indexer.h#L118)
+[definition](https://github.com/livegrep/livegrep/blob/1e47ee8a11e3dad8554faa70785dedc15b80b195/src/query_planner.h#L38-L137)
 is similar at the core, with some additional bookkeeping that's used
 while analyzing the regex)
 
@@ -346,11 +346,11 @@ directly into a series of ranges, a literal string is a linear chain
 of `IndexKey`s with one-character ranges, and so on. For repetition
 operators and alternations (`|`), things get more complicated. I hope
 to write more about this in a future blog post, but for now you can
-read [indexer.cc][indexer.cc] if you're curious, or play with
+read [query_planner.cc][query_planner.cc] if you're curious, or play with
 [analyze-re][analyze-re], which has a `dot` output mode showing the
 results of livegrep's analysis.
 
-[indexer.cc]: https://github.com/livegrep/livegrep/blob/master/src/indexer.cc
+[query_planner.cc]: https://github.com/livegrep/livegrep/blob/master/src/query_planner.cc
 [analyze-re]: https://github.com/livegrep/livegrep/blob/master/src/tools/analyze-re.cc
 
 ## Using the Results

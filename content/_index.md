@@ -22,4 +22,4 @@ I have an (unfortunate?) proliferation of blogs and other sites on the internet.
 - [Musings on computer systems](https://buttondown.email/nelhage/), my weekly newsletter.
 - [Accidentally Quadratic](https://accidentallyquadratic.tumblr.com), a tumblr where I chronicle cases of software performance problems caused by accidental quadratic iteration.
 - [nelhage debugs shit](https://nelhagedebugsshit.tumblr.com/), another tumblr with an even less-edited tone than this one, where I recount war stories and interesting bugs I've tracked down in the past.
-- I've written [for the Stripe blog](https://stripe.com/blog/distributed-ruby-testing) about the distributed test running architecture we built there.
+- I've written [for the Stripe blog](https://web.archive.org/web/20210623064800/https://stripe.com/blog/distributed-ruby-testing) about the distributed test running architecture we built there.
