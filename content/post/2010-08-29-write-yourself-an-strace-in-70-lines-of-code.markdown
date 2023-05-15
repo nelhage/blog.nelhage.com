@@ -46,8 +46,9 @@ state.
 parameter, and doing completely different things depending on its
 value. Its general prototype looks like:
 
-    long ptrace(enum __ptrace_request request, pid_t pid, void *addr, void *data);
-
+```c
+long ptrace(enum __ptrace_request request, pid_t pid, void *addr, void *data);
+```
 However, because different values of `request` use anywhere from zero
 to three of the remaining parameters, `glibc` prototypes it as a
 varargs function, allowing a a developer to only list as many
@@ -68,71 +69,81 @@ Our miniature `strace` will only support the `strace COMMAND` form of
 numbers and return values -- no decoding of names or arguments or
 anything. So a sample run might look like:
 
-    $ ./ministrace ls
-    …
-    syscall(6) = 0
-    syscall(54) = 0
-    syscall(54) = 0
-    syscall(5) = 3
-    syscall(221) = 1
-    syscall(220) = 272
-    syscall(220) = 0
-    syscall(6) = 0
-    syscall(197) = 0
-    syscall(192) = -1219706880
-    …
+```shell
+$ ./ministrace ls
+…
+syscall(6) = 0
+syscall(54) = 0
+syscall(54) = 0
+syscall(5) = 3
+syscall(221) = 1
+syscall(220) = 272
+syscall(220) = 0
+syscall(6) = 0
+syscall(197) = 0
+syscall(192) = -1219706880
+…
+```
 
 Not the most useful thing in the world, but it shows off the core
 tracing tools. So, let's see the code:
 
-    #include <sys/ptrace.h>
-    #include <sys/reg.h>
-    #include <sys/wait.h>
-    #include <sys/types.h>
-    #include <unistd.h>
-    #include <stdlib.h>
-    #include <stdio.h>
-    #include <errno.h>
-    #include <string.h>
+```c
+#include <sys/ptrace.h>
+#include <sys/reg.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+````
 
 We start with the necessary headers. `sys/ptrace.h` defines `ptrace`
 and the `__ptrace_request` constants, and we'll need `sys/reg.h` to
-help decode system calls. More about that later. Everything else you
-should probably recognize.
+help decode system calls. More about that later. Everything else is
+likely familiar to C veterans.
 
-    int do_child(int argc, char **argv);
-    int do_trace(pid_t child);
+```c
+int do_child(int argc, char **argv);
+int do_trace(pid_t child);
 
-    int main(int argc, char **argv) {
-        if (argc < 2) {
-            fprintf(stderr, "Usage: %s prog args\n", argv[0]);
-            exit(1);
-        }
-
-        pid_t child = fork();
-        if (child == 0) {
-            return do_child(argc-1, argv+1);
-        } else {
-            return do_trace(child);
-        }
+int main(int argc, char **argv) {
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s prog args\n", argv[0]);
+        exit(1);
     }
+
+    pid_t child = fork();
+    if (child == 0) {
+        return do_child(argc-1, argv+1);
+    } else {
+        return do_trace(child);
+    }
+}
+```
 
 We'll start with the entry point. We check that we were passed a
 command, and then we `fork()` to create two processes -- one to
 execute the program to be traced, and the other to trace it.
 
-    int do_child(int argc, char **argv) {
-        char *args [argc+1];
-        memcpy(args, argv, argc * sizeof(char*));
-        args[argc] = NULL;
+```c
+int do_child(int argc, char **argv) {
+    char *args [argc+1];
+    memcpy(args, argv, argc * sizeof(char*));
+    args[argc] = NULL;
+```
 
 The child starts with some trivial marshalling of arguments, since
 `execvp` wants a `NULL`-terminated argument array.
 
-        ptrace(PTRACE_TRACEME);
-        kill(getpid(), SIGSTOP);
-        return execvp(args[0], args);
-    }
+```c
+    ptrace(PTRACE_TRACEME);
+    kill(getpid(), SIGSTOP);
+    return execvp(args[0], args);
+}
+```
 
 Next, we just execute the provided argument list, but first, we need
 to start the tracing process, so that the parent can start tracing the
@@ -150,18 +161,22 @@ with an `execve` call. Now you should understand why -- we're actually
 going to start tracing immediately after the `kill` returns, so we see
 the `execve` call that starts the new program).
 
-    int wait_for_syscall(pid_t child);
+```c
+int wait_for_syscall(pid_t child);
 
-    int do_trace(pid_t child) {
-        int status, syscall, retval;
-        waitpid(child, &status, 0);
+int do_trace(pid_t child) {
+    int status, syscall, retval;
+    waitpid(child, &status, 0);
+```
 
 In the parent, meanwhile, we prototype a function we'll need later,
 and start tracing. We immediately `waitpid` on the child, which will
 return once the child has sent itself the `SIGSTOP` above, and is
 ready to be traced.
 
-        ptrace(PTRACE_SETOPTIONS, child, 0, PTRACE_O_TRACESYSGOOD);
+```c
+    ptrace(PTRACE_SETOPTIONS, child, 0, PTRACE_O_TRACESYSGOOD);
+```
 
 I mentioned earlier that `ptrace` turns basically all events into a
 `SIGTRAP` on the child. This is inconvenient because it means that
@@ -176,16 +191,20 @@ easily distinguish syscall stops from other stops. Since (for the
 purposes of this demo), we only care about syscalls, this is very
 convenient.
 
-        while(1) {
-            if (wait_for_syscall(child) != 0) break;
+```c
+    while(1) {
+        if (wait_for_syscall(child) != 0) break;
+```
 
 Now we enter the tracing loop. `wait_for_syscall`, defined below, will
 run the child until either entry to or exit from a system call. If it
 returns non-zero, the child has exited and we end the loop.
 
 
-            syscall = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*ORIG_EAX);
-            fprintf(stderr, "syscall(%d) = ", syscall);
+```c
+        syscall = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*ORIG_EAX);
+        fprintf(stderr, "syscall(%d) = ", syscall);
+```
 
 Otherwise, though, we know that the child is entering a system call,
 and so we need to decode the system call number (and potentially
@@ -198,49 +217,63 @@ clobbered the child's `%eax` at this point, but it saves the original
 value at a different offset, `ORIG_EAX`, which comes from
 `sys/regs.h'.
 
-            if (wait_for_syscall(child) != 0) break;
+```c
+        if (wait_for_syscall(child) != 0) break;
+```
 
 Once we have the syscall number, we `wait_for_syscall` again, which
 should leave us stopped at the syscall return.
 
-            retval = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*EAX);
-            fprintf(stderr, "%d\n", retval);
+```c
+        retval = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*EAX);
+        fprintf(stderr, "%d\n", retval);
+```
 
 Return values on i386 are also passed in `%eax`, so this time we can
 read it directly and print the return value, and then return to the
 top of the loop to wait for the next syscall.
 
-         }
-        return 0;
+```c
     }
+    return 0;
+}
+```
 
 And once the child exits, we just return.
 
+```c
     int wait_for_syscall(pid_t child) {
         int status;
         while (1) {
             ptrace(PTRACE_SYSCALL, child, 0, 0);
+```
 
 `wait_for_syscall` is a simple helper function. We continue the child
 using `PTRACE_SYSCALL`, which allows a stopped child to continue
 executing until the next entry to or exit from a system call.
 
-            waitpid(child, &status, 0);
+```c
+        waitpid(child, &status, 0);
+```
 
 We then `waitpid` to wait for something interesting to happen in the
 child.
 
-            if (WIFSTOPPED(status) && WSTOPSIG(status) & 0x80)
-                return 0;
+```c
+        if (WIFSTOPPED(status) && WSTOPSIG(status) & 0x80)
+            return 0;
+```
 
 Because of the `PTRACE_O_SYSGOOD` we set above, we can detect a
 syscall stop by checking if the child was stopped by a signal with the
 high bit set. If so, we return.
 
-            if (WIFEXITED(status))
-                return 1;
-        }
+```c
+        if (WIFEXITED(status))
+            return 1;
     }
+}
+```
 
 If the child exited, we're done here; Otherwise, it stopped for some
 reason we don't care about (like an `execve`, for instance), and so we
@@ -273,47 +306,59 @@ from the child process. (Of course, NULL-terminated isn't quite right -- the
 real strace knows about the `count` arguments to `read()` and `write()`, for
 instance. But it's close enough for a demo):
 
-    char *read_string(pid_t child, unsigned long addr) {
+```c
+char *read_string(pid_t child, unsigned long addr) {
+```
+
 `read_string` takes a child to read from, and the address of the string it's
 going to read.
 
-        char *val = malloc(4096);
-        int allocated = 4096, read;
-        unsigned long tmp;
+```c
+    char *val = malloc(4096);
+    int allocated = 4096, read;
+    unsigned long tmp;
+```
 
 We need some variables. A buffer to copy the string into, counters of how much
 data we've copied and allocated, and a temporary variable for reading memory.
-        
-        while (1) {
-            if (read + sizeof tmp > allocated) {
-                allocated *= 2;
-                val = realloc(val, allocated);
-            }
+
+```c
+    while (1) {
+        if (read + sizeof tmp > allocated) {
+            allocated *= 2;
+            val = realloc(val, allocated);
+        }
+```
 
 We grow the buffer if necessary. We read data one word at a time.
-            
-            tmp = ptrace(PTRACE_PEEKDATA, child, addr + read);
-            if(errno != 0) {
-                val[read] = 0;
-                break;
-            }
+
+```c
+        tmp = ptrace(PTRACE_PEEKDATA, child, addr + read);
+        if(errno != 0) {
+            val[read] = 0;
+            break;
+        }
+```
 
 `PTRACE_PEEKDATA` returns a work of data from the child at the specified
 offset. Because it uses its return for the value, we need to check `errno` to
 tell if it failed. If it did (perhaps because the child passed an invalid
 pointer), we just return the string we've got so far, making sure to add our own
 NULL at the end.
-            
-            memcpy(val + read, &tmp, sizeof tmp);
-            if (memchr(&tmp, 0, sizeof tmp) != NULL)
-                break;
-            read += sizeof tmp;
+
+```c
+        memcpy(val + read, &tmp, sizeof tmp);
+        if (memchr(&tmp, 0, sizeof tmp) != NULL)
+            break;
+        read += sizeof tmp;
+```
 
 Then it's a simple matter of appending the data we read, and breaking out if we
 found a terminating NULL, or else looping to read another word.
-            
-        }
-        return val;
-    }
 
+```c
+    }
+    return val;
+}
+```
 [for-blog]: http://github.com/nelhage/ministrace/tree/for-blog
