@@ -5,6 +5,6 @@ draft=
 if [ "$1" = "--drafts" ]; then
     draft=-D
 fi
-hugo -F --cleanDestinationDir $draft
 git push
+hugo -F --cleanDestinationDir $draft
 rsync -vax --delete public/ nelhage.com:/opt/www/blog.nelhage.com/
