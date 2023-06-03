@@ -3,73 +3,85 @@ import re
 import sys
 import os
 import subprocess
+import argparse
 
-if len(sys.argv) != 3:
-  print("Usage: {} paper-export.md content/post/blog-post.markdown".format(sys.argv[0]), file=sys.stderr)
-  sys.exit(1)
+def main():
+  parser = argparse.ArgumentParser()
+  parser.add_argument("paper_export", type=str)
+  parser.add_argument("content_path", type=str)
+  parser.add_argument("--delete", action='store_true', default=False)
 
-infile, outfile = sys.argv[1:]
+  args = parser.parse_args()
 
-with open(infile) as fh:
-  data = fh.read()
+  infile = args.paper_export
+  outfile = args.content_path
 
-data = re.sub(
-  r'^[*][*]([^\n]+)[*][*]$',
-  r'### \1',
-  data,
-  flags=re.M|re.S,
-)
+  with open(infile) as fh:
+    data = fh.read()
 
-data = re.sub(
-  r''' `
-         \[ ([^]]+) \]
-         \( ([^)]+) \)
-       `
-    ''',
-  r'[`\1`](\2)',
-  data,
-  flags=re.M|re.S|re.X,
-)
+  data = re.sub(
+    r'^[*][*]([^\n]+)[*][*]$',
+    r'### \1',
+    data,
+    flags=re.M|re.S,
+  )
 
-data = re.sub(
-  r'\A[#][ ][^\n]+\n',
-  '',
-  data,
-  flags=re.M|re.S|re.X,
-)
+  data = re.sub(
+    r''' `
+           \[ ([^]]+) \]
+           \( ([^)]+) \)
+         `
+      ''',
+    r'[`\1`](\2)',
+    data,
+    flags=re.M|re.S|re.X,
+  )
 
-data = re.sub(
-  r'[ ]+\n',
-  '\n',
-  data,
-  flags=re.M|re.S|re.X,
-)
+  data = re.sub(
+    r'\A[#][ ][^\n]+\n',
+    '',
+    data,
+    flags=re.M|re.S|re.X,
+  )
 
-def replace_curly_quotes(m):
-  return re.sub("[‘’]", "'", m.group(0))
+  data = re.sub(
+    r'[ ]+\n',
+    '\n',
+    data,
+    flags=re.M|re.S|re.X,
+  )
 
-data = re.sub(
-  r'<\w+\s[^>]+>',
-  replace_curly_quotes,
-  data,
-  flags=re.M|re.S|re.X,
-)
+  def replace_curly_quotes(m):
+    return re.sub("[‘’]", "'", m.group(0))
+
+  data = re.sub(
+    r'<\w+\s[^>]+>',
+    replace_curly_quotes,
+    data,
+    flags=re.M|re.S|re.X,
+  )
 
 
-if not os.path.isfile(outfile):
-  subprocess.check_call(['hugo', 'new', outfile])
+  if not os.path.isfile(outfile):
+    subprocess.check_call(['hugo', 'new', outfile])
 
-with open(outfile) as fh:
-  out = fh.read()
+  with open(outfile) as fh:
+    out = fh.read()
 
-header = re.search(
-  r'\A---\n.*\n---\n',
-  out,
-  re.M|re.S)
-if not header:
-  print("Unable to parse header!")
-  sys.exit(1)
+  header = re.search(
+    r'\A---\n.*\n---\n',
+    out,
+    re.M|re.S)
+  if not header:
+    print("Unable to parse header!")
+    sys.exit(1)
 
-with open(outfile, 'w') as fh:
-  fh.write(header.group(0))
-  fh.write(data)
+  with open(outfile, 'w') as fh:
+    fh.write(header.group(0))
+    fh.write(data)
+
+  if args.delete:
+    os.unlink(infile)
+
+if __name__ == '__main__':
+  main()
