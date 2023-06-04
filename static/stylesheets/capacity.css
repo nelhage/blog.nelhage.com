@@ -1,0 +1,56 @@
+div.examples {
+    --border-width: 3px;
+    --left-margin: 25px;
+    --child-padding: 1em;
+    --example-width: min(100vw, 1200px);
+
+    display: flex;
+    border: var(--border-width) double black;
+    position: relative;
+    left: calc(-0.5*var(--example-width) + 50% + var(--left-margin));
+    width: calc(var(--example-width) - 2*(var(--left-margin) + var(--border-width) + var(--child-padding)));
+    margin: 1em 0;
+    padding: var(--child-padding);
+    gap: var(--child-padding);
+}
+
+div.examples .example {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1ex;
+
+    flex: 1 1 50%;
+}
+
+div.examples .example::before {
+    margin: calc(-1ex - 15px) 0 0 10px;
+    background: #fafafa;
+    padding: 0px 3px;
+    display: inline-block;
+    font-weight: bold;
+    position: absolute;
+}
+
+div.examples .example.http::before {
+    content: "webservice";
+}
+
+div.examples .example.router::before {
+    content: "TCP/IP router";
+}
+
+
+article img {
+    display: block;
+    margin: auto;
+}
+
+@media (max-width: 750px) {
+    div.examples {
+        flex-direction: column;
+        --left-margin: 10px;
+    }
+    div.examples .example {
+        flex: 1 1 100%;
+    }
+}
