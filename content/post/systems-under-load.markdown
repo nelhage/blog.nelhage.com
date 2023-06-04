@@ -49,7 +49,7 @@ However, in our fallen world, we run systems on finite quantities of physical ha
 
 It’s worth remembering that **every system** has some limit. Sometimes you may be fortunate and that limit is large enough to usefully approximate as “infinity,” but it’s always there. A system without documented capacity limits just **isn’t telling you what they are**.
 
-Reality, however, is even crueler still. Without careful design and tuning, most systems behave much worse than the above plot; once they’re at capacity, additional requests **overload** the system in some way, consuming valuable resources without resulting in useful throughput, and so we get a plot that looks like:
+Reality, however, is even crueler still. Without careful design and tuning, most systems behave much worse than the above plot; once they’re at capacity, additional requests **overload** the system in some way, consuming valuable resources without resulting in useful throughput, and so we get behavior that looks like:
 
 
 ![](/images/posts/systems-under-load/contention.png)
@@ -68,11 +68,10 @@ Solving congestion collapse in any concrete system depends a lot on the details 
 
 The most common reason that a system behaves poorly under heavy load is **contention** for some shared resource. In this context, I take that to mean any situation where multiple clients are trying to make use of some resource, and the overhead from their interactions means that adding additional clients decreases the **effective throughput** for that resource. When a system is losing performance due to this sort of contention, we often describe it as [**thrashing**](https://en.wikipedia.org/wiki/Thrashing_(computer_science)).
 
-Many resources are subject to contention, but here are some specific examples:
+Many resources suffer from contention, but here are some specific examples:
 
-- If we have many more processes running than we have physical CPUs, we will incur more context switches (and more cache flushes and refills) than otherwise, and our throughput will decrease.
-- If we have an oversubscribed network without proper congestion control or traffic shaping, we might encounter [bufferbloat](https://en.wikipedia.org/wiki/Bufferbloat) or other failure modes where performance badly degrades.
-- If we have a cache (be it a CPU cache, or a database’s disk cache, or any other cache) that is large enough to support `k` concurrent instances of a workload, we’ll see performance drop off rapidly as we try to run more than `k`, since our cache hit rate will drop and we’ll drastically increase load on the resource behind the cache.
+- If we have many more processes running than we have physical CPUs, we will incur many more context switches and more scheduler overhead, and our throughput will decrease.
+- If we have a cache (for instance, database’s in-memory disk cache), that is large enough to cache the relevant data for `k` concurrent requests, we’ll see performance drop off rapidly as we try to run more than `k` concurrent requests, with our cache thrashing between different requests' data and our hit rate plummeting.
 - Many [optimistic concurrency systems](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) — including many lock-free algorithms — degrade badly under heavy load, in the worst case entering a mode where no client can make any progress, due to conflicting transactions. We refer to this worst-case failure, where each client is doing a lot of a work but no client is making progress, as [**livelock**](https://en.wikipedia.org/wiki/Deadlock#Livelock).
 
 {{%div class="examples"%}}
@@ -88,7 +87,7 @@ In the case of our nginx→python→database architecture, there are a number of
 {{%div class="example router"%}}
 The term “congestion collapse” was, to my knowledge, [originally coined in the context of networking](https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse), so it’s unsurprising that a network router can be prone to this failure. I know of a few specific mechanisms worth mentioning:
 
-- If the network uses a shared physical medium, such as RF space (for WiFi) or [classic ethernet](https://en.wikipedia.org/wiki/Ethernet#Shared_medium), multiple nodes attempting to “talk over each other” can result in loss of usable communication time, eating into available bandwidth.
+- If multiple senders use a shared physical medium, such as RF bandwidth for WiFi or [classic ethernet](https://en.wikipedia.org/wiki/Ethernet#Shared_medium), multiple nodes attempting to “talk over each other” can result in loss of usable communication time, eating into available bandwidth.
 - If the network is forced to drop packets due to retries, poorly-configured retry behavior by clients can result in an **increase** in the total amount of attempted traffic, resulting in a runaway feedback loop.
 - Poorly configured queuing behavior in the network can result in pathologically increased latencies — commonly known as “[bufferbloat](https://en.wikipedia.org/wiki/Bufferbloat).” I’ll talk more about that later.
 - If the router is implemented in software and receives interrupts to get notified of new packets, it can enter a state of [interrupt livelock](https://cs.nyu.edu/~mwalfish/classes/ut/f09-cs395t/ref/mogul96usenix.pdf), where all available CPU time is spent processing incoming-packet notifications, and no routing or forwarding work can be accomplished.
@@ -118,7 +117,7 @@ In networking systems, we most commonly think of admission control as guarding t
 {{%/div%}}
 {{%/div%}}
 
-The phenomenon of contention has at least one important implication: If your system is at capacity on some critical resource, increasing concurrency is likely to **hurt throughput rather than help**. Increasing the size of your thread pool, or the number of worker processes, may just drive your system further into the ground.
+The phenomenon of contention has at least one important implication: If your system is at capacity on some critical resource, increasing concurrency is likely to **hurt throughput rather than help**. If your application is bottlenecked on th database, increasing the number of concurrent worker processes may just drive the database further into the ground, making your problem worse, rather than helping.
 
 
 # Queues are either empty or full
@@ -130,10 +129,12 @@ Furthermore, in many systems, a request that completes too slowly is as bad or w
 If we have such a latency limit, as an easy corollary we can observe that any request which has been in our system for that long has “already failed” and it’s not worth spending further time on it. One natural place to add such a check is on the request queue, or when we pull requests out of the request queue. In pseudocode, we might write something like:
 
 
-    next_request = queue.pop()
-    if time.time() - next_request.arrival_time >= REQUEST_LATENCY_BUDGET:
-      raise RequestTimedOut()
-    process(next_request)
+```python
+next_request = queue.pop()
+if time.time() - next_request.arrival_time >= REQUEST_LATENCY_BUDGET:
+  raise RequestTimedOut()
+process(next_request)
+```
 
 This is a good start but, under persistent high load, it **does not help nearly enough**. As long as incoming requests are added faster than we can successfully process them, the queue latency will converge on approximately `REQUEST_LATENCY_BUDGET`. Every request — succeeded or failed —  will observe at least that much latency. In the best case, we will achieve good throughput, but with `REQUEST_LATENCY_BUDGET` of added latency; more commonly, most requests will time out at some later point and our throughput will remain poor. In this situation, we might say that the system has a **standing queue**; in healthy systems, queues are used to absorb temporary spikes but drain quickly, but in this situation we have a lengthy queue in a steady state, leading to undesired latency.
 
@@ -245,9 +246,6 @@ This post is primarily about techniques and frameworks for systems that are **ov
 First, “adding capacity” and “handling overload gracefully” is often not an “either/or” decision; many real systems benefit from some amount of both. For instance, we might implement autoscaling to add capacity, but use a load-shedder to make sure that we still behave gracefully while we wait for that capacity to come up. Or we might provision capacity to handle “legitimate” load, but still need backpressure to encourage bursty traffic to “smear out” into windows of lower utilization, or a load-shedding mechanism to prevent runaway scripts from taking the site down.
 
 Second, I want to emphasize that when we add capacity, it’s important to identify the **bottleneck resource** and scale that up. If we scale up the wrong resource (e.g. adding more application CPUs to a service that’s bottlenecked on a database), we can instead make the problem worse! This tends to happen because of the behaviors around contention and standing queues we’ve discussed — systems are fractally composed of other systems, and these principles may apply to sub-components of our high level system.
-
-I’ve even seen situations where adding capacity to the bottleneck resource **decreases throughput** by shifting the bottleneck to (and increasing contention on) a different resource, which has higher peak throughput, but worse behavior under high contention!
-
 
 # Conclusion
 
