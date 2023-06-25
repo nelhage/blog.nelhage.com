@@ -1,0 +1,14 @@
+{{ $image := $.Page.Resources.Get (.Get "src") }}
+{{if $image}}
+<img src="{{$image.RelPermalink}}"
+     {{ $src := (.Get "src") }}
+     {{ $retina := (path.Join (path.Dir $src) (printf "%s@2x%s" (path.BaseName $src) (path.Ext $src)))}}
+     {{with $.Page.Resources.GetMatch $retina }}
+     srcset="{{.RelPermalink}} 2x"
+     {{end}}
+  width="{{$image.Width}}"
+  height="{{$image.Height}}"
+  />
+{{else}}
+{{errorf "No image found: %q at %s" (.Get "src") .Position}}
+{{end}}

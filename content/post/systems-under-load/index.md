@@ -1,9 +1,9 @@
 ---
-title: "System behavior under heavy load"
+title: "System behavior under load"
 slug: systems-under-load
 date: 2023-05-28T10:43:41-07:00
 extra_css:
-- /stylesheets/capacity.css
+- capacity.css
 draft: true
 ---
 
@@ -38,13 +38,13 @@ With these two metrics established, we can talk about performance in the abstrac
 In a perfect world of pure thought, every request is processed successfully and we hope for a 1:1 relationship between request rate and throughput.
 
 
-![](/images/posts/systems-under-load/infinite-capacity.png)
+{{<img src="img/infinite-capacity.png">}}
 
 
 However, in our fallen world, we run systems on finite quantities of physical hardware, and so they have some finite **capacity**: a maximum throughput achievable given the system design and the available hardware. A more realistic goal, then, is for a linear relationship until that capacity limit, followed by **saturation**, a regime in which additional requests fail, but also do not hurt our throughput.
 
 
-![](/images/posts/systems-under-load/finite-capacity.png)
+{{<img src="img/finite-capacity.png">}}
 
 
 It’s worth remembering that **every system** has some limit. Sometimes you may be fortunate and that limit is large enough to usefully approximate as “infinity,” but it’s always there. A system without documented capacity limits just **isn’t telling you what they are**.
@@ -52,12 +52,11 @@ It’s worth remembering that **every system** has some limit. Sometimes you may
 Reality, however, is even crueler still. Without careful design and tuning, most systems behave much worse than the above plot; once they’re at capacity, additional requests **overload** the system in some way, consuming valuable resources without resulting in useful throughput, and so we get behavior that looks like:
 
 
-![](/images/posts/systems-under-load/contention.png)
+{{<img src="img/contention.png">}}
 
 Or, even worse:
 
-
-![](/images/posts/systems-under-load/congestion-collapse.png)
+{{<img src="img/congestion-collapse.png">}}
 
 We have a few terms to describe a system is in this mode, where it’s receiving a high request rate but achieving throughput much lower than its capacity. Which ones we use often depends on the details of the failure mode, but I’ve taken to using the term [**congestion collapse**](https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse) as a broad descriptor for this regime. I’m not sure if that term is widely used outside of the specific context of networking, but I find it’s usually readily understood by collaborators.
 
@@ -97,8 +96,7 @@ The term “congestion collapse” was, to my knowledge, [originally coined in t
 
 One strategy to resolve contention is to deliberately limit concurrency to levels we can support without undue contention. In broad strokes, we can implement this by adding an **admission controller** which only starts processing requests when there are sufficient available resources; requests above that threshold will go into a queue and wait until resources become free. The term “**admission control**”[^admission] here is used (at least) in some database and communications systems, but I tend to generalize it and use it any technique fitting this pattern.
 
-
-> diagram: request queue, admission controller, system
+{{<img src="img/admission-control.png">}}
 
 [^admission]: [Wikipedia has many citations](https://en.wikipedia.org/wiki/Admission_control) for this term in networking and interconnects; I first encountered it in the database context but can’t find as good a citation; you can see [this paper, page 14](https://courses.cs.washington.edu/courses/cse444/20sp/papers/AnatomyDB.pdf) for one example of this usage, though.
 
@@ -113,7 +111,7 @@ In more sophisticated designs, each node may be able to communicate its health t
 In either case, we tend not to think of an explicit queue in front of the application service, but the load-balancer will often [maintain an internal queue](https://nginx.org/en/docs/http/ngx_http_upstream_module.html#queue), and the network listen queues and socket buffers will additionally serve as implicit queues for pending requests.
 {{%/div%}}
 {{%div class="example router"%}}
-In networking systems, we most commonly think of admission control as guarding the physical layer of the network. The transport medium, be it air, copper, or fiber-optic cable, has some maximum capacity, and the hardware is responsible for only transmitting packets at a rate it can absorb. To absorb bursts above this capacity, the NIC and the software on the router will both maintain packet queues which are advanced forward as capacity becomes available.
+In networking systems, we most commonly think of admission control as guarding the physical layer of the network. The transport medium, be it air, copper, or fiber-optic cable, has some maximum capacity, and the hardware is responsible for only transmitting packets at a rate it can absorb. To absorb bursts above this capacity, the NIC and the software on the router will both maintain packet queues which will be drained onto the network as capacity becomes available.
 {{%/div%}}
 {{%/div%}}
 
@@ -123,6 +121,10 @@ The phenomenon of contention has at least one important implication: If your sys
 # Queues are either empty or full
 
 With appropriate admission control, we can limit contention and keep internal throughput high at any request rate. However, our problems don’t end there. If the rate of incoming requests is persistently higher than our maximum throughput, these requests will, by default, accumulate in the request queue without bound. Without further intervention, our latency will also rise without bound, as requests wait longer and longer to make it through the queue.
+
+
+{{<img src="img/queue-growth.png">}}
+
 
 Furthermore, in many systems, a request that completes too slowly is as bad or worse than one that fails. The response may no longer be relevant, or the requesting agent may have timed out and moved on — be that an explicit timeout, or a human being who gets bored and closes the tab. Thus, we typically establish some maximum allowable latency (often based on an [SLO or SLA](https://cloud.google.com/blog/products/devops-sre/sre-fundamentals-sli-vs-slo-vs-sla)), and consider requests which take longer than that budget to have failed, even if they eventually process successfully.
 

@@ -17,13 +17,13 @@ div.examples {
 div.examples .example {
     border: 1px solid gray;
     border-radius: 5px;
-    padding: 1ex;
+    padding: 1em;
 
     flex: 1 1 50%;
 }
 
 div.examples .example::before {
-    margin: calc(-1ex - 15px) 0 0 10px;
+    margin: calc(-1em - 13px) 0 0 10px;
     background: #fafafa;
     padding: 0px 3px;
     display: inline-block;
@@ -43,6 +43,7 @@ div.examples .example.router::before {
 article img {
     display: block;
     margin: auto;
+    margin-bottom: 1em;
 }
 
 @media (max-width: 750px) {
