@@ -1,6 +1,6 @@
 ---
 title: "Systems at capacity"
-slug: systems-under-load
+slug: systems-at-capacity
 date: 2023-05-28T10:43:41-07:00
 extra_css:
 - capacity.css
