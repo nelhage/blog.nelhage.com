@@ -1136,7 +1136,7 @@ article header p.meta {
         background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x
     }
 }
-article h2 {
+article h1, article h2 {
     padding-top: 0.8em;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x
 }
@@ -1144,6 +1144,8 @@ article h2 {
 article header+h2 {
     padding-top: 0
 }
+article h1:first-child,
+article header+h1,
 article h2:first-child,
 article header+h2 {
     background: none
