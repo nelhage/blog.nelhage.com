@@ -7,7 +7,7 @@ extra_css:
 draft: true
 ---
 
-Suppose we’ve got a service. We’ll elide the details for now, but we’ll stipulate that it accepts requests from the outside world, and takes action in response. Maybe those requests are HTTP requests, or RPCs, or just incoming packets to be routed at the network layer. We'll be more specific later.
+Suppose we’ve got a service. We’ll gloss over the details for now, but let's stipulate that it accepts requests from the outside world, and takes some action in response. Maybe those requests are HTTP requests, or RPCs, or just incoming packets to be routed at the network layer. We can get more specific later.
 
 What can we say about its performance?
 
@@ -123,25 +123,32 @@ With appropriate admission control, we can limit contention and keep internal th
 
 {{<img src="img/queue-growth.png">}}
 
-As the queue grows, so will our latency, as it takes longer and longer for messages to traverse the growing queue. Eventually, one or more of the following will happen:
+We'll make a few observations about this state of affairs:
 
-- The queue will hit a configured maximum queue size, and will be forced to drop messages.
-- The queue will not have a configured maximum size, but will exhaust available storage space (typically, disk or memory) on the server.
-- As latency rises, eventually the clients upstream of our service will time out, and begin treating requests as failed, even if they might eventually succeed internally to our system.
+- The throughput here is independent of the size of the queue. If the queue is short or long (as long as it's never empty), we're pulling mesages off at the same rate, and processing messages at the same rate. This fact is important: **queues cannot increase peak capacity**.
+- As the queue grows, so does overall latency; with N messages in the queue, it will take N/Y seconds to process them, and thus also N/Y seconds for a request to make it from the left side of the queue to the right, assuming FIFO behavior.
+- As the queue grows, eventually, one or more of the following will happen:
+  - The queue will hit a configured maximum queue size, and will be forced to drop messages.
+  - The queue will not have a configured maximum size, but will exhaust available storage space (typically, disk or memory) on the server.
+  - As latency rises, eventually the clients upstream of our service will time out, and begin treating requests as failed, even if they might eventually succeed
+internally to our system.
 
-Often, the first problem -- a configured queue size limit -- will be the first place we actually observe an error in an overloaded system, in logs or client responses. When this happens, we may be tempted to fix the immediate problem by increasing the queue size; but insofar as our problem is a genuine capacity problem -- aggregate throughput is less than the request rate -- doing so cannot restore health, but only pushes us off towards one of the other two failure modes.
+In many systems, the first symptom -- a configured queue size limit causing dropped requests -- will be the first place we actually observe an error during overload. When this happens, it's tempting to fix the immediate problem by increasing the queue size; but insofar as our problem is a genuine capacity problem -- aggregate throughput is less than the request rate -- doing so will not restore health: **queues cannot increase peak capacity**.
 
-If, instead, we encounter the third issue -- timeouts due to high latency -- we may make the observation that any request which has been in our system past the relevant timeout has “already failed” and it’s not worth spending further time on it. We can then add an explicit check a check inside the request queue, or when we dequeue requests from the queue, in order to not spend any more work on those requests. In pseudocode, we might write something like:
+If, instead, we encounter the third issue -- timeouts due to high latency -- we may make the observation that any request which has been in our system past the relevant timeout has “already failed” and it’s not worth spending further time on it. We can then add an explicit check a check inside the request queue, or when we dequeue requests from the queue, in order to not spend any more work on those requests. We might write logic like:
 
 
 ```python
 next_request = queue.pop()
-if time.time() - next_request.arrival_time >= REQUEST_LATENCY_BUDGET:
-  raise RequestTimedOut()
-process(next_request)
+if time.time() - request.arrival_time >= REQUEST_LATENCY_BUDGET:
+  return_error(request, RequestTimedOut()
+else:
+  process(request)
 ```
 
-Such a check, can, if done properly, improve our situation, in the sense that it will increase the queue dequeue rate to match the queue enqueue rate, on average, and the queue will stop growing. However, such a check also can't shrink the queue past some point: once the queue is a size that takes `REQUEST_LATENCY_BUDGET` for requests to pass through, we will stop draining it. If the request rate remains high, then, we'll hover precisely around that size, incurring an added latency hit to every request we process. In the best case, we will achieve good throughput, but with `REQUEST_LATENCY_BUDGET` of extra latency; in the worst case, we haven't built in enough headroom, and requests time out anyways.
+Such a check, can, if done properly, improve our situation somewhat: it will increase the queue dequeue rate to match the queue enqueue rate, on average, and the queue will stop growing.
+
+However, such a check also can't shrink the queue past some point: once the queue is a size that takes `REQUEST_LATENCY_BUDGET` for requests to pass through, we will stop draining it. If the request rate remains high, then, we'll hover precisely around that size, incurring an added latency hit to every request we process. In the best case, we will achieve good throughput, but with `REQUEST_LATENCY_BUDGET` of extra latency; in the worst case, we haven't built in enough headroom, and requests time out anyways.
 
 We say that such a system has a **standing queue**. In healthy systems, queues are used to absorb temporary spikes but drain quickly; here we have a sizeable queue which persists in a steady state, leading to undesired latency.
 
@@ -162,19 +169,22 @@ In the networking context, this problem of standing queues is exactly the infamo
 {{%/div%}}
 {{%/div%}}
 
-One key takeaway here: queues can help smear out bursty load in time, which does improve throughput. But once the queue is consistently nonempty, increasing the size of the queue cannot add throughput, only increase system latency.
+The two takeaways from this section are some of the most important I hope to leave you with:
+
+- Queues can help smear out bursty load in time, but **cannot increase peak throughput** in aggregate.
+- If, under load, we accumulate persistent standing queues, our queues are adding latency for no benefit; potentially disastrous amount of latency.
 
 # What does work
 
-Ultimately, if we are persistently over capacity, and we're unable or unwilling to add capacity, there's only one solution: Find a way to have less work to do.
+Ultimately, if we are persistently over capacity, and we're unable or unwilling to add capacity, there's only one solution: Reduce the rate of requests we have to (or choose to) process.
 
-In general, we can follow two strategies towards this goal:
+In general, I think about two related strategies towards this goal:
 - We can somehow ask our clients to make fewer requests, and thus reduce the incoming request load.
-- We can choose not to process a subset of requests, discarding them as cheaply as possible and freeing up resources to allow the remaining requests to succeed.
+- We can choose not to process a subset of requests, discarding them as cheaply as possible and freeing up resources to process remaining requests successfully.
 
 We refer to either or both of these strategies as [**backpressure**](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7); in either case, we are in some sense “pushing back” on the incoming work, and making our clients aware of our capacity limit. In the first case we’re explicitly asking them to slow down; in the second, we are causing them to receive errors or dropped requests, which they have to handle somehow.
 
-As a service designer and maintainer who care about your users’ experience, it can be counterintuitive to try to push problems back onto your users in this way; it can feel like admitting failure, or shirking responsibility. However, resilient systems inevitably require some form of backpressure, for a few reasons:
+As a service designer and maintainer who cares about your availability and your users’ experience, it can be counterintuitive to push problems back onto your users in this way; it can feel like admitting failure, or shirking responsibility. No one likes to deliberately discard a valid request. However, resilient systems inevitably require some form of backpressure, for a few reasons:
 
 - As mentioned, every system has **some** limits; when we do encounter them, we would prefer to make intentional decisions about what happens and to behave deliberately and to behave as gracefully as possible.
 - More importantly, backpressure creates a [closed-loop system](https://en.wikipedia.org/wiki/Control_loop#Open-loop_and_closed-loop).  If a normally-healthy system is overloaded, the proximate reason for that overload is that someone is sending us too much traffic. By pushing the problem back to them, we move the problem and the source of the problem closer together, allowing for the possibility of actual resolution.
@@ -260,4 +270,4 @@ In my experience, "what happens if this system is overloaded" is the sort of que
 
 Fortunately, while the details vary a lot and matter immensely, I've found there's a lot of common trends and themes, both as concerns what goes wrong, and what you can do to improve the situation. This post is attempt to summarize that landscape that exists in my head and commit some of those patterns and trends to a single document. My hope is that it will help engineers who are encountering some of these problems for the first few times in a new application put them in context, and find pointers to prior art or concepts that may be valuable.
 
-Of necessity, any such writeup is at a fairly high and abstracted level. In order to actually apply these tools, you typically need a detailed knowledge of the specifics of your application. I'm hopeful the breadcrumbs and case studies here will be helpful in making connections, but there's no substitute for *also* having good domain expertise. That said, I've found that once you understand the details of your system (or as you learn them), it can be tremendously valuable to have a broader framework to hang those facts onto and organize your understanding. It's my hope that I've done a passable job conveying how I think about this problem space in a way that might help you build your own map of the landscape of "systems at capacity" and inform your own engineering. Let me know if this lands for you.
+Of necessity, any such writeup is at a fairly high and abstracted level. In order to actually apply these tools, you typically need a detailed knowledge of the specifics of your application. I'm hopeful the breadcrumbs and case studies here will be helpful in making connections, but there's no substitute for *also* having good domain expertise. That said, I've found that once you understand the details of your system (or as you learn them), it can be tremendously valuable to have a broader framework to hang those facts onto and organize your understanding. It's my hope that I've done a passable job conveying how I think about this problem space in a way that might help you build your own map of the landscape of "systems at capacity" and inform your own engineering practices. Let me know if it lands for you.
