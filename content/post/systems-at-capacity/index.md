@@ -176,9 +176,9 @@ The two takeaways from this section are some of the most important I hope to lea
 
 # What does work
 
-Ultimately, if we are persistently over capacity, and we're unable or unwilling to add capacity, there's only one solution: Reduce the rate of requests we have to (or choose to) process.
+Ultimately, if we are persistently over capacity, and we're unable or unwilling to add capacity, there's only one solution: Somehow have less work to do.
 
-In general, I think about two related strategies towards this goal:
+I tend to think about two related strategies towards this goal:
 - We can somehow ask our clients to make fewer requests, and thus reduce the incoming request load.
 - We can choose not to process a subset of requests, discarding them as cheaply as possible and freeing up resources to process remaining requests successfully.
 
@@ -266,8 +266,8 @@ Second, I want to emphasize that when we add capacity, it’s important to ident
 
 # Conclusion
 
-In my experience, "what happens if this system is overloaded" is the sort of question that is very often overlooked in designs and in introductory engineering resources, but one that mature systems and systems engineers spend a lot of time preoccupied by.
+"How does a system behave once overloaded" is a question that is often overlooked in introductory software engineering resources and initial systems designs, but in my experience also one that practically defines the experience of working on complex systems at scale.
 
-Fortunately, while the details vary a lot and matter immensely, I've found there's a lot of common trends and themes, both as concerns what goes wrong, and what you can do to improve the situation. This post is attempt to summarize that landscape that exists in my head and commit some of those patterns and trends to a single document. My hope is that it will help engineers who are encountering some of these problems for the first few times in a new application put them in context, and find pointers to prior art or concepts that may be valuable.
+When reasoning about or debugging or scaling any particular system, the details matter a lot; you'll typically need to identify the particular resources and bottlenecks and sources of contention to make good progress. At the same time, however, I've found there's a lot of common trends and themes, and a lot of high-level similarities if you're able to consider these details at a few levels of abstraction or remove. Furthermore, having those patterns at hand can be an invaluable guide to figuring out what to look for and how to find and understand the salient details of your system.
 
-Of necessity, any such writeup is at a fairly high and abstracted level. In order to actually apply these tools, you typically need a detailed knowledge of the specifics of your application. I'm hopeful the breadcrumbs and case studies here will be helpful in making connections, but there's no substitute for *also* having good domain expertise. That said, I've found that once you understand the details of your system (or as you learn them), it can be tremendously valuable to have a broader framework to hang those facts onto and organize your understanding. It's my hope that I've done a passable job conveying how I think about this problem space in a way that might help you build your own map of the landscape of "systems at capacity" and inform your own engineering practices. Let me know if it lands for you.
+This post is attempt to summarize the landscape of themes and concepts that exists in my head around this question, and articulate some of those patterns and trends in a shareable way. My hope is that it will help engineers who are encountering some of these problems for the first few times in a new application put them in context, and find pointers to prior art or concepts that may be valuable. Let me know if it lands for you.
