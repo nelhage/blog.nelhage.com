@@ -1,10 +1,10 @@
 ---
 title: "Systems at capacity"
 slug: systems-at-capacity
-date: 2023-05-28T10:43:41-07:00
+date: 2023-08-02T09:0:0-07:00
 extra_css:
 - capacity.css
-draft: true
+draft: false
 ---
 
 Suppose we’ve got a service. We’ll gloss over the details for now, but let's stipulate that it accepts requests from the outside world, and takes some action in response. Maybe those requests are HTTP requests, or RPCs, or just incoming packets to be routed at the network layer. We can get more specific later.
