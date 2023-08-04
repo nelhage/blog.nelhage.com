@@ -266,8 +266,8 @@ Second, I want to emphasize that when we add capacity, it’s important to ident
 
 # Conclusion
 
-"How does a system behave once overloaded" is a question that is often overlooked in introductory software engineering resources and initial systems designs, but in my experience also one that practically defines the experience of working on complex systems at scale.
+"How does a system behave at or beyond its capacity?" is a question that is often glossed over in introductory software engineering resources and in initial systems designs, but in my experience it's one that practically defines the experience of working on complex systems at scale.
 
-When reasoning about or debugging or scaling any particular system, the details matter a lot; you'll typically need to identify the particular resources and bottlenecks and sources of contention to make good progress. At the same time, however, I've found there's a lot of common trends and themes, and a lot of high-level similarities if you're able to consider these details at a few levels of abstraction or remove. Furthermore, having those patterns at hand can be an invaluable guide to figuring out what to look for and how to find and understand the salient details of your system.
+For any particular system, the details of the system and the capacity limits matter a lot; But I've also found there's a lot of common trends and themes, and a lot of high-level similarities if you're able to consider these details at a few levels of abstraction up. And if you really have those patterns internalized and can recognize them, they can be an invaluable guide to identifying which details matter and putting them in context.
 
 This post is attempt to summarize the landscape of themes and concepts that exists in my head around this question, and articulate some of those patterns and trends in a shareable way. My hope is that it will help engineers who are encountering some of these problems for the first few times in a new application put them in context, and find pointers to prior art or concepts that may be valuable. Let me know if it lands for you.
