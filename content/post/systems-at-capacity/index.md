@@ -1,7 +1,7 @@
 ---
 title: "Graceful behavior at capacity"
 slug: systems-at-capacity
-date: 2023-08-07T09:0:0-07:00
+date: 2023-08-07T09:00:00-07:00
 extra_css:
 - capacity.css
 draft: false
