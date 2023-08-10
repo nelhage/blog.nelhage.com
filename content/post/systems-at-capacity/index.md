@@ -135,7 +135,7 @@ internally to our system.
 
 In many systems, the first symptom -- a configured queue size limit causing dropped requests -- will be the first place we actually observe an error during overload. When this happens, it's tempting to fix the immediate problem by increasing the queue size; but insofar as our problem is a genuine capacity problem -- aggregate throughput is less than the request rate -- doing so will not restore health: **queues cannot increase peak capacity**.
 
-If, instead, we encounter the third issue -- timeouts due to high latency -- we may make the observation that any request which has been in our system past the relevant timeout has “already failed” and it’s not worth spending further time on it. We can then add an explicit check a check inside the request queue, or when we dequeue requests from the queue, in order to not spend any more work on those requests. We might write logic like:
+If, instead, we encounter the third issue -- timeouts due to high latency -- we may make the observation that any request which has been in our system past the relevant timeout has “already failed” and it’s not worth spending further time on it. We can then add an explicit check inside the request queue, or when we dequeue requests, in order to not spend any more work on those requests. We might write logic like:
 
 
 ```python
