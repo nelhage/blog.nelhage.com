@@ -1,6 +1,7 @@
 ---
 title: "What's with ML software and pickles?"
 date: 2023-11-07T21:00:00-08:00
+slug: pickles-and-ml
 ---
 
 I have spent many years as an software engineer who was a total outsider to machine-learning, but with some curiosity and occasional peripheral interactions with it. During this time, a recurring theme for me was horror (and, to be honest, disdain) every time I encountered the widespread usage of Python `pickle` in the Python ML ecosystem.
