@@ -1,0 +1,13 @@
+body {
+    max-width: 750px;
+}
+
+div#list time {
+    float: right;
+}
+div#list li {
+    clear: both;
+}
+.entry-content {
+    margin: auto;
+}

@@ -3,6 +3,42 @@
 <div>
   <article class="hentry" role="article">
     <div class="entry-content">
+      <p>{{.Params.intro | .RenderString}}
+      </p>
+      <h2>Recent posts</h2>
+      <div id='list'>
+        <ul>
+        {{ range first 5 .Site.RegularPages }}
+          <li>
+            <a href="{{.RelPermalink}}">{{.LinkTitle}}</a>
+            <time datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}" pubdate>
+              <span class='month'>{{.Date.Format "Jan"}}</span>
+              <span class='day'>{{.Date.Format "_2"}}</span>
+              <span class='year'>{{.Date.Format "2006"}}</span>
+            </time>
+          </li>
+        {{ end }}
+        </ul>
+      </div>
+      <h2>Favorites from the archives</h2>
+      <div id='list'>
+        <ul>
+          {{$site := .Site}}
+          {{ range .Params.favorites }}
+            {{$page := $site.GetPage .page}}
+            {{ if not $page }}
+            {{fmt.Errorf "Could not find page: %q" .page}}
+            {{ end}}
+            <li>
+              <a href="{{$page.RelPermalink}}">{{$page.LinkTitle}}</a>
+              <p>
+                {{$page.RenderString .blurb}}
+              </p>
+            </li>
+            {{ end }}
+        </ul>
+      </div>
+
       {{ partial "content.html" . }}
     </div>
   </article>
