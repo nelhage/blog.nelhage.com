@@ -21,21 +21,32 @@ wordpress_url: http://blog.nelhage.com/?p=343
 <p>
 So, here's a summary of the ones I picked out. There are also a large number of smaller ones, like an <a href="http://sota.gen.nz/af_can/"><code>AF\_CAN</code></a> exploit, or the <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=2010-1084">l2cap</a> overflow in the Bluetooth subsystem, that didn't get as much publicity, because they were found more quickly or didn't affect as many default configurations.
 </p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<col align="left"></col><col align="left"></col><col align="right"></col><col align="right"></col><col align="left"></col>
-<thead>
-<tr><th>CVE name</th><th>Nickname</th><th>introduced</th><th>fixed</th><th>notes</th></tr>
-</thead>
-<tbody>
-<tr><td>CVE-2006-2451</td><td><code>prctl</code></td><td>2.6.13</td><td>2.6.17.4</td><td></td></tr>
-<tr><td>CVE-2007-4573</td><td><code>ptrace</code></td><td>2.4.x</td><td>2.6.22.7</td><td>64-bit only</td></tr>
-<tr><td>CVE-2008-0009</td><td><code>vmsplice</code> (1)</td><td>2.6.22</td><td>2.6.24.1</td><td></td></tr>
-<tr><td>CVE-2008-0600</td><td><code>vmsplice</code> (2)</td><td>2.6.17</td><td>2.6.24.2</td><td></td></tr>
-<tr><td>CVE-2009-2692</td><td><code>sock\_sendpage</code></td><td>2.4.x</td><td>2.6.31</td><td><code>mmap\_min\_addr</code> helped <sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup></td></tr>
-<tr><td>CVE-2010-3081</td><td><code>compat\_alloc\_user\_space</code></td><td>2.6.26<sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup></td><td>2.6.36</td><td></td></tr>
-<tr><td>CVE-2010-3301</td><td><code>ptrace</code> (redux)</td><td>2.6.27</td><td>2.6.36</td><td>64-bit only</td></tr>
-</tbody>
-</table>
+
+<style>
+th, td {
+    padding: 0 10px;
+}
+
+thead tr {
+    border-bottom: 1px solid #aaa;
+}
+
+table {
+    border: 1px solid black;
+    margin: 1em 0;
+}
+</style>
+
+| CVE name      | Nickname                                | Introduced      | Fixed    | Notes                                      |
+|---------------|-----------------------------------------|-----------------|----------|--------------------------------------------|
+| CVE-2006-2451 | `prctl`                      | 2.6.13          | 2.6.17.4 |                                            |
+| CVE-2007-4573 | `ptrace`                     | 2.4.x           | 2.6.22.7 | 64-bit only                                |
+| CVE-2008-0009 | `vmsplice` (1)               | 2.6.22          | 2.6.24.1 |                                            |
+| CVE-2008-0600 | `vmsplice` (2)               | 2.6.17          | 2.6.24.2 |                                            |
+| CVE-2009-2692 | `sock_sendpage`             | 2.4.x           | 2.6.31   | `mmap_min_addr` [^mmap_min_addr] helped. |
+| CVE-2010-3081 | `compat_alloc_user_space` | 2.6.26[^compat] | 2.6.36   |                                            |
+| CVE-2010-3301 | `ptrace` (redux)             | 2.6.27          | 2.6.36   | 64-bit only                                |
+
 
 
 <p>
@@ -56,14 +67,6 @@ It's not clear from this sample that the kernel is getting more secure over time
 </li>
 </ul>
 
+[^mmap_min_addr]: `mmap_min_addr` mitigated this bug to a DoS, but several bugs that allowed attackers to get around that restriction were announced at the same time.
 
-
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> <code>mmap_min_addr</code> mitigated this bug to a DoS, but several bugs that allowed attackers to get around that restriction were announced at the same time.
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> The public exploit relies on a call path introduced in 2.6.26, but observers have pointed out <a href="http://www.webhostingtalk.com/showpost.php?p=7026467&postcount=192">the possibility</a> of exploit vectors affecting older kernels.
-</p>
-</div>
-</div>
+[^compat]:  The public exploit relies on a call path introduced in 2.6.26, but observers have pointed out <a href="http://www.webhostingtalk.com/showpost.php?p=7026467&postcount=192">the possibility</a> of exploit vectors affecting older kernels.

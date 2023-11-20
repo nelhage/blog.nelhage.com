@@ -93,13 +93,12 @@ the bottom to select the appropriate definition.
 In order to support loading both 32- and 64- bit ELF files in the same
 kernel, Linux uses a cute hack on the <a href="http://lxr.linux.no/linux+v2.6.33/fs/compat_binfmt_elf.c"><code>fs/compat_binfmt_elf.c</code></a>
 file. This file uses <code>#define</code> to set the ELF class to <code>ELFCLASS32</code>,
-indicating that <code>elf.h</code> should use the 32-bit definitions, <code>#define=s a few more thing, and then just =#include</code> 's <code>binfmt_elf.c</code>, causing
+indicating that <code>elf.h</code> should use the 32-bit definitions, <code>#define</code>'s a few more thing, and then just <code>#include</code> 's <code>binfmt_elf.c</code>, causing
 the ELF loader to get compiled a second time!:
 </p>
 
 
-
-<pre class="example">
+```c
 /*
  * Rename the basic ELF layout types to refer to the 32-bit class of files.
  */
@@ -123,9 +122,7 @@ the ELF loader to get compiled a second time!:
  * We share all the actual code with the native (64-bit) version.
  */
 #include "binfmt_elf.c"
-</pre>
-
-
+```
 
 
 <p>
