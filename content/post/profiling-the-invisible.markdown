@@ -3,45 +3,44 @@ title: "Profilers, performance engineering, and seeing the invisible"
 slug: profiling-the-invisible
 date: 2023-12-03T17:46:28-08:00
 ---
-I was recently introduced to the paper “[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf) “ by Gary Klein and Robert Hoffman; it’s excellent and you should read it when you have a chance.
+I was recently introduced to the paper "[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf)" by Gary Klein and Robert Hoffman; it’s excellent and you should read it when you have a chance.
 
-Klein and Hoffman discuss the ability of experts to “see what is not there”: in addition to observing data and cues that are present in the environment, experts (often implicitly or subconsciously) perceive **implications** of these cues, such as the absence of expected or “typical” information, the typicality or atypicality of observed data, and likely/possible past and future time trajectories of a system based on a point-in-time snapshot or limited duration of observation.
+Klein and Hoffman discuss the ability of experts to “see what is not there”: in addition to observing data and cues that are present in the environment, experts perceive **implications** of these cues, such as the absence of expected or “typical” information, the typicality or atypicality of observed data, and likely/possible past and future time trajectories of a system based on a point-in-time snapshot or limited duration of observation.
 
-I want to talk about some of the observations in that piece in the specific context of performance engineering, and what profilers can and cannot do for you. In particular, I think this piece makes a great lens for discussing why profilers are both invaluable tools and yet also not the be-all and end-all of performance engineering.
+I want to talk about some of the ideas of that piece in the specific context of performance engineering, and what profilers can and cannot do for you. In particular, I think this piece makes a great lens for discussing why profilers are both invaluable tools and yet also not the be-all and end-all of performance engineering.
 
 
 ## Profilers
 
-In particular, I often encounter — sometimes implicitly — the meme that “all there is” to speeding up a piece of software is this loop:
+I often encounter — sometimes implicitly — the meme that “all there is” to speeding up a piece of software is this loop:
 
 1. Run a profiler
-2. Identify the slow parts of the profile
+2. Identify the most time-consuming portions of the profile
 3. Make them faster
 
 In practice, though, when I or others attempt this loop as-written, it very rapidly reaches diminishing returns. The software will still be much slower than it seems like it “should” or “could” be (or just than we want), but it’s also not clear how to make much progress.
 
-I see a number of reasons for this disconnect, and one could write a dozen pieces on the phenomenon, but with the above essay in mind, I’ll discuss the idea that:
+I see a number of reasons for this disconnect, and suspect one could write a dozen different pieces on the phenomenon, but with the above essay in mind, I’ll discuss the idea that:
 
 
-> Profilers can only show you “what is there”; doing performance engineering skillfully requires seeing what is “not there” in the profile.
+> Profilers can only show you “what is there”; skillful performance engineering requires understanding the information that shapes and informs the profile but is "not there" in the profile itself.
 
 
 ## Seeing the invisible
 
 What do I mean by this? What is information that “is there” in the profile, and what isn’t?
 
-Profilers show you “what’s there:” they show you, very concretely and literally, where a particular execution of a program is spending time, usually in terms of functions or stack frames. To be sure, this is very useful information.
+Profilers show you “what’s there:” they show you, very concretely and literally, where a particular execution of a program is spending time, usually in terms of functions or stack frames. This is, certainly, useful information.
 
-However, it’s not enough! To be sure, sometimes you stumble on an obvious hot-spot caused by an obvious bug, but in many cases — especially in a program that’s already been optimized to some degree — you need additional information to decide what actions to take or optimizations to attempt. Seeing where the time is spent isn’t enough; we also need to understand which time-spent is feasible to remove or reduce, and how much effort or risk may be involved.
+However, it’s not enough! Sometimes you stumble on an obvious hot-spot caused by an obvious bug, but in many more cases — especially once a program has been optimized somewhat already — you need additional information to decide what actions to take or optimizations to attempt. Seeing where the time is spent isn’t enough; we also need to understand which time-spent is feasible to remove or reduce, and how much effort or risk may be involved.
 
-When I look at a section of a profile or trace, in addition to the information that is present, I find myself asking some version of two related questions:
+As some concrete example: If I see that a program is spending 80% of its time doing hashtable lookups, does that mean that I should be optimizing my hash table, or redesigning it to use fewer lookup operations? The profile cannot directly tell me, but this is the kind of information an expert may perceive in the profile, by virtue of integrating their expertise and background knowledge, regardless.
 
-- **Why** is the program spending time here?
-- **How much time** “could” or “should” the program be spending here, given different optimizations or implementation choices?
+As another angle: a profile tells you how much time a program spent in a given operation; but not how much time it would spend if you optimized that operation.
 
-Both of those are critical to make decisions about whether an operation is worth trying to optimize, but neither of them is, in general, directly visible”in the output of a profiler! A performance engineer needs a way of answering those questions in order to make progress past just plucking low-hanging fruit.
+Sometimes an operation is slow because it represents the "real work" of the program and is fundamental work that can't easily be reduced, and sometimes it's slow for inessential reasons, and potentially could even be removed entirely. A profiler will tell you that the program is spending time in the operation, but not whether it's already been optimized well, or whether it's work that could be removed or shifted elsewhere. However, once again, an expert reading the profile may emerge with answers to those questions.
 
-Even the “frame” of analysis that the profiler offers may not be the most useful frame in which to ask these questions. Profilers tend to organize information by time-order and/or grouped by function or stack frame; but often there’s another organization that would be much more productive. Some examples:
+Even the “frame” of analysis that the profiler offers may not be the most useful frame in which to ask these questions. Profilers tend to organize information by time-order and/or grouped by function or stack frame; but often another organization would be much more productive. For example:
 
 - Sometimes it’s more important to analyze time-spent in terms of I/O vs CPU time; a program may alternate doing some of each (or do both in parallel in varying ratios), and we want to break time down by various categories of I/O or CPU time, which may not neatly map to stack frames.
 - Sometimes — a bit of a generalization of the above — the most useful axis is “which hardware resources is the program using, in which proportion?” Depending on the program, this opens up a world of possible perspectives:
@@ -52,12 +51,12 @@ Even the “frame” of analysis that the profiler offers may not be the most us
 - Sometimes we need to organize by another axis or organizational frame than the physical stack trace.
 
 
-    A prototypical example for me is trying to profile a Python program using a C-level profiler; Typically, you’ll find that most of the runtime is spent in `_PyEval_EvalFrame`, which tells you little; instead, you need to “lift” your profile into the domain of the Python-level stack trace in order to gain useful understanding. (This is a problem shared by some automated tools of the form “code that operates on other code,” which [I’ve discussed a bit in the past](https://buttondown.email/nelhage/archive/tracing-jits-and-coverage-guided-fuzzers/)).
+    A prototypical example here is trying to profile a Python program using a C-level profiler. In that case, you’ll typically find that most of the runtime is spent in `_PyEval_EvalFrame`. True, as far as it goes, but not very useful; instead, you need to “lift” your profile into the domain of the Python-level stack trace in order to gain useful understanding. (This is a problem shared by some automated tools of the form “code that operates on other code,” which [I’ve discussed a bit in the past](https://buttondown.email/nelhage/archive/tracing-jits-and-coverage-guided-fuzzers/)).
 
 
 ## The interplay with expertise
 
-I think that Klein’s perspective on expertise gives us some useful frames to understand this situation.
+I think that Klein’s essay on expertise gives us some useful frames to understand this situation.
 
 Experts, especially domain experts in a particular application or programming language or framework, can often look at a profiler and “see” the answers to many of the above questions, even thought they are not literally present in the profile.
 
