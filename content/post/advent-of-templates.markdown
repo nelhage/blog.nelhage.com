@@ -7,7 +7,7 @@ This December, the imp of the perverse struck me, and I decided to see how many 
 
 As of this writing, I’ve done two days, and I’m not sure I’ll make it any further. However, that’s one more day than I planned to do as of yesterday, which is in turn further than I thought I’d make it after my first attempt. So we’ll see how it goes.
 
-That said, Day 1 was interesting enough to post a short writeup. [Find the code here](https://github.com/nelhage/aoc2023), but I’ll also do an annotated walkthrough of day 1!
+That said, Day 1 was interesting enough to post a short writeup. You can [find the code on GitHub](https://github.com/nelhage/aoc2023), but I’ll also do an annotated walkthrough of day 1!
 
 
 ## Basic types
@@ -27,7 +27,7 @@ struct literal {
 
 ## Preamble: Reading input
 
-Ideally, I would read input using the new [C++23](https://thephd.dev/finally-embed-in-c23) [`#embed`](https://thephd.dev/finally-embed-in-c23) [directive](https://thephd.dev/finally-embed-in-c23), for maximum purity; but as of this writing it seems hard to find a compiler that supports one. Thus, I fell back to a polyfill using `xxd -i`. We can run `xxd -i < input.txt > input.i`, and then include our input using `#include` and a standard variadic template. We’ll also allow a bit of preprocessor trickery to pass the input file in using a `-D` compiler flag.
+Ideally, I would read input using the new [C++23](https://thephd.dev/finally-embed-in-c23) [`#embed`](https://thephd.dev/finally-embed-in-c23) [directive](https://thephd.dev/finally-embed-in-c23), for maximum purity; but as of this writing it seems hard to find a compiler that supports one. Thus, I fell back to a polyfill using `xxd -i`. We can run `xxd -i < input.txt > input.i`, and then include our input using `#include` and a variadic template. We’ll also use a bit of preprocessor trickery to pass the input file in using a `-D` compiler flag.
 
 
 ```c++
@@ -49,13 +49,9 @@ using problem = read_input<
 >::type;
 ```
 
-
-`xxd -i` produces a list of comma-separated integers; the `read_input` template lifts them into a `list` of `literal` characters.
-
-
 ## Folds
 
-C++ template metaprogramming is very much a lazy functional language, and so it’s natural that the main operation we’ll define over lists will be `fold`.  This, too, is a relatively standard construction:
+C++ template metaprogramming is very much a functional language, and so it’s natural that the main operation we’ll define over lists will be `fold`.  This is a relatively standard construction:
 
 
 ```c++
@@ -113,7 +109,9 @@ struct or_else<nil, R> { using type = R; };
 
 # Part 1
 
-Part 1 now comes fairly easily. We implement it using a single `fold` over the input for efficiency. Our state will be a tuple of `(accumulator, first digit in line, last digit seen so far in line)`:
+If you're not doing Advent of Code, a quick refresher for the problem statement: For each line in the input file, we need to find the **first** and **last** digit in that line, and then concatenate them into a two-digit number (the "calibration number"), and output the sum of every calibration number in the file.
+
+We'll implement this using a single `fold` over the input for efficiency. As we go, we'll track state consistent of a tuple of `(sum so far, first digit in current line, last digit seen so far in line)`:
 
 
 ```c++
@@ -266,9 +264,11 @@ c++ -fbracket-depth=25000 -DINPUT=input.i -std=c++20 part1.cc -o out/part1  1.10
 
 # Part 2
 
-For part 2, we’ll start by introducing another abstraction.
+For part 2, digits may now be spelled out -- `seven82683` has a calibration value of "73."
 
-Handling newlines in our fold worked, but was a bit annoying. We can just write an abstraction that lets us think in terms of lines more directly. This new abstraction will still take the form of a `fold` over **lines,** instead of materializing a list-of-lists; keeping our processing streaming in this fashion is very important for performance. This helper is itself a fairly straightforward application of `fold`:
+We’ll start by introducing a short abstraction. Handling newlines in our fold worked, but was a bit annoying. We can write a helper that abstracts the splitting on newlines and lets us worry about individual lines.
+
+The interface will take the form of a `fold` over **lines,** instead of, say, materializing a list-of-lists; keeping our processing streaming in this fashion is very important for performance. The helper is, itself, a fairly straightforward application of `fold`:
 
 
 ```c++
@@ -387,45 +387,46 @@ Then we define the transitions within and between rules. Most of these are strai
 
 ```c++
 // one
-template<>           struct next_state<So,    literal<'n'>> { using type = Son; };
-template<>           struct next_state<Son,   literal<'e'>> { using type = Se; };
-template<>           struct next_state<Son,   literal<'i'>> { using type = Sni; };
+template<> struct next_state<So,    literal<'n'>> { using type = Son; };
+template<> struct next_state<Son,   literal<'e'>> { using type = Se; };
+template<> struct next_state<Son,   literal<'i'>> { using type = Sni; };
 // two
-template<>           struct next_state<St,    literal<'w'>> { using type = Stw; };
+template<> struct next_state<St,    literal<'w'>> { using type = Stw; };
 // three
-template<>           struct next_state<St,    literal<'h'>> { using type = Sth; };
-template<>           struct next_state<Sth,   literal<'r'>> { using type = Sthr; };
-template<>           struct next_state<Sthr,  literal<'e'>> { using type = Sthre; };
-template<>           struct next_state<Sthre, literal<'i'>> { using type = Sei; };
+template<> struct next_state<St,    literal<'h'>> { using type = Sth; };
+template<> struct next_state<Sth,   literal<'r'>> { using type = Sthr; };
+template<> struct next_state<Sthr,  literal<'e'>> { using type = Sthre; };
+template<> struct next_state<Sthre, literal<'i'>> { using type = Sei; };
 // four
-template<>           struct next_state<Sf,    literal<'o'>> { using type = Sfo; };
-template<>           struct next_state<Sfo,   literal<'u'>> { using type = Sfou; };
-template<>           struct next_state<Sfo,   literal<'n'>> { using type = Son; };
+template<> struct next_state<Sf,    literal<'o'>> { using type = Sfo; };
+template<> struct next_state<Sfo,   literal<'u'>> { using type = Sfou; };
+template<> struct next_state<Sfo,   literal<'n'>> { using type = Son; };
 // five
-template<>           struct next_state<Sf,    literal<'i'>> { using type = Sfi; };
-template<>           struct next_state<Sfi,   literal<'v'>> { using type = Sfiv; };
+template<> struct next_state<Sf,    literal<'i'>> { using type = Sfi; };
+template<> struct next_state<Sfi,   literal<'v'>> { using type = Sfiv; };
 // six
-template<>           struct next_state<Ss,    literal<'i'>> { using type = Ssi; };
+template<> struct next_state<Ss,    literal<'i'>> { using type = Ssi; };
 // seven
-template<>           struct next_state<Ss,    literal<'e'>> { using type = Sse; };
-template<>           struct next_state<Sse,   literal<'v'>> { using type = Ssev; };
-template<>           struct next_state<Sse,   literal<'i'>> { using type = Sei; };
-template<>           struct next_state<Ssev,  literal<'e'>> { using type = Sseve; };
-template<>           struct next_state<Sseve, literal<'i'>> { using type = Sei; };
+template<> struct next_state<Ss,    literal<'e'>> { using type = Sse; };
+template<> struct next_state<Sse,   literal<'v'>> { using type = Ssev; };
+template<> struct next_state<Sse,   literal<'i'>> { using type = Sei; };
+template<> struct next_state<Ssev,  literal<'e'>> { using type = Sseve; };
+template<> struct next_state<Sseve, literal<'i'>> { using type = Sei; };
 // eight
-template<>           struct next_state<Se,    literal<'i'>> { using type = Sei; };
-template<>           struct next_state<Sei,   literal<'g'>> { using type = Seig; };
-template<>           struct next_state<Seig,  literal<'h'>> { using type = Seigh; };
+template<> struct next_state<Se,    literal<'i'>> { using type = Sei; };
+template<> struct next_state<Sei,   literal<'g'>> { using type = Seig; };
+template<> struct next_state<Seig,  literal<'h'>> { using type = Seigh; };
 // nine
-template<>           struct next_state<Sn,    literal<'i'>> { using type = Sni; };
-template<>           struct next_state<Sni,   literal<'n'>> { using type = Snin; };
+template<> struct next_state<Sn,    literal<'i'>> { using type = Sni; };
+template<> struct next_state<Sni,   literal<'n'>> { using type = Snin; };
 ```
 
-We haven’t yet defined when we “match” a rule, or what to do when we do; It turns out in this case that defining “successful match” as a separate function makes both functions much simpler. It will have a similar signature — `state, input → output` — that tells us which digit (if any) matched at any particular position (if you like to be technical, this is what EEs would call [a Mealy state machine](https://en.wikipedia.org/wiki/Mealy_machine)):
+We haven’t yet defined when we “match” a rule, or what to do when we do; It turns out, for this problem, that defining “successful match” as a separate function from our state transition makes both functions much simpler. If you like to be technical, we're essentially implementing what EEs would call [a Mealy state machine](https://en.wikipedia.org/wiki/Mealy_machine) for this matcher.
+
+The `match_digit` function will will have a similar signature to `next_state` — `state, input → digit | nil` -- and tells us which digit (if any) matched at any particular position:
 
 
 ```c++
-// Producing digits
 template <typename State, typename El>
 struct match_digit { using type = nil; };
 
