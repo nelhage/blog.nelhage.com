@@ -1,7 +1,7 @@
 ---
 title: "Profilers, performance engineering, and seeing the invisible"
-slug: profiling-the-invisible
-date: 2023-12-03T17:46:28-08:00
+slug: profiling-and-seeing-the-invisible
+date: 2023-12-18T08:00:00-08:00
 ---
 I was recently introduced to the paper "[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf)" by Gary Klein and Robert Hoffman; it’s excellent and you should read it when you have a chance.
 
