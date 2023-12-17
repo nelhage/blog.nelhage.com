@@ -1,0 +1,9 @@
+* RELEASE checklist
+** Blog post file
+   - [ ] Verify the post has a slug
+   - [ ] Verify the post is not a draft
+   - [ ] Update the post timestamp
+** Buttondown post
+   - [ ] Subject: `New blog post: ...`
+   - [ ] Remember to use ?ref=buttondown
+   - [ ] Remember the Ranger photo
