@@ -1589,6 +1589,7 @@ figure.code figcaption a:hover {
     display: none
 }
 #blog-archives h1 {
+    padding-top: 0.2em;
     font-size: 1.5em
 }
 #blog-archives h1 a {
@@ -1635,6 +1636,7 @@ figure.code figcaption a:hover {
 #blog-archives a:hover {
     color: #0181eb
 }
+
 @media only screen and (min-width: 550px) {
     #blog-archives article {
         margin-left: 5em
