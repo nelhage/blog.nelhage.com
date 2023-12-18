@@ -1,9 +1,9 @@
 ---
-title: "Profilers, performance engineering, and seeing the invisible"
-slug: profiling-and-seeing-the-invisible
+title: "Performance engineering, profilers, and seeing the invisible"
+slug: profilers-seeing-the-invisible
 date: 2023-12-18T08:00:00-08:00
 ---
-I was recently introduced to the paper "[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf)" by Gary Klein and Robert Hoffman; it’s excellent and you should read it when you have a chance.
+I was recently introduced to the paper "[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf)" by Gary Klein and Robert Hoffman. It’s excellent and I recommend you read it when you have a chance.
 
 Klein and Hoffman discuss the ability of experts to “see what is not there”: in addition to observing data and cues that are present in the environment, experts perceive **implications** of these cues, such as the absence of expected or “typical” information, the typicality or atypicality of observed data, and likely/possible past and future time trajectories of a system based on a point-in-time snapshot or limited duration of observation.
 
