@@ -34,5 +34,5 @@
 [[redirects]]
   from = "/atom.xml"
   to = "/post/atom.xml"
-  status = 301
+  status = 200
   force = true
