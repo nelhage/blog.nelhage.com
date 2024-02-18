@@ -2,36 +2,37 @@
   HUGO_VERSION = "0.122.0"
 
 [[redirects]]
-  from="/2015/07/indices-point-between-elements/"
-  to="/2015/08/indices-point-between-elements/"
-  status=301
+  from = "/2015/07/indices-point-between-elements/"
+  to = "/2015/08/indices-point-between-elements/"
+  status = 301
 
 [[redirects]]
-  from="/post/Testing-and-feedback-loops/"
-  to="/post/testing-and-feedback-loops/"
-  status=301
+  from = "/post/Testing-and-feedback-loops/"
+  to = "/post/testing-and-feedback-loops/"
+  status = 301
 
 [[redirects]]
-  from="/post/Distributed-cloud-builds-for-everyone/"
-  to="/post/distributed-builds-for-everyone/"
-  status=301
+  from = "/post/Distributed-cloud-builds-for-everyone/"
+  to = "/post/distributed-builds-for-everyone/"
+  status = 301
 
 [[redirects]]
-  from="/post/Whats-with-ML-software-and-pickles/"
-  to="/post/pickles-and-ml/"
-  status=301
+  from = "/post/Whats-with-ML-software-and-pickles/"
+  to = "/post/pickles-and-ml/"
+  status = 301
 
 [[redirects]]
-  from="/blog/archives"
-  to="/post/"
-  status=301
+  from = "/blog/archives"
+  to = "/post/"
+  status = 301
 
 [[redirects]]
-  from="/feed"
-  to="/post/atom.xml"
-  status=301
+  from = "/feed"
+  to = "/post/atom.xml"
+  status = 301
 
 [[redirects]]
-  from="/atom.xml"
-  to="/post/atom.xml"
-  status=301
+  from = "/atom.xml"
+  to = "/post/atom.xml"
+  status = 301
+  force = true
