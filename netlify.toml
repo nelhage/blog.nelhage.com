@@ -28,10 +28,10 @@
 
 [[redirects]]
   from="/feed"
-  to="/post/atom"
+  to="/post/atom.xml"
   status=301
 
 [[redirects]]
   from="/atom.xml"
-  to="/post/atom"
+  to="/post/atom.xml"
   status=301
