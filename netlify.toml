@@ -35,3 +35,4 @@
   from="/atom.xml"
   to="/post/atom.xml"
   status=301
+  force=true
