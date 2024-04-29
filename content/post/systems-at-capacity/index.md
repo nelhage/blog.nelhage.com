@@ -255,6 +255,18 @@ Active queue management requires that the router has enough spare capacity to be
 {{%/div%}}
 {{%/div%}}
 
+### Battleshorts[^trousers]
+
+In order to work properly, load-shedding or rate limits **must** kick in while the system is still healthy and operating normally, before it becomes critically overloaded. However, if the system is still healthy, it can usually still handle a small number of additional marginal requests, and thus the load-shedder will inevitably reject or drop some requests which **counterfactually would have succeeded**.
+
+That can be a hard bullet to bite: no one likes to deliberately drop requests. It's usually the right choice, however. It is usually better to drop requests in a controlled manner at a deliberate time, than allow the system to enter an overloaded state.
+
+However, in some critical systems, it may sometimes be decided that the cost of failure is so high that, under some circumstances, we may wish to deliberately disable the safeguards and take our chancs, instead of ever deliberately dropping requests or disabling a subsystem. A switch that enters such a mode is sometimes called a ["battleshort"][battleshort], after the practice on some military equipment of bypassing or "short"ing fuses with a solid copper bar during combat engagements. The logic is that, in active combat, losing the ability to maneuver or to return fire is judged to be a higher risk than the risk of overheating or damage to the electrical subsystems of a vehicle.
+
+[^trousers]: As distinct from [fighting trousers][trousers].
+
+[trousers]: https://www.youtube.com/watch?v=RhpHbr19GWA
+[battleshort]: https://en.wikipedia.org/wiki/Battleshort
 
 ## Adding Capacity
 
