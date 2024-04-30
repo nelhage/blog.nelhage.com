@@ -73,7 +73,7 @@ A large fraction of the code at Stripe existed to support an HTTP service of som
 - A separate proxy service listened on each of those ports, and demand-started the backing Ruby service.
   - Thus, on first request to `api.nelhage.stripe-dev.com`, the API service would start up, and then remain running to handle future requests directly.
 - Those services used Stripe's [autoloader][autoload] on the devbox, and thus only loaded Ruby code as-needed, resulting in fast startup times.
-- The autoloader also tracked which source files were loaded in which service, and then watched them using `inotify`; if a loaded file changed on disk, any services using it would be automatically restarted to pick up the changes
+- The autoloader also tracked which source files were loaded in which service, and watched dor filesystem changes; if a loaded file changed on disk, any services using it would automatically restart to pick up the changes.
 
 [autoload]: https://www.youtube.com/watch?v=lKMOETQAdzs
 
@@ -100,11 +100,12 @@ This meant that in the common case of editing a file and running a test, the tim
 - The user edits and saves a file
 - `pay sync` is woken up by `watchman`. It notes the filesystem clock, and starts an `rsync`
 - The user starts a `pay test` command
-- `pay test` asks `watchman` for the filesystem clock, and asks `pay sync` to wait until that time.
-- Because the filesystem has not changed since the earlier save, this timestamp **matches** the one `pay sync` saw.
-- Thus, `pay sync` knows it only has to wait for the **already in-flight** `rsync` command to complete before notifying `pay test`.
+- `pay test` asks `pay sync` to wait until synchronization is caught up
+- In response, `pay sync` checks the filesystem clock again
+- Because the filesystem has not changed since the earlier save, this timestamp matches one associated with the current `rsync`
+- Thus, `pay sync` knows it only has to wait for the **already in-flight** `rsync` command before notifying `pay test`.
 
-Thus, using the `watchman` clock allowed us to implement this "sync barrier" semantics, without any additional round-trips to the devbox. If the rsync had completed before the `pay test` command, then `pay test` could start immediately. Of course, we also made sure to configure ssh `ControlMaster` appropriately, so that each `ssh` invocation piggybacked on an existing session, additionally minimizing network roundtrips.
+Using the `watchman` clock in this way allowed us to implement the "sync barrier" without any additional round-trips to the devbox. If the rsync had completed before the `pay test` command, then `pay test` could start immediately. Of course, we also made sure to configure ssh `ControlMaster` appropriately, so that each `ssh` invocation piggybacked on an existing session, additionally minimizing network roundtrips.
 
 This `pay sync` side-channel also provided a useful mechanism to provide visibility to devprod about the health of the sync script. Developer laptops are laptops, and are expected to go offline and come back online regularly. That means it's normal for the synchronization process to get temporarily stuck while offline, and thus monitoring the health of synchronization is tricky. However, if a user runs a `pay` command that will work on the devbox, that represents a strong sign that the user **expects** synchronization to be healthy. Thus, if the IPC to the synchronization process fails or times out, that is an appropriate moment to report an error to Stripe's central exception tracker, allowing devprod to monitor the overall health of the synchronization system and the user experience.
 
@@ -114,13 +115,16 @@ This `pay sync` side-channel also provided a useful mechanism to provide visibil
 
 As mentioned above, Stripe engineers could use any editor they chose; but by 2019 the Developer Productivity team had made the choice to invest in VS Code, declaring the preferred editor, and investing in editor and IDE tooling for VS Code users.
 
-Some of this work consisted of internal plugins with small but meaningful quality-of-life affordances. For instance, VS Code users got the ability to launch a `pay test` command running the test under the cursor, and similar affordances.
+Some of this work consisted of internal plugins with small but meaningful quality-of-life affordances. For instance, VS Code users got the ability to launch a `pay test` command running the test under the cursor, and assorted other conveniences.
 
-However, the more substantial improvements happened as [Sorbet][sorbet] -- Stripe's Ruby typechecker -- matured and gained an LSP server implementation. Stripe configured VS Code to run the Sorbet LSP server on the devbox over `ssh`, communicating via stdin and stdout like a local LSP server. Doing this allowed Sorbet to make use of the devbox's large amount of RAM (LSP servers in general tend to be memory-hungry on large codebases, and Sorbet was no exception), and to run in a Linux environment that wasier for the Sorbet team to monitor, debug and test.
+However, the more substantial improvements happened as [Sorbet][sorbet] -- Stripe's Ruby typechecker -- matured and gained an [LSP server implementation][sorbet-lsp] (LSP is the [Language Server Protocol][lsp], and defines an interface for a server to offer language-aware features such as "find definition" or autocomplete in a way that can be consumed by a variety of different editors).
+
+Stripe configured VS Code to run the Sorbet LSP server on the devbox over `ssh`, communicating via stdin and stdout like a local LSP server. Doing this allowed Sorbet to make use of the devbox's large amount of RAM (LSP servers in general tend to be memory-hungry on large codebases, and Sorbet was no exception), and to run in a Linux environment that easier for the Sorbet team to monitor, debug and test.
 
 In general, this approach worked fairly well; LSP servers generally must tolerate some latency, and so the additional network hop and delay due to file synchronization mostly did not pose problems. For instance, the LSP protocol is designed to handle the (extremely common case) where the user has made changes in the editor but not yet saved them to disk, and thus has the editor send relevant edits directly to the server. This process, in effect, also automatically provides robustness to some latency in file synchronization.
 
 [sorbet]: https://sorbet.org/
+[lsp]: TKTKTK
 [sorbet-lsp]: https://sorbet.org/docs/vscode#installing-and-enabling-the-sorbet-extension
 
 # Reflections on context
@@ -131,7 +135,7 @@ That said, different organizations have different technical, social, and busines
 
 ## Engineering organization size
 
-The tooling I described here was developed over a range of time where Stripe's engineering team grew from a few hundred to over a thousand. While many of the components here existed in some form since Stripe's earliest days, the "mature" versions of these tools desscribed here were built and maintained by Stripe's developer productivity team (often known as "dev-prod"), which consisted of perhaps 10 engineers by the end of my tenure.
+The tooling I described here was developed over a range of time where Stripe's engineering team grew from a few hundred to over a thousand. While many of the components here existed in some form since Stripe's earliest days, the "mature" versions of these tools desscribed here were built and maintained by Stripe's developer productivity team (often known as "devprod"), which consisted of perhaps 10 engineers by the end of my tenure.
 
 I've described a lot of fairly-involved custom tooling; building that tooling made sense for Stripe, which was large enough that it made sense to invest a team in building it and, more importantly, in **maintaining** it. Stitching together a file watcher and `rsync` in order to synchronize files from a laptop to a remote devbox is easy -- a day's work at most for a basic version. The magic of `pay sync` was not the basic functionality, but that it was owned and maintained by a team that invested in observability and ongoing maintenance to make it nearly magical: something that **always** worked, and which users didn't have to think about. That work could only be supported by a team with the ongoing resources to maintain the tool.
 
@@ -152,3 +156,16 @@ This monorepo, also, was written in Ruby specifically, which has a lot of implic
 Maintaining developer productivity as an engineering organization grows is **hard**. It is almost inevitable that per-engineer productivity drops to some extent as an organization and codebase grows, even though it's nearly impossible to quantify that effect with any precision.
 
 The challenges arise at all levels of the organization, and are social and organizational as often as they are technical. I will never claim to have all the answers or that Stripe found optimal or even "consistently good-enough" solutions to all aspects of this challenge. However, I do think that by 2019 or so, Stripe had invested enough in developer tooling that we had in many ways **improved** the median developer experience compared to many smaller stages of growth, and I've attempted to convey here the basic choices and infrastructure supporting that experience. The development experience, of course, is only part of the story: the full lifecycle of code and of a feature continues onward into CI and deployment into production, where it will be further observed and debugged; writing about those systems would be at least one more post, equal to this one in length.
+
+
+# TODO
+ - [X] watchman/inotify clarify (remove "inotify")
+ - [X] "asks pay sync to wait until that time"
+   - [ ] diagram?
+ - [X] second graf of LSP section, "affordance" is repeated
+ - [ ] define LSP -- TK link
+ - [X] typo: "wasier"
+ - [X] dev-prod vs devprod
+## evan/carl
+ - [ ] hammer on reliability?
+ - [ ] importance of starting the team early
