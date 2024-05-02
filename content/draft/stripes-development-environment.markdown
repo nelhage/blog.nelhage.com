@@ -105,7 +105,7 @@ This meant that in the common case of editing a file and running a test, the tim
 - Because the filesystem has not changed since the earlier save, this timestamp matches one associated with the current `rsync`
 - Thus, `pay sync` knows it only has to wait for the **already in-flight** `rsync` command before notifying `pay test`.
 
-Using the `watchman` clock in this way allowed us to implement the "sync barrier" without any additional round-trips to the devbox. If the rsync had completed before the `pay test` command, then `pay test` could start immediately. Of course, we also made sure to configure ssh `ControlMaster` appropriately, so that each `ssh` invocation piggybacked on an existing session, additionally minimizing network roundtrips.
+Using the `watchman` clock in this way allowed us to implement the "sync barrier" without any additional round-trips to the devbox. If the rsync had completed before the `pay test` command, then `pay test` could start immediately. We also made sure to configure ssh `ControlMaster` appropriately, so that each `ssh` invocation piggybacked on an existing session, additionally minimizing network roundtrips.
 
 This `pay sync` side-channel also provided a useful mechanism to provide visibility to devprod about the health of the sync script. Developer laptops are laptops, and are expected to go offline and come back online regularly. That means it's normal for the synchronization process to get temporarily stuck while offline, and thus monitoring the health of synchronization is tricky. However, if a user runs a `pay` command that will work on the devbox, that represents a strong sign that the user **expects** synchronization to be healthy. Thus, if the IPC to the synchronization process fails or times out, that is an appropriate moment to report an error to Stripe's central exception tracker, allowing devprod to monitor the overall health of the synchronization system and the user experience.
 
@@ -124,7 +124,7 @@ Stripe configured VS Code to run the Sorbet LSP server on the devbox over `ssh`,
 In general, this approach worked fairly well; LSP servers generally must tolerate some latency, and so the additional network hop and delay due to file synchronization mostly did not pose problems. For instance, the LSP protocol is designed to handle the (extremely common case) where the user has made changes in the editor but not yet saved them to disk, and thus has the editor send relevant edits directly to the server. This process, in effect, also automatically provides robustness to some latency in file synchronization.
 
 [sorbet]: https://sorbet.org/
-[lsp]: TKTKTK
+[lsp]: https://microsoft.github.io/language-server-protocol/
 [sorbet-lsp]: https://sorbet.org/docs/vscode#installing-and-enabling-the-sorbet-extension
 
 # Reflections on context
@@ -163,9 +163,28 @@ The challenges arise at all levels of the organization, and are social and organ
  - [X] "asks pay sync to wait until that time"
    - [ ] diagram?
  - [X] second graf of LSP section, "affordance" is repeated
- - [ ] define LSP -- TK link
+ - [X] define LSP
  - [X] typo: "wasier"
  - [X] dev-prod vs devprod
 ## evan/carl
  - [ ] hammer on reliability?
  - [ ] importance of starting the team early
+
+<!--
+sequenceDiagram
+  participant watchman
+  participant devbox
+  participant Sync
+  participant pay test
+
+  note right of pay test: File edited & saved
+  watchman ->> Sync: notify of file change
+  Sync -) +devbox: Start sync
+  note right of pay test: `pay test` invoked
+  pay test -) +Sync: start sync barrier
+  devbox -) -Sync: sync completes
+  Sync -> watchman: check clock
+  Sync -) -pay test: sync barrier complete
+  pay test->> +devbox: Run test via `ssh`
+  devbox -> -pay test: Stream output
+  -->
