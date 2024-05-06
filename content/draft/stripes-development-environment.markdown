@@ -1,7 +1,7 @@
 ---
-title: "Stripe's developer environment"
+title: "Stripe's monorepo developer environment"
 date: 2023-12-14T11:00:00-08:00
-slug: stripes-dev-environment
+slug: stripe-dev-environment
 ---
 
 # Introduction
