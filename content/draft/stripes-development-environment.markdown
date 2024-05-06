@@ -64,6 +64,10 @@ Other polish work included migrating the sync script to use [watchman][watchman]
 
 On the whole, these investments largely succeeded: most developers were able to treat code sync as simply a "fact of life," and rarely had to think about or debug it.
 
+As a quick note, one downside of synchronization is that it makes it harder to write "code that acts on code," such as automated migration tools, or even just linters or code-generation tools (for various reasons, Stripe ended up relying on a handful of code-generated components that needed to be checked in). This remained a bit of a pain point through my tenure; we made do with a mix of strategies:
+- Run on the developer laptop, and deal with the environment challenges
+- Run on the devbox and then somehow "sync back" generated files. We had a small protocol to run scripts in a "sync-back" wrapper, s.t. they could ask for file to be copied back to the laptop, but it remained somewhat awkward and non-ergonomic and occasionally unreliable.
+
 ## HTTP services on the devbox
 
 A large fraction of the code at Stripe existed to support an HTTP service of some form, including most of the Stripe API. The developer productivity team built a suite of tooling to make developing these services fairly seamless. This included:
