@@ -20,6 +20,8 @@ Some initial context-setting for the tools I'm describing: At the time I'm discu
 
 Stripe's tooling was built and maintained by a succession of teams and individuals, but I'll collectively refer to the authors and owners of this tooling as the "Developer Productivity Team" or "devprod," which was the name of that team for the last few years of my tenure.
 
+Far more so than the specific engineering choices that I'll outline here, I think the mere existence of that team, which was created and relatively early and which grew faster than the organization as a whole for a while, was the determining factor in any successes of the development experience at Stripe (I worked on the team for a period of time, although not at its inception and also not at the time of my departure). In addition, as that team grew, it prioritized *reliability* and *stability* of developer tooling; the best tooling in the world will profoundly struggle to make up for "regularly losing a day debugging your environment," and so getting that aspect right can easily outweigh almost any other decisions you make. As I discuss the specifics of the choices Stripe made, you'll notice that a number of the design choices were made specifically to **enable** the devprod team to own and monitor tooling and developer experiences centrally, which was a huge enabler for that reliability.
+
 ## Development code runs in the cloud
 
 A defining question for developer environments tends to be: Does code under development run locally on the developer's laptop, or does it need to be run elsewhere, usually inside an environment that is centally defined and provisioned somehow.
@@ -158,33 +160,25 @@ Maintaining developer productivity as an engineering organization grows is **har
 The challenges arise at all levels of the organization, and are social and organizational as often as they are technical. I will never claim to have all the answers or that Stripe found optimal or even "consistently good-enough" solutions to all aspects of this challenge. However, I do think that by 2019 or so, Stripe had invested enough in developer tooling that we had in many ways **improved** the median developer experience compared to many smaller stages of growth, and I've attempted to convey here the basic choices and infrastructure supporting that experience. The development experience, of course, is only part of the story: the full lifecycle of code and of a feature continues onward into CI and deployment into production, where it will be further observed and debugged; writing about those systems would be at least one more post, equal to this one in length.
 
 
-# TODO
- - [X] watchman/inotify clarify (remove "inotify")
- - [X] "asks pay sync to wait until that time"
-   - [ ] diagram?
- - [X] second graf of LSP section, "affordance" is repeated
- - [X] define LSP
- - [X] typo: "wasier"
- - [X] dev-prod vs devprod
-## evan/carl
- - [ ] hammer on reliability?
- - [ ] importance of starting the team early
-
 <!--
 sequenceDiagram
   participant watchman
   participant devbox
-  participant Sync
-  participant pay test
+  participant Sync as pay sync
+  # participant pay test
+  actor user
 
-  note right of pay test: File edited & saved
+  note over user: Save and edit file
+  note  over watchman: observe change
   watchman ->> Sync: notify of file change
-  Sync -) +devbox: Start sync
-  note right of pay test: `pay test` invoked
+  Sync -x watchman: check logical clock: T_0
+  Sync -) +devbox: Start sync as-of T_0
+  create participant pay test
+  user->>pay test: Run test command
   pay test -) +Sync: start sync barrier
+  Sync -x watchman: check logical clock: T_0
   devbox -) -Sync: sync completes
-  Sync -> watchman: check clock
   Sync -) -pay test: sync barrier complete
   pay test->> +devbox: Run test via `ssh`
-  devbox -> -pay test: Stream output
+  devbox ->> -user: Stream output
   -->
