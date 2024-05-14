@@ -4,69 +4,82 @@ date: 2023-12-14T11:00:00-08:00
 slug: stripe-dev-environment
 ---
 
-# Introduction
+I worked at Stripe for about seven years, from 2012 to 2019. Over that time, I used and contributed to many generations of Stripe's developer environment -- the tools that engineers used daily to write and test code. In my opinion Stripe did a pretty good job designing and building that developer experence, and since leaving, I've found myself repeatedly describing features or design choices to friends and collaborators.
 
-I worked at Stripe for about seven years, from 2012 to 2019. Over that time, I used and contributed to many generations of Stripe's developer environment -- the tools that engineers used daily to write and test code.
+This post is an attempt to record the salient features of that environment as I remember it. I'll also try to reflect on the context, constraints, and motivations for some of these choices; while I think they were generally good ones, they were deeply informed by the business and technical context, and it's unlikely anyone else should clone them identically.
 
-Since leaving, I've found myself repeatedly describing features or design choices of that environment to friends and collaborators; this post is an attempt to record the salient features of that environment as I remember it, because I think it's helpful prior art for other teams building out their own tooling. I'll also try to include some thoughts about the context, constraint, and motivations for Stripe's choices; while I think their tools and choices are worth learning from, their specific choices were deeply informed by the local business and technical environment, and it's unlikely that identical choices would make sense elsewhere.
+Some caveats: It's been nearly five years, and I have no doubt that I have misremembered some of the specific details, even though I'm confident in the overall picture. I'm also certain that Stripe has continued evolving and I make no claim this document represents the developer experience at Stripe as of today.
 
-Some caveats: It's been nearly five years, and I have no doubt that I have misremembered some of the specific details, even though I'm confident in the overall picture. I'm also certain that Stripe has continued evolving and I make no claim this document represents the developer experience at Stripe as of right now.
+In addition: I contributed to many of the components described here, but I can't and don't try to claim any overall credit for this system. Everything here was evolved over the course of many years, with contributions from many talented engineers, both to craft the vision, and to implement it.
 
-And, finally, while I contributed to a number of the components described here, I can't and don't try to claim credit for this system or its design. Everything here was evolved over the course of many years, with contributions from many talented engineers, both at the level of overall design and vision and in the implementation.
+# Technical and organizational context
 
-# Stripe's monorepo development environment
+First, some background for the tools I'll describe. At the time I'm discussing, most of Stripe's codebase was written in Ruby, and lived in a single large monorepo. This codebase supported a number of services, which shared code extensively. Stripe also had a large and growing number of services outside the monorepo, and often in another language, but they were (as a generalization) less core to the business (concretely: the Stripe API was still almost entirely a single Ruby service in the monorepo). The tooling and experience I discuss here were designed and built primarily to support development in the monorepo. Other services and languages were supported incidentally if at all.
 
-Some initial context-setting for the tools I'm describing: At the time I'm discussing, most of Stripe's codebase was written in Ruby, and lived in a single large monorepo. This codebase supported a number of services, which shared code extensively. Stripe did also have a large and growing number of services that did not live in the monorepo and were not implemented in Ruby, but they were (as a generalization) less core to the business (concretely: the Stripe API was still almost-entirely in Ruby inside of the monorepo). The tooling and experience I discuss here were designed and built primarily to support development in the monorepo; other services and languages were supported incidentally if at all.
+Stripe's tooling was built and maintained by a succession of teams and individuals, but I'll collectively refer to its authors and owners as the "Developer Productivity Team" ("devprod" for short), which was the name of that team for the last few years of my tenure.
 
-Stripe's tooling was built and maintained by a succession of teams and individuals, but I'll collectively refer to the authors and owners of this tooling as the "Developer Productivity Team" or "devprod," which was the name of that team for the last few years of my tenure.
+## Investing in tooling
 
-Far more so than the specific engineering choices that I'll outline here, I think the mere existence of that team, which was created and relatively early and which grew faster than the organization as a whole for a while, was the determining factor in any successes of the development experience at Stripe (I worked on the team for a period of time, although not at its inception and also not at the time of my departure). In addition, as that team grew, it prioritized *reliability* and *stability* of developer tooling; the best tooling in the world will profoundly struggle to make up for "regularly losing a day debugging your environment," and so getting that aspect right can easily outweigh almost any other decisions you make. As I discuss the specifics of the choices Stripe made, you'll notice that a number of the design choices were made specifically to **enable** the devprod team to own and monitor tooling and developer experiences centrally, which was a huge enabler for that reliability.
+On the note of the Developer Productivity Team: Stripe initally created that team, with headcount dedicated to internal tooling and productivity, fairly early on, and it grew much more rapidly than the organization for a while. It was also consistently staffed with a number of excellent, senior, engineers. More so than any of the specific choices I'll outline, I think the existence of the team, and its investment in **stability** and **reliability** of developer tooling (this came later; the team needed to grow and to claw free enough room to breathe, first) were the major drivers in any success of the Stripe developer experience. Technical choices and engineering absolutely matter, but they need to be supported with enough headcount and with adequence **ongoing maintenance** in order to work.
+
+The reliability and stability of the environment, especially as the team and codebase grew and evolved, will be recurring theme. The best tooling in the world will struggle to make up for "regularly losing a day debugging your environment," and so getting that aspect right can easily outweigh almost any other decisions you make. Many of the design choices were made with the goal of enabling the devprod team to more-easily and consistently support and monitor the tooling, and allow for centralized debugging and resolution of issues instead of pushing it onto individual engineers.
+
+# Architecture of the developer environment
 
 ## Development code runs in the cloud
 
-A defining question for developer environments tends to be: Does code under development run locally on the developer's laptop, or does it need to be run elsewhere, usually inside an environment that is centrally defined and provisioned somehow.
+Here's one defining question for a developer environments: Does code under development run locally on the developer's laptop, or does it need to be run remotely somewhere (often on instances or containers inside the organization's cloud environment)?
 
-At Stripe, we settled on running code in the cloud, for a variety of reasons. Every developer had a personal development instance ("devbox" for short) in Stripe's AWS environment (entirely disconnected from production, of course). During development, code ran on that instance, both for running automated tests and for interactive testing or experimentation.
+For many years, Stripe engineers made use of both options, depending on developer preference and idiosyncratic decisions and details of what worked in which environment when. When the Developer Productivity Team made the decision to invest in a single blessed environment, we settled on running code in the cloud. An EC2 instance (outside of the production VPC, of course) was allocated to each developer (a "devbox" for short). During development, code ran on that instance, both for running `minitest` tests and for interactive testing and experimentation.
 
-These developer instances were provisioned by Stripe's standard configuration management tooling, and were ephemeral -- a single command would destroy your devbox, provision a new one, and assign it to you. A central registry kept track of which instance was active for which engineer, allowing tooling to track your devbox across reprovisioning.
+These developer instances were provisioned by Stripe's standard configuration management tooling, and were ephemeral -- a single command could destroy your instance and provision a new one (a number of warm spares were kept, making this operation typically ~instantaneous). A shared registry kept track of which instance was active for which engineer, for consumption by tooling.
 
 This design meant that most environment-configuration issues could be solved centrally by tooling teams or service owners, and developers mostly did not have to worry about updating their own development environments to keep up.
 
-All devboxes were accessible (via `ssh` and the HTTP endpoints I'll talk about shortly) to all engineers, making it easy to show off work-in-progress or help a teammate debug environment or configuration issues. In particular, devprod could debug user issues directly, or a team that was adding a new service dependency could debug issues that arose with their development configuration.
+All devboxes were accessible (via `ssh` and the HTTP endpoints I'll talk about shortly) to all engineers. This both made it easier to demo work-in-progress, and also made devboxes **much** easier to support: A teammate could log in to help you debug an issue they've already encountered, and the devprod team could debug issues and roll out fixes centrally. If one team was added a service dependency that was breaking another team's environment, they could help debug it directly with a member of that team.
 
 ## Editors and source control
 
-Before you can run new code under development, though, you need to actually access the source code and edit it.
+Before you can run new code under development, you need to actually access code via source control and edit it.
 
-At Stripe, even though code **ran** in the cloud, git checkouts and editors lives locally, on developer laptops. Stripe settled on this approach for a number of reasons, including:
+At Stripe, even though code **ran** in the cloud, git checkouts and editors lived locally, on developer laptops. Stripe settled on this approach for a number of reasons, including:
 
-- Support for a wide variety of editor and IDE environments. Some editors (like `emacs` or `vim`) can be run reasonably-well over an SSH session, and some (like VS Code or emacs with [`tramp`][tramp]) support running a local UI against a remote filesystem, but many do not. By keeping code on the laptop, Stripe allowed developers to continue using any editor they wanted.
-- Latency. Stripe had developers around the globe, but at the time did not maintain substantial infrastructure outside of the US. Editing code on the other side of a 200ms (or worse!) network latency is **painful**. Standing up more EC2 regions might have been an option, but would have brought many other complications.
-- Source code durability. By keeping the source-of-truth on laptops and off of the devbox, it was much easier to treat the execution environment as ephemeral and transient. That property, in turn, was very helpful for keeping environments up-to-date and preventing drift over time.
-  - This could could also have been achieved by keeping code on a network-accessible mount (e.g. [EFS][efs]) or even an EBS volume, but those also would add complexity, and many such options imposed painful latency on `git` and on service startup, both of which rely on large numbers of rapid filesystem accesses.
+- Support for a wide variety of editor and IDE environments
+
+  Some editors (like `emacs` or `vim`) can be run reasonably-well over an SSH session, and some (like VS Code or emacs with [`tramp`][tramp]) support running a local UI against a remote filesystem, but many do not. By keeping code on the laptop, Stripe allowed developers to continue using any editor they wanted.
+- Latency
+
+  Stripe had developers around the globe, but at the time did not yet maintain substantial infrastructure outside of the US. Editing code on the other side of a 200+ms network latency is **painful**. Standing up devboxes globally was an option but would have been complicated for numerous reasons.
+- Source code durability
+
+  By keeping the source-of-truth on laptops and off of the devbox, it was much easier to treat the execution environment as ephemeral and transient. That property, in turn, was very helpful for keeping environments up-to-date and preventing drift over time.
+
+  Source code could have been kept on a network-accessible store separate from the devbox (e.g. [EFS][efs] or an EBS volume), but aside from the complexity cost, those options have relatively high latency, and source code tends to be dependent on (at least) fast file-metadata lookups; `git` operations over NFS or on EBS tend to be painfully slow without heroic levels of tuning and optimazation.
 
 [tramp]: https://www.gnu.org/software/tramp/
 [efs]: https://aws.amazon.com/efs/
 
 ### Automatic synchronization
 
-Keeping code on laptops, and executing in the cloud, though, poses an obvious challenge: How do we **get** code from the laptop onto the devbox?
+Keeping code on laptops, and executing in the cloud, though, poses a new challenge: How does code, once edited, **get**  from the laptop onto the devbox?
 
-Even before I had started, Stripe had maintained a "sync" script that glued together a file-watcher with `rsync` for this purpose; it would monitor your local checkout for changes and copy them to a devbox in the cloud. Historically, developers would manually start and monitor this script in an ad-hoc way in a separate terminal or `tmux` window.
+Even before I joined, Stripe had maintained a "sync" script that glued together a file-watcher with `rsync` for this purpose; it would monitor your local checkout for changes and copy them to a devbox in the cloud. Historically, developers would manually start and monitor this script in an ad-hoc way in a separate terminal or `tmux` window.
 
-Eventually, though, the Developer Productivity team took ownership of that tool and invested in it heavily, largely with the goal of adding "polish" and making it seamless and nearly-invisible for other developers.
+Eventually, the Developer Productivity team took ownership of that tool and invested in it heavily, largely with the goal of adding "polish" and making it seamless and nearly-invisible for other developers.
 
 Notably, they made syncing happen implicitly and with no configuration or intervention required: They worked with the IT team to install the sync script as a `launchd` service on every developer laptop, and used the above-mentioned registry to automatically discover the correct devbox.
 
-Other polish work included migrating the sync script to use [watchman][watchman] for file-watching; In our testing, `watchman` was by far the most robust file-watcher we found, vastly reducing the frequency of missed updates or a "stuck" file-watcher. It also offered some advanced features that Stripe made use of -- more about that later.
+They also invested heavily in reliability and self-healing on errors and network problems. One "internal" but significant improvement involved migrating to [watchman][watchman] for file-watching: In our testing , it was by far the most robust file-watcher we found, vastly reducing the frequency of missed updates or a "stuck" file-watcher. We were also able to use some of its more-advanced features, which I'll discuss in a bit.
 
 [watchman]: https://facebook.github.io/watchman/
 
 On the whole, these investments largely succeeded: most developers were able to treat code sync as simply a "fact of life," and rarely had to think about or debug it.
 
-As a quick note, one downside of synchronization is that it makes it harder to write "code that acts on code," such as automated migration tools, or even just linters or code-generation tools (for various reasons, Stripe ended up relying on a handful of code-generated components that needed to be checked in). This remained a bit of a pain point through my tenure; we made do with a mix of strategies:
+One downside of synchronization is that it makes it harder to write "code that acts on code," such as automated migration tools, or even just linters or code-generation tools (Stripe ended up relying on a handful of code-generated components which needed to be checked in for various reasons). This remained a bit of a pain point through my tenure; we made do with a mix of strategies:
 - Run on the developer laptop, and deal with the environment challenges
 - Run on the devbox and then somehow "sync back" generated files. We had a small protocol to run scripts in a "sync-back" wrapper, s.t. they could ask for file to be copied back to the laptop, but it remained somewhat awkward and non-ergonomic and occasionally unreliable.
+
+<!-- edited to here -->
 
 ## HTTP services on the devbox
 
