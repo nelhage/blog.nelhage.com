@@ -32,11 +32,19 @@ Here's a defining question for a developer environment: Does code in development
 
 For many years, Stripe engineers used both options, depending on developer preference and idiosyncratic decisions and details of what worked in which environment at which times. When the developer productivity team decided to invest in a single blessed environment, we settled on supporting per-developer instances ("devboxes") in Stripe's cloud enviroment (outside of the production enviroment). During development, code ran on a devbox, both for running `minitest` tests and for interactive testing and experimentation.
 
-These developer instances were provisioned by Stripe's standard configuration management tooling, and were ephemeral -- a single command could destroy your instance and provision a new one (a number of warm spares were kept, making this operation typically very fast). A registry kept track of which instance was active for which engineer, for consumption by tooling.
+These developer instances were provisioned by Stripe's standard configuration management tooling, and were ephemeral -- a single command could destroy your instance and provision a new one (a number of warm spares were kept, making this operation typically very fast). A registry kept track of which instance was active for which engineer, for consumption by tooling. All devboxes were accessible via `ssh` to all engineers, which eased collaboration and debugging of environment issues.
 
 This design meant that most environment-configuration issues could be solved centrally by tooling teams or service owners, and developers mostly did not have to worry about updating their own development environments to keep up.
 
-All devboxes were accessible (via `ssh` and the HTTP endpoints I'll talk about shortly) to all engineers. This both made it easier to demo work-in-progress, and also made devboxes **much** easier to support: A teammate could log in to help you debug an issue they've already encountered, and the devprod team could debug issues and roll out fixes centrally. If one team was added a service dependency that was breaking another team's environment, they could help debug it directly with a member of that team.
+### Enabling new dependencies
+
+Stripe was continually adding and reworking dependencies for the API or other services; for instance, [implementing rate limiting][limiting] in the API required a Redis cluster. In a world where development code runs on laptops, this meant that every laptop would now need a Redis installed and potentially configured. Updating configuration on developer laptops was challenging, and often this would be left to word-of-mouth between engineers: "Hey, I pulled `master` and now I'm getting a weird error -- does anyone know how to fix this?" followed by a teammate sending an appropriate configuration command. Alternately, a `brew` invocation to install Redis might get slipped into a random script that developers run regularly, in the hopes of resolving the issue, which was also brittle and periodically caused random tools to be slowed down.
+
+[limiting]: https://stripe.com/blog/rate-limiters
+
+With the devbox model, the team adding Redis was already responsible for configuring it in production, and they could add appropriate Puppet configuration to ensure it was installed and running on devboxes, as well. In the event that a user ran into problems with this new path, members of that team, or of a devprod, would be able to `ssh` directly into their devbox, debug the issue, and then update Puppet or the Ruby source directly to prevent the issue from impacting other users.
+
+For most of my tenure at Stripe, new features and infrastructure changes were _constantly_ resulting in new dependencies or configuration changes to existing dependencies of some form; standardizing on devboxes both eased the jobs of those teams, and drastically reduced the rate at which infrastructure changes would break someone else's developer experience, both of which were enormously valuable.
 
 ## Editors and source control
 
