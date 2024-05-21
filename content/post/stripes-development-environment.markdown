@@ -1,6 +1,6 @@
 ---
 title: "Stripe's monorepo developer environment"
-date: 2023-12-14T11:00:00-08:00
+date: 2024-05-21T10:00:00-07:00
 slug: stripe-dev-environment
 ---
 
