@@ -17,24 +17,25 @@
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="{{.Site.Title}}" type="application/atom+xml">
-  {{with resources.Get "css/fonts.css" }}
+  {{- $indent := "\n  "}}
+  {{- with resources.Get "css/fonts.css" }}
   {{ $css := . | fingerprint }}
   <link rel='stylesheet' href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{else}}
-  {{debug "fonts.css not found!"}}
-  {{end}}
-  {{ range .Params.extra_css -}}
-  {{- $css := resources.Get . -}}
+  {{- else}}
+  {{- debug "fonts.css not found!"}}
+  {{- end}}
+  {{- range .Params.extra_css}}
+  {{- $css := resources.Get .}}
   {{- if not $css}}{{$css = page.Resources.Get .}}{{end}}
-  {{- with $css -}}
-    {{- with . | fingerprint -}}
-      {{"  "}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
-    {{- end -}}
-  {{- else -}}
-    <link rel='stylesheet' href="{{.}}">
-  {{- end -}}
-{{- end -}}
-{{if .Site.GoogleAnalytics -}}
+  {{- with $css}}
+    {{- with . | fingerprint}}
+      {{- $indent}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+    {{- end}}
+  {{- else}}
+    {{- $indent}}<link rel='stylesheet' href="{{.}}">
+  {{- end}}
+{{- end}}
+{{- if .Site.GoogleAnalytics}}
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '{{ .Site.GoogleAnalytics }}']);
@@ -47,7 +48,8 @@
     })();
   </script>
 {{end -}}
-{{if .Params.math -}}
+{{- if .Params.math}}
+  {{- if false}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
@@ -55,8 +57,22 @@
 
     <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
-{{end}}
+            onload="renderMathInElement(document.body);"></script>
+  {{- else}}
+    {{- with resources.Get "katex/katex.min.css" | fingerprint}}
+      {{- $indent}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+    {{- end}}
+    {{- with resources.Get "katex/katex.min.js" | fingerprint}}
+      {{- $indent}}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{- end}}
+    {{- with resources.Get "katex/contrib/auto-render.min.js" | fingerprint}}
+      {{- $indent}}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"
+    onload="renderMathInElement(document.body);"></script>
+    {{- end}}
+    {{/* Publish all the fonts so the CSS can find them */}}
+    {{- range resources.Match "katex/fonts/*" -}}{{with .RelPermalink}}{{end}}{{end}}
+  {{- end}}
+{{- end}}
 </head>
 <body class="collapse-sidebar sidebar-footer">
   <header role="banner">
