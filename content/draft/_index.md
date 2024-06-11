@@ -4,6 +4,8 @@ cascade:
     environment: development
   build:
     list: always
-- build:
+- _target:
+    environment: '{staging,production}'
+  build:
     list: never
 ---
