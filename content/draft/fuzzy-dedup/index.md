@@ -1,5 +1,5 @@
 ---
-title: "Approximate  deduplication with Jaccard similarity and MinHash"
+title: "Approximate deduplication with Jaccard similarity and MinHash"
 slug: fuzzy-dedup
 date: 2024-05-26T12:07:28-07:00
 math: true
@@ -12,10 +12,11 @@ In this post I want to explore the method of approximate deduplication via Jacca
 
 # Jaccard similarity
 
-A natural approach to approximate deduplication is to define some notion of “similarity” between any pair of documents, and group together any two documents whose similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might want a similarity measure $$S: U \times U \rightarrow [0,1]$$
-and we’ll consider two documents “approximately the same” if \\(S(A,B) \geq S_\textrm{crit}\\).[^transitive]
+A natural approach to approximate deduplication is to define some notion of “similarity” between any pair of documents, and group together any two documents whose similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might want a similarity measure $$S: U \times U \rightarrow [0,1]$$ and we’ll consider two documents “approximately the same” if \\(S(A,B) \geq S_\textrm{crit}\\).
 
-[^transitive]: Mostly an aside for now: note that this definition is not necessarily transitive — we may have documents \\(A, B, C\\) such that \\(S(A,B)\geq{}S_\textrm{crit}\\) and \\(S(B,C) \geq{} S_\textrm{crit}\\) but \\(S(A,B) < S_\textrm{crit}\\). We’ll have to decide what to do in such circumstances — do we group together all three documents? If we are deduplicating in an online fashion, and we throw out \\(B\\) when we first encounter it, does that result in us keeping \\(C\\) even thought we would not have if it preceded \\(B\\)?
+As a slight aside, it's worth noticing that this definition is not -- in general -- transitive -- we may have three documents \\(A, B, C\\) such that \\(S(A,B)\geq{}S_\textrm{crit}\\) and \\(S(B,C) \geq{} S_\textrm{crit}\\) but \\(S(A,B) < S_\textrm{crit}\\). That means that "approximately identical" is not an [equivalence relation][equivalence], and is part of the reason that approximate deduplication is trickier to scale than finding exact matches.
+
+[equivalence]: https://en.wikipedia.org/wiki/Equivalence_relation
 
 One measure of similarity widely used across several domains, including large-scale text processing is the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index), also known as the Jaccard similarity coefficient.
 
@@ -33,15 +34,17 @@ It has two very natural limit points, which define its range: For two disjoint s
 
 If we want to deduplicate document using the Jaccard index, we'll have to tackle two problems, which I'll take in turn: First, we have to turn our documents into sets, so that we can apply Jaccard, and then we'll have to figure out how to make it efficient.
 
-# Turning documents into sets
+# Representing documents into sets
 
-In order to apply the Jaccard index to textual documents, we need to convert them into sets of some sort. There are a number of ways to do this, but I'll touch on two fairly standard ones.
+In order to apply the Jaccard index to textual documents, we need to represent them as sets of some sort. Commonly we'll refer to the elements of such sets, in the abstract, as "feartures," and we'll talk about transforming documents into "feature sets."
 
-Before applying either of these approaches, we may also want to apply one or more forms of text normalization. For instance, we likely want to convert to a standard [Unicode normalization form][unicode-norm], and we may also wish to case-fold, collapse runs of whitespace, or perform similar translations.
+There are a number of ways to do this; I'll touch on two fairly common ones.
+
+Before applying either of these approaches, we may wish to apply one or more forms of text normalization. For instance, we likely want to convert to a standard [Unicode normalization form][unicode-norm], and we may also wish to case-fold, collapse runs of whitespace, or perform similar transformations.
 
 [unicode-norm]: https://www.unicode.org/reports/tr15/
 
-## n-grams or "shingles"
+## n-grams aka "shingles"
 
 One approach is to just represent each document as a set of all the n-grams that appear in it, for some value of `n`. In the text mining field, these are often referred to as "shingles". We can pick any value of `n`, with the primary tradeoff that smaller values will tend to compare documents more coarsely, and larger ones generating more distinct shingles and thus larger sets that are more expensive to process. According to one source[^fn-n], values of n between 5 and 9 appear to be common, depending on the application.
 
@@ -57,30 +60,81 @@ We could also use a hybrid approach, applying a tokenizer that produces numeric 
 
 [spark-token]: https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Tokenizer.html
 
-# Performance
+# Scaling Jaccard similarity
 
-We now have a **definition** of "approximate similarity" -- the Jaccard index computed over the feature-set of each document -- that we wish to apply.
+We now have a **definition** of "approximate similarity": We convert documents into sets of features, and wish to find documents with high Jaccard similarity between their feature sets.
 
-For very small corpora, we could potentially apply that definition directly. However, the definition we've given depends on computing \\(J(D_0, D_1)\\) for **every** pair of documents in our corpus, which entails \\(O(n^2)\\) Jaccard computations. Morever, each similarity computation isn't even all that cheap -- it involves computing both the union and intersection of the feature sets, which will tend to be **around** the same size as the input documents themselves.
+For very small corpora, we could potentially apply that definition directly. However, the definition we've given depends on computing \\(J(D_0, D_1)\\) for **every** pair of documents in our corpus, which entails \\(O(n^2)\\) Jaccard computations. We need to do better than that: if we had a million documents -- still a fairly small number, compared to datasets like "the public web" -- that would be half a **trillion** comparisons.
 
-If we have \\(N\\) documents, each of average length \\(D\\), the performance of the naive approach is something like \\(O(N^2D)\\). That's not feasible; we generally need something that scales **most** with \\(N\log{}N\\) to be acceptable at massive scale, and \\(O(N)\\) would be even better.
+We can compare this to finding exact duplicates, where we will hash every document, and only compare documents with matching hashes. As long as the rate of hash collision is low enough, we compare each document to \\(O(1)\\) other documents, and only require \\(O(n)\\) work in total.
 
-It turns out, if we're willing to accept a few more approximations, we can achieve that! Let's dig in.
+It turns out, if we're willing to accept a few approximations, we can similarly scale Jaccard similarity! Let's dig in.
 
-## Approximating the Jaccard similarity
+## Approximating Jaccard similarity
 
-We'll turn first to the problem of approximating the Jaccard similarity of two sets. Recall that we're computing the ratios of two sizes: the intersection and the union of our two input sets.
+First, a brief preview of the ground we'll cover:
 
-> TKTK figure: Jaccard similarity
+We'll first consider just the problem of approximating the Jaccard similarity between two documents. We'll find an approximation that avoid examining the entire feature set, and instead only considers a fixed-size (and relatively small) "signature," which suffices to approximate the Jaccard similarity. We'll then scale up to comparing many documents, where we'll exploit the structure of that signature to group candidate documents together, and avoid doing the full all-pairs computation.
 
-The naive approach here requires fully computing the union and the intersection, which in turn requires looking at every member of each set.
+### MinHash signatures
 
-One common trick to approximate such a ratio is **sampling**. If we have a way to select points uniformly at random from the denominator, and test whether or not each point is present in the numerator of our ratio, we can approximate the ratio in that way.
+Recall that the Jaccard similarity is the ratio of two sizes: the intersection and the union of our two input sets.
 
-> TKTK figure: sampling
+$$J(A,B) = \frac{|A\cap{}B|}{|A\cup{}B|}$$
 
+When considering a ratio of areas like this, one classic strategy is to **sample**. If we can select elements from an appropriate distribution, we can query whether those samples are present in the top and bottom halves of the ratio, and use our empirical ratio as an estimate of the true ratio.
 
+How do we sample from \\(A\cup{}B\\)? Here's where the tricks start. We'll take a few observations, and combined them in a way that lets us do nearly all of the work ahead-of-time, as a pre-processing pass over **individual** feature sets.
 
+- First, we'll make the problem apparently more complicated: We'll assign a random value from to each potential feature -- let's call that assignment \\(P(x)\\) -- and we'll pick the feature in our set with the minimum associated value[^sql]:
+
+$$ x_{\textrm{random}} \leftarrow{} \argmin_{x\in{}A\cup{}B}{P(x)} $$
+
+- "Randomly assigning a value to every possible feature" is infeasible, but a good hash function should approximate such an assignment for most purposes (indeed, the "[random oracle][oracle]" model is one common approach for modeling cryptographic hashes. I'll note some caveats below). We'll also consider **only** the hash value of the minimum element, throwing away the element itself, which has the advantage of leaving us a fixed-size value:
+
+$$ x_{\textrm{sig}} \leftarrow{} \min_{x\in{}A\cup{}B}{H(x)} $$
+
+[oracle]: https://en.wikipedia.org/wiki/Random_oracle
+
+- But `min` is associative, which means we can consier each side individually, and then combine:
+
+\\begin{align*}
+a_{\textrm{min}} &= \min_{x\in{}A}H(x) \\\\
+b_{\textrm{min}} &= \min_{x\in{}B}H(x) \\\\
+x_{\textrm{sig}} &= \min(a_\textrm{min},b_\textrm{min})
+\\end{align*}
+
+[^sql]: If you've ever written `SELECT ... FROM table ORDER by random() LIMIT 1`, this may be a familiar trick!
+
+So now we have this \\(x_\textrm{sig}\\), which is the hash of a randomly-chosen member of the union. We want to ask: Is the associated feature present in the **intersection** of the two sets?
+
+But that's a simple question! We know that \\(x_\textrm{sig}\\) is the smallest hash value present in either set. Therefore, if it is present in both sets, it must **also** be the smallest such value in **each** set, individually.
+
+This procedure allows us to summarize each set into a single value \\(a_\textrm{min} = \min_{x\in{}A}{H(x)}\\), with the property that for any two sets, \\(P(a_\textrm{min} = b_\textrm{min}) = J(A, B) \\).
+
+Note that here our probability is taken **over the choice of hash function**; for any single function, we only produce one value, and so our estimate can only take on the values 0 or 1 -- not a lot of precision.
+
+To fix that, we can instead pick some number \\(k\\) hash functions out of an appropriate hash function family, and summarize each element into a \\(k\\)-element vector:
+$$ A_\textrm{sig} =
+\begin{pmatrix}
+min_{x\in{}A}H_1(x) & min_{x\in{}A}H_2(x) & \cdots{} &  min_{x\in{}A}H_k(x)
+\end{pmatrix}
+$$
+
+Given two of these signatures, we can approximate the Jaccard similarity by simply checking how many of the corresponding hashes match!
+
+One caveat that I'll mention but only gesture at: the choice of the hash family function here is not completely trivial. For efficiency we typically won't use cryptographic hash functions, and the number of "random assignments of features to integers" is much, much larger than the size of most useful hash functions, so we need to be careful to chose a family that is ["min-wise independent"][min-wise]. Fortunately, this problem is reasonably well-studied and so we can consult the literature and choose a standard solution.
+
+[min-wise]: https://en.wikipedia.org/wiki/MinHash#Practical_min-wise_independent_hash_functions
+
+## Comparing all documents
+
+- Just use the signature
+- "banding"
+  - http://infolab.stanford.edu/~ullman/mmds/booka.pdf p70
+  - split the `k` hashes into `b` bands of `r` rows each
+  - hash each document `b` times into buckets
+  - then compute within each bucket
 
 ## Notes
 - Discussion of efficiency?
