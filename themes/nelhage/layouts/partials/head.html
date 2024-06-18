@@ -48,6 +48,59 @@
     })();
   </script>
 {{end -}}
+<script type='text/javascript'>
+ function autorenderMath() {
+   const delimiters = [{
+     left: "$$",
+     right: "$$",
+     display: true
+   }, {
+     left: "\\(",
+     right: "\\)",
+     display: false
+   // LaTeX uses $…$, but it ruins the display of normal `$` in text:
+   // }, {
+   //   left: "$",
+   //   right: "$",
+   //   display: false,
+   // $ must come after $$
+   // Render AMS environments even if outside $$…$$ delimiters.
+   }, {
+     left: "\\begin{equation*}",
+     right: "\\end{equation*}",
+     display: true
+   }, {
+     left: "\\begin{equation}",
+     right: "\\end{equation}",
+     display: true
+   }, {
+     left: "\\begin{align}",
+     right: "\\end{align}",
+     display: true
+   }, {
+     left: "\\begin{align*}",
+     right: "\\end{align*}",
+     display: true
+   }, {
+     left: "\\begin{alignat}",
+     right: "\\end{alignat}",
+     display: true
+   }, {
+     left: "\\begin{gather}",
+     right: "\\end{gather}",
+     display: true
+   }, {
+     left: "\\begin{CD}",
+     right: "\\end{CD}",
+     display: true
+   }, {
+     left: "\\[",
+     right: "\\]",
+     display: true
+   }];
+   renderMathInElement(document.body, {delimiters: delimiters});
+ }
+</script>
 {{- if .Params.math}}
   {{- if false}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
@@ -57,7 +110,7 @@
 
     <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script>
+            onload="autorenderMath;"></script>
   {{- else}}
     {{- with resources.Get "katex/katex.min.css" | fingerprint}}
       {{- $indent}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
@@ -67,7 +120,7 @@
     {{- end}}
     {{- with resources.Get "katex/contrib/auto-render.min.js" | fingerprint}}
       {{- $indent}}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"
-    onload="renderMathInElement(document.body);"></script>
+    onload="autorenderMath()"></script>
     {{- end}}
     {{/* Publish all the fonts so the CSS can find them */}}
     {{- range resources.Match "katex/fonts/*" -}}{{with .RelPermalink}}{{end}}{{end}}
