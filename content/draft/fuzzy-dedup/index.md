@@ -86,44 +86,54 @@ When considering a ratio of areas like this, one classic strategy is to **sample
 
 How do we sample from \\(A\cup{}B\\)? Here's where the tricks start. We'll take a few observations, and combined them in a way that lets us do nearly all of the work ahead-of-time, as a pre-processing pass over **individual** feature sets.
 
-- First, we'll make the problem apparently more complicated: We'll assign a random value from to each potential feature -- let's call that assignment \\(P(x)\\) -- and we'll pick the feature in our set with the minimum associated value[^sql]:
+- First, we'll make the problem apparently more complicated: Let's pick (at random) a mapping assigning each possible feature to some randomly-chosen value. Call this mapping \\(P(x)\\). Now we can sample a random element by selecting the feature in our set that has the smallest random value[^sql]:
 
 $$ x_{\textrm{random}} \leftarrow{} \argmin_{x\in{}A\cup{}B}{P(x)} $$
 
-- "Randomly assigning a value to every possible feature" is infeasible, but a good hash function should approximate such an assignment for most purposes (indeed, the "[random oracle][oracle]" model is one common approach for modeling cryptographic hashes. I'll note some caveats below). We'll also consider **only** the hash value of the minimum element, throwing away the element itself, which has the advantage of leaving us a fixed-size value:
+- Randomly assigning a value to every possible feature is infeasible, but we can approximate it for most purposes using a good hash function (c.f. the "[random oracle][oracle]" model used in cryptographic analysis). If we tolerate the (very small) risk of hash collisions, we can also **only** keep the hash value (and not the relevant feature), which will leave us with a fixed-size value:
 
 $$ x_{\textrm{sig}} \leftarrow{} \min_{x\in{}A\cup{}B}{H(x)} $$
 
 [oracle]: https://en.wikipedia.org/wiki/Random_oracle
 
-- But `min` is associative, which means we can consier each side individually, and then combine:
+- Next, we'll exploit the fact that `min` is associative and so we can rewrite this to pre-process each set individually:
 
-\\begin{align*}
-a_{\textrm{min}} &= \min_{x\in{}A}H(x) \\\\
-b_{\textrm{min}} &= \min_{x\in{}B}H(x) \\\\
+{{<plaintext>}}
+\begin{align*}
+a_{\textrm{min}} &= \min_{x\in{}A}H(x) \\
+b_{\textrm{min}} &= \min_{x\in{}B}H(x) \\
 x_{\textrm{sig}} &= \min(a_\textrm{min},b_\textrm{min})
-\\end{align*}
+\end{align*}
+{{</plaintext>}}
 
-[^sql]: If you've ever written `SELECT ... FROM table ORDER by random() LIMIT 1`, this may be a familiar trick!
+[^sql]: If you've ever written `SELECT ... FROM table ORDER by random() LIMIT 1`, you've used a similar trick!
 
-So now we have this \\(x_\textrm{sig}\\), which is the hash of a randomly-chosen member of the union. We want to ask: Is the associated feature present in the **intersection** of the two sets?
+What has all this manipulation achieved? We can pick an appropriate hash function and pre-process **each set** individually, summarizing it with a single hash value. We can then pick any two sets, take the `min` of their signatures, and we have (the hash of) a uniformly-randomly-selected member of their union. In order to estimate the Jaccard similarity, we want to know if that element is present in **both** sets (in their intersection), or just one.
 
-But that's a simple question! We know that \\(x_\textrm{sig}\\) is the smallest hash value present in either set. Therefore, if it is present in both sets, it must **also** be the smallest such value in **each** set, individually.
+But this construction makes that trivial! We know that \\(x_\textrm{sig}\\) hash the minimum hash function of any element in either set. Therefore, if it is present in, say, set \\(A\\), it must also be the minimum element in set \\(A\\). And we know the minimum elements of each set -- that's precisely what we stored.
 
-This procedure allows us to summarize each set into a single value \\(a_\textrm{min} = \min_{x\in{}A}{H(x)}\\), with the property that for any two sets, \\(P(a_\textrm{min} = b_\textrm{min}) = J(A, B) \\).
+Thus, we don't actually need to consider \\(x_\textrm{sig}\\) -- we just need to ask whether \\(a_\textrm{min} = b_\textrm{min}\\). The probability that those elements match is precisely \\(J(A, B)\\)!
 
-Note that here our probability is taken **over the choice of hash function**; for any single function, we only produce one value, and so our estimate can only take on the values 0 or 1 -- not a lot of precision.
+Of course, that probability is taken over the universe of possible assignments of features to integers (aka, with some caveats, "over our choice of hash function"); so far, we've only selected a single representative from each set, and our estimate can only take on the values 0 or 1 -- not a lot of precision.
 
-To fix that, we can instead pick some number \\(k\\) hash functions out of an appropriate hash function family, and summarize each element into a \\(k\\)-element vector:
-$$ A_\textrm{sig} =
+However, we can improve on that by selecting \\(k\\) different hash functions from some appropriate hash family, and summarizing each feature set into a \\(k\\)-element vector:
+
+{{<plaintext>}}
+$$
+A_\textrm{sig} =
 \begin{pmatrix}
 min_{x\in{}A}H_1(x) & min_{x\in{}A}H_2(x) & \cdots{} &  min_{x\in{}A}H_k(x)
 \end{pmatrix}
 $$
+{{</plaintext>}}
 
-Given two of these signatures, we can approximate the Jaccard similarity by simply checking how many of the corresponding hashes match!
+Given two of these signatures, we can approximate the Jaccard similarity by simply comparing each hash:
 
-One caveat that I'll mention but only gesture at: the choice of the hash family function here is not completely trivial. For efficiency we typically won't use cryptographic hash functions, and the number of "random assignments of features to integers" is much, much larger than the size of most useful hash functions, so we need to be careful to chose a family that is ["min-wise independent"][min-wise]. Fortunately, this problem is reasonably well-studied and so we can consult the literature and choose a standard solution.
+$$
+J(A,B) \approx{} \frac{1}{k}\sum_{i=1}^{k} (A_\textrm{sig}[i] = B_\textrm{sig}[i])
+$$
+
+One caveat that I'll mention: the choice of the hash family function here is a bit subtle. We are attempting to approximate a random permutation over the universe of features, but the number of such permutations grows extremely quickly, and so our hash family will represent a tiny fraction of all **possible** permutations. We need to be sure that members of our hash family are not inappropriately correlated -- formally, the salient property here is referred to as ["min-wise independence"][min-wise]. Fortunately, this problem is reasonably well-studied, and we can select solutions from the literature.
 
 [min-wise]: https://en.wikipedia.org/wiki/MinHash#Practical_min-wise_independent_hash_functions
 
