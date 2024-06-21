@@ -1,5 +1,6 @@
 {{ $image := $.Page.Resources.Get (.Get "src") }}
 {{if $image}}
+<p>
 <img src="{{$image.RelPermalink}}"
      {{ $src := (.Get "src") }}
      {{ $retina := (path.Join (path.Dir $src) (printf "%s@2x%s" (path.BaseName $src) (path.Ext $src)))}}
@@ -8,7 +9,11 @@
      {{end}}
   width="{{$image.Width}}"
   height="{{$image.Height}}"
+  {{- with .Get "alt"}}
+  alt="{{.}}"
+  {{- end}}
   />
+</p>
 {{else}}
 {{errorf "No image found: %q at %s" (.Get "src") .Position}}
 {{end}}
