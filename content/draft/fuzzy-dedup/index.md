@@ -1,8 +1,10 @@
 ---
-title: "Approximate deduplication with Jaccard similarity and MinHash"
+title: "Finding near-deduplicates with Jaccard similarity and MinHashing"
 slug: fuzzy-dedup
 date: 2024-05-26T12:07:28-07:00
 math: true
+extra_css:
+ - quantiles.css
 ---
 Suppose we have a large collection of documents, and we wish you identify which documents are **approximately** identical to each other. How would we go about that operation? We’re particularly interested in the case where the collection is very large — perhaps a terabyte or more — and so efficiency is paramount.
 
@@ -100,9 +102,9 @@ $$ x_{\textrm{sig}} \leftarrow{} \min_{x\in{}A\cup{}B}{H(x)} $$
 
 {{<plaintext>}}
 \begin{align*}
-a_{\textrm{min}} &= \min_{x\in{}A}H(x) \\
-b_{\textrm{min}} &= \min_{x\in{}B}H(x) \\
-x_{\textrm{sig}} &= \min(a_\textrm{min},b_\textrm{min})
+a_{\textrm{min}} &\leftarrow{} \min_{x\in{}A}H(x) \\
+b_{\textrm{min}} &\leftarrow{} \min_{x\in{}B}H(x) \\
+x_{\textrm{sig}} &\leftarrow{} \min(a_\textrm{min},b_\textrm{min})
 \end{align*}
 {{</plaintext>}}
 
@@ -122,40 +124,110 @@ However, we can improve on that by selecting \\(k\\) different hash functions fr
 $$
 A_\textrm{sig} =
 \begin{pmatrix}
-min_{x\in{}A}H_1(x) & min_{x\in{}A}H_2(x) & \cdots{} &  min_{x\in{}A}H_k(x)
+\displaystyle\min_{x\in{}A}H_1(x) &
+\displaystyle\min_{x\in{}A}H_2(x) &
+\cdots{} &
+\displaystyle\min_{x\in{}A}H_k(x)
 \end{pmatrix}
 $$
 {{</plaintext>}}
 
-Given two of these signatures, we can approximate the Jaccard similarity by simply comparing each hash:
+Given two of these signatures, we can approximate the Jaccard similarity by counting how many hashes match:
 
 $$
 J(A,B) \approx{} \frac{1}{k}\sum_{i=1}^{k} (A_\textrm{sig}[i] = B_\textrm{sig}[i])
 $$
 
-One caveat that I'll mention: the choice of the hash family function here is a bit subtle. We are attempting to approximate a random permutation over the universe of features, but the number of such permutations grows extremely quickly, and so our hash family will represent a tiny fraction of all **possible** permutations. We need to be sure that members of our hash family are not inappropriately correlated -- formally, the salient property here is referred to as ["min-wise independence"][min-wise]. Fortunately, this problem is reasonably well-studied, and we can select solutions from the literature.
+One caveat to mention: the choice of the hash family function here is a bit subtle. We are attempting to approximate a random permutation over the universe of features, but the number of such permutations grows extremely quickly, and so our hash family will represent a tiny fraction of all **possible** permutations. We need to be sure that members of our hash family are not inappropriately correlated -- formally, the salient property here is referred to as ["min-wise independence"][min-wise]. Fortunately, this problem is reasonably well-studied, and we can select solutions from the literature.
 
 [min-wise]: https://en.wikipedia.org/wiki/MinHash#Practical_min-wise_independent_hash_functions
 
 ## Comparing all documents
 
-- Just use the signature
-- "banding"
-  - http://infolab.stanford.edu/~ullman/mmds/booka.pdf p70
-  - split the `k` hashes into `b` bands of `r` rows each
-  - hash each document `b` times into buckets
-  - then compute within each bucket
+We've now condensed each document into a \\(k\\)-element fingerprint of hash values, which allows efficient approximation of the similarity between any two documents.
 
-## Notes
-- Discussion of efficiency?
-- Jaccard similarity
-- Converting documents to sets
-    - “shingles” aka n-grams
-    - “words”
-- Approximating Jaccard similarity
-    - Sampling approximation
-    - Using a random ordering for efficiency
-    - Using several random orderings
-- Scaling up to the corpus
-    - Just use the min-hash signature
-    - Splitting
+The next problem is to find approximate duplicates throughout our entire corpus -- documents with a high similarity -- **without** considering every pair of documents. Our basic technique will be to group documents according to some combination of MinHash values, and then perform the full MinHash comparison over all pairs of documents within each group.
+
+### Using the full signature
+
+The simplest version is to simply to use all \\(k\\) MinHash values together as a grouping key, and consider two documents "approximate duplicates" iff all of their MinHash values match. When the GPT-3 paper says they "fuzzily deduplicated documents [...] using Spark's MinHashLSH implementation with 10 hashes," I'm pretty sure this is what they mean: They split each document into features, computed 10 MinHash values for each document (using 10 different hashes[^MinHashLSH]), and grouped documents using that 10-vector as a grouping key.
+
+The strongest virtue of this approach is its simplicity and efficiency. "Group by some high-cardinality key" is an efficient operation and easy to scale horizontally, and is offered as a basic primitive in virtually any data-processing toolkit (it's arguably **the** core primitive in [MapReduce][reduce], in the form of the "shuffle" between the map and reduce stages).
+
+How does this approach behave? For a single pair of documents, we expect each MinHash value to be equal with probability \\(J(A,B)\\), so we expect all 10 to match with \\(p=J(A,B)^k\\). For \\(k=10\\), here's what that looks like:
+
+{{<img src="probability-10-hashes.png"
+       alt="Probability all 10 MinHashes match, as a function of similarity">}}
+
+And here are some quantiles, which I find helpful for getting a "feel" of the distribution:
+
+| p(all match) |   1% |  10% |  25% |  50% |  75% |  90% |
+|:-------------|-----:|-----:|-----:|-----:|-----:|-----:|
+| Jaccard      | 0.63 | 0.79 | 0.87 | 0.93 | 0.97 | 0.99 |
+{.quantiles}
+
+We can see that similarities below 0.6 or so will almost-never collide, and that the odds of matches become good around 0.9 or so. If we're primarily concerned about documents that are very close siblings, this approach may be perfectly sufficient. Furthermore, I suspect -- but haven't verified -- that in many corpora, we will mostly encounter relatively bimodal Jaccard values. Unrelated documents have similarity close to 0, and we'll have many near-identical documents: the same document fetched at different times, with minor edits or metadata differences.
+
+It's also worth noting that the \\(J^{k}\\) calculation holds for a **single** pair of documents. If we have many documents that are all similar, the pairwise probabilities are not at all independent. In practice, they're likely to end up hashed into two or three buckets, and so we will detect almost all of the duplicates.
+
+[mapreduce]: https://en.wikipedia.org/wiki/MapReduce
+
+
+[^MinHashLSH]: If you're curious, Spark [documents its choice of hash family][MinHashLSHModel], along with the relevant literature reference.
+
+[MinHashLSHModel]: https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.ml.feature.MinHashLSHModel.html#pyspark.ml.feature.MinHashLSHModel
+
+### Going fuzzier
+
+(Note: this discussion is primarily sourced from ["Mining of Massive Datasets"][book] section 3.4. I have been unable to easily determine how often and in which contexts this approach ends up getting used in practice.)
+
+What if we want to detect "fuzzier" duplicates -- for whatever reason (presumably determined by empirical study), we want to find pairs with a similarity threshold of 0.8 or 0.7 or some other value?
+
+Our first technique will be to use a subset of our \\(k\\) MinHash hashes as a grouping key, and then, within each group, to compare the full signature to evaluate the estimated similarity.
+
+By only using \\(r\\) hashes in our grouping key, can we increase the likelihood that less-similar documents will hash together, but only so far; \\(J^r\\) will always be smaller than \\(J\\), and using too-few will increase the rate of false matches where dissimilar documents end up in the same bucket.
+
+What we can do instead is to do **multiple passes** of grouping documents, using a **different** subset of our \\(k\\) hashes for each time. If we compute \\(k=20\\) hashes as our signature, we might divide them into \\(g=4\\) groups of \\(r=5\\) hashes each, and then perform 4 different grouping operations, one by each group of hashes.
+
+What are the odds that two documents end up hashed together in **at least one** of these rounds?
+
+- The odds that two documents collide in any given group is \\(J^r\\)
+- So the odds they **don't** colide in any given group is \\(1-J^r\\)
+- So the odds that don't collide in **any** of the groups is \\(1-J^r)^g\\)
+
+Thus, the odds that they collide at-least-once ends up as:
+
+\\[ p = 1 - (1-J^r)^g \\]
+
+For example, the above hypothetical of 4 groups of 5 hashes above ends up with a probability curve like so:
+
+{{<img src="probability-grouped-hashes.png"
+       alt="Probability two documents collide in *any* bucket, for 4 groups of 5 hashes">}}
+
+The curve is not as steep as our earlier example, but we've successfully shifted it to the left -- the odds of colliding become 50% at somewhere around \\(J=0.7\\).
+
+It turns out, that for any choice of \\(r\\) and \\(g\\) greater than 1, this will produce a somewhat S-shaped curve of varying steepness and midpoint, allowing us a wide space within which to trade off sensitivity, spurious collisions, and the costs of producing signatures and grouping documents.
+
+# Closing thoughts
+
+I think MinHash signatures are a pretty neat trick! I had not encountered them prior to coming across them in the GPT-3 paper, and found existing writeups moderately confusing; I hope this one helps someone out there grasp the idea or exposes some folks to this neat trick!
+
+# Postscript: MinHash and HyperLogLog
+
+While researching and writing this post, I realized that the core MinHash trick reminds me a bit of my other favorite [sketch][sketch]: [HyperLogLog][hll].
+
+The key idea in HyperLogLog (going back to [a much older algorithm][martin-flajolet]) is to hash each element of a stream, count the number of leading zeros in each hash value, and we store a **running maximum** of "number of leading zeros."
+
+The algorithm is very different in the details, but I think there's a clear conceptual similarity: In both cases, we use a hash function to map an arbitrary unknown distribution into a uniform distribution (in some appropriate sense), and then we compute a running extremum of some function on that distributon, which -- with appropriate calculation -- allows us to estimate some distributional property using only O(1) space.
+
+And on some search, it turns out that the connection in some sense goes deeper; HyperLogLog and MinHash are (sort of) duals, in a sense: HyperLogLog is a cardinality estimator, which means it can estimate the size of the **union** of two sets; Meanwhile, MinHash estimates the (relative) size of the **intersection** of two sets. If you combine those two, you can produce a sketch that lets you ask questions about both intersections and unions of arbitrary sets!
+
+This idea was noticed [at least by 2013][hllminhash], and there's also an [ongoing][hyperminhash] [literature][setsketch] of sketches that combine ideas from the two data structures in interesting ways. I think that's neat!
+
+
+[martin-flajolet]: https://en.wikipedia.org/wiki/Flajolet%E2%80%93Martin_algorithm
+[sketch]: https://www.cs.cornell.edu/content/sketching-algorithms
+[hll]: https://en.wikipedia.org/wiki/HyperLogLog
+[setsketch]: https://arxiv.org/abs/2101.00314
+[hllminhash]: https://tech.nextroll.com/media/hllminhash.pdf
+[hyperminhash]: https://arxiv.org/abs/1710.08436

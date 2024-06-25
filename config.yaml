@@ -16,5 +16,8 @@ params:
 PygmentsCodeFences: true
 markup:
   goldmark:
+    parser:
+      attribute:
+        block: true
     renderer:
       unsafe: true
