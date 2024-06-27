@@ -1,0 +1,26 @@
+{{if .IsBlock}}
+<figure>{{end -}}
+{{ $image := $.Page.Resources.Get .Destination -}}
+{{if $image -}}
+<img src="{{$image.RelPermalink}}"
+     {{- $src := .Destination -}}
+     {{ $retina := (path.Join (path.Dir $src) (printf "%s@2x%s" (path.BaseName $src) (path.Ext $src))) -}}
+     {{with $.Page.Resources.GetMatch $retina -}}
+     srcset="{{.RelPermalink}} 2x"
+     {{- end}}
+  width="{{$image.Width}}"
+  height="{{$image.Height}}"
+  {{- with .Text }} alt="{{.}}" {{- end -}}
+  {{- with .Title }} title="{{.}}" {{- end -}}
+  />
+{{else -}}
+<img src="{{ .Destination | safeURL }}"
+  {{- with .Text }} alt="{{ . }}"{{ end -}}
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+>
+{{- end -}}
+{{- if .IsBlock -}}
+{{with .Title}}
+<figcaption>{{.}}</figcaption>
+{{end}}
+</figure>{{end}}

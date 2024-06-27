@@ -10,7 +10,7 @@ Suppose we have a large collection of documents, and we wish you identify which 
 
 In this post I want to explore the method of approximate deduplication via Jaccard similarity and the MinHash approximation trick. This is a commonly-used approach to this problem (e.g. the [GPT-3 paper](https://arxiv.org/pdf/2005.14165) describes using it as part of their dataset preparation pipeline), but one I found a bit hard to understand from available resources.
 
-![Excerpt from the GPT-3 describing how they removed approximate duplicates form the training dataset](gpt-3-dedup.png)
+![To further improve model quality and prevent overfitting (which becomes increasingly important as model capacity increases), we fuzzily deduplicated documents (i.e. removed documents with high overlap with other documents) within each dataset using Spark's MinHashLSH implementation with 10 hashes, using the same features as were used for classification above. We also fuzzily removed WebText from Common Crawl. Overall this decreased dataset size by an average of 10%](gpt-3-dedup.png "Excerpt from the GPT-3 paper describing fuzzy deduplication")
 
 # Jaccard similarity
 

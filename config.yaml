@@ -19,5 +19,6 @@ markup:
     parser:
       attribute:
         block: true
+      wrapStandAloneImageWithinParagraph: false
     renderer:
       unsafe: true
