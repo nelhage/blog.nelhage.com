@@ -34,23 +34,21 @@ I find this calculation makes some intuitive sense: if two sets are similar, the
 
 It has two very natural limit points, which define its range: For two disjoint sets, the numerator \\(|A\cap{}B|\\) is zero, and the index goes to zero. But if the sets are identical, \\(A\cap{}B = A\cup{}B = A = B\\), and the Jaccard similarity is 1.
 
+Note that Jaccard similarity operates on sets, but we're starting with documents (typically represented as Unicode strings). I'll return at the end to how we can turn textual documents into sets, but for now I'll just assume that we've done so. I'll refer to these sets as "feature sets," where the individual elements are "features" of the document.
+
 # Scaling Jaccard similarity
 
-TKTKT edit
-
-We now have a **definition** of "approximate similarity": We convert documents into sets of features, and search for documents whose feature sets have high Jaccard similarity.
+We now have a **definition** of "approximate similarity": We convert documents into feature sets, and then search for sets with high Jaccard similarity.
 
 For very small corpora, we could potentially apply that definition directly. However, considering every pair of documents scales as \\(O(n^2)\\) with the size of our corpus, which rapidly becomes infeasible.
 
-For **exact duplicates**, we avoid the quadratic cost by hashing, which puts identical documents (and, with good probability, very few other documents) into the same hash bucket. For **approximate** duplicates, we want to find a similar approach; in the jargon of the field, we we want a [locality-sensitive hash][lsh].
+For finding **exact duplicates**, we avoid the quadratic cost by hashing; we hash documents and group them by their hash value, which puts identical documents (and, with good probability, only identical documents) into the same hash bucket. We want to find a similar shortcut for **approximate** duplicates; in the language of the field, we want a [locality-sensitive hash][lsh].
 
 [lsh]: https://en.wikipedia.org/wiki/Locality-sensitive_hashing
 
-It turns out such a technique exists for Jaccard similarity! Let's dig in.
+It turns out such techniques exist for Jaccard similarity! Let's see how it works.
 
 ## Approximating Jaccard similarity
-
-A brief preview of the ground we'll cover:
 
 We'll first consider the problem of approximating the Jaccard similarity between two documents. We'll find an approximation that avoid examining the entire sets, and which only requires a small, fixed-size "signature," which we can precompute for each document independently. Then, we'll use the structure of that signature to find ways to group documents such that (with good probability) similar documents, and mostly-only similar documents, group together.
 
@@ -60,21 +58,21 @@ Recall that the Jaccard similarity is the ratio of two sizes: the intersection a
 
 $$J(A,B) = \frac{|A\cap{}B|}{|A\cup{}B|}$$
 
-To estimate a ratio of areas like this, one classic strategy is **sampling**. If we can generate random elements appropriately-uniformly, and we can query whether each element is present in the numerator and denominator, we can use our empirical ratio as a test of the true value.
+To estimate a ratio of areas like this, one classic strategy is **sampling**. If we can generate random elements (uniformly in an appropriate sense), and we can query whether those elements are present in the two sides of the ratio, we can produce an empirical estimate which will approach the true value.
 
-In this case, we know the union is at least as large as the intersection, so we want a uniformly-random sample from \\(A\cup{}B\\). It's not clear how to do that given the sets themselves, but it turns out that if we can do some per-set precomputation, we can make it work!
+In this case, we know the union is at least as large as the intersection, so we want a uniformly-random sample from \\(A\cup{}B\\). It's not clear how to do that given the sets themselves, but it turns out we can do so cheaply if we're allowed precomputation on each set!
 
-- First, we make the problem apparently more complicated. We'll assume that features are integers in some finite range \\(0 \leq f_i \leq F\\), and then pick (uniformly at random) a permutation on \\(\mathbb{Z}_F\\). Call that permutation \\(P(x)\\). Now, we can select a random element by selecting the feature in our set that has the smallest value under this permutation[^sql]:
+- First, we make the problem apparently more complicated. Assume that features are integers in some finite range \\(0 \leq f_i \leq F\\), and then pick a random permutation on \\(\mathbb{Z}_F\\). Call that permutation \\(P(x)\\). Now, we can select a random element by selecting the feature in our set that has the smallest value under this permutation[^sql]:
 
 $$ x_{\textrm{random}} \leftarrow{} \argmin_{x\in{}A\cup{}B}{P(x)} $$
 
-- It's not really feasible to work with "uniform random permutations," but we can **approximate** one using a good hash function. This has the merit, as well, of removing the requirement that features be bounded integers; if we hash into an appropriately-large space, collisions will be sufficiently rare that we can essentially ignore the risk, and store only the fixed-size hash value:
+- It's not really feasible to work with truly-random permutations, but we can **approximate** one using a good hash function. This also avoids the need for features to be represented as fixed-range integers; by accepting a miniscule risk of collision and storing only the hash values, we can map any reasonable featurespace into fixed-size hash values:
 
 $$ x_{\textrm{sig}} \leftarrow{} \min_{x\in{}A\cup{}B}{H(x)} $$
 
 [oracle]: https://en.wikipedia.org/wiki/Random_oracle
 
-- Next, we'll exploit the fact that `min` is associative, and rewrite the above to pre-process each set individually:individually:
+- Next, we'll exploit the fact that `min` is associative, and rewrite the above to pre-process each set individually:
 
 {{<plaintext>}}
 \begin{align*}
@@ -90,7 +88,7 @@ Let's step back, and consider what we've achieved. If we pick a good hash functi
 
 We want to know whether that element is present in the intersection, or whether it's misssing from one side. But this construction also makes that trivial! We know that \\(x_\textrm{sig}\\) is the minimum hash value of any element in either set. Therefore, if it is present in, say, set \\(A\\), it must also be the minimum hash value in that set. But we know the minimum hash values of each set -- that's precisely what we have!
 
-Thus, we don't actually need to compute \\(x_\textrm{sig}\\); we can instead just ask whether \\(a_\textrm{min} = b_\textrm{min}\\)! And it turns out that -- for any two sets -- the probability that the equality holds is precisely \\(J(A, B)\\)!
+Thus, we don't actually need to compute \\(x_\textrm{sig}\\); we can instead just ask whether \\(a_\textrm{min} = b_\textrm{min}\\)! For any two sets, this equality with hold with probability equal to \\(J(A, B)\\)!
 
 ### Using more hash functions
 
@@ -196,23 +194,21 @@ I really enjoyed learning how this trick works and digging in. I hope this blog 
 
 While researching and writing this post, I realized that the core MinHash trick reminded me a bit of a classic, somewhat famous, sketch: [HyperLogLog][hll].
 
-The core idea in HyperLogLog (going back to [a much older algorithm][martin-flajolet]) is to hash each element of a stream, and then store a **running maximum** of "the number of leading zeros" in the resulting stream of hashes.
+The core idea in HyperLogLog (going back to [a much older algorithm][martin-flajolet]) is to hash each element of a stream, and store a running maximum of "the number of leading zeros" in the resulting stream of hashes.
 
-The algorithm is very different in the details, but I think there's a definite conceptual similarity: In both cases, we use a hash function to map an arbitrary input distribution into a uniform distribution (in some appropriate sense), and then we compute a running extremum, which -- with appropriate calculation -- allows us to estimate some distributional property using only a constant-size summary of our input.
+The algorithm is very different in the details, but there's a clear similarity: In both cases, we use a hash function to map input elements into a uniform distribution, and then we compute a running extremum, which -- with appropriate calculation -- allows us to estimate some distributional property using only a constant-size summary of our input.
 
-And on some search, it turns out that the connection in some sense goes deeper. There's a sense in which HyperLogLog and MinHash are somewhat dual: Given two HyperLogLog structures for two different sets, we can combine them, and estimate the size of their **union**. Given two MinHash structures for those sets, we can compare them and estimate the (relative) size of their **intersection**.
+Indeed, I contend the algorithms are even more similar than they first appear: HyperLogLog counts leading zeros (zeros in the least-significant digits). However, we're assuming our hash function outputs uniform values in \\([0, 2^N)\\), and so we may as well reverse the bit order and count the number of zeros in the most-significant position. But given an N-bit number \\(x\\), the number of high-bit zeros is closely related to \\(\log_2(x)\\) -- the more leading zeros, the smaller \\(x\\). Thus, we can just as well think of think of HyperLogLog as computing a running minimum of \\(log_2(H(x))\\), as compared to MinHash's \\(H(x)\\).
+
+In addition, it turns out that there's a sense in which HyperLogLog and MinHash are (somewhat) dual: Given two HyperLogLog structures for two different sets, we can combine them, and estimate the size of their **union**. Given two MinHash structures for those sets, we can compare them and estimate the (relative) size of their **intersection**.
 
 Thus, if you combine both structures, you can produce a sketch that lets you ask questions about both intersections and unions of arbitrary sets! This idea was noticed [at least by 2013][hllminhash], and it turns out there's an [ongoing][hyperminhash] [literature][setsketch] of sketches that combine ideas from the two data structures in interesting ways. I think that's neat!
 
-# Addendum: Representing documents as sets
+# Appendix: Representing documents as sets
 
-TKTK EDIT ME
+I promised I'd return to the question of representing documents as sets, so I'll also leave a brief note on two common approaches.
 
-Jaccard similarity operates on sets of some sort; we have documents (likely represented as Unicode strings, or maybe just bytestrings in some contexts). We need to choose a way to turn those into sets. We'll call such sets "feature sets," and we'll refer to the elements as "features."
-
-Before doing further processing, we may want to apply some forms of normalization to our documents. For instance, we likely want to convert to a standard [Unicode normalization form][unicode-norm], and we may also wish to case-fold, collapse runs of whitespace, or perform similar transformations.
-
-After normalization, there are at least two common strategies for converting documents into features:
+First, before applying either of these strategies, we may want to normalize documents in some way. For instance, we likely want to convert to a standard [Unicode normalization form][unicode-norm], and we may also wish to case-fold, collapse runs of whitespace, or perform similar transformations.
 
 [unicode-norm]: https://www.unicode.org/reports/tr15/
 
@@ -220,7 +216,7 @@ After normalization, there are at least two common strategies for converting doc
 
 We can represent a document as a set of all the n-grams that appear in the document, picking some appropriate value of `n`. In the field of large-scale text processing, often the literature uses the word "shingle" instead of "n-gram," but I find that needless confusing. We can pick any value of `n`, with the primary tradeoff that smaller values will tend to compare documents more coarsely (e.g. most English text probably looks fairly similar through the lens of bigrams), and larger ones generating more distinct features and thus larger sets. At some limit I expect you also lose sensitivity, but I suspect performance problems arise earlier.
 
-According to one book on the matter[^fn-n], values of n between 5 and 9 appear to be common choices for a range of applications.
+According to one source I've found[^fn-n], values of n between 5 and 9 appear to be common choices for a range of applications.
 
 [^fn-n]: [Mining of Massive Datasets][book] §3.2.2
 
