@@ -201,6 +201,19 @@ Structured concurrency has many advantages, and I and many others have found tha
 
 
 # Notes
+https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/
 -
-- https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/
--
+
+## Thoughts
+
+- Maybe drop the TaskLauncher code snippet, and just illustrate the usage?
+  - Might be clearer
+  - Lets us point out the tension more fundamentally, without reference to the specific implementation
+  - We're not going to flesh it out into TaskGroup anyways, so maybe that makes sense.
+
+- Sidebar when introducing TaskLauncher about "Is this idiom sufficient / usable?" and then a callback later when talking about `trio`
+- Re-read or at least skim njs' docs
+
+## TODO
+- [ ] finalize embedded code snippets
+- [ ] get correct URLs for TK links
