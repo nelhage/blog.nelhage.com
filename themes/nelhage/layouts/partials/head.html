@@ -31,7 +31,7 @@
   {{- if not $css}}{{$css = page.Resources.Get .}}{{end}}
   {{- with $css}}
     {{- with . | fingerprint}}
-      {{- $indent}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+      {{- $indent}}<link rel='stylesheet' href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{- end}}
   {{- else}}
     {{- $indent}}<link rel='stylesheet' href="{{.}}">
@@ -115,7 +115,7 @@
             onload="autorenderMath;"></script>
   {{- else}}
     {{- with resources.Get "katex/katex.min.css" | fingerprint}}
-      {{- $indent}}<link rel='stylesheet' href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">
+      {{- $indent}}<link rel='stylesheet' href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{- end}}
     {{- with resources.Get "katex/katex.min.js" | fingerprint}}
       {{- $indent}}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
