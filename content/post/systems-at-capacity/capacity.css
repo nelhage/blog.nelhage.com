@@ -43,13 +43,6 @@ div.examples .example.router::before {
     content: "TCP/IP router";
 }
 
-
-article img {
-    display: block;
-    margin: auto;
-    margin-bottom: 1em;
-}
-
 @media (max-width: 750px) {
     div.examples {
         flex-direction: column;

@@ -1,0 +1,16 @@
+table.quantiles {
+    margin: auto;
+    margin-bottom: 1.5em;
+    font-family: serif;
+}
+
+table.quantiles th,
+table.quantiles td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+table.quantiles th:first-child,
+table.quantiles td:first-child {
+    border-right: 3px double black;
+}
