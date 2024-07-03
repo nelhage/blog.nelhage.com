@@ -1,5 +1,5 @@
 ---
-title: "Finding near-deduplicates with Jaccard similarity and MinHash"
+title: "Finding near-duplicates with Jaccard similarity and MinHash"
 slug: fuzzy-dedup
 date: 2024-07-03T17:00:00-07:00
 math: true
