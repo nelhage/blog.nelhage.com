@@ -1,7 +1,7 @@
 ---
 title: "Finding near-duplicates with Jaccard similarity and MinHash"
 slug: fuzzy-dedup
-date: 2024-07-03T17:00:00-07:00
+date: 2024-07-03T16:00:00-07:00
 math: true
 extra_css:
  - quantiles.css
