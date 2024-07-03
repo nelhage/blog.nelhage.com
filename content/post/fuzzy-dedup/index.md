@@ -1,7 +1,7 @@
 ---
-title: "Finding near-deduplicates with Jaccard similarity and MinHashing"
+title: "Finding near-duplicates with Jaccard similarity and MinHash"
 slug: fuzzy-dedup
-date: 2024-05-26T12:07:28-07:00
+date: 2024-07-03T16:00:00-07:00
 math: true
 extra_css:
  - quantiles.css
@@ -14,7 +14,7 @@ In this post I want to explore the method of approximate deduplication via Jacca
 
 # Similarity
 
-One approach to approximate deduplication is to define some notion of “similarity” between any **two** documents, and then to search for pairs where their similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might define a similarity measure between pairs of documents:
+Out approach to approximate deduplication will be to define a notion of “similarity” between any two documents, and then to search for pairs where their similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might define a similarity measure between pairs of documents:
 $$S: U \times U \rightarrow [0,1]$$
 and consider two documents “approximate duplicates” if \\(S(A,B) \geq S_\textrm{crit}\\).
 
