@@ -14,7 +14,7 @@ In this post I want to explore the method of approximate deduplication via Jacca
 
 # Similarity
 
-Out approach to approximate deduplication will be to define a notion of “similarity” between any **two** documents, and then to search for pairs where their similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might define a similarity measure between pairs of documents:
+Out approach to approximate deduplication will be to define a notion of “similarity” between any two documents, and then to search for pairs where their similarity value is above some threshold. So if we have some universe of possible documents \\(U\\), we might define a similarity measure between pairs of documents:
 $$S: U \times U \rightarrow [0,1]$$
 and consider two documents “approximate duplicates” if \\(S(A,B) \geq S_\textrm{crit}\\).
 
