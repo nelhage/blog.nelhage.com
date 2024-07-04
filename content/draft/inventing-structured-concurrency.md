@@ -2,7 +2,6 @@
 title: "Inventing structured concurrency through the lens of error-handling"
 slug: inventing-structured-concurrency
 date: 2024-06-01T14:21:20-07:00
-draft: true
 ---
 How should we handle and propagate errors in concurrent programs?
 
