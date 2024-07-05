@@ -18,7 +18,7 @@ Our approach to approximate deduplication will be to define a notion of “simil
 $$S: U \times U \rightarrow [0,1]$$
 and consider two documents “approximate duplicates” if \\(S(A,B) \geq S_\textrm{crit}\\).
 
-It's worth noticing that this definition is not in general transitive: we may well have three documents \\(A, B, C\\) such that \\(S(A,B)\geq{}S_\textrm{crit}\\) and \\(S(B,C) \geq{} S_\textrm{crit}\\) but \\(S(A,B) < S_\textrm{crit}\\). That means that "approximately identical" is not an [equivalence relation][equivalence], and is part of the reason that approximate deduplication is trickier to reason about, and to perform at scale, compared to finding exact matches.
+It's worth noticing that this definition is not in general transitive: we may well have three documents \\(A, B, C\\) such that \\(S(A,B)\geq{}S_\textrm{crit}\\) and \\(S(B,C) \geq{} S_\textrm{crit}\\) but \\(S(A,C) < S_\textrm{crit}\\). That means that "approximately identical" is not an [equivalence relation][equivalence], and is part of the reason that approximate deduplication is trickier to reason about, and to perform at scale, compared to finding exact matches.
 
 [equivalence]: https://en.wikipedia.org/wiki/Equivalence_relation
 
