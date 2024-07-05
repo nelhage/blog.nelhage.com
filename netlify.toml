@@ -3,7 +3,7 @@ publish = "public"
 command = "hugo --buildFuture"
 
 [build.environment]
-  HUGO_VERSION = "0.122.0"
+  HUGO_VERSION = "0.127.0"
 
 [[redirects]]
   from = "/2015/07/indices-point-between-elements/"
