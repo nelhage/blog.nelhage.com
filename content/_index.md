@@ -5,6 +5,8 @@ intro: |
   You've found the home of Nelson Elhage's writing on the
   web. I'm a software engineer with wide-ranging interests, and
   this is where I write about them.
+description: |
+  Nelson Elhage's blog. I write about software and software engineering.
 
 favorites:
 - page: /post/computers-can-be-understood
