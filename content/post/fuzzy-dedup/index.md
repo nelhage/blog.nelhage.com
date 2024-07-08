@@ -5,6 +5,11 @@ date: 2024-07-03T16:00:00-07:00
 math: true
 extra_css:
  - quantiles.css
+description: |
+  How do you find near-duplicates in a massive collection of documents?
+  An exploration of the Jaccard similarity metric, and the MinHash hashing
+  trick used to efficiently approximate it at web scale.
+
 ---
 Suppose we have a large collection of documents, and we wish you identify which documents are **approximately** the same as each other. For instance, we may have crawled the web over some period of time, and expect to have fetched the "same page" several times, but to see slight differences in metadata, or that we have several revisions of a page following small edits.
 

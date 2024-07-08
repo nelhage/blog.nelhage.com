@@ -2,6 +2,8 @@
 title: "Stripe's monorepo developer environment"
 date: 2024-05-21T10:00:00-07:00
 slug: stripe-dev-environment
+description: |
+  An overview of the tools and environment Stripe engineers used to write and test code, as of 2019 or so.
 ---
 
 I worked at Stripe for about seven years, from 2012 to 2019. Over that time, I used and contributed to many generations of Stripe's developer environment -- the tools that engineers used daily to write and test code. I think Stripe did a pretty good job designing and building that developer experience, and since leaving, I've found myself repeatedly describing features of that environment to friends and colleagues.

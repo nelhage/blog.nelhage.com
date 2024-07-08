@@ -11,6 +11,8 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ template "_internal/opengraph.html" . }}
+
   {{hugo.Generator}}
 
   <link rel="canonical" href="{{ .Permalink }}">
@@ -36,20 +38,8 @@
   {{- else}}
     {{- $indent}}<link rel='stylesheet' href="{{.}}">
   {{- end}}
-{{- end}}
-{{- if .Site.GoogleAnalytics}}
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '{{ .Site.GoogleAnalytics }}']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-{{end -}}
+  {{- end}}
+{{- if .Params.math}}
 <script type='text/javascript'>
  function autorenderMath() {
    const delimiters = [{
@@ -103,7 +93,6 @@
    renderMathInElement(document.body, {delimiters: delimiters});
  }
 </script>
-{{- if .Params.math}}
   {{- if false}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
 
