@@ -2,6 +2,8 @@
 title: "Performance engineering, profilers, and seeing the invisible"
 slug: profilers-seeing-the-invisible
 date: 2023-12-18T08:00:00-08:00
+description: |
+  A meditation on expertise: Exploring the uses and weaknesses of profilers and profiling, through the lens of Gary Klein's "Seeing the Invisible"
 ---
 I was recently introduced to the paper "[Seeing the Invisible: Perceptual-Cognitive Aspects of Expertise](https://cmapspublic3.ihmc.us/rid=1G9NSY15K-N7MJMZ-LC5/SeeingTheInvisible.pdf)" by Gary Klein and Robert Hoffman. It’s excellent and I recommend you read it when you have a chance.
 

@@ -2,6 +2,8 @@
 title: "Advent of Code in C++ Template Metaprogramming"
 slug: advent-of-templates
 date: 2023-12-08T07:30:00-08:00
+description: |
+  Implementing Advent of Code in C++ ... via compile-time template metaprogramming
 ---
 This December, the imp of the perverse struck me, and I decided to see how many days of Advent of Code I could do purely in compile-time C++ metaprogramming.
 
