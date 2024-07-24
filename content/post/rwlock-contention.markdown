@@ -1,16 +1,21 @@
 ---
-title: "Reader/Reader blocking in reader/writer locks"
+title: "Reader/reader blocking in reader/writer locks"
 slug: rwlock-contention
 date: 2019-05-07T08:00:00-07:00
+description: |
+  In writer-priority reader/writer locks, as soon as a single writer enters the
+  acquisition queue, all future accesses block behind any in-flight reads. If any
+  readers hold the lock for extended periods of time, this can lead to extreme
+  pauses and loss of throughput given even a very small number of writers.
+
 ---
-# tl;dr
-
-In writer-priority reader/writer locks, as soon as a single writer enters the acquisition queue, all future accesses block behind any in-flight reads. If any readers hold the lock for extended periods of time, this can lead to extreme pauses and loss of throughput given even a very small number of writers.
-
 # Abstract
 
-This post describes a phenomenon that can occur in systems built on [reader/writer locks](https://en.wikipedia.org/wiki/Readers–writer_lock), where slow readers and a small number of writers (e.g. even a single writer) can lead to substantial latency spikes for the entire system. This phenomenon is well-known in certain systems engineering communities (e.g. among some kernel or database developers), but is often surprising when first encountered, and has important implications for the design of such systems.
+In writer-priority [reader/writer locks][rwlock], as soon as a single writer enters the acquisition queue, all future accesses block behind any in-flight reads. Thus, if any readers hold the lock for extended periods of time, this can lead to extreme pauses and loss of throughput given even a very small number of writers.
 
+This phenomenon is well-known in certain systems engineering communities (e.g. among some kernel or database developers), but is often surprising when first encountered, and has important implications for the design of such systems.
+
+[rwlock]: https://en.wikipedia.org/wiki/Readers–writer_lock
 
 # Background
 
