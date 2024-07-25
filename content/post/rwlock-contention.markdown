@@ -107,7 +107,7 @@ I am, of course, far from the first to note this behavior: Among others, GoCardl
 
 So, we’ve seen that reader/writer locks can have surprising behavior, leading to high latency and leading to readers effectively holding exclusive locks. What can we do about it?
 
-At a high level, my experiences and this exploration have made me much more wary of designs that rely on reader/writer locks. Because of the behavior explored here, their additional concurrency, can effectively becomes a false promise, but one that works just well for systems designers and users to come to rely on it. That’s in many ways the worst possible outcome, setting systems up for unexpected failures when that concurrency vanishes.
+At a high level, my experiences and this exploration have made me much more wary of designs that rely on reader/writer locks. Because of the behavior explored here, their additional concurrency, can effectively becomes a false promise, but one that works just well enough for systems designers and users to come to rely on it. That’s in many ways the worst possible outcome, setting systems up for unexpected failures when that concurrency vanishes.
 
 With that in mind, here’s some recommendations. None of these is appropriate for every situation, but hopefully together they provide some helpful starting points.
 
