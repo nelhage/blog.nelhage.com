@@ -77,8 +77,8 @@ This is enough for interesting behavior! Note that, as long as we shrink the fir
 ```haskell
 loop m n =
   case (m, n) of
-    (O   ,  O)   -> O
-    (S m',  O)   -> S (loop m' m) -- `n` increases!
+    (O   , O   ) -> O
+    (S m', O   ) -> S (loop m' m) -- `n` increases from 0 to `m`!
     (S _ , S n') -> S (loop m n')
 ```
 
