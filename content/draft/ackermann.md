@@ -134,13 +134,13 @@ add x y =
 
 
 
-[^why-lex]: It turns out this isn't a special case or even a separate rule; the lexicographic ordering rule falls out directly from the "strictly decreasing" rule and [currying][currying]. Recall that we can treat two-argument functions as nested single-argument functions, where we pass one argument, and receive back a function which accepts our second argument. e.g this `add` function:
+[^why-lex]: It turns out this isn't a special case or even a separate rule; the lexicographic ordering rule falls out directly from the "strictly decreasing" rule and [currying][currying]. Recall that we can treat two-argument functions as nested single-argument functions, where we pass one argument, and receive back a function which accepts our second argument. e.g this two-argument function:
 
     ```haskell
     f x y = BODY
     ```
 
-    is essentially just sugar for the nested:
+    is just sugar for the nested:
 
     ```haskell
     f x =
