@@ -163,10 +163,6 @@ add x y =
 [duel]: https://web.mit.edu/arayo/www/bignums.html
 
 
-# TODO
-- [ ] Why is `li code` colored weird?
-
-
 <!--
 
 OLD DEAD DRAFT
