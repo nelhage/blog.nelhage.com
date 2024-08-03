@@ -121,16 +121,32 @@ Note also that in the case where we **don't** decrease `m` -- as in the last lin
 
 ## Going big
 
-This suggests that our main goal is thus: every time we decrease `m` in a recursive call, we have to also make our second argument -- `n` -- as large as possible. Thus, we've reduced our problem, in some sense, into generating very large numbers as soon as possible.
+This observation makes it clear that "recursing many times" and "generating very large numbers" are intimitately related problems. In order to recurse many times, we need to generate large numbers, so that we can grow `n` (our second argument) rapidly for each decrease in `m` (our first argument). However, the problems are also connected in the opposite direction: Since we're working with a Peano representation of the integers, the only way to create very large numbers is to apply the successor function many, many times; the natural way to do this is to recurse many times, applying the `S` constructor as we recurse.
 
-How do we generate large numbers? Remember, I've sworn off helper functions,
+This gives us a sketch of our strategy:
+
+- In addition to recursing many times, we'll make sure to apply the `S` function in some form as we do, in order to also return large numbers.
+- Then, each time we decrease `m` in a recursive call, we'll generate a large number for the new value of `n` -- using an appropriate **second** recursive call.
+
+Here's a warmup. In our `loop` function in the last section, the key recursive case increased `n` to match `m`:
 
 ```haskell
-add x y =
-  case x of
-    O     -> y
-    (S p) -> S (add p y)
+    (S m', O   ) -> loop m' m
 ```
+
+Instead of `m`, we can **nest** our recursive call, like so:
+
+```haskell
+loop_exp m n =
+  case (m, n) of
+    (O   ,  O) -> O
+    (S m',  O) -> (loop_exp m' (loop_exp m' m)) -- nested calls here!
+    (_', S n') -> S (loop_exp m n')             -- Apply `S` here
+```
+
+We also add an `S` constructor call into the final case, in order to ensure that we're counting up our eventual result.
+
+Our previous `loop` was quadratic in `m`; I won't do the analysis to prove it, but we've now managed to recurse a number of times **exponential** in `m` -- a huge increase!
 
 
 
