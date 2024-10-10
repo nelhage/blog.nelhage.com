@@ -139,7 +139,7 @@ If, instead, we encounter the third issue -- timeouts due to high latency -- we 
 
 
 ```python
-next_request = queue.pop()
+request = queue.pop()
 if time.time() - request.arrival_time >= REQUEST_LATENCY_BUDGET:
   return_error(request, RequestTimedOut()
 else:
