@@ -50,7 +50,7 @@ We can imagine many different solutions here! We could write a protobuf or JSON 
 
 However, here's one solution that solves all of these problems, and requires virtually no marginal work up front:
 - The definition of "a specific model" is just "an object that implements the model" (likely a [`torch.nn.Module`][nn.module] subclass)
-- The reearcher constructs these objects in some ad-hoc way by a research script, which she edits and evolves as she runs new experiments
+- The researcher constructs these objects in some ad-hoc way by a research script, which she edits and evolves as she runs new experiments
 - She then serializes the entire object using `pickle`, and uses that as the stored version for later analysis or to load and execute on a remote machine.
 
 This approach requires no fuss, no particular discipline or pattern for how the research code or implementation is structured, and virtually no cognitive overhead compared to "just constructing a running a model." It supports standard components and custom components with equal ease: the researcher can make small tweaks at random points deep in the class hierarchy, or replace the entire model architecture, and neither one requires much thinking about or editing the serialization system.
@@ -65,7 +65,7 @@ That said, if the experiments are collectively a success and we need to continue
 
 The researcher now only needs to worry about the forwards- and backwards-compatibility of this class, and can fairly free refactor any implementation code by also refactoring the code that constructs the `Model` object from a `ModelConfig`.
 
-But it's worth noting that our resercher (and/or her team) are *still experimenting* and trying new things and iteration and "time to experiment" and perhaps more importantly "cognitive cost to experiment" rule all. And so, while many of the fields on this class will be nice "normal" integers and booleans and perhaps enumerations, it's a bit tedious to have to add support for each further experiment.
+But it's worth noting that our researcher (and/or her team) are *still experimenting* and trying new things and iteration and "time to experiment" and perhaps more importantly "cognitive cost to experiment" rule all. And so, while many of the fields on this class will be nice "normal" integers and booleans and perhaps enumerations, it's a bit tedious to have to add support for each further experiment.
 
 And so, perhaps our researcher leaves a number of "escape hatches."  As a trivial example: it's still moderately trendy in this field to try replacing the nonlinearity or "activation function" that we apply to a tensor after a fully-connected layer (I'm [guilty here myself][solu]).
 
@@ -85,7 +85,7 @@ In my personal opinion, everything I've described above is "basically fine," if 
 
 The bigger problem, though, is that once you've started using `pickle` routinely in this way, it becomes a habit to use them for all of your serialization problems, even ones where pickles are much more problematic. And not only do researchers do so, but this pattern tends to leak out into the tools and ecosystem.
 
-PyTorch, for instance, uses `pickle` files as part of its default serialization format (via [`torch.load`][torch.load] and [`torch.save`][torch.save]), even though in most cases they really only need a few "vanilla" data structures -- lists and dicts of strings and Tensors. PyTorch even has a custom C++ `pickle` loader that only supports a few built-in types, which can be enabled using the `weights_only` argument to the loader; but for backwrds compatibility this flag defaults to `False`, and (in the absense of an attacker) enabling it can only break things; and so it is rarely used, and every PyTorch weight file is an open invitation for users to use the dangerous interface and leave themselves vulnerable.
+PyTorch, for instance, uses `pickle` files as part of its default serialization format (via [`torch.load`][torch.load] and [`torch.save`][torch.save]), even though in most cases they really only need a few "vanilla" data structures -- lists and dicts of strings and Tensors. PyTorch even has a custom C++ `pickle` loader that only supports a few built-in types, which can be enabled using the `weights_only` argument to the loader; but for backwards compatibility this flag defaults to `False`, and (in the absense of an attacker) enabling it can only break things; and so it is rarely used, and every PyTorch weight file is an open invitation for users to use the dangerous interface and leave themselves vulnerable.
 
 [torch.load]: https://pytorch.org/docs/stable/generated/torch.load.html
 [torch.save]: https://pytorch.org/docs/stable/generated/torch.save.html
