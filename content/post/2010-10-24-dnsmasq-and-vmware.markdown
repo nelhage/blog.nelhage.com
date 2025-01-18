@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-10-24T23:15:23Z
-published: true
 status: publish
 tags:
 - testing

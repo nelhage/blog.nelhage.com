@@ -2,7 +2,6 @@
 categories: null
 comments: true
 date: 2014-08-20T08:41:34Z
-published: true
 title: 'New reptyr feature: TTY-stealing'
 url: /2014/08/new-reptyr-feature-tty-stealing/
 ---

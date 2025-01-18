@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2009-12-30T01:47:17Z
-published: true
 status: publish
 tags:
 - termios

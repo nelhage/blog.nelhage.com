@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-09-05T18:37:19Z
-published: true
 status: publish
 tags:
 - duct tape

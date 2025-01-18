@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2008-02-19T23:46:00Z
-published: true
 status: publish
 tags:
 - hiveminder
