@@ -1,14 +1,12 @@
 ---
-title: "TK building personal infrastructure with Claude"
+title: "Notes on building personal software with Claude"
 slug: personal-software-with-claude
 date: 2025-01-17T16:29:28-08:00
 ---
 
-In order to speed up an Emacs package I use, I recently ported part of it into Rust, dropping the execution time by a factor of 1000 or more (from 90s to perhaps 15ms). This is a kind of coding I do somewhat routinely, either to fix problems in my personal computing environment, or at work.
+I recently ported part of an Emacs package into Rust, shrinking the execution time by a factor of 1000 or more (from 90s to perhaps 15ms). This is a kind of side project or yak-shave that I do somewhat routinely, both professionally and in service of my personal computing environment.
 
-However, for this project, I didn't write any code: I did the project almost entirely by asking Claude to write the code for me. I didn't really expect that to work, but it turns out my personal estimation of Claude's coding ability is behind the times, and it worked perfectly, smoothly executing both the initial rewrite, and a number of small fixes and feature additions.
-
-This post is an attempt to document a bit of my experience working with Claude, as well as a number of my reflections and reactions.
+However, this time, I didn't actually write any of the code! Instead, I did the project almost entirely by asking Claude to write the code for me. Despite working at Anthropic and tracking LLM progress fairly closely, this was one of the first times I've really used LLMs for coding in earnest, and, in short: they've gotten a lot better than I'd really internalized! This project shifted a bunch of my personal thinking around LLMs-for-code; this post is an attempt to describe my experience, as well as some of my broader thoughts.
 
 ## The problem
 
@@ -18,9 +16,11 @@ As my vault grew, though, I had a problem: `obsidian.el` became **unusably slow*
 
 ## My plan
 
-As an Emacs user of two decades now, I'm a passable elisp programmer, but I have no experience profiling or optimizing elisp, and the [GitHub issue][slow] already contained a few other folks' attempts. I figured I'd take a different approach.
+I'm a passable elisp programmer, but I have no experience profiling or optimizing elisp, and the [GitHub issue][slow] already contained a few other folks' attempts. I figured I'd take a different approach.
 
-I planned to write a short program in Rust to scan and inventory my vault and output minimal metadata as JSON, and to modify `obsidian.el` to consume that output. I'm more comfortable in Rust, and I know it to be generally quite performant and to have excellent profiling tools. As a bonus, I could consume the JSON output from other tooling I might end up building.
+I planned to write a short program in Rust to scan and inventory my vault and output minimal metadata as JSON, and to modify `obsidian.el` to consume that output. I'm more comfortable in Rust, and I know it to be generally quite performant and to have excellent profiling tools.
+
+Such a solution might be tricky to include upstream, but I was pretty sure it'd be a relatively small project for me and would reliably solve my own problem.
 
 ## Using Claude
 
@@ -55,26 +55,28 @@ The whole project took something like a single afternoon.
 
 # Reflection
 
-## Claude was much better than I realized
+## Claude is much better at code than I realized
 
-I didn't originally plan to use Claude to do the Rust rewrite; I only asked it to do the rewrite on a whim, figuring I'd give it a chance to impress me, or that I'd learn something about its current capabilities and limits. Even after the initial prompt wildly exceeded my expectations, I continued to be impressed throughout followup queries: Claude did multiple rounds of adding features and fixing bugs pretty much perfectly, and everything I tried "just worked."
+I asked Claude the original prompt mostly not expecting much. But I'd heard that Claude 3.5 Sonnet is much-improved at writing code, and in general I try to periodically try to use LLMs even when I expect failure, since that's the only way I've found to really stay calibrated on their capabilities.
 
-I understand very well, intellectually, that these models are still improving at an exponential rate, and that impressions formed 6 or 12mo ago are likely badly out of date. But that abstract understanding isn't sufficient to form an accurate impression of the new _status quo_! The only way I know of to do so is to just keep using the models and interacting with them (and reading reports from others who do so). That fact is precisely why I tried this prompt, despite expecting failure, and also why I'm writing this reflection.
+I was impressed, first, by the initial rewrite: I figured Claude would be alright at writing ~100 lines of code given a clear spec, but extracting an implicit spec from within a thousand lines of elisp, and executing against that spec, surprised me. I was further impressed by the process of iterating on the system; Claude continued to be very effective at reading moderate amounts of code from the context window, and updating them or responding to them in fairly sophisticated ways. Pretty much everything I tried "just worked."
+
+I understand very well, intellectually, that these models are improving at an exponential rate, and that impressions formed 6 or 12mo ago are almost surely badly out of date. But that abstract understanding isn't sufficient to form an accurate impression of the new _status quo_! The only way I know of to do so is to just keep using the models and interacting with them (and reading reports from others who do so). That fact is precisely why I tried this prompt, despite expecting failure, and also why I'm writing this reflection.
 
 ### "Should" you be impressed by this?
 
 I'm fascinated by my own reactions to and thoughts about Claude, just in the course of writing this note.
 
-I started out quite impressed -- I did not expect Claude to handle working on this much code so fluently, including across feature additions and modifications, and including fluently writing elisp, including using relatively obscure features and constructs. `obsidian.el` is about 800 lines long, which is 32KB of text and around 10,000 tokens. It was [only in 2023][clong] that Anthropic released the first public model that could process more than about 10,000 tokens, **at all**. Now Claude can not only handle that much code easily, but also identify the pieces relevant to a specific component, figure out what data they need, and reimplement them fluently in Rust, **in a single prompt**, without any chain-of-thought or explicit reasoning!
+As described above, my initial reaction was "surprised and impressed," with Claude exceeding expectations. The original `obsidian.el` is about 10,000 tokens long; It was [only in 2023][clong] that Anthropic released the first public model that could process that much text **at all**. And for my task, Claude needed to not just extract a single fact, or some summarized gist, of the input, but accurately understand and interpret **many** small details, scattered around the file. Models couldn't do that until recently! And it did so in a **in a single prompt**, without any chain-of-thought or explicit reasoning! So yeah, I was impressed.
 
 [clong]: https://www.anthropic.com/news/100k-context-windows
 
-At the same time, _even as I've drafted this post_, I've noticed a familiar sort of goalpost-shifting inside myself! I find myself shifting from surprise and amazement into a sort of almost-jaded downplaying, along two lines:
+At the same time, _even as I drafted this post_, I noticed a familiar sort of goalpost-shifting in my own mind! I find myself shifting from surprise and amazement into a sort of almost-jaded minimization, from at least two perspectives:
 
-1. Okay, but **shouldn't** I have expected this? I've seen many engineers marvel at Claude 3.5 Sonnet's coding acumen. I've personally seen it solve Anthropic interview questions; this exercise involved a bit more code, but I've also seen it read and answer questions about **much** larger pieces of code. I was surprised, but that's a problem with my expectations, more so than the model being **particularly** impressive!
-2. Is this really that impressive? This project "only" involved around 1000 lines of code; many of the projects you work on touch hundreds of thousands or millions of lines that weren't in the training set. Rewriting elisp into Rust **sounds** impressive, but it's also "just" a translation problem: fairly well-specified at root, and language models are, in general, perhaps at their strongest at translation-shaped tasks.
+1. Okay, but **shouldn't** I have expected this? I've seen many engineers marvel at Claude 3.5 Sonnet's coding acumen. I've personally seen it solve Anthropic interview questions; this exercise involved a bit more code, but I've also seen it read and answer questions about **much** larger pieces of code. I was surprised, but that's a problem with my expectations, more so than the model being all that impressive!
+2. Is this task really that impressive? This project "only" involved around 1000 lines of code; many of the projects I work on touch hundreds of thousands or millions of lines of code! Rewriting elisp into Rust might **sound** impressive, but it's also "just" a translation problem: fairly well-specified at root, and language models are generally quite strong at tasks that "look like" translation.
 
-I think both of these perspectives -- the awe, and also the downplaying -- have validity! All these things are true:
+I think both of these perspectives -- the awe, and also the minimization -- are valid in different ways! All these things are true:
 - LLMs are much, much better at coding than they were a year ago
 - And, even more so, their present capabilities would have **absolutely** sounded like impossible sci-fi even 2-3 years ago
 - But also, the current models are more-or-less "just a continuation of the same trend;" they're impressive, but also don't look all that different from where ML insiders and leaders were predicting we'd be as of a year ago
@@ -90,6 +92,16 @@ $ cat ~/code/nix-config/src/obsidian-scan/emacs/obsidian-scan.el| scrubs count-t
 $ cat ~/code/nix-config/src/obsidian-scan/src/main.rs| scrubs count-tokens
 1589
 -->
+
+## I'm tentatively excited
+
+- [ ] TK joy of building things / scratching your own itch
+
+Even as I've been aware of the ongoing progress in coding performance by language models, I mostly haven't made much use of them myself, and I've approached them with a vague sense of dread and preemptive exhaustion. This comes from a number of places, but I think a large one is that a lot of the LLM usage I see feels antithetical to my personal approach to software and philosophy of software: I like to [deeply understand][understand] software systems, and build with careful craft, but a lot of the enthusiasm around LLMs feels targeted at replacing human understanding and spewing out ever-growing piles of mediocre glue code, rather than augmenting understanding and building with care.
+
+I still have that fear, but this small project gave me another perspective: LLMs may be drastically lowering the cost to building personal tooling -- to certain types of [situated software][situated] -- and letting me, personally, build more of the one-off tooling to manage my digital life, which I feel like [used to be ubiquitous in my life][situated-newsletter], but is now tangled in a hellish mess of broken APIs, confusing OAuth, and other tangles of modernity. I have half a dozen projects languishing in my TODO list to extract data from `$service` or import data from `$google_project` into `$other_tool`, all of which I know I **could** build, given time, but which just seem not worth the squeeze when I just know I'm going to lose three days just figuring out how the hell to auth to Google again. If Claude can do that boilerplate for me, maybe I'll revisit those! And for many such projects, the code itself can be entirely throwaway or is fully described by its interface definition, and so I'm happy to **not** build it with craft, but treat it as a black box maintained by the helpful bots.
+
+I **don't** think we're yet at a point where LLMs enable that sort of personal software, at scale, by people who **don't** already have much of the expertise and background context to do it themselves; but that does seem like it may change, and that, too, would be interesting to consider.
 
 ## I felt like I was fighting the tooling
 
@@ -114,14 +126,6 @@ It would definitely also help with correctness and testing. I didn't bother veri
 I expect -- at least for the immediate future -- that this will remain a powerful pattern: human-defined interface boundaries or system decomposition, and Claude working "in between the lines." Presumably, as time goes on, Claude will be capable of handling larger and larger subsystems mostly-autonomously, and we will also gain confidence and build techniques for handling ones with fuzzier specifications.
 
 [testability]: https://blog.nelhage.com/2016/03/design-for-testability/
-
-## I'm tentatively excited
-
-Even as I've been aware of the ongoing progress in coding performance by language models, I mostly haven't made much use of them myself, and I've approached them with a vague sense of dread and preemptive exhaustion. This comes from a number of places, but I think a large one is that a lot of the LLM usage I see feels antithetical to my personal approach to software and philosophy of software: I like to [deeply understand][understand] software systems, and build with careful craft, but a lot of the enthusiasm around LLMs feels targeted at replacing human understanding and spewing out ever-growing piles of mediocre glue code, rather than augmenting understanding and building with care.
-
-I still have that fear, but this small project gave me another perspective: LLMs may be drastically lowering the cost to building personal tooling -- to certain types of [situated software][situated] -- and letting me, personally, build more of the one-off tooling to manage my digital life, which I feel like [used to be ubiquitous in my life][situated-newsletter], but is now tangled in a hellish mess of broken APIs, confusing OAuth, and other tangles of modernity. I have half a dozen projects languishing in my TODO list to extract data from `$service` or import data from `$google_project` into `$other_tool`, all of which I know I **could** build, given time, but which just seem not worth the squeeze when I just know I'm going to lose three days just figuring out how the hell to auth to Google again. If Claude can do that boilerplate for me, maybe I'll revisit those! And for many such projects, the code itself can be entirely throwaway or is fully described by its interface definition, and so I'm happy to **not** build it with craft, but treat it as a black box maintained by the helpful bots.
-
-I **don't** think we're yet at a point where LLMs enable that sort of personal software, at scale, by people who **don't** already have much of the expertise and background context to do it themselves; but that does seem like it may change, and that, too, would be interesting to consider.
 
 ## Code is cheaper than ever
 
