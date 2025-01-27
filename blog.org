@@ -5,5 +5,4 @@
    - [ ] Update the post timestamp
 ** Buttondown post
    - [ ] Subject: `New blog post: ...`
-   - [ ] Remember to use ?ref=buttondown
    - [ ] Remember the Ranger photo
