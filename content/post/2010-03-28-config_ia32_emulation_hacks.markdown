@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-03-28T20:07:43Z
-published: true
 status: publish
 tags: []
 title: 'Fun with the preprocessor: CONFIG_IA32_EMULATION hacks in Linux'

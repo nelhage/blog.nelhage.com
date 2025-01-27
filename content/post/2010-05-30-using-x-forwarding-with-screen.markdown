@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-05-30T20:25:52Z
-published: true
 status: publish
 tags: []
 title: Using X forwarding with screen by proxying $DISPLAY

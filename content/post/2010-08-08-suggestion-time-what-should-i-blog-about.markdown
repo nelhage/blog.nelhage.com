@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-08-08T21:44:55Z
-published: true
 status: publish
 tags:
 - blogging

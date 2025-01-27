@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2007-12-31T01:41:00Z
-published: true
 status: publish
 tags:
 - iPhone

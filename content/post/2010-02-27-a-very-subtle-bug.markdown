@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-02-27T23:48:47Z
-published: true
 status: publish
 tags:
 - unix

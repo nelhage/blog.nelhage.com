@@ -2,7 +2,6 @@
 categories: null
 comments: true
 date: 2013-12-30T02:11:45Z
-published: true
 title: Lightweight Linux Kernel Development with KVM
 url: /2013/12/lightweight-linux-kernel-development-with-kvm/
 ---

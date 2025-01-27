@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2013-03-07T13:13:37Z
-published: true
 status: publish
 tags: []
 title: Tracking down a memory leak in Ruby's EventMachine

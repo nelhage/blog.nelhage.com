@@ -4,7 +4,6 @@ author_email: nelhage@mit.edu
 author_login: nelhage
 author_url: http://nelhage.com
 date: 2010-05-23T19:53:30Z
-published: true
 status: publish
 tags: []
 title: Getting carried away with hack value
