@@ -1,55 +1,61 @@
 ---
-title: "Notes on building personal software with Claude"
+title: "Building personal software with Claude"
 slug: personal-software-with-claude
-date: 2025-01-17T16:29:28-08:00
+date: 2025-01-27T12:00:00-08:00
 ---
 
-I recently ported part of an Emacs package into Rust, shrinking the execution time by a factor of 1000 or more (from 90s to perhaps 15ms). This is a kind of side project or yak-shave that I do somewhat routinely, both professionally and in service of my personal computing environment.
+Earlier this month, I used Claude to port (parts of) an Emacs package into Rust, shrinking the execution time by a factor of 1000 or more (in one concrete case: from 90s to about 15**ms**).
 
-However, this time, I didn't actually write any of the code! Instead, I did the project almost entirely by asking Claude to write the code for me. Despite working at Anthropic and tracking LLM progress fairly closely, this was one of the first times I've really used LLMs for coding in earnest, and, in short: they've gotten a lot better than I'd really internalized! This project shifted a bunch of my personal thinking around LLMs-for-code; this post is an attempt to describe my experience, as well as some of my broader thoughts.
+This is a variety of yak-shave that I do somewhat routinely, both professionally and in service of my personal computing environment. However, this time, Claude was able to execute substantially the entire project under my supervision without me writing almost-any lines of code, speeding up the project **substantially** compared to doing it by hand.
+
+Going in to this project, I still expected Claude to be only a small help -- on the order of "a better documentation search engine and also a better Stack Overflow." Despite working at Anthropic and reading [Simon Willison][simonw] from time to time, my expectations were apparently substantially out of date!
+
+This experience has shifted a bunch of my thinking about the role of LLMs in software engineering and in my own work. These thoughts are still unfolding, but this piece is an attempt to capture my experience, and to think aloud as I ponder how to update my behaviors and beliefs and expectations.
+
+[simonw]: https://simonwillison.net/
 
 ## The problem
 
-Over the last year or so, I've moved my personal note-taking and TODO lists into [Obsidian.md][obsidian], replacing a combination of [Emacs org-mode files][org-mode] and [Workflowy][workflowy]. There's a lot I like about Obsidian, but the salient detail for this post is (a) it stores data directly in vanilla Markdown files on disk, and (b) there's a decent [Emacs mode][obsidianel] to interact with your vault. I still primarily use the app, even while on my laptop, but being able to drop into Emacs to do more-complicated edits, or to keep TODO lists right there in my editor as I code, is really valuable for me.
+Over the last year or so, I've become a heavy [Obsidian.md][obsidian] user, replacing a combination of [Emacs org-mode files][org-mode] and [Workflowy][workflowy]. There's a lot I like about Obsidian, but the salient detail for this post is (a) it stores data directly in vanilla Markdown files on local disk, and (b) there's a decent [Emacs mode][obsidianel] to interact with them. I still primarily use the app, even while on my laptop, but being able to drop into Emacs to do complex text manipulation, or to keep TODO lists in my editor as I code, is really valuable for me.
 
 As my vault grew, though, I had a problem: `obsidian.el` became **unusably slow**. Simply opening any note would hang Emacs, at first for a few seconds, and eventually for a minute or more. The issue [turned out to be][slow] the `obsidian-update` function: `obsidian.el` regularly re-walks the entire vault, scanning every note for tags and metadata, in order to update its internal inventory, and this scan (which is written entirely in elisp), ends up being very slow.
 
 ## My plan
 
-I'm a passable elisp programmer, but I have no experience profiling or optimizing elisp, and the [GitHub issue][slow] already contained a few other folks' attempts. I figured I'd take a different approach.
+I'm a passable elisp programmer, but I have no experience profiling or optimizing it, and the [GitHub issue][slow] already contained a few other folks' attempts. I figured I'd take a different approach.
 
 I planned to write a short program in Rust to scan and inventory my vault and output minimal metadata as JSON, and to modify `obsidian.el` to consume that output. I'm more comfortable in Rust, and I know it to be generally quite performant and to have excellent profiling tools.
 
-Such a solution might be tricky to include upstream, but I was pretty sure it'd be a relatively small project for me and would reliably solve my own problem.
+Such a solution might be tricky to include upstream, but I was pretty optimistic that it'd be a relatively bite-size project for my own use, and certain I could solve my own problems that way.
 
 ## Using Claude
 
-On a whim, I decided to see how much of this problem Claude could solve for me. I didn't expect it to work all that well, but I decided to check in on Claude -- perhaps it would surprise me. I made a well-scoped and explicit request, but asked it to do most of the project in one go:
+On a whim, I decided to see how much of this problem Claude could solve for me. I didn't expect it to work all that well, but I decided to give it a go anyways -- perhaps Claude would surprise me. I decided to start with a relatively well-defined request with a relatively clear goal, but asked it to do most of the project in one go:
 
 > [Uploaded file: `obsidian.el`]
 >
 > The `obsidian-update` function is painfully slow. I want to speed it up by porting the relevant logic to a Rust program, which will output the relevant details in JSON. Can you write the first version of such a Rust program? It should accept the vault directory as a command-line argument, and can assume all other values are set to their default values.
 
-Here's [the first version it produced](https://github.com/nelhage/nix-config/blob/6ffad936fa003ca8f35b1930806b3c15e36da41e/src/obsidian-scan/src/main.rs).
+In short: This just worked. Here's [the initial version](https://github.com/nelhage/nix-config/blob/6ffad936fa003ca8f35b1930806b3c15e36da41e/src/obsidian-scan/src/main.rs).
 
-In a single prompt, with no chain-of-thought or other explicit reasoning, Claude read around 1,000 lines of Emacs Lisp, identified the ~200 lines involved in `obsidian-update`, identified what data they needed, and then ported all the relevant logic into about 150 lines of Rust.
+In a single prompt, with no chain-of-thought or other explicit reasoning, Claude read around 1,000 lines of Emacs Lisp, identified the ~200 lines involved in `obsidian-update`, identified the data boundary between that code and the rest of the file, designed a JSON format for that data, and then ported the relevant logic into about 150 lines of Rust.
 
 The resulting code compiled and worked on the first try, and Claude even output a functioning `Cargo.toml` containing the needed dependencies.
 
-I went further -- could it also write the Emacs side? I decided to make it a bit harder by telling it to use [Emacs advice][advice] to patch `obsidian.el`, so that I could load the upstream `obsidian.el` without forking it, and just add to my own configuration. Prompt:
+I went further -- could it also write the Emacs side? I decided to be ambitious, and asked it to use [Emacs advice][advice] to patch `obsidian.el`, with the aim of producing something I could include in my configuration without forking or patching the upstream project. This prompt:
 
 > [Uploaded file: `obsidian.el`]\
 > [Uploaded file: `obsidian-scan/src/main.rs`]
 >
 > Now, please write some elisp code that patches `obsidian.el` to use `obsidian-scan`. Instead of editing the original file, please use the elisp "advice" feature, so I can include your snippet in my own configuration after loading obsidian.el
 
-This, too, [mostly just worked](https://github.com/nelhage/nix-config/blob/6ffad936fa003ca8f35b1930806b3c15e36da41e/src/obsidian-scan/emacs/obsidian-scan.el). It originally had one bug (that I'm aware of): The Emacs side was prepending a `#` to tags, but Rust was already including one, resulting in tags like `##writing`. I asked Claude to fix it:
+This, too, [pretty much just worked](https://github.com/nelhage/nix-config/blob/6ffad936fa003ca8f35b1930806b3c15e36da41e/src/obsidian-scan/emacs/obsidian-scan.el). It had one bug (that I'm aware of): The Emacs side was prepending a `#` to tags, but Rust was already including one, resulting in tags like `##writing`. I asked Claude to fix it:
 
 > `obsidian--tags-list` is ending up with entries with double `##`, like `##writing`. Do you think we should fix the Rust code or the elisp? Choose one and update it.
 
-Claude chose the elisp, and rewrote the file with the trivial bugfix. This was characteristic of all my future interactions -- I would ask for an improvement or a fix, and it would pretty much Just Work.
+Claude chose the elisp, and rewrote the file with the trivial bugfix. This was characteristic of all remaining interactions on the project -- I would ask for an improvement or a fix, and Claude would execute it with at most small hiccups.
 
-I went back and forth a tiny bit more; notably, I asked Claude to output the (file -> tags) mapping, and to use it for `obsidian-tag-find` in Emacs. I've now added both the Rust program and the elisp patch to [my system configuration][obsidian-scan], and I've been quite happy so far!
+I went back and forth in this style just a few more times. Notably, I asked Claude to output the (file -> tags) mapping, and to use it for `obsidian-tag-find` in Emacs. I've now added both the Rust program and the elisp patch to [my personal system configuration][obsidian-scan], and I've been quite happy so far!
 
 The whole project took something like a single afternoon.
 
@@ -95,15 +101,15 @@ $ cat ~/code/nix-config/src/obsidian-scan/src/main.rs| scrubs count-tokens
 
 ## I'm tentatively excited
 
-- [ ] TK joy of building things / scratching your own itch
+I feel like this project made me feel a sense of personal excitement and enthusiasm for building software with Claude / other LLM assistance, in a way I hadn't personally felt before.
 
-Even as I've been aware of the ongoing progress in coding performance by language models, I mostly haven't made much use of them myself, and I've approached them with a vague sense of dread and preemptive exhaustion. This comes from a number of places, but I think a large one is that a lot of the LLM usage I see feels antithetical to my personal approach to software and philosophy of software: I like to [deeply understand][understand] software systems, and build with careful craft, but a lot of the enthusiasm around LLMs feels targeted at replacing human understanding and spewing out ever-growing piles of mediocre glue code, rather than augmenting understanding and building with care.
+Specifically, I felt the joy and excitement of writing software to "scratch my own itch" -- to solve a problem I had, and build a tool I wanted -- in a way I mostly haven't felt in years. In my younger years, especially around undergrad, I was [surrounded by][situated-newsletter] bits and pieces of software that I had written, or my friends or people like us had written, in order to solve our own problems and give ourselves new capabilities. We felt a tremendous amount of power and optimism and possibility, and a real lived belief that we could shape our own computing environment, and build our own tools and craft the experiences we wanted. This ethos existed on a range of scales, describing both [small scripts used by a few friends][situated], but also many of the largest and most successful open-source projects of the time.
 
-I still have that fear, but this small project gave me another perspective: LLMs may be drastically lowering the cost to building personal tooling -- to certain types of [situated software][situated] -- and letting me, personally, build more of the one-off tooling to manage my digital life, which I feel like [used to be ubiquitous in my life][situated-newsletter], but is now tangled in a hellish mess of broken APIs, confusing OAuth, and other tangles of modernity. I have half a dozen projects languishing in my TODO list to extract data from `$service` or import data from `$google_project` into `$other_tool`, all of which I know I **could** build, given time, but which just seem not worth the squeeze when I just know I'm going to lose three days just figuring out how the hell to auth to Google again. If Claude can do that boilerplate for me, maybe I'll revisit those! And for many such projects, the code itself can be entirely throwaway or is fully described by its interface definition, and so I'm happy to **not** build it with craft, but treat it as a black box maintained by the helpful bots.
+In the years since, the world has changed, and I have changed. Our data has become more and more isolated into various siloed cloud services owned and operated by monopolies ranging from indifferent to malevolent. Everything has become more complicated, layered behind towers and towers of abstraction and complexity and inscrutable OAuth. I, too, have spent my career reading about working at those kinds of establishments, and have learned to reflexively write all software as thought it were going to be deployed at massive scale and live for years. I even **enjoy** that mode of working, and the challenge of building robustly and finding firm foundations, but coupled with the abject despair I feel every time I have to figure out how to authenticate to a Google API, or migrate to a new version of a Javascript framework, it means I've mostly stopped building small pieces of software for myself and my friends.
 
-I **don't** think we're yet at a point where LLMs enable that sort of personal software, at scale, by people who **don't** already have much of the expertise and background context to do it themselves; but that does seem like it may change, and that, too, would be interesting to consider.
+I now feel, for the first time in a while, a glimmering of that old excitement! Claude is far better than I will ever be at handling arcane authentication systems, or knowing the current version of React, or whatever else. It feels like we're living in a world where -- now, or at least soon -- it will suffice to accurately describe the tool or script that I **wish** existed, and Claude can do the gruntwork. And if time passes, and the API is deprecated, and we need to migrate to v27 of some framework, Claude will probably also be able to do that work. Heck, we may live in a world where every few years you just throw out all of the code, and start over in a new session with Claude, with the same problem statement but a copy of the current documentation, and work from scratch. I feel a glimmer of hope and excitement: can I relearn to build small software, for my own use, or my community's, where Claude helps to handle so many of the innumerable nuisances that have crept into software engineering in the last twenty years, and also lets me stay at a high-level design and concept level that prevents my obsessive perfectionism from getting stuck in the details?
 
-## I felt like I was fighting the tooling
+## I was fighting the tooling, not working with it
 
 Claude.app / [claude.ai][claudeai] did not feel well-designed for this problem. I spent a lot of time copy-pasting from the UI into on-disk files, and copy-pasting errors or other output back to Claude.
 
@@ -142,14 +148,6 @@ I suspect this change also impacts which architectural patterns will make sense.
 [delete]: https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to
 
 [^fn-theory]: I keep meaning to write something about Naur's [_Programming as Theory-Building_](https://pages.cs.wisc.edu/~remzi/Naur.pdf), one of my favorite papers, and one of the first I'm aware of to capture this insight.
-
-
-# Footer: TODO
-
-- [x] Intro
-- [x] "should you be impressed" rewrite
-- [ ] Title
-
 
 [org-mode]: https://orgmode.org/
 [workflowy]: https://workflowy.com/
