@@ -63,7 +63,7 @@ The whole project took something like a single afternoon.
 
 ## Claude is much better at code than I realized
 
-I asked Claude the original prompt mostly not expecting much. But I'd heard that Claude 3.5 Sonnet is much-improved at writing code, and in general I try to periodically try to use LLMs even when I expect failure, since that's the only way I've found to really stay calibrated on their capabilities.
+I asked Claude the original prompt mostly not expecting much. But I'd heard that Claude 3.5 Sonnet is much-improved at writing code, and in general I attempt to periodically give LLMs a go even when I expect failure, since that's the only way I've found to really stay calibrated on their capabilities.
 
 I was impressed, first, by the initial rewrite: I figured Claude would be alright at writing ~100 lines of code given a clear spec, but extracting an implicit spec from within a thousand lines of elisp, and executing against that spec, surprised me. I was further impressed by the process of iterating on the system; Claude continued to be very effective at reading moderate amounts of code from the context window, and updating them or responding to them in fairly sophisticated ways. Pretty much everything I tried "just worked."
 
