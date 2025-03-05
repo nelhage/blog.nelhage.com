@@ -101,36 +101,46 @@ We can now understand the basic idea of the TAGE predictor. The TAGE algorithm:
 - Stores a very-long branch history (hundreds or thousands of branches)
 - Stores multiple tables:
   - A base table indexed only by PC
-  - A series of tables indexed by exponentially- (aka geometrically-) spaced history lengths. That is, each table use a history length approximate `k` times longer than the previous, for some fixed `k`.
+  - A series of tables (on the order of 10-20 tables), indexed by exponentially- (aka geometrically-) spaced history lengths. That is, each table use a history length approximately `k` times longer than the previous table, for some fixed `k`. This property gives "TAGE" the "GE" in its name, for the **ge**ometric sequence.
 - Aims to -- for each branch encountered at runtime -- use the shortest history length **that makes good predictions**
 
 That last bullet point is key! There are a number of ideas (and a lot of important implementation details and tuning!) that go into achieving it. I'm going to mostly stay with the big ideas; I'll make sure to link to some papers and code if you want the details.
 
-## Tagged tables
+## Prediction: Use the longest matching entry
 
-The tables in TAGE are "tagged." What does that mean?
+Making predictions, in TAGE, is conceptually simple: We look in each of our tables (using the appropriate-length slice of our history buffer), and use the **longest** history length for which the table stores an entry matching the current state.
 
-For any of our predictors, we need to store (in hardware) a table mapping from some key, to our prediction (and potentially other state). For [our first predictor](#the-most-basic-dynamic-predictor), for instance, our key was just the program counter at each branch.
+### Tagged tables
 
-Typically, in hardware, we'll implement this by creating a 2^k-entry [SRAM][sram], and directly indexing it using the low `k` bits of the program counter. For instance, we might have a 1024-row table, indexed by the low 10 bits. In each row, we store a single bit (was the branch taken, or not?)[^counter].
+Thus, in order to pick the correct table, TAGE needs to be able to distinguish whether or not each table stores an entry that corresponds to the current state. In software, we take for granted that we can ask a hash table or other key-value map "do you contain key `K`?" but in hardware the landscape is a bit different, so I need to dive into some details I've glossed over so far.
 
-Of course, we need to worry about what happens when multiple branches exist in the program, at the same offset modulo 2^k, such that they map onto the same row of the table.
+For simplicity, let's revisit our earlier PC-indexed predictor in order to illustrate the following ideas. In that context, I glibly described us as storing a "`Map<PC, bool>`." What does that actually look like in hardware, though?
 
-Suppose we want to detect collisions of this form, and act on them somehow. Any colliding addresses **by definition** have their low 10 bits in common, so if we want to detect a collision, we need to store the remaining 22 bits of the address (assuming a 32-bit architecture) in the table, so that we can check what address the table "thinks" its storing.
-
-Those 22 bits, in hardware lingo, are called a "tag"; they let the row know which address it is storing, so that we can check on retrieval whether we're talking about the same thing.
-
-Recall that the actual **payload**, though, may just be a bit or two. Storing a 22-bit tag, in order to store 2 bits of payload, is a hefty tax! And if the table doesn't have an entry for the current PC, what are we going to do, anyways? In many cases, it will be a better choice to just omit the tag, and blindly use the row at `PC % 1024`, and hope things work out. If we have the budget for more bits, we should probably expand the number of entries -- maybe we'll have 16384 rows, and use the low 14 bits -- instead of tagging entries.
-
-In TAGE, however, we have multiple tables (potentially as many as 20 or so!). Thus, we care whether any given table has a "hit" for our current situation; if it doesn't, we would prefer to use a table that does, instead of just using information for a different branch.
+Typically, what we'll do is pick some index size `k`, and instantiate a chunk of [SRAM][sram], organized into 2ᵏ rows. We will then index into using the low `k` bits of the program counter we're querying for. A given `k` bits will always map directly to the same row[^hash].
 
 
-[^counter]: In practice, we usually store a 2-bit counter, which we might increment on "taken" and decrement on "not taken"; this allows us to handle branches which **almost-always** resolve one way but allow for occasional deviations. This doesn't change the overall point about storage, though.
+[^hash]: This is exactly analogous to a (partial) hash collision in a software hash table. But while in software we'd talk about chaining or probing strategies, in hardware we face a very different set of tradeoffs and cost landscape, and thus a different set of solutions. In hardware the closest analogue is [set-associative][associative] caches, but they're not widely used in branch prediction (as best I know), so they get relegated to this footnote.
 
-[sram]: https://en.wikipedia.org/wiki/Static_random-access_memory
 [associative]: https://en.wikipedia.org/wiki/Cache_placement_policies#Set-associative_cache
 
+Thus, a natural question is: If two lookup keys share their low `k` bits, do we just let them collide, or can we detect this situation and handle it differently?
 
+In the branch prediction context, it's very common to just "ignore" collisions, and allow colliding branches to share state and potentially "interfere" with each other. Why is this so? One big reason is that it means **we don't need to spend any storage on branch PC values themselves**. Our table can just be sized as 2ᵏ rows x 1-bit prediction[^counter]. Each row "implicitly knows" the low bits of its PC, by its physical location, but never stores any other bits.
+
+[^counter]: In practice, predictors -- including TAGE -- often store a 2-bit counter, which we might increment on "taken" and decrement on "not taken"; this allows us to handle branches which **almost-always** resolve one way but allow for occasional deviations. This doesn't change the overall point about storage, though.
+
+If we **do** want to detect collisions, each row must also store the non-index bits of the PC (e.g. the high 32-k bits, for a 32-bit architecture). Then, on lookup, we can compare the stored PC with the one we are querying; if they don't match, then we have a collision, and can handle it differently then the case of a match (perhaps we reset the state, or fall back to some default prediction). These extra "metadata" bits, stored in each row, are referred to in hardware design as the ["tag"](https://cseweb.ucsd.edu/classes/su07/cse141/cache-handout.pdf).
+
+If we're only storing a few bits of prediction, tagging can be a hefty cost! Suppose a 32-bit architecture, a 10-bit index, and 2 bits of prediction information. Then we'd need 2¹⁰·2 = 2048 bits for an untagged table, and 2¹⁰·(2+22)=24576 bits for a fully-tagged table! If we have the budget for that much RAM, in many cases we'd rather use a larger untagged table, with (say) 16 bits of index, instead.
+
+TAGE, however, needs to be able to distinguish the cases where a given-history-length table does or does not contain a matching entry. Thus -- somewhat unusually compared to many branch prediction algorithms -- it **does** spend storage budget on tags in its tables. It doesn't fully-tag entries, but instead uses a few bits of tag data (with longer tags for "deeper" tables), tuning tag lengths based on empirical data to achieve a desirable tradeoff of storage cost and "spurious" collisions. These tags give the algorithm the rest of its name -- the "TA" in "TAGE."
+
+[sram]: https://en.wikipedia.org/wiki/Static_random-access_memory
+
+## Predictor updates in TAGE
+
+- `u` bits
+- on failure, use a longer table
 
 
 <!--
@@ -156,9 +166,6 @@ Reading about branch prediction, I notice myself dividing the problem into two c
 
 Of course, these two components are necessarily tightly intertwined; if a theory produces very good predictions in the abstract, but cannot be efficiently implemented, it doesn't necessarily help us. Nonetheless, I find this separation a helpful framework, and in this post I'm mostly going to focus on the prediction **theory** of TAGE and ITTAGE, since that's the part I found most novel!
 -->
-
-- intro: interpreters
-
 
 
 [pipeline]: https://en.wikipedia.org/wiki/Instruction_pipelining
