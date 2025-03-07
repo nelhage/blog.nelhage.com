@@ -12,12 +12,12 @@ Starting with the bottom line: I believe the impressive performance gains from t
 
 I want to be very clear up front that the tail-calling interpreter is (in my opinion) still an excellent piece of work (and still a real performance improvement). I also think it's a promising approach and hopefully more robust, in some ways I'll explore in the rest of this post.
 
-Also, the impact of the LLVM regression doesn't seem to have been known prior to this work (and it still isn't fixed, as of this writing); thus, in that sense, this project really did produce a 10% speedup compared to a _status quo ante_ of "shipping Python built with clang 19." For the [`python-build-standalone` builds][python-build-standalone] builds, for instance, [Simon Willison][simonw] reproduced the 10% speedup "in the wild" as compared to the 3.13 builds.
+Also, the impact of the LLVM regression doesn't seem to have been known prior to this work (and it still isn't fixed, as of this writing); thus, in that sense, this project really did produce a 10% speedup compared to a _status quo ante_ of "shipping Python built with clang 19." For instance, Simon Willison [reproduced the 10% speedup][simonw] "in the wild," as compared to Python 3.13, using builds from [`python-build-standalone`][python-build-standalone].
 
 [python-build-standalone]: https://github.com/astral-sh/python-build-standalone
 [simonw]: https://simonwillison.net/2025/Feb/13/python-3140a5/
 
-I'm writing this note, thus, not to say anything bad about the tail-call work. However, there's been a lot of (understandable!) excitement for the tail-call work, and I want to have a centralized place to document my more-nuanced understanding. I also this this example makes a great case study of some of the challenges of benchmarking, performance engineering, and modern software engineering, and I will [reflect on those topics](#reflections) at the end of this post.
+I'm writing this note, thus, not to say anything bad about the tail-call work. However, there's been a lot of (understandable!) excitement for the tail-call work, and I want to have a centralized place to document my more-nuanced current understanding. I also think that this example makes a great case study of some of the challenges of benchmarking, performance engineering, and modern software engineering, and I will [reflect on those topics](#reflections) at the end of this post.
 
 # Performance results
 
