@@ -1,0 +1,28 @@
+th, td {
+    padding: 0 10px;
+}
+
+thead tr {
+    border-bottom: 1px solid #aaa;
+}
+
+td, th {
+    border-left: 1px solid #aaa;
+}
+
+td:first-child, td:first-child {
+    border-left: none;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background: #ddd;
+}
+
+table {
+    border: 1px solid black;
+    margin: 1em 0;
+}
