@@ -1,7 +1,9 @@
 ---
 title: "Performance of the Python 3.14 tail-call interpreter"
 slug: cpython-tail-call
-date: 2025-03-05T14:28:38-08:00
+date: 2025-03-09T15:00:00-07:00
+description: >
+  A deep dive into the performance of Python 3.14's tail-call interpreter: How the performance results were confounded by an LLVM regression, the surprising complexity of compiling interpreter loops, and some reflections on performance work, software engineering, and optimizing compilers.
 extra_css:
 - css/tables.css
 ---
