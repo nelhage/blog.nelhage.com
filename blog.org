@@ -3,6 +3,7 @@
    - [ ] Verify the post has a slug
    - [ ] Verify the post is not a draft
    - [ ] Update the post timestamp
+   - [ ] Add a `description`
 ** Buttondown post
    - [ ] Subject: `New blog post: ...`
    - [ ] Remember the Ranger photo
