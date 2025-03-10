@@ -20,7 +20,7 @@ At the end, I [will reflect](#reflections) on this situation as a case study in 
 
 I also want to be clear that I still think the tail-calling interpreter is a great piece of work, as well as a genuine speedup (albeit more modest than initially hoped). I am also optimistic it's a more robust approach than the older interpreter, in ways I'll explain in this post. I also really don't want to blame anyone on the Python team for this error. This sort of confusion turns out to be very common -- I've certainly misunderstood many a benchmark myself -- and I'll have some reflections on that topic at the end.
 
-In addition, the impact of the LLVM regression doesn't seem to have been known prior to this work (and the bug still isn't fixed, as of this writing); thus, in that sense, the alternative (without this work) probably really was 10-15% slower, for builds using clang-19 or newer. For instance, Simon Willison [reproduced the 10% speedup][simonw] "in the wild," as compared to Python 3.13, using builds from [`python-build-standalone`][python-build-standalone].
+In addition, the impact of the LLVM regression doesn't seem to have been known prior to this work (and the bug wasn't fixed as of publishing this post, although it [since has been][llvm-pr]); thus, in that sense, the alternative (without this work) probably really was 10-15% slower, for builds using clang-19 or newer. For instance, Simon Willison [reproduced the 10% speedup][simonw] "in the wild," as compared to Python 3.13, using builds from [`python-build-standalone`][python-build-standalone].
 
 [python-build-standalone]: https://github.com/astral-sh/python-build-standalone
 [simonw]: https://simonwillison.net/2025/Feb/13/python-3140a5/
@@ -166,9 +166,9 @@ That said, I did also test GCC, and GCC (at least as of 14.2.1) does not replica
 
 ## The fix
 
-[LLVM pull request 114990][llvm-pr] is open and should fix this regression. It has not yet merged as of this writing, but hopefully will soon. I have also benchmarked it and confirmed it restores the expected performance.
+[LLVM pull request 114990][llvm-pr] merged shortly after I published this post, and fixes the regression. I was able to benchmark it before merge and confirm it restores the expected performance.
 
-In the meanwhile, the [PR that caused the regression][llvm-bugpr] added a tunable option to choose the threshold at which tail-duplication will abort. We can restore similar behavior on clang-19 by simply setting that limit to a very large number[^lto].
+For releases before that fix, the [PR that caused the regression][llvm-bugpr] added a tunable option to choose the threshold at which tail-duplication will abort. We can restore similar behavior on clang-19 by simply setting that limit to a very large number[^lto].
 
 
 [^lto]: Note that setting this option is a bit complex to do when using LTO. Tail duplication happens during code-generation, and for LTO builds, the code generation actually happens at **link time**, not compile-time. Thus, we need to make sure the flag is passed down to `lld`, not just to the compiler. I was [able to get it to work](https://github.com/nelhage/cpython-interp-perf/blob/9ed03c33f85e908cc156d35b183c43479243d337/python.nix#L67-L70) by configuring Python with these variables at `./configure`-time:
