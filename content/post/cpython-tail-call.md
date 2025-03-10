@@ -35,7 +35,7 @@ Here are my headline results. I benchmarked several builds of the CPython interp
 All builds use LTO and PGO. These configurations are:
 - `clang18`: Built using Clang 18.1.8, using computed gotos.
 - `gcc` (Intel only): Built with GCC 14.2.1, using computed gotos.
-- `clang19`: Built using Clang 19.1.7, using compute gotos.
+- `clang19`: Built using Clang 19.1.7, using computed gotos.
 - `clang19.tc`: Built using Clang 19.1.7, using the new tail-call interpreter.
 - `clang19.taildup`: Built using Clang 19.1.7, computed gotos and some `-mllvm` tuning flags which work around the regression.
 
@@ -154,7 +154,7 @@ Those facts taken together, might lead you to ask, "Couldn't we just start with 
 
 And it turns out: Yes.
 
-clang-18 (or clang-19 with appropriate flags), when presented with the "classic" `switch`-based interpreter, **goes ahead and that replicates the dispatch logic into each the body of each opcode anyways**. Here's another table, showing the same builds with the number of indirect jumps, using the `objdump | grep` test from earlier:
+clang-18 (or clang-19 with appropriate flags), when presented with the "classic" `switch`-based interpreter, **goes ahead and duplicates the dispatch logic into each the body of each opcode anyways**. Here's another table, showing the same builds with the number of indirect jumps, using the `objdump | grep` test from earlier:
 
 | Benchmark           | clang18 | clang18.nocg | clang19.nocg | clang19      |
 |---------------------|:-------:|:------------:|:------------:|:------------:|
