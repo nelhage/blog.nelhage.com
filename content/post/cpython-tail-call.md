@@ -50,6 +50,8 @@ I've used `clang18` as the baseline, and reported the bottom-line "average" repo
 
 Observe that the tail-call interpreter still exhibits a speedup as compared to clang-18, but that it's far less dramatic than the slowdown from moving to clang-19. The Python team has also observed larger speedups than I have (after accounting for the bug) on some other platforms.
 
+You'll notice I didn't benchmark the tail-call interpreter on the older Clang release (what would be `clang18.tc`). The tail-call interpreter relies on new compiler features which only landed in Clang 19, meaning we can't test it on earlier versions. This interaction, I think, is a big reason this story was so confusing, and why it took me so many benchmarks to be **confident** I understood the situation.
+
 # The LLVM regression
 
 ## A brief background
