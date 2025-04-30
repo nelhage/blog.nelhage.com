@@ -145,7 +145,7 @@ Notice that `clang19.nocg`" is only 2% slower than `clang18`, even though the ba
 
 ### Do we need computed gotos?
 
-I haven't mentioned the `clang19.nocg` benchmark, which you may notice claims to be **faster** than `clang19`" It was at this point that I discovered an additional, and very funny, twist to the story.
+I haven't mentioned the `clang19.nocg` benchmark, which you may notice claims to be **faster** than `clang19`. It was at this point that I discovered an additional, and very funny, twist to the story.
 
 I explained earlier that Clang and LLVM:
 1. Compiles the `switch` into a jump table and an indirect jump, very similar to the one we create by hand using computed gotos
