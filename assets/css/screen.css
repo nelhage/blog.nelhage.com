@@ -2270,3 +2270,8 @@ h5:hover a.anchor { visibility: visible }
 dt {
     font-weight: bold;
 }
+
+dd {
+    margin-left: 1em;
+    margin-bottom: 1.5em;
+}

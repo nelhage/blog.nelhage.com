@@ -228,7 +228,7 @@ The answer, apparently, is "not much":
  "small fry", on a vaguely comparable scale to mine, so I was especially curious
  what they did. The answer, apparently ... is <a href="http://github.com/zigdon/twirssi/blob/master/twirssi.pl#L544">rot13:</a></p>
 
- <code><pre>
+```perl
  $twit = Net::Twitter->new(
      traits => [ 'API::REST', 'OAuth', 'API::Search' ],
      ( grep tr/a-zA-Z/n-za-mN-ZA-M/, map $_,
@@ -238,7 +238,7 @@ The answer, apparently, is "not much":
      source => "twirssi",
      ssl    => !Irssi::settings_get_bool("twirssi_avoid_ssl"),
  );
- </code></pre>
+```
 
  <p>Do you feel secure yet?</p></dd>
 </dl>
