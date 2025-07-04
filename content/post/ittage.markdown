@@ -54,7 +54,7 @@ struct BranchHistory {
   bool predict() const { /* ... */ };
 
   // Update our state based on a resolved branch
-  void update(bool taken( { /* ... */ };
+  void update(bool taken) { /* ... */ };
 };
 
 // We store a mapping from one to the other. This is a fixed-size chunk of
