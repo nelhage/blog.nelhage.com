@@ -1,8 +1,10 @@
 ---
 title: "The ITTAGE indirect branch predictor"
 slug: ittage-branch-predictor
-date: 2025-02-22T16:00:38-08:00
+date: 2025-07-04T14:30:00-07:00
 math: true
+description: >
+  Did you know that modern CPUs are actually pretty good at predicting the indirect branch inside an interpreter loop? I didn't! I did a deep dive into the ITTAGE indirect branch prediction algorithm, which is capable of making those predictions, and draw some connections to other interests of mine in the areas of fuzzing and reinforcement learning.
 ---
 While [investigating the performance][blog] of the new [Python 3.14 tail-calling interpreter][interpreter], I learned ([via this very informative comment from Sam Gross][colesbury-comment]) new (to me) piece of performance trivia: Modern CPUs mostly no longer struggle to predict the bytecode-dispatch indirect jump inside a "conventional" bytecode interpreter loop. In steady-state, assuming the bytecode itself is reasonable stable, modern CPUs [achieve very high accuracy][interpreter-prediction] predicting the dispatch, even for "vanilla" `while / switch`-style interpreter loops[^threaded]!
 
