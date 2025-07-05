@@ -8,7 +8,7 @@ description: >
 ---
 While [investigating the performance][blog] of the new [Python 3.14 tail-calling interpreter][interpreter], I learned ([via this very informative comment from Sam Gross][colesbury-comment]) new (to me) piece of performance trivia: Modern CPUs mostly no longer struggle to predict the bytecode-dispatch indirect jump inside a "conventional" bytecode interpreter loop. In steady-state, assuming the bytecode itself is reasonable stable, modern CPUs [achieve very high accuracy][interpreter-prediction] predicting the dispatch, even for "vanilla" `while / switch`-style interpreter loops[^threaded]!
 
-[^threaded]: The "threaded"-style interpreter, which replicates the dispatch logic into each opcode, is still a performance win, but much less so than [on older CPUs][threaded-code-paper]; the wins these days are mostly just due to executing fewer total instructions, and branches in particular. There's [some more discussion](http://localhost:1313/post/cpython-tail-call/#further-weirdness) in my previous piece.
+[^threaded]: The "threaded"-style interpreter, which replicates the dispatch logic into each opcode, is still a performance win, but much less so than [on older CPUs][threaded-code-paper]; the wins these days are mostly just due to executing fewer total instructions, and branches in particular. There's [some more discussion](/post/cpython-tail-call/#further-weirdness) in my previous piece.
 
 Intrigued, I spent a bit of time reading about just **how** branch predictors achieve this feat. I found the answer pretty fascinating, so I'm going to try to share the salient high-level features -- as I understand them -- as well as some interesting connections and ideas that came up in response.
 
