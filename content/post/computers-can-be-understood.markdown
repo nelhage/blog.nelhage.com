@@ -2,6 +2,8 @@
 title: "Computers can be understood"
 slug: computers-can-be-understood
 date: 2020-02-16T12:00:00-08:00
+description: >
+  Computers and computer systems are build up from deterministic, comprehensible, building blocks. Their operations and behaviors can be understood and reasoned about. I relate my personal beliefs and mindset on this point, and explore some manifestations and ramifications of this philosophy.
 ---
 
 # Introduction
