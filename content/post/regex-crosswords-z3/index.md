@@ -334,18 +334,13 @@ for i, ch in enumerate(chars):
     solv.add(self.build_next_state(clue, states[i], ch) == states[i + 1])
 ```
 
-This approach once again massively sped up the time for Z3 to solve a given puzzle:
+Indeed, this approach turned out to massively speed up the time that Z3 spent solving puzzles. Unfortunately, it does so at the expense of spending much more time in Python encoding the puzzle into a Z3 AST, due to evaluating `build_next_state()` once per character per clue, instead of just once per clue:
 
-![Z3 solve time, function defined by pointwise assertions vs a big `if` expression, over a range of puzzle sizes. The `if` ladder is consistently around one tenth the time](if-v-function.png "Line chart of mean Z3 solve time as a function of puzzle size, for the previous approach compared to defining the transition as a big if-then ladder.")
-{.center}
+![Time spent in Z3, and time spent in Python encoding a puzzle, to solve a range of puzzle sizes, using the two different encoding strategies for the transition table. The `if` ladder is about 10x faster for Z3 to solve, but takes about 3x as long to encode. The `if` ladder wins on total time only for large puzzles](if-v-function-all.png "A plot of time spent in Python, in Z3, and the sum of both, across puzzle sizes, for our two representations of the transition table.")
 
-However, it comes at a cost: duplicating the transition table for every character blows up the size of our Z3 program, but also blows up the amount of time we spend encoding the problem in Python, since we evaluate `build_next_state` each time:
+It really feels like we ought to be able to get the both of both worlds, somehow.
 
-![Time to encode a puzzle into Z3 for the same two approaches. The `If` ladder is about 3x slower across puzzle sizes, to a max of about 10s/puzzle at side=8.](if-v-function-py-time.png "Line chart of the mean time spent encoding a puzzle into Z3 in Python, for the same puzzles and approaches as the previous chart.")
-{.center}
-
-We've gained more than we lost, but can we have the best of both worlds, somehow?
-
+### So many ways to describe a function
 
 ## Using Z3's `RegEx` theory
 
