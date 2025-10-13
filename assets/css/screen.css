@@ -2275,3 +2275,14 @@ dd {
     margin-left: 1em;
     margin-bottom: 1.5em;
 }
+
+div.scroll-table {
+    overflow-x: auto;
+    margin: 1em 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+div.scroll-table table {
+    margin: 0;
+}

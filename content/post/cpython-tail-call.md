@@ -43,10 +43,14 @@ I've used `clang18` as the baseline, and reported the bottom-line "average" repo
 
 [benchmarks]: https://github.com/nelhage/cpython-interp-perf/tree/data/
 
+<div class='scroll-table'>
+
 | Platform             | clang18 | clang19      | clang19.taildup | clang19.tc   | gcc          |
 |----------------------|---------|--------------|-----------------|--------------|--------------|
 | Raptor Lake i5-13500 | (ref)   | 1.09x slower | 1.01x faster    | 1.03x faster | 1.02x faster |
 | Apple M1 Macbook Air | (ref)   | 1.12x slower | 1.02x slower    | 1.00x slower | N/A          |
+
+</div>
 
 Observe that the tail-call interpreter still exhibits a speedup as compared to clang-18, but that it's far less dramatic than the slowdown from moving to clang-19. The Python team has also observed larger speedups than I have (after accounting for the bug) on some other platforms.
 
