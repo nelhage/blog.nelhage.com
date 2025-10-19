@@ -2,6 +2,8 @@
 title: "Solving Regex Crosswords with Z3"
 slug: regex-crosswords-z3
 date: 2025-10-19T15:00:00-07:00
+description: >
+  Adventures in solving regex crosswords using the SMT solver, Z3. Further adventures and misadventures in making the solver fast, in which I learn about far more Z3 features than I knew existed. Some reflections on Z3 and SMT solvers more broadly.
 ---
 
 For a while now, I've been fascinated by [Z3][z3] and by [SMT solving][smt] more broadly. While on pat leave recently, I was reminded of the existence of [regular-expression crossword puzzles][regexle], and allowed myself to get nerdsniped by writing a Z3-backed solver.
