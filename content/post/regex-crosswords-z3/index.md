@@ -503,7 +503,7 @@ One caveat, though, re: usability: new sorts are global per-z3-[Context][z3-cont
 
 #### Z3 documentation is mixed, but does exist
 
-I found it pretty hard, at first, to find good documentation that answered deep questions about Z3 internals or strategies or information beyond surface usage, but eventually I collected quite a list. I think that "ask an expert" remains far and away the most effective way to use Z3 (thanks to [Hillel][hillel] for answering a number of my questions as I worked on this project!), but here are the some other excellent links I found:
+I found it pretty hard, at first, to find good documentation that answered deep questions about Z3 internals or strategies or information beyond surface usage, but eventually I collected quite a list. I think that "ask an expert" remains far and away the most effective way to use Z3 (thanks to [Hillel Wayne][hillel] for answering some questions as I worked on this project!), but here are the some other excellent links I found:
 
 - Microsoft's [Z3 Guide](https://microsoft.github.io/z3guide/), including its [list of tactics](https://microsoft.github.io/z3guide/docs/strategies/summary) and [solver options](https://microsoft.github.io/z3guide/programming/Parameters).
 - [_Programming Z3_](https://microsoft.github.io/z3guide/programming/Parameters), a paper by some Z3 developers.
