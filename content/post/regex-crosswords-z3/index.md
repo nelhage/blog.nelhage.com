@@ -109,7 +109,7 @@ I chose to represent both states and characters as integers (adding assertions t
 
 Z3 supports [function types][z3-functions], which can be declared and manipulated in expressions and assertions. Thus, I declared a function of the appropriate type, and informed Z3 of the transition table using an assertion for each entry in the transition table:
 
-[z3-function]: https://microsoft.github.io/z3guide/docs/logic/Uninterpreted-functions-and-constants
+[z3-functions]: https://microsoft.github.io/z3guide/docs/logic/Uninterpreted-functions-and-constants
 
 
 ```python
