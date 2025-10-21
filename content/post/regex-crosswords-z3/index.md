@@ -1,7 +1,7 @@
 ---
 title: "Solving Regex Crosswords with Z3"
 slug: regex-crosswords-z3
-date: 2025-10-19T15:00:00-07:00
+date: 2025-10-21T07:00:00-07:00
 description: >
   Adventures in solving regex crosswords using the SMT solver, Z3. Further adventures and misadventures in making the solver fast, in which I learn about far more Z3 features than I knew existed. Some reflections on Z3 and SMT solvers more broadly.
 ---
