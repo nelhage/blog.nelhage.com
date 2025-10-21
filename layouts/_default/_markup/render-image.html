@@ -12,15 +12,25 @@
   height="{{$image.Height}}"
   {{- with .Text }} alt="{{.}}" {{- end -}}
   {{- with .Title }} title="{{.}}" {{- end -}}
+  {{- range $k, $v := .Attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}
   />
 {{else -}}
 <img src="{{ .Destination | safeURL }}"
   {{- with .Text }} alt="{{ . }}"{{ end -}}
   {{- with .Title }} title="{{ . }}"{{ end -}}
->
+  {{- range $k, $v := .Attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}
+  />
 {{- end -}}
 {{- if .IsBlock -}}
 {{with .Title}}
-<figcaption>{{.}}</figcaption>
+<figcaption>{{. | markdownify}}</figcaption>
 {{end}}
 </figure>{{end}}
