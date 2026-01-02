@@ -3,24 +3,27 @@ title: "Inventing structured concurrency through the lens of error-handling"
 slug: inventing-structured-concurrency
 date: 2024-06-01T14:21:20-07:00
 ---
-How should we handle and propagate errors in concurrent programs?
+How should we think about error-handling in concurrent programs?
 
-In single-threaded programs, we’ve mostly converged on a “standard” pattern: Errors are passed up the stack until we find a stack frame that’s prepared to handle them; as we do so we unwind the stack in-order, giving each frame an opportunity to perform cleanup actions or destroy resources.
+In single-threaded programs, we’ve mostly converged on a standard pattern, with a diverse zoo of implementations and concrete patterns. When an error occurs, it is propagated up the stack until we find a stack frame which is prepared to handle it. As we do so, we unwind the stack frames in-order, giving each frame the opportunity to clean up or destroy resources as appropriate.
 
-This pattern clearly describes the explicit exception-handling mechanisms in many modern languages (C++, Python, Java), all of which also have mechanisms for cleanup on frame unwind (RAII, `finally` blocks, Python context managers). But it also describes the standard pattern in Rust (`Result` returns, the `?` operator, and calling `drop` on wind), as well as Go (the classic `if err != nil { return err }` pattern and `defer` for cleanup), and even most new `C` code, via the `goto error` pattern (c.f. [examples in the Linux kernel](https://livegrep.com/search/linux?q=goto%20err&fold_case=auto&regex=false&context=true)).
+This pattern clearly describes the explicit exception-handling mechanisms in many modern languages (C++, Python, Java), all of which also have mechanisms for cleanup on frame unwind (RAII, `finally` blocks, Python context managers). But it also describes the standard pattern in Rust (`Result` returns, the `?` operator, and calling `drop` on wind), as well as Go (the classic `if err != nil { return err }` pattern and `defer` for cleanup), and even most modern `C` code, via patterns like `goto error` pattern (c.f. [examples in the Linux kernel](https://livegrep.com/search/linux?q=goto%20err&fold_case=auto&regex=false&context=true)).
 
-On the flip side, from today’s vantage this pattern may seem obvious or overdetermined, but it wasn’t so historically. Lisp’s [“restarts” mechanism](https://lisper.in/restarts), `longjmp` in C[^longjmp], “trap” mechanisms like UNIX signals, and the infamous [`on error`](https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/on-error-statement) clause in Visual Basic illustrate some alternate mechanisms that have been experimented with in the past. "Unwinding" is also predicated on **having** a structured call stack, a concept which also had to be [discovered and popularized](https://en.wikipedia.org/wiki/Structured_programming).
+From today’s vantage, that description may seem so general as to be contentless, but that has not always been so. Some other (mostly-abandoned) error-handling approaches include Lisp’s [“restarts” mechanism](https://lisper.in/restarts), `longjmp` in C[^longjmp], “trap” mechanisms like UNIX signals, and the infamous [`on error`](https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/on-error-statement) clause in Visual Basic. "Unwinding" is also predicated on **having** a structured call stack, a concept which also had to be [invented and popularized](https://en.wikipedia.org/wiki/Structured_programming).
 
 [^longjmp]: `longjmp` can be used as a primitive to help **implement** exceptions and unwinding. But by itself it’s a much lower-level primitive and admits a wide variety of alternate patterns.
 
-My question is: what is the equivalent pattern in the presence of concurrent threads of execution? I intend here to be inclusive of both traditional threads, but also other mechanism of concurrency, such as Go’s “goroutines” or Python’s `asyncio` or Javascript `async/await` — I’m interested in [concurrency more so than hardware parallelism](https://go.dev/blog/waza-talk). Going forward, I’ll use the word “task” to refer to any logical sequence of linear execution which may be interleaved in time with any number of other such sequences.
+Today I want to ask: how should we update this pattern for **concurrent** programs, where there is no single stack? How do we organize our code to handle error conditions, in the presence of multiple concurrent tasks[^task]?
 
-If an exception can be handled within a single tasks, our existing patterns mostly work fine. But what about errors that need to cross between tasks? What if, for instance, one task is waiting on a second task, and the second encounters an error? How should we organize our code to make it easier to write correct code? Is there a concurrent version of the “unwind-and-cleanup” pattern?
-
+[^task]: I'm interested in logical [concurrency more so than hardware parallelism](https://go.dev/blog/waza-talk), so I'll be using the word "task" to refer to separate linear sequences of execution, which may be interleaved in time with any number of other such sequences.
 
 ## Unhandled errors
 
-We’ll explore the question of “what happens when errors need to cross task boundaries?” by examining what popular programming languages do to **unhandled exceptions** inside of **concurrent programs**. In a single-threaded program, it’s natural that exceptions which “bubble up” out of the entrypoint should terminate the program, but in a concurrent program, it’s less clear: There may be other tasks that are making progress, and we may not wish to terminate them.
+If an error is raised and handled within a single task, our usual idioms work fine. We're concerned about what happens when the error involves multiple tasks.
+
+One entrypoint we can use to explore that question is to ask what happens when our single-threaded "stack-unwinding" approach "runs out of stack" -- we reach the top of a given task's stack, without handling the error.
+
+In a single-threaded program, it’s natural that exceptions which “bubble up” out of the entrypoint should terminate the program, but in a concurrent program, it’s less clear: There may be other tasks that are making progress, and we may not wish to terminate them.
 
 For concreteness, let’s consider this simple program[^python]:
 
@@ -31,9 +34,7 @@ For concreteness, let’s consider this simple program[^python]:
 
 This program attempts to run two concurrent threads, one doing some “main” work function, and one doing some kind of work “in the background.” However, the background thread raises an exception immediately. What should happen?
 
-The main thread (or other threads, in general) might still be making progress, and we may not want to unceremoniously cut it short. But, at the same time, something unexpected has clearly happened (if it were anticipated, the programmer would have caught the exception); do we really want to continue execution in such an unanticipated state?
-
-And indeed, there tend to be broadly two schools of behavior here in programming languages and runtimes:
+Running a version of this program across various language implementations, we will discover there are, broadly, two common approaches:
 
 - Print the error, terminate the thread, and carry on until all threads (or the main thread, or all “non-daemon” threads) have exited. (Java, Python)
 - Print the error, and immediately terminate the entire program (Go, Rust, C++)
@@ -59,67 +60,44 @@ In Python, the program logs the exception immediately, but then continues exitin
 
 Neither option is particularly satisfactory.
 
-Killing the entire program is a heavyweight hammer. I have been involved in high-severity incidents where the proximate cause was an unhandled panic in a low-priority goroutine that crashed a critical daemon. But letting the program continue means we’re in a state that was almost certainly never tested or anticipated, and runs a high risk of deadlock if another task was waiting on the now-dead task. It also violates our single-thread intuition of “unhandled exceptions crash the program” and leads to a lot of confusion while developing and debugging.
+Killing the entire program is a heavyweight hammer. I have, for instance, personally been involved in high-severity incidents where the proximate cause was an unhandled panic in a background monitoring goroutine, which was crashing a critical daemon. If the error had not been fatal, we would have had a much better time.
 
+On the flip side, letting the program continue means we’re in a state that was almost certainly never tested or anticipated, and we run a high risk of deadlock if another task was waiting on the now-dead task. It also creates a lot of pain during development and debugging, where we, as programmers, generally want to get feedback about the error and move on to fixing it, as quickly as possible.
 
 ## Where do I raise the exception?
 
-The problem, in some sense, is that when we unwind to the root of the thread’s stack, we find ourselves in a dead end. We might like to “continue unwinding,” but it’s not clear what that means — we’ve reached the root of the stack, where do we unwind to? To what code should we hand the exception?
+What we'd like, in some sense, is to have a better place to deliver the exception. In a single-threaded program, that place is "the caller." In the presence of concurrency, tasks don't have a caller to which they will eventually return, so what should we do instead?
 
-Python’s [`asyncio`](https://docs.python.org/3/library/asyncio.html) framework tries to resolve the contradiction and takes a different stance here than any of the threading systems above. In `asyncio`, a task (represented by a [`Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) object) is an object you can wait on. If a Task raises an exception, waiting on it will re-raise the exception, giving you a mechanism to manually specify “where the exception should be forwarded.” If we port our program to `asyncio`, and remember to add an `await task`, we get:
+Python’s [`asyncio`](https://docs.python.org/3/library/asyncio.html) framework takes a different approaach than any of the above languages. In `asyncio`, a task is represented by a [`Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) object, which is an object that can be waited on, much like an event or a lock or a socket or any other asynchronous object. Waiting on a `Task` blocks until it completes; if the task raises an exception, it will be redelivered to anyone waiting on the `Task`.
 
+This approach is unopinionated; it avoids taking an opinion on **who** should handle an exception that escapes a task, but it gives the programmer the tools to make that decision themselves.
 
-    FIGURE:exception_asyncio.py
+However, it comes with a steep downside. If **no one** waits on a `Task`, and that task raises an exception, the exception is effectively swallowed until program exit, at which point it will be printed with a warning. If someone was waiting on that task to, say, produce output via some queue, then the program will simply hang forever, silent, inscrutable, and mysterious.
 
-In this version, the `await task` re-raises the exception, so we don’t get the “All done” print, and we exit with an error code like you might expect:
-
-
-    $ time python exception_asyncio.py
-    Traceback (most recent call last):
-      File "/Users/nelhage/Sync/code/structured-concurrency/exception_asyncio.py", line 16, in <module>
-        asyncio.run(main())
-      File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/asyncio/runners.py", line 190, in run
-        return runner.run(main)
-               ^^^^^^^^^^^^^^^^
-      File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/asyncio/runners.py", line 118, in run
-        return self._loop.run_until_complete(task)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
-        return future.result()
-               ^^^^^^^^^^^^^^^
-      File "/Users/nelhage/Sync/code/structured-concurrency/exception_asyncio.py", line 13, in main
-        await task
-      File "/Users/nelhage/Sync/code/structured-concurrency/exception_asyncio.py", line 6, in background_task
-        raise ValueError("oops")
-    ValueError: oops
-    python exception_asyncio.py  0.06s user 0.02s system 1% cpu 5.158 total
-
-    $ echo $?
-    1
-
-We can even use [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) to short-circuit, and raise the error as soon as it happens:
-
-
-    await asyncio.gather(asyncio.sleep(5), task)
-
-However, this approach has a massive downside: It relies on someone waiting on the `Task`. If you don’t, the exception will be printed … but only on program completion. If the program subsequently deadlocks because it was expecting the dead task to make progress, you get no feedback whatsoever other than silent hang.
-
-It’s an oversimplification, but the situation is bad enough that I sometime summarize it as  “by default, `asyncio` completely swallows exceptions off the main task.” That’s not literally true, but in my experience it is a decent mental model to start with, and well describes the experience of many developers new to `asyncio`.
+Indeed, he situation is bad enough that I sometime summarize it as “by default, `asyncio` completely swallows exceptions off the main task.” That’s not literally true, but in my experience it is a decent mental model to start with, and usefully describes many developers' experiences with `asyncio`.
 
 ## What if we always waited on tasks?
 
-The `asyncio` approach is arguably an improvement **as long as you remember to wait on every** `**Task**` you spawn. That suggests an improvement: Can we modify the API to **force** the developer to wait on tasks? We might replace `asyncio.create_task(coro)` with an asynchronous context manager, and make you write:
+There's a lot to recommend the `asyncio` approach, **as long as you remember to wait on every** `**Task**`. How can we enforce that invariant, as a rule? The simplest rule might be: if you spawn a task, you are also responsible for waiting on it. We could encode this pattern by making `asyncio.create_task(coro)` into an asynchronous context manager, which will wait on the task before exiting.
 
+```python
+# (n.b. this is not real API in any version of Python)
+async with asyncio.create_task(background_task()) as task:
+  # …
+  # `task` will be waited for on exit from this block, and any exception raised
+```
 
-    # (n.b. this is not real API in any version of Python)
-    async with asyncio.create_task(background_task()) as task:
-      # …
-      # `task` will be waited for on exit from this block, and any exception raised
+Of course, we very often want to create many tasks — or a dynamically-chosen number of tasks — so we could borrow an idiom from [`contextlib.ExitStack`](https://docs.python.org/3/library/contextlib.html#contextlib.ExitStack) and have **one** context manager object which allows creating any number of tasks; something like:
 
-Of course, we very often want to create many tasks — or a dynamically-chosen number of tasks — so we could borrow an idiom from [`contextlib.ExitStack`](https://docs.python.org/3/library/contextlib.html#contextlib.ExitStack) and have **one** context manager object which allows creating any number of tasks:
+```python
+async with TaskLauncher() as tasks:
+  tasks.create_task(background_task())
 
+  # do the main work via a second task
+  tasks.create_task(asyncio.sleep(5))
 
-    FIGURE:task_launcher.py
+  # All tasks will be waited for on exit from the region
+```
 
 We can port our running example over:
 
