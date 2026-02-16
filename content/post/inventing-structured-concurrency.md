@@ -1,5 +1,5 @@
 ---
-title: "Inventing structured concurrency through the lens of error-handling"
+title: "Structured concurrency through the lens of error-handling"
 slug: inventing-structured-concurrency
 date: 2026-01-05T09:00:00-08:00
 ---
@@ -19,56 +19,71 @@ Today I want to ask: how should we update this pattern for **concurrent** progra
 
 ## Unhandled errors
 
-If an error is raised and handled within a single task, our usual idioms work fine. We're concerned about what happens when the error involves multiple tasks.
+Perhaps the simplest case for error-handling is when an error arises, and no code explicitly handles it. In a single-threaded program, we expect the error to "bubble up" to the entrypoint, and terminate the program, hopefully with a useful error message and/or stack trace.
 
-One entrypoint we can use to explore that question is to ask what happens when our single-threaded "stack-unwinding" approach "runs out of stack" -- we reach the top of a given task's stack, without handling the error.
+In concurrent program with multiple tasks, it's less obvious what should happen. We can bubble upwards and terminate the task which raised the error, but then what? For concreteness, we can consider this toy program[^python]:
 
-In a single-threaded program, it’s natural that exceptions which “bubble up” out of the entrypoint should terminate the program, but in a concurrent program, it’s less clear: There may be other tasks that are making progress, and we may not wish to terminate them.
+```python
+import threading
+import time
 
-For concreteness, let’s consider this simple program[^python]:
+def background_thread():
+  # This was supposed to be running some background work, but it
+  # encountered an error!
+  raise ValueError("oops")
 
+def main():
+    threading.Thread(target=background_thread).start()
 
-    FIGURE:exception_thread.py
+    # do the main work
+    time.sleep(5)
+    print("All done, exiting!")
+
+main()
+```
 
 [^python]: Most of this discussion is intended to apply broadly across many languages and concurrency frameworks, but I’ll use Python example for concreteness. In addition to other benefits, Python supports both threading and cooperative asynchrony, which lets me explore multiple paradigms.
 
 This program attempts to run two concurrent threads, one doing some “main” work function, and one doing some kind of work “in the background.” However, the background thread raises an exception immediately. What should happen?
 
-Running a version of this program across various language implementations, we will discover there are, broadly, two common approaches:
+Running a version of this program across various language implementations, we will discover there are, broadly, two common approaches, which I would claim are pretty much the two obvious options:
 
-- Print the error, terminate the thread, and carry on until all threads (or the main thread, or all “non-daemon” threads) have exited. (Java, Python)
+- Print the error, terminate the thread, and carry on until all threads (or some variant: maybe just the main thread, maybe all “non-daemon” threads) have exited. (Java, Python)
 - Print the error, and immediately terminate the entire program (Go, Rust, C++)
 
-In Python, the program logs the exception immediately, but then continues exiting — it waits for the `time.sleep` to elapse and then exits – with a successful exit code, even!
+In Python, the program logs the exception immediately, but then continues running: it waits for the `time.sleep` to elapse and then exits, with a successful exit code, even!
 
+```
+$ time python exception_thread.py
+Exception in thread Thread-1 (background_thread):
+Traceback (most recent call last):
+  File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/threading.py", line 975, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/nelhage/Sync/code/structured-concurrency/exception_thread.py", line 7, in background_thread
+    raise ValueError("oops")
+ValueError: oops
+All done, exiting!
+python exception_thread.py  0.03s user 0.02s system 0% cpu 5.124 total
 
-    $ time python exception_thread.py
-    Exception in thread Thread-1 (background_thread):
-    Traceback (most recent call last):
-      File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
-        self.run()
-      File "/Users/nelhage/.pyenv/versions/3.11.0/lib/python3.11/threading.py", line 975, in run
-        self._target(*self._args, **self._kwargs)
-      File "/Users/nelhage/Sync/code/structured-concurrency/exception_thread.py", line 7, in background_thread
-        raise ValueError("oops")
-    ValueError: oops
-    All done, exiting!
-    python exception_thread.py  0.03s user 0.02s system 0% cpu 5.124 total
-
-    $ echo $?
-    0
+$ echo $?
+0
+```
 
 Neither option is particularly satisfactory.
 
-Killing the entire program is a heavyweight hammer. I have, for instance, personally been involved in high-severity incidents where the proximate cause was an unhandled panic in a background monitoring goroutine, which was crashing a critical daemon. If the error had not been fatal, we would have had a much better time.
+Killing the entire program is a heavyweight hammer. I have personally helped respond to high-severity incidents where the proximate cause was an unhandled panic in a background monitoring goroutine, which was crashing a critical daemon. In that specific instance, we would much rather have let the "real" work continue uninterrupted.
 
-On the flip side, letting the program continue means we’re in a state that was almost certainly never tested or anticipated, and we run a high risk of deadlock if another task was waiting on the now-dead task. It also creates a lot of pain during development and debugging, where we, as programmers, generally want to get feedback about the error and move on to fixing it, as quickly as possible.
+On the flip side, letting the program continue means we’re in a state that was almost certainly never tested or anticipated, and we run a high risk of deadlock or worse if other tasks expect the dead task to make progress or perform certain actions.
 
-## Where do I raise the exception?
+Letting the program run also creates pain during development. During development, many errors are "trivial" developer mistakes -- typos, simple logic errors, other small, most-local, mostly-trivial messups. When I hit one of those, I usually want to fix it and restart my program as soon as possible. If it's still running, I need to restart it manually, and it means the exception may get buried in scrollback if other tasks are generating output.
 
-What we'd like, in some sense, is to have a better place to deliver the exception. In a single-threaded program, that place is "the caller." In the presence of concurrency, tasks don't have a caller to which they will eventually return, so what should we do instead?
+## Where do I deliver the error?
 
-Python’s [`asyncio`](https://docs.python.org/3/library/asyncio.html) framework takes a different approaach than any of the above languages. In `asyncio`, a task is represented by a [`Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) object, which is an object that can be waited on, much like an event or a lock or a socket or any other asynchronous object. Waiting on a `Task` blocks until it completes; if the task raises an exception, it will be redelivered to anyone waiting on the `Task`.
+What we'd like, in some sense, is to have a better place to "forward" the error. In a single-threaded program, that place is "the caller." In the presence of concurrency, tasks don't have a caller to which they will eventually return, so what should we do instead?
+
+We'll take a bit of inspiration from python’s [`asyncio`](https://docs.python.org/3/library/asyncio.html) framework, which takes a "third way," distinct from either of the above. In `asyncio`, a task is represented by a [`Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) object, which is an object that can be waited on, much like an event or a lock or a socket or the like. Waiting on a `Task` blocks until it completes; if the task raises an exception, that exception will be redelivered to anyone waiting on the `Task`.
 
 This approach is unopinionated; it avoids taking an opinion on **who** should handle an exception that escapes a task, but it gives the programmer the tools to make that decision themselves.
 
@@ -109,10 +124,33 @@ Unfortunately, we’re far from done. The above sketch has two serious, related,
 
 First, the deadlocks. We said above that a task’s parent will “eventually” wait on it. That’s only true so long as the parent actually exits the context manager. But what if the parent is **waiting on work** that will never complete, because some child task that would have processed it encountered an error?
 
-Here’s a minimal example that shows the kind of problem:
+Here’s a short example that shows a flavor of the problem:
 
+```python
+from task_launcher import TaskLauncher
+import asyncio
 
-    FIGURE: deadlock.py
+async def do_work(job_id, done_event):
+  if job_id == 1:
+    raise ValueError("Oops, job 1 failed!")
+
+  done_event.set()
+
+async def main():
+  async with TaskLauncher() as tasks:
+    events = []
+    for i in range(4):
+      done = asyncio.Event()
+      tasks.create_task(do_work(i, done))
+      events.append(done)
+
+    for ev in events:
+      await ev.wait()
+    print("All done!")
+
+if __name__ == '__main__':
+  asyncio.run(main())
+```
 
 This example is a stylized version of a common pattern: many “fan-out” or “fan-out / fan-in” concurrency patterns have the basic flavor of “launch some tasks; those tasks perform some work; the parent waits for the work.”
 
@@ -185,6 +223,20 @@ Many of the ideas and components have a long lineage, but the idea was [first na
 As of Python 3.11, Python's own `asyncio` includes a [`TaskGroup`][taskgroup] class, which is essentially a (production-ready) version of the `TaskLauncher` sketch I illustrated above; `trio` calls their own version a ["nursery"][nursery]. In Go, [errgroup][errgroup] package provides essentially the same semantics, building on Go's [context package][context] which provides cancellation support.
 
 Structured concurrency has many advantages, and I and many others have found that writing programs in this style makes it **much** easier to write correct and safe concurrent code (although other challenges certainly remain!). I strongly recommend njs' [classic essay][njs-essay], which I also linked previously, for a more-thorough exploration of the paradigm and its advantages.
+
+# Coda: Why error-handling?
+
+I want to close with a reflection about error-handling, and why I started thinking about this lens and this post, in the first place.
+
+I think when programmers think about error-handling, it often gets classed as a "robustness" concern, or as a concern for "production" or "serious" -- it's a topic you have to care about "at scale," or when something needs to be "reliable," or run on many different environments and handle unexpected input from the network, and so on.
+
+And that's all true, and for those sorts of systems it's definitely important to think carefully about what might go wrong and how, and how to handle it carefully.
+
+That said, I started on this line of thought not from the direction of "mature, robust, programs," but the complete opposite end: Thinking about the development experience of writing **new** code from scratch. As I [mentioned briefly earlier](#unhandled-errors), when writing a new program -- concurrent or not -- there's very often an early phase where you have lots of "dumb bugs," and just need to churn through them as quickly as possible.
+
+My experience writing concurrent programs **outside** of a structured concurrency framework is that it very often ends up being really frustratingly hard to just run that basic dev loop of "run program, see dumb bug, fix dumb bug," precisely because dumb bugs that would, in a single-threaded program, print a nice stack trace and exit, have a bad habit of turning into deadlocks, or getting swallowed, or something more perverse. And, I find that _ad-hoc_ attempts to **add** error handling sometimes make things worse! For instance, I sometimes would find that the "natural" approach was to "forward" errors through some pipeline, so that we can collect all errors at the end of a big concurrent operation, and log them in one place. That approach can work, but it also sometimes means you don't find out about **any** error until your entire program completes, which is really frustrating during development!
+
+Thus, I've found that adopting a structured concurrency approach, or at _least_ taking it as a basic mindset and paradigm, even if I may not have a "true" structured concurrency library in my environment, actually makes concurrent programs **drastically easier** to write and debug in the first place, even for throwaway prototypes -- it pays dividends almost immediately, not merely "eventually" or "in production"
 
 [nursery]: https://trio.readthedocs.io/en/stable/reference-core.html#nurseries-and-spawning
 [taskgroup]: https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup
