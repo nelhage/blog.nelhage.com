@@ -212,7 +212,7 @@ In exchange, we do impose a requirement of additional structure on our concurren
 This is the part where I admit that none of this is a new idea, and none of it is my invention (although I haven't seen another writeup approaching the idea in this form). This paradigm, of a tree of tasks with nested lifetimes, and automatic cancellation up and down the tree, has been slowly but steadily gaining popularity and adoption in recent years under the name ["Structured concurrency"][structured].
 
 
-Many of the ideas and components have a long lineage, but the idea was [first named][sc-named], as far as I know, in 2016, and probably best-popularized by the [trio][trio] framework, along with [an in-depth essay exploring the idea][njs-essay] by Nathaniel J Smith, Trio's creator and lead author.
+Many of the ideas and components have a long lineage, but the idea was [first named][sc-named], as far as I know, in 2016, and probably best-popularized by the [trio][trio] framework, along with [an in-depth essay exploring the idea][njs-essay] by njs, Trio's creator and lead maintainer.
 
 [sc-named]: https://sustrik.github.io/250bpm/blog:71/
 
