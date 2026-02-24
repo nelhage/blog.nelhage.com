@@ -7,7 +7,7 @@ How should we think about error-handling in concurrent programs?
 
 In single-threaded programs, we’ve mostly converged on a standard pattern, with a diverse zoo of implementations and concrete patterns. When an error occurs, it is propagated up the stack until we find a stack frame which is prepared to handle it. As we do so, we unwind the stack frames in-order, giving each frame the opportunity to clean up or destroy resources as appropriate.
 
-This pattern clearly describes the explicit exception-handling mechanisms in many modern languages (C++, Python, Java), all of which also have mechanisms for cleanup on frame unwind (RAII, `finally` blocks, Python context managers). But it also describes the standard pattern in Rust (`Result` returns, the `?` operator, and calling `drop` on wind), as well as Go (the classic `if err != nil { return err }` pattern and `defer` for cleanup), and even most modern `C` code, via patterns like `goto error` pattern (c.f. [examples in the Linux kernel](https://livegrep.com/search/linux?q=goto%20err&fold_case=auto&regex=false&context=true)).
+This pattern clearly describes the explicit exception-handling mechanisms in many modern languages (C++, Python, Java), all of which also have mechanisms for cleanup on frame unwind (RAII, `finally` blocks, Python context managers). But it also describes the standard pattern in Rust (`Result` returns, the `?` operator, and calling `drop` on unwind), as well as Go (the classic `if err != nil { return err }` pattern and `defer` for cleanup), and even most modern `C` code, via patterns like `goto error` pattern (c.f. [examples in the Linux kernel](https://livegrep.com/search/linux?q=goto%20err&fold_case=auto&regex=false&context=true)).
 
 From today’s vantage, that description may seem so general as to be contentless, but that has not always been so. Some other (mostly-abandoned) error-handling approaches include Lisp’s [“restarts” mechanism](https://lisper.in/restarts), `longjmp` in C[^longjmp], “trap” mechanisms like UNIX signals, and the infamous [`on error`](https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/on-error-statement) clause in Visual Basic. "Unwinding" is also predicated on **having** a structured call stack, a concept which also had to be [invented and popularized](https://en.wikipedia.org/wiki/Structured_programming).
 
@@ -89,7 +89,7 @@ This approach is unopinionated; it avoids taking an opinion on **who** should ha
 
 However, it comes with a steep downside. If **no one** waits on a `Task`, and that task raises an exception, the exception is effectively swallowed until program exit, at which point it will be printed with a warning. If someone was waiting on that task to, say, produce output via some queue, then the program will simply hang forever, silent, inscrutable, and mysterious.
 
-Indeed, he situation is bad enough that I sometime summarize it as “by default, `asyncio` completely swallows exceptions off the main task.” That’s not literally true, but in my experience it is a decent mental model to start with, and usefully describes many developers' experiences with `asyncio`.
+Indeed, the situation is bad enough that I sometime summarize it as “by default, `asyncio` completely swallows exceptions off the main task.” That’s not literally true, but in my experience it is a decent mental model to start with, and usefully describes many developers' experiences with `asyncio`.
 
 ## What if we always waited on tasks?
 
@@ -176,9 +176,9 @@ then I think we basically need a way to request that an arbitrary task exit earl
 
 We've reached this conclusion in the light of the specific paradigm we're developing here, but I think it's much broader, and also fairly intuitive on reflection. In any concurrency paradigm, you will have **some** version of "multiple cooperating concurrent tasks," and that means that you need an answer to "what happens if one of them dies unexpectedly." And, in turn, it's hard for me to imagine a fully-general answer other than "we ask the other tasks to cancel and terminate early."
 
-It's perfectly possible, mind, to implement specific concurrent programs or patterns without a general-purpose cancellation mechanism, by some a combination of ad-hoc mechanisms, and careful reasoning and construction. But I struggle to envision a general, composable, concurrent paradigm without one.
+It's perfectly possible, mind, to implement specific concurrent programs or patterns without a general-purpose cancellation mechanism, by some combination of ad-hoc mechanisms, and careful reasoning and construction. But I struggle to envision a general, composable, concurrent paradigm without one.
 
-I find this conclusion unpleasant, because implementing and supporting cancellation is **hard**. It introduces an additional error path into virtually every piece of code, and one which is by its very nature asynchronous and hard to reason about or test. Historical attempts at cancelation mechanisms, like C's [pthread_cancel], Java's [Thread.stop], and Ruby's [Thread.terminate] are incredibly-subtle and error-prone at best, or [fundamentally unusable](https://jvns.ca/blog/2015/11/27/why-rubys-timeout-is-dangerous-and-thread-dot-raise-is-terrifying/) at best.
+I find this conclusion unpleasant, because implementing and supporting cancellation is **hard**. It introduces an additional error path into virtually every piece of code, and one which is by its very nature asynchronous and hard to reason about or test. Historical attempts at cancelation mechanisms, like C's [pthread_cancel], Java's [Thread.stop], and Ruby's [Thread.terminate] are incredibly-subtle and error-prone at best, or [fundamentally unusable](https://jvns.ca/blog/2015/11/27/why-rubys-timeout-is-dangerous-and-thread-dot-raise-is-terrifying/) at worst.
 
 [pthread_cancel]: https://man7.org/linux/man-pages/man3/pthread_cancel.3.html
 [Thread.stop]: https://docs.oracle.com/javase/8/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
@@ -194,12 +194,12 @@ More generally, we have learned a lot as a field in the past decades, and some o
 
 [asyncio-cancel-api]: https://docs.python.org/3/library/asyncio-task.html#task-cancellation
 
-### A trees of tasks with cancellation
+### A tree of tasks with cancellation
 
 If we do have the ability to cancel tasks, we can use it alongside our "tree of tasks" idea to produce a fairly general solution to concurrent error handling:
 
 - If any task launched by a `TaskLauncher` raises an exception (including the parent task itself -- the one running the context manager), we cancel every other task (both the child tasks, and the parent task itself).
-- We give child tasks a mechanism to detect cancellation and to clean up their own resources. Typically this means re-using our normal error-handling mechanism in some form; e.g. cancellation might raise a `CancelledError` exception, which tasks can cancel and re-raise, or they can use a `finally` block or context manager.
+- We give child tasks a mechanism to detect cancellation and to clean up their own resources. Typically this means re-using our normal error-handling mechanism in some form; e.g. cancellation might raise a `CancelledError` exception, which tasks can catch and re-raise, or they can use a `finally` block or context manager.
 - On exit from the `TaskLauncher` context, we wait for **all** child tasks to exit, be that successfully, with an unhandled exception, or in response to a cancellation.
 - Then, if any child task raised an error, we re-raise it into the parent task.
 
@@ -228,7 +228,7 @@ Structured concurrency has many advantages, and I and many others have found tha
 
 I want to close with a reflection about error-handling, and why I started thinking about this lens and this post, in the first place.
 
-I think when programmers think about error-handling, it often gets classed as a "robustness" concern, or as a concern for "production" or "serious" -- it's a topic you have to care about "at scale," or when something needs to be "reliable," or run on many different environments and handle unexpected input from the network, and so on.
+I think when programmers think about error-handling, it often gets classed as a "robustness" concern, or as a concern for "production" or "serious software" -- it's a topic you have to care about "at scale," or when something needs to be "reliable," or run on many different environments and handle unexpected input from the network, and so on.
 
 And that's all true, and for those sorts of systems it's definitely important to think carefully about what might go wrong and how, and how to handle it carefully.
 
@@ -236,7 +236,7 @@ That said, I started on this line of thought not from the direction of "mature, 
 
 My experience writing concurrent programs **outside** of a structured concurrency framework is that it very often ends up being really frustratingly hard to just run that basic dev loop of "run program, see dumb bug, fix dumb bug," precisely because dumb bugs that would, in a single-threaded program, print a nice stack trace and exit, have a bad habit of turning into deadlocks, or getting swallowed, or something more perverse. And, I find that _ad-hoc_ attempts to **add** error handling sometimes make things worse! For instance, I sometimes would find that the "natural" approach was to "forward" errors through some pipeline, so that we can collect all errors at the end of a big concurrent operation, and log them in one place. That approach can work, but it also sometimes means you don't find out about **any** error until your entire program completes, which is really frustrating during development!
 
-Thus, I've found that adopting a structured concurrency approach, or at _least_ taking it as a basic mindset and paradigm, even if I may not have a "true" structured concurrency library in my environment, actually makes concurrent programs **drastically easier** to write and debug in the first place, even for throwaway prototypes -- it pays dividends almost immediately, not merely "eventually" or "in production"
+Thus, I've found that adopting a structured concurrency approach, or at _least_ taking it as a basic mindset and paradigm, even if I may not have a "true" structured concurrency library in my environment, actually makes concurrent programs **drastically easier** to write and debug in the first place, even for throwaway prototypes -- it pays dividends almost immediately, not merely "eventually" or "in production."
 
 [nursery]: https://trio.readthedocs.io/en/stable/reference-core.html#nurseries-and-spawning
 [taskgroup]: https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup
