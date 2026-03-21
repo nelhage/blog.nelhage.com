@@ -1,7 +1,9 @@
 ---
-title: "Structured concurrency through the lens of error-handling"
-slug: inventing-structured-concurrency
-date: 2026-01-05T09:00:00-08:00
+title: "From error-handling to structured concurrency"
+slug: concurrent-error-handling
+date: 2026-03-23T08:30:00-07:00
+description: >
+  How should errors propagate in concurrent programs? We start from that question, work step by step, and end up reinventing structured concurrency. Some reflections on why this matters as much during development as in production.
 ---
 How should we think about error-handling in concurrent programs?
 
