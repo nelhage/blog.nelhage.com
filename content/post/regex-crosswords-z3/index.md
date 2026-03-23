@@ -1,5 +1,5 @@
 ---
-title: "Solving Regex Crosswords with Z3"
+title: "Solving regex crosswords with Z3"
 slug: regex-crosswords-z3
 date: 2025-10-21T07:00:00-07:00
 description: >
